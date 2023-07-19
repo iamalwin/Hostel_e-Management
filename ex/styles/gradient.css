@@ -1,0 +1,30 @@
+#grad1 {
+  height: 1100px;
+  width: 1500px;
+ 
+  background-image: linear-gradient(to right,White,Gray);
+}
+#grad2 {
+	height: 900px;
+	width: 1350px;
+	
+	background-image: linear-gradient(to right,White,Gray);
+}
+#grad3 {
+	height: 600px;
+	width: 1350px;
+	
+	background-image:linear-gradient(to right,White,skyblue);
+}
+#grad4 {
+	height: 800px;
+	width: 1350px;
+	
+	background-image:linear-gradient(to right,White,skyblue);
+}
+#grad5 {
+	height: 750px;
+	width: 1350px;
+	
+	background-image: linear-gradient(to right,White,Gray);
+}
