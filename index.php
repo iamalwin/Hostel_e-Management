@@ -106,7 +106,7 @@
                                 <div class="col-lg-12 p-2">
                                     <div class="form-group">
                                         <label class="text-dark" for="uname">Email</label>
-                                        <input class="form-control" name="email" id="uname" type="email" placeholder="Enter your email" required>
+                                        <input class="form-control" name="uname" id="uname" type="email" placeholder="Enter your email" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 p-2">

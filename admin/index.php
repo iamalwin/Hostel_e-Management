@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
         session_start();
-        include('../includes/dbconn.php');
+        include('./dbconnect.php');
         if (isset($_POST['login'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -14,12 +14,12 @@
             $uip = $_SERVER['REMOTE_ADDR'];
             $ldate = date('d/m/Y h:i:s', time());
             if ($rs) {
-                header("location:dashboard.php");
+                header("location:./include/admin_dashboard.php");
             } else {
                 echo "<script>alert('Invalid Username/Email or password');</script>";
             }
         }
-        ?> -->
+        ?>
 
 <!DOCTYPE html>
 <html dir="ltr">
@@ -100,8 +100,8 @@
                             <div class="row">
                                 <div class="col-lg-12 p-2">
                                     <div class="form-group">
-                                        <label class="text-dark" for="uname">Email or Username</label>
-                                        <input class="form-control" name="username" id="uname" type="text" placeholder="Email or Username" required>
+                                        <label class="text-dark" for="uname">Username</label>
+                                        <input class="form-control" name="uname" id="uname" type="text" placeholder="Username" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 p-2">
