@@ -1,25 +1,28 @@
 <?php
-        session_start();
-        include('./dbconnect.php');
-        if (isset($_POST['login'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $password = md5($password);
-            $stmt = $mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (userName=?|| email=?) and password=? ");
-            $stmt->bind_param('sss', $username, $username, $password);
-            $stmt->execute();
-            $stmt->bind_result($username, $username, $password, $id);
-            $rs = $stmt->fetch();
-            $_SESSION['id'] = $id;
-            $uip = $_SERVER['REMOTE_ADDR'];
-            $ldate = date('d/m/Y h:i:s', time());
-            if ($rs) {
-                header("location:./include/admin_dashboard.php");
-            } else {
-                echo "<script>alert('Invalid Username/Email or password');</script>";
-            }
-        }
-        ?>
+ 	include("../dbconnect.php");
+	extract($_POST);
+	session_start();
+
+if(isset($_POST['btn']))
+{
+$qry=mysqli_query($connect,"select * from admin where name='$uname' && psw='$password'");
+$num=mysqli_num_rows($qry);
+if($num==1)
+{
+?>
+<script>alert('welcome to admin home page');
+</script>
+<?php
+
+header("location:admin_dashboard.php");
+}
+else
+{
+echo "<script>alert('User Name Password Wrong.....')</script>";
+
+}
+}
+?> 
 
 <!DOCTYPE html>
 <html dir="ltr">
@@ -107,14 +110,14 @@
                                 <div class="col-lg-12 p-2">
                                     <div class="form-group">
                                         <label class="text-dark" for="pwd">Password</label>
-                                        <input class="form-control" name="password" id="pwd" type="password" placeholder="Enter your password" required>
+                                        <input class="form-control" name="password" id="password" type="password" placeholder="Enter your password" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" name="login" class="btn btn-block btn-danger">LOGIN</button>
+                                    <button type="submit" name="btn" id="btn" class="btn btn-block btn-danger">LOGIN</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
-                                    <a href="../index.php" class="text-danger">Go Back</a>
+                                    <a href="../stud_login.php" class="text-danger">Go Back</a>
                                 </div>
                             </div>
                         </form>

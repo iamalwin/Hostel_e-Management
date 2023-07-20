@@ -1,143 +1,238 @@
-<!-- <?php
-        session_start();
-        include('../includes/dbconn.php');
-        if (isset($_POST['login'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $password = md5($password);
-            $stmt = $mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (userName=?|| email=?) and password=? ");
-            $stmt->bind_param('sss', $username, $username, $password);
-            $stmt->execute();
-            $stmt->bind_result($username, $username, $password, $id);
-            $rs = $stmt->fetch();
-            $_SESSION['id'] = $id;
-            $uip = $_SERVER['REMOTE_ADDR'];
-            $ldate = date('d/m/Y h:i:s', time());
-            if ($rs) {
-                header("location:dashboard.php");
-            } else {
-                echo "<script>alert('Invalid Username/Email or password');</script>";
-            }
-        }
-        ?> -->
-<!-- By CodeAstro - codeastro.com -->
 <!DOCTYPE html>
-<html dir="ltr">
-
-
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
-  rel="stylesheet"
-/>
-
+<!-- saved from url=(0050)# -->
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hostel Management</title>
 
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Hostel stud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css
-">
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js
-"></script>
 
-    <script type="text/javascript">
-        function valid() {
-            if (document.registration.password.value != document.registration.cpassword.value) {
-                alert("Password and Re-Type Password Field do not match  !!");
-                document.registration.cpassword.focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
+  <link href="./assets/home_img/css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/home_img/style.css">
+
+  <link rel="stylesheet" href="./assets/home_img/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/home_img/jquery-ui.css">
+  <link rel="stylesheet" href="./assets/home_img/owl.carousel.min.css">
+  <link rel="stylesheet" href="./assets/home_img/owl.theme.default.min.css">
+  <link rel="stylesheet" href="./assets/home_img/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="./assets/home_img/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="./assets/home_img/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="./assets/home_img/flaticon.css">
+
+  <link rel="stylesheet" href="./assets/home_img/aos.css">
+
+  <link rel="stylesheet" href="./assets/home_img/style(1).css">
 
 </head>
 
-<!-- By CodeAstro - codeastro.com -->
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" data-aos-easing="slide"
+  data-aos-duration="800" data-aos-delay="0" class="">
 
-<body class="d-flex justify-content-center align-items-center h-100 bg-light">
-    <div class="main-wrapper bg-light">
 
-        <!-- Preloader - style you can find in spinners.css -->
+  <div id="overlayer" style="display: none;"></div>
+  <div class="loader" style="display: none;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
-        <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
         </div>
+      </div>
 
-        <!-- Preloader - style you can find in spinners.css -->
+<!-- mobile nav -->
+      <div class="site-mobile-menu-body">
+      </div>
 
-        <!-- Login box.scss -->
-
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
-            <div class="auth-box row bg-info">
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(assets/images/hostel-img.jpg);">
-                </div>
-                <div class="col-lg-5 col-md-7 bg-light">
-                    <div class="p-3">
-                        <div class="text-center">
-                            <img src="assets/images/big/icon.png" alt="wrapkit">
-                        </div>
-                        <h2 class="mt-3 text-center">Student Login</h2>
-
-                        <form class="mt-4" method="POST">
-                            <div class="row">
-                                <div class="col-lg-12 p-2">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="uname">Email</label>
-                                        <input class="form-control" name="uname" id="uname" type="email" placeholder="Enter your email" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 p-2">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="pwd">Password</label>
-                                        <input class="form-control" name="password" id="pwd" type="password" placeholder="Enter your password" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                    <button type="submit" name="login" class="btn btn-block btn-dark">LOGIN</button>
-                                </div>
-                                <div class="col-lg-12 text-center mt-5">
-                                    <a href="./admin/index.php" class="text-danger">Go to Admin Panel</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- By CodeAstro - codeastro.com -->
-
-        <!-- Login box.scss -->
-
+      
     </div>
 
-    <!-- This page plugin js -->
 
-    <script>
-        $(".preloader ").fadeOut();
-    </script>
+    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 68.8px;">
+      <header class="site-navbar py-4 js-sticky-header site-navbar-target shrink" role="banner"
+        style="width: 1519.2px; position: fixed; top: 0px; z-index: inherit;">
+
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="col-6 col-xl-2">
+              <h5 class="mb-0 site-logo"><a href="#home"
+                  class="h2 mb-0">Hostel management<span class="text-primary">.</span> </a></h5>
+            </div>
+
+            <div class="col-12 col-md-10 d-none d-xl-block">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                  <li><a href="#" class="nav-link">Home</a></li>
+                    <li class="has-children">
+                      <a href="">Admin</a>
+                      <ul class="dropdown">
+                        <li><a href="./admin/admin_login.php">Login</a></li>
+                        <!-- <li><a href="">Menu Two</a></li>
+                        <li><a href="">Menu Three</a></li> -->
+                      </ul>
+                    </li>
+                    <li class="has-children">
+                      <a href="">Student</a>
+                      <ul class="dropdown">
+                        <li><a href="./Stud_login.php">Login</a></li>
+                        <!-- <li><a href="">Menu Two</a></li>
+                        <li><a href="">Menu Three</a></li> -->
+                      </ul>
+                    </li>
+                  <li><a href="contact-section" class="nav-link">Contact</a></li>
+                  <li class="has-children"><a href="#" class="nav-link">About Us</a>
+                    <ul class="dropdown">
+                      <li><a href="#team-section" class="nav-link active">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                      <li class="has-children">
+                        <a href="#">More Links</a>
+                        <ul class="dropdown">
+                          <li><a href="#">Menu One</a></li>
+                          <li><a href="#">Menu Two</a></li>
+                          <li><a href="#">Menu Three</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  
+                </ul>
+                
+              </nav>
+            </div>
+
+
+            <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href=""
+                class="site-menu-toggle js-menu-toggle float-right active"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+    </div>
+
+
+
+    <div class="site-blocks-cover overlay aos-init aos-animate"
+      style="background-image: url(./assets/home_img/sjc.jpeg);"
+      data-aos="fade" id="home-section">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+
+
+          <div class="col-md-8 mt-lg-5 text-center">
+            <h1 class="text-uppercase aos-init aos-animate" data-aos="fade-up">Welcome</h1>
+            <p class="mb-5 desc aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Optio soluta eius error.</p>
+            <div data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
+              <a href="#" class="btn smoothscroll btn-primary mr-2 mb-2">Get In Touch</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <a href="#" class="mouse smoothscroll">
+        <span class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </span>
+      </a>
+    </div>
+
+
+
+    <!--footer  -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-5">
+                <h2 class="footer-heading mb-4">About Us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
+                  autem. Amet aliquid nesciunt veritatis aliquam.</p>
+              </div>
+              <div class="col-md-3 ml-auto">
+                <h2 class="footer-heading mb-4">Quick Links</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="smoothscroll">About Us</a></li>
+                  <li><a href="services-section" class="smoothscroll">Services</a></li>
+                  <li><a href="testimonials-section" class="smoothscroll">Testimonials</a></li>
+                  <li><a href="contact-section" class="smoothscroll">Contact Us</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <a href="" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                <a href="" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                <a href="" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                <a href="" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
+            <form action="" method="post" class="footer-subscribe">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control border-secondary text-white bg-transparent"
+                  placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-primary text-black" type="button" id="button-addon2">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class="border-top pt-5">
+              <p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright ©
+                <script>document.write(new Date().getFullYear());</script>2023 All rights reserved |
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- .site-wrap -->
+
+  <script src="./assets/home_img/jquery-3.3.1.min.js.download"></script>
+  <script src="./assets/home_img/jquery-ui.js.download"></script>
+  <script src="./assets/home_img/popper.min.js.download"></script>
+  <script src="./assets/home_img/bootstrap.min.js.download"></script>
+  <script src="./assets/home_img/owl.carousel.min.js.download"></script>
+  <script src="./assets/home_img/jquery.countdown.min.js.download"></script>
+  <script src="./assets/home_img/jquery.easing.1.3.js.download"></script>
+  <script src="./assets/home_img/aos.js.download"></script>
+  <script src="./assets/home_img/jquery.fancybox.min.js.download"></script>
+  <script src="./assets/home_img/jquery.sticky.js.download"></script>
+  <script src="./assets/home_img/isotope.pkgd.min.js.download"></script>
+
+
+  <script src="./assets/home_img/main.js.download"></script>
+
+
 </body>
 
 </html>

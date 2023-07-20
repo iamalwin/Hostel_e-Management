@@ -67,8 +67,8 @@
           <div class="row align-items-center">
 
             <div class="col-6 col-xl-2">
-              <h5 class="mb-0 site-logo"><a href="#home"
-                  class="h2 mb-0">Hostel management<span class="text-primary">.</span> </a></h5>
+              <h1 class="mb-0 site-logo"><a href="https://themewagon.github.io/nitro2/index.html"
+                  class="h2 mb-0">Nitro<span class="text-primary">.</span> </a></h1>
             </div>
 
             <div class="col-12 col-md-10 d-none d-xl-block">
