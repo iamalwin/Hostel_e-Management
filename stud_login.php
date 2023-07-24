@@ -55,6 +55,9 @@ echo "<script>alert('Please enter correct username are password...')</script>";
 
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Hostel stud</title>
+    <link href="../dist/css/style.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./dist/css/style.min.css">
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css
@@ -78,16 +81,17 @@ echo "<script>alert('Please enter correct username are password...')</script>";
 <!-- By CodeAstro - codeastro.com -->
 
 <body class="d-flex justify-content-center align-items-center h-100 bg-light">
-    <div class="main-wrapper bg-light">
+            <!-- Preloader - style you can find in spinners.css -->
 
-        <!-- Preloader - style you can find in spinners.css -->
-
-        <div class="preloader">
+            <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
         </div>
+    <div class="main-wrapper bg-light">
+
+
 
         <!-- Preloader - style you can find in spinners.css -->
 
@@ -136,6 +140,12 @@ echo "<script>alert('Please enter correct username are password...')</script>";
 
     </div>
 
+    
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="./assets/libs/jquery/dist/jquery.min.js "></script>
+        <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    
     <!-- This page plugin js -->
 
     <script>

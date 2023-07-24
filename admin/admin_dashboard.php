@@ -13,6 +13,23 @@
     <!-- Add this link to your HTML head section -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
+<link rel="stylesheet" href="../dist/css/style.min.css">
+
+<style>
+  #liveDate, #liveTime {
+    display: contents;
+            font-size: 20px;
+            width: 100%;
+        }
+        .page-title, .date, .time {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+</style>
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -22,11 +39,20 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="./Purple Admin_files/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="./include/images/hs-logo.png  ">
   <style type="text/css">/* Chart.js */
 @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
   <body class="">
     <div class="container-scroller">
+
+      <!-- Preloader - style you can find in spinners.css -->
+    
+      <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
 
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
@@ -39,7 +65,6 @@
             <span class="mdi mdi-menu"></span>
           </button>
  
-
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="https://www.bootstrapdash.com/demo/purple-admin-free/#" data-toggle="dropdown" aria-expanded="false">
@@ -48,17 +73,18 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Admin</p>
+                  <p class="mb-1 text-black">Adminx</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="https://www.bootstrapdash.com/demo/purple-admin-free/#">
+                  <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../index.php">
+                <a class="dropdown-item" href="https://www.bootstrapdash.com/demo/purple-admin-free/#">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
               </div>
             </li>
 
-            
           </ul>
 
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -109,7 +135,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span class="menu-title">Students Registration</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+                <i class="mdi mdi-account-plus menu-icon"></i>
               </a>
             </li>
 
@@ -145,7 +171,9 @@
 
               <nav aria-label="breadcrumb row-5 bg-gradient-primary">
               <h3 class="page-title">
-                    <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span> <p id="liveDateTime"><?php echo date('Y-m-d H:i:s'); ?></p>
+                    <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span> 
+                    <div class="date" id="liveDate"></div>
+                    <div class="time" id="liveTime"></div>
               </h3>
               </nav>
             </div>
@@ -154,29 +182,29 @@
 
             <div class="row">
               <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h4 class="font-weight-normal mb-1">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-1">$ 15,0000</h2>
-                    <h6 class="card-text">Increased by 60%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h4 class="font-weight-normal mb-1">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-1">$ 15,0000</h2>
-                    <h6 class="card-text">Increased by 60%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 stretch-card grid-margin">
                 <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h4 class="font-weight-normal mb-1">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-1">$ 15,0000</h2>
+                    <h6 class="card-text">sed by 60%</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h4 class="font-weight-normal mb-1">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-1">$ 15,0000</h2>
+                    <h6 class="card-text">Increased by 60%</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 stretch-card grid-margin">
+                <div class="card bg-gradient-warning card-img-holder text-white">
                   <div class="card-body">
                     <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
                     <h4 class="font-weight-normal mb-1">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
@@ -504,15 +532,20 @@
     <!-- Date & time -->
     <script>
         function updateDateTime() {
-            var dateTimeElement = document.getElementById('liveDateTime');
+            var dateElement = document.getElementById('liveDate');
+            var timeElement = document.getElementById('liveTime');
             var now = new Date();
-            var formattedDateTime = now.getFullYear() + '-' + 
-                                    padNumber(now.getMonth() + 1) + '-' + 
-                                    padNumber(now.getDate()) + ' ' + 
-                                    padNumber(now.getHours()) + ':' + 
-                                    padNumber(now.getMinutes()) + ':' + 
-                                    padNumber(now.getSeconds());
-            dateTimeElement.textContent = formattedDateTime;
+
+            var formattedDate = now.getFullYear() + '-' + 
+                                padNumber(now.getMonth() + 1) + '-' + 
+                                padNumber(now.getDate());
+
+            var formattedTime = padNumber(now.getHours()) + ':' + 
+                                padNumber(now.getMinutes()) + ':' + 
+                                padNumber(now.getSeconds());
+
+            dateElement.textContent = formattedDate;
+            timeElement.textContent = formattedTime;
         }
 
         function padNumber(number) {
@@ -522,5 +555,30 @@
         // Update the date and time every second (1000ms)
         setInterval(updateDateTime, 1000);
     </script>
+</body>
+</html>
+In this updated version, we've introduced two new <div> elements with classes "date" and "time" to hold the date and time separately. The CSS styles for these classes define the font size and colors to make them visually distinguishable.
+
+With these changes, the date and time will be displayed in separate elements, and each will update dynamically every second. The date will be shown in blue (#007bff), and the time will be shown in orange (#ff5722). Save the file and open it in your web browser to see the updated live date and time display with separate date and time elements.
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap tether Core JavaScript -->
+<script src="../assets/libs/jquery/dist/jquery.min.js "></script>
+<script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+
+
+<!-- This page plugin js -->
+
+<script>
+$(".preloader ").fadeOut();
+</script>
 
 </body></html>

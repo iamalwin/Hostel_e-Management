@@ -28,28 +28,22 @@
 
   <link rel="stylesheet" href="./assets/home_img/style(1).css">
 
+    <!-- Add this link to your HTML head section -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+  <!-- bootstrap link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" data-aos-easing="slide"
   data-aos-duration="800" data-aos-delay="0" class="">
 
 
-  <div id="overlayer" style="display: none;"></div>
-  <div class="loader" style="display: none;">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-
-
   <div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
+
 
 <!-- mobile nav -->
       <div class="site-mobile-menu-body">
@@ -128,7 +122,6 @@
 
 
     <div class="site-blocks-cover overlay aos-init aos-animate"
-      style="background-image: url(./assets/home_img/sjc.jpeg);"
       data-aos="fade" id="home-section">
 
       <div class="container">

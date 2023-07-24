@@ -1,28 +1,24 @@
 <?php
- 	include("../dbconnect.php");
-	extract($_POST);
-	session_start();
+include("../dbconnect.php");
+extract($_POST);
+session_start();
 
-if(isset($_POST['btn']))
-{
-$qry=mysqli_query($connect,"select * from admin where name='$uname' && psw='$password'");
-$num=mysqli_num_rows($qry);
-if($num==1)
-{
+if (isset($_POST['btn'])) {
+    $qry = mysqli_query($connect, "select * from admin where name='$uname' && psw='$password'");
+    $num = mysqli_num_rows($qry);
+    if ($num == 1) {
 ?>
-<script>alert('welcome to admin home page');
-</script>
+        <script>
+            alert('welcome to admin home page');
+        </script>
 <?php
 
-header("location:admin_dashboard.php");
+        header("location:admin_dashboard.php");
+    } else {
+        echo "<script>alert('User Name Password Wrong.....')</script>";
+    }
 }
-else
-{
-echo "<script>alert('User Name Password Wrong.....')</script>";
-
-}
-}
-?> 
+?>
 
 <!DOCTYPE html>
 <html dir="ltr">
@@ -42,21 +38,16 @@ echo "<script>alert('User Name Password Wrong.....')</script>";
     <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
-  rel="stylesheet"
-/>
+
+    <link rel="stylesheet" href="../dist/css/style.min.css">
+
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
 
 
     <script type="text/javascript">
