@@ -1,48 +1,35 @@
 <?php
- 	include("dbconnect.php");
-	extract($_POST);
-	session_start();
+include("./dbconnect.php");
+extract($_POST);
+session_start();
 
-if(isset($_POST['btn']))
-{
-$qry=mysqli_query($connect,"select * from admin where name='$uname' && psw='$password'");
-$num=mysqli_num_rows($qry);
-if($num==1)
-{
+if (isset($_POST['btn'])) {
+    $qry = mysqli_query($connect, "select * from stud where name='$sname' && reg='$psw'");
+    $num = mysqli_num_rows($qry);
+    if ($num == 1) {
 ?>
-<script>alert('welcome to admin home page');
-</script>
+        <script>
+            alert('welcome to stud home page');
+        </script>
 <?php
 
-header("location:./stud/stud_dashboard.php");
+        header("location:./stud/stud_dashboard.php");
+    } else {
+        echo "<script>alert('User Name Password Wrong.....')</script>";
+    }
 }
-else
-{
-echo "<script>alert('Please enter correct username are password...')</script>";
-
-}
-}
-?> 
+?>
 <!-- By CodeAstro - codeastro.com -->
 <!DOCTYPE html>
 <html dir="ltr">
 
 
 <!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 <!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 <!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
-  rel="stylesheet"
-/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
 
 
 <head>
@@ -65,30 +52,19 @@ echo "<script>alert('Please enter correct username are password...')</script>";
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js
 "></script>
 
-    <script type="text/javascript">
-        function valid() {
-            if (document.registration.password.value != document.registration.cpassword.value) {
-                alert("Password and Re-Type Password Field do not match  !!");
-                document.registration.cpassword.focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
-
 </head>
 
 <!-- By CodeAstro - codeastro.com -->
 
 <body class="d-flex justify-content-center align-items-center h-100 bg-light">
-            <!-- Preloader - style you can find in spinners.css -->
+    <!-- Preloader - style you can find in spinners.css -->
 
-            <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
         </div>
+    </div>
     <div class="main-wrapper bg-light">
 
 
@@ -113,13 +89,13 @@ echo "<script>alert('Please enter correct username are password...')</script>";
                                 <div class="col-lg-12 p-2">
                                     <div class="form-group">
                                         <label class="text-dark" for="uname">User Name</label>
-                                        <input class="form-control" name="uname" id="uname" type="txt" placeholder="Enter UserName" required>
+                                        <input class="form-control" name="sname" type="text" placeholder="Enter UserName" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 p-2">
                                     <div class="form-group">
                                         <label class="text-dark" for="pwd">Password</label>
-                                        <input class="form-control" name="password" id="pwd" type="password" placeholder="Enter password" required>
+                                        <input class="form-control" name="psw" type="password" placeholder="Enter password" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
@@ -140,12 +116,12 @@ echo "<script>alert('Please enter correct username are password...')</script>";
 
     </div>
 
-    
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="./assets/libs/jquery/dist/jquery.min.js "></script>
-        <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
-    
+
     <!-- This page plugin js -->
 
     <script>

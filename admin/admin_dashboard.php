@@ -9,12 +9,26 @@
     <link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
     <link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">
 
-
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="./Purple Admin_files/style.css">
     <!-- Add this link to your HTML head section -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
 <link rel="stylesheet" href="../dist/css/style.min.css">
 
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="./Purple Admin_files/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="./include/images/hs-logo.png  ">
+        <!-- End layout styles -->
+        <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
+  <style type="text/css">/* Chart.js */
+@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style>
 <style>
   #liveDate, #liveTime {
     display: contents;
@@ -31,17 +45,7 @@
 
 </style>
 
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="./Purple Admin_files/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="./include/images/hs-logo.png  ">
-  <style type="text/css">/* Chart.js */
-@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
+</head>
   <body class="">
     <div class="container-scroller">
 
@@ -64,7 +68,16 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
- 
+          <div class="search-field d-none d-md-block">
+            <form class="d-flex align-items-center h-100" action="https://www.bootstrapdash.com/demo/purple-admin-free/#">
+              <div class="input-group">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                </div>
+                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+              </div>
+            </form>
+          </div>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="https://www.bootstrapdash.com/demo/purple-admin-free/#" data-toggle="dropdown" aria-expanded="false">
@@ -73,7 +86,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Adminx</p>
+                  <p class="mb-1 text-black">David Greymaax</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -84,16 +97,116 @@
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
               </div>
             </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="https://www.bootstrapdash.com/demo/purple-admin-free/#" data-toggle="dropdown" aria-expanded="false">
+                <i class="mdi mdi-email-outline"></i>
+                <span class="count-symbol bg-warning"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                <h6 class="p-3 mb-0">Messages</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="./Purple Admin_files/face4.jpg" alt="image" class="profile-pic">
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
+                    <p class="text-gray mb-0"> 1 Minutes ago </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="./Purple Admin_files/face2.jpg" alt="image" class="profile-pic">
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
+                    <p class="text-gray mb-0"> 15 Minutes ago </p>
+                  </div>
+                </a>
 
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="./Purple Admin_files/face3.jpg" alt="image" class="profile-pic">
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
+                    <p class="text-gray mb-0"> 18 Minutes ago </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <h6 class="p-3 mb-0 text-center">4 new messages</h6>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="https://www.bootstrapdash.com/demo/purple-admin-free/#" data-toggle="dropdown">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                <h6 class="p-3 mb-0">Notifications</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-calendar"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
+                    <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-warning">
+                      <i class="mdi mdi-settings"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+                    <p class="text-gray ellipsis mb-0"> Update dashboard </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="mdi mdi-link-variant"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
+                    <p class="text-gray ellipsis mb-0"> New admin wow! </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+              </div>
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="https://www.bootstrapdash.com/demo/purple-admin-free/#">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+            <li class="nav-item nav-settings d-none d-lg-block">
+              <a class="nav-link" href="https://www.bootstrapdash.com/demo/purple-admin-free/#">
+                <i class="mdi mdi-format-line-spacing"></i>
+              </a>
+            </li>
           </ul>
-
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
           </button>
         </div>
       </nav>
-
-
 
       <!-- partial -->
       <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">

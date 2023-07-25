@@ -146,7 +146,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="./stud_feedback.php">
                 <span class="menu-title">Feedback</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
               </a>
