@@ -65,7 +65,7 @@
 	
 	
 	
-			 <form id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+<form id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 	  <table width="35%" border="0" align="center">
 		
 	   <tr>
@@ -189,7 +189,7 @@
 			<input type="reset" name="Submit2" value="Reset" /></td>
 		</tr>
 	  </table>
-	</form>
+</form>
 	
 	
 	 <marquee scrollamount="10"><h1><font color="#80bfff">Hostel Information Management System</h1></marquee>
