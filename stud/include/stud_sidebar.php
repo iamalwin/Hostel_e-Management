@@ -16,8 +16,8 @@
         </li>
 
 
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
+        <li class="nav-item">
+            <a class="nav-link" href="./stud_dashboard.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -38,7 +38,7 @@
             </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="../stud_feedback.php">
+        <a class="nav-link" href="./stud_feedback.php">
                 <span class="menu-title">Feedback</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>

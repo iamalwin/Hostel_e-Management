@@ -192,7 +192,8 @@
               </div>
             </div>
           </div>
-          <div class="row">
+
+          <!-- <div class="row">
             <div class="col-md-7 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -488,7 +489,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -549,17 +550,8 @@
     // Update the date and time every second (1000ms)
     setInterval(updateDateTime, 1000);
   </script>
-</body>
 
-</html>
-
-
-
-
-
-
-
-
+  
 <!-- Bootstrap tether Core JavaScript -->
 <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
 <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
@@ -575,3 +567,8 @@
 </body>
 
 </html>
+
+
+
+
+

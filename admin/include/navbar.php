@@ -1,7 +1,7 @@
   <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="https://www.bootstrapdash.com/demo/purple-admin-free/index.html"><img src="../admin/Purple Admin_files/logo.svg" alt="logo"></a>
-          <a class="navbar-brand brand-logo-mini" href="https://www.bootstrapdash.com/demo/purple-admin-free/index.html"><img src="../admin/Purple Admin_files/logo-mini.svg" alt="logo"></a>
+          <a class="navbar-brand brand-logo" href="#"><img src="../admin/Purple Admin_files/logo.svg" alt="logo"></a>
+          <a class="navbar-brand brand-logo-mini" href="#"><img src="../admin/Purple Admin_files/logo-mini.svg" alt="logo"></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
