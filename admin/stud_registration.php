@@ -150,8 +150,8 @@ if (isset($_POST['btn'])) {
 					<div class="page-header">
 						<h3 class="page-title">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">
-								<i class="mdi mdi-home"></i>
-							</span> Dashboard
+							<i class="mdi mdi-account-plus menu-icon"></i>
+							</span> Student Registration
 						</h3>
 
 						<nav aria-label="breadcrumb row-5 bg-gradient-primary">
@@ -166,7 +166,7 @@ if (isset($_POST['btn'])) {
 					<!-- Dash data section -->
 
 
-					<form class="col-md-12 grid-margin stretch-card" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+					<form class=" card p-5 " id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 						<table width="35%" border="0" align="center">
 
 							<tr>

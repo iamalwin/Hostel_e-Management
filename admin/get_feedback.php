@@ -135,13 +135,15 @@ session_start();
 
           <div class="page-header">
             <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+            <i class="mdi mdi-chart-bar menu-icon"></i>
               </span> Feedback
             </h3>
           </div>
 
           <!-- Dash data section -->
 
-<div class="col-md-12 card-body grid-margin stretch-card m-0">
+<div class="col-md-12 card p-5 grid-margin stretch-card m-0">
           <table width="67%" border="0" align="center">
             <tr>
               <td width="16%">

@@ -88,7 +88,7 @@ session_start();
 		}
 		}
 		?>
-		</table>
+</table>
 		
 		
 		

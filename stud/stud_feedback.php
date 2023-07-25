@@ -287,14 +287,14 @@
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-home"></i>
-              </span> Dashboard
+              </span> Feedback
             </h3>
           </div>
 
           <!-- Dash data section -->
 
 
-          <div class="formbold-main-wrapper">
+          <div class="formbold-main-wrapper card">
             <div class="formbold-form-wrapper">
 
               <svg class="formbold-img" width="490" height="202" viewBox="0 0 490 202" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -324,7 +324,7 @@
                 <path d="M43.1255 200.394H16.9219C16.4191 200.394 15.9264 200.253 15.5002 199.986C15.0739 199.72 14.7313 199.339 14.5116 198.888L8.80661 187.177C8.6074 186.769 8.51542 186.317 8.53936 185.864C8.5633 185.411 8.70236 184.971 8.94344 184.586C9.18453 184.201 9.51971 183.884 9.91743 183.664C10.3152 183.445 10.7623 183.33 11.2169 183.33H48.831C49.2855 183.33 49.7327 183.445 50.1304 183.664C50.5282 183.884 50.8633 184.201 51.1044 184.586C51.3455 184.971 51.4846 185.411 51.5085 185.864C51.5324 186.317 51.4405 186.769 51.2413 187.177L45.5363 198.888C45.3165 199.34 44.974 199.721 44.5477 199.987C44.1215 200.253 43.6288 200.394 43.126 200.394L43.1255 200.394Z" fill="#E5E5E5"></path>
               </svg>
 
-              <form class="grid-margin stretch-card" action="#" method="POST">
+              <form class="grid-margin" action="#" method="POST">
                 <div class="formbold-form-title">
                   <h2 class="">Register now</h2>
                   <p>

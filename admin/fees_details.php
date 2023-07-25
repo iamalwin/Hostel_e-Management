@@ -1,10 +1,4 @@
-<?php
-include("../dbconnect.php");
-extract($_POST);
-session_start();
-?>
 <!DOCTYPE html>
-<!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
 <html lang="en">
 
 <head>
@@ -22,20 +16,9 @@ session_start();
     <!-- Add this link to your HTML head section -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
-    <link rel="stylesheet" href="../dist/css/style.min.css">
-
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="./Purple Admin_files/style.css">
+    <link rel="shortcut icon" href="./include/images/hs-logo.png">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./include/images/hs-logo.png  ">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
-    <style type="text/css">
+    <style>
         /* Chart.js */
         @keyframes chartjs-render-animation {
             from {
@@ -121,12 +104,12 @@ session_start();
 
         <!-- Preloader - style you can find in spinners.css -->
 
-        <!-- <div class="preloader">
-			<div class="lds-ripple">
-				<div class="lds-pos"></div>
-				<div class="lds-pos"></div>
-			</div>
-		</div> -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
 
         <!-- partial:partials/_navbar.html -->
         <header class="topbar" data-navbarbg="skin6">
@@ -149,109 +132,99 @@ session_start();
                     <div class="page-header">
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                                <i class="mdi mdi-contacts menu-icon"></i>
-                            </span> Students Details
+                                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                            </span> Fees Details
                         </h3>
-
-                        <nav aria-label="breadcrumb row-5 bg-gradient-primary">
-                            <h3 class="page-title">
-                                <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span>
-                                <div class="date" id="liveDate"></div>
-                                <div class="time" id="liveTime"></div>
-                            </h3>
-                        </nav>
                     </div>
 
                     <!-- Dash data section -->
 
-                    <div class="grid-margin card p-5 stretch-card">
-                    <table width="100%" border="0" align="center">
-        <tr>
-            <td width="12%">
-                <div align="center" class="style6"><strong>Reg No</strong></div>
-            </td>
-            <td width="16%">
-                <div align="center" class="style6"><strong>Student Name</strong></div>
-            </td>
-            <td width="15%">
-                <div align="center" class="style6"><strong>Department</strong></div>
-            </td>
-            <td width="7%">
-                <div align="center" class="style6"><strong>Class</strong></div>
-            </td>
-            <td width="15%">
-                <div align="center" class="style6"><strong>Hostel Name</strong></div>
-            </td>
-            <td width="9%">
-                <div align="center" class="style6"><strong>Room No</strong></div>
-            </td>
-            <td width="26%">
-                <div align="center" class="style6"><strong>Fees Details</strong></div>
-            </td>
-        </tr>
+                    <div class="col-md-12 card-body grid-margin stretch-card m-0">
 
-        <!-- Remove extra "p" in colspa attribute -->
-        <tr>
-            <td colspan="7">&nbsp;</td>
-        </tr>
-        <?php
-        $qry = mysqli_query($connect, "select * from stud");
-        $i = 1;
-        while ($row = mysqli_fetch_array($qry)) {
-            $reg = $row['reg'];
-        ?>
+                        <table width="100%" border="0" align="center">
+                            <tr>
+                                <td width="21%">
+                                    <div align="center" class="style6"><strong>Reg No</strong></div>
+                                </td>
+                                <td width="25%">
+                                    <div align="center" class="style6"><strong>Hostel Name</strong></div>
+                                </td>
+                                <td width="20%">
+                                    <div align="center" class="style6"><strong>Month</strong></div>
+                                </td>
+                                <td width="19%">
+                                    <div align="center" class="style6"><strong>Amount</strong></div>
+                                </td>
+                                <td width="15%">
+                                    <div align="center" class="style6"><strong>Status</strong></div>
+                                </td>
+                            </tr>
 
-            <tr>
-                <td height="20">
-                    <div><?php echo $row['reg']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['name']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['dept']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['cls']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['hname']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['room']; ?></div>
-                </td>
-                <td>
-                    <div><a href="payv.php?act=view&reg=<?php echo $row['reg']; ?>">View Fees</a></div>
-                </td>
+                            <!-- Remove extra "p" in colspan attribute -->
+                            <tr>
+                                <td colspan="5">&nbsp;</td>
+                            </tr>
+                            <?php
+                            if ($_REQUEST["act"] == ('update')); {
+                                $reg = $_REQUEST['reg'];
+                                $qry = mysqli_query($connect, "select * from paid where reg='$reg'");
+                                $i = 1;
+                                while ($row = mysqli_fetch_array($qry)) {
+                                    $reg = $row['reg'];
+                            ?>
 
-            </tr>
-            <!-- Remove extra "p" in colspa attribute -->
-            <tr>
-                <td height="22" colspan="7">&nbsp;</td>
-            </tr>
-        <?php
-            $i++;
-        }
+                                    <tr>
+                                        <td>
+                                            <div align="center"><?php echo $reg; ?></div>
+                                        </td>
 
-        ?>
-    </table>
+                                        <?php
+                                        $qt = mysqli_query($connect, "select * from stud where reg='$reg'");
+                                        $rw = mysqli_fetch_assoc($qt);
+                                        ?>
+
+                                        <td>
+                                            <div align="center"><?php echo $rw['hname']; ?></div>
+                                        </td>
+                                        <td>
+                                            <div align="center"><?php echo $row['month']; ?></div>
+                                        </td>
+                                        <td>
+                                            <div align="center"><?php echo $row['total']; ?></div>
+                                        </td>
+                                        <td>
+                                            <div align="center"><?php echo "paid"; ?></div>
+                                        </td>
+
+                                    </tr>
+                                    <!-- Remove extra "p" in colspan attribute -->
+                                    <tr>
+                                        <td height="22" colspan="5">&nbsp;</td>
+                                    </tr>
+                            <?php
+                                    $i++;
+                                }
+                            }
+                            ?>
+                        </table>
+
                     </div>
-
-
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                <footer class="footer">
-                    <div class="container-fluid clearfix">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
-                    </div>
-                </footer>
-                <!-- partial -->
+
             </div>
-            <!-- main-panel ends -->
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
+                </div>
+            </footer>
+            <!-- partial -->
         </div>
-        <!-- page-body-wrapper ends -->
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -298,8 +271,6 @@ session_start();
         // Update the date and time every second (1000ms)
         setInterval(updateDateTime, 1000);
     </script>
-
-
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>

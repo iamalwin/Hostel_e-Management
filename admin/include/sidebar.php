@@ -26,7 +26,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="Stud_detail.php">
                 <span class="menu-title">Students Details</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
@@ -40,7 +40,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="fees_details.php">
                 <span class="menu-title">Fees Details</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
