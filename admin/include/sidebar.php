@@ -46,7 +46,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../feedback.php">
+            <a class="nav-link" href="../get_feedback.php">
                 <span class="menu-title">Feedback</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
