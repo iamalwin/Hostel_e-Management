@@ -12,7 +12,7 @@ session_start();
     <!-- Required meta tags -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>stud_details</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
     <link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">
@@ -24,6 +24,10 @@ session_start();
 
     <link rel="stylesheet" href="../dist/css/style.min.css">
 
+    <!-- external -->
+    <link href="Table 05_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="Table 05_files/font-awesome.min.css">
+    <link rel="stylesheet" href="Table 05_files/style.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -100,7 +104,7 @@ session_start();
             display: inline-block;
         }
     </style>
-    <style>
+    <!-- <style>
         /* Custom CSS to make table borders visible */
         table {
             border-collapse: separate;
@@ -113,7 +117,7 @@ session_start();
             padding: 8px;
             text-align: center;
         }
-    </style>
+    </style> -->
 </head>
 
 <body class="">
@@ -121,12 +125,12 @@ session_start();
 
         <!-- Preloader - style you can find in spinners.css -->
 
-        <!-- <div class="preloader">
-			<div class="lds-ripple">
-				<div class="lds-pos"></div>
-				<div class="lds-pos"></div>
-			</div>
-		</div> -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
 
         <!-- partial:partials/_navbar.html -->
         <header class="topbar" data-navbarbg="skin6">
@@ -153,88 +157,64 @@ session_start();
                             </span> Students Details
                         </h3>
 
-                        <nav aria-label="breadcrumb row-5 bg-gradient-primary">
-                            <h3 class="page-title">
-                                <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span>
-                                <div class="date" id="liveDate"></div>
-                                <div class="time" id="liveTime"></div>
-                            </h3>
-                        </nav>
+
                     </div>
 
                     <!-- Dash data section -->
 
+
+
                     <div class="grid-margin card p-5 stretch-card">
-                    <table width="100%" border="0" align="center">
-        <tr>
-            <td width="12%">
-                <div align="center" class="style6"><strong>Reg No</strong></div>
-            </td>
-            <td width="16%">
-                <div align="center" class="style6"><strong>Student Name</strong></div>
-            </td>
-            <td width="15%">
-                <div align="center" class="style6"><strong>Department</strong></div>
-            </td>
-            <td width="7%">
-                <div align="center" class="style6"><strong>Class</strong></div>
-            </td>
-            <td width="15%">
-                <div align="center" class="style6"><strong>Hostel Name</strong></div>
-            </td>
-            <td width="9%">
-                <div align="center" class="style6"><strong>Room No</strong></div>
-            </td>
-            <td width="26%">
-                <div align="center" class="style6"><strong>Fees Details</strong></div>
-            </td>
-        </tr>
+                        <table class="table table-responsive-xl">
+                            <thead>
+                                <tr>
+                                    <th>Reg No</th>
+                                    <th>Name</th>
+                                    <th>Dept</th>
+                                    <th>Class</th>
+                                    <th>Hostel Name</th>
+                                    <th>Room No</th>
+                                    <th>Fees Details</th>
+                                </tr>
+                            </thead>
 
-        <!-- Remove extra "p" in colspa attribute -->
-        <tr>
-            <td colspan="7">&nbsp;</td>
-        </tr>
-        <?php
-        $qry = mysqli_query($connect, "select * from stud");
-        $i = 1;
-        while ($row = mysqli_fetch_array($qry)) {
-            $reg = $row['reg'];
-        ?>
+                            <?php
+                            $qry = mysqli_query($connect, "select * from stud");
+                            $i = 1;
+                            while ($row = mysqli_fetch_array($qry)) {
+                                $reg = $row['reg'];
+                            ?>
 
-            <tr>
-                <td height="20">
-                    <div><?php echo $row['reg']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['name']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['dept']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['cls']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['hname']; ?></div>
-                </td>
-                <td>
-                    <div><?php echo $row['room']; ?></div>
-                </td>
-                <td>
-                    <div><a href="payv.php?act=view&reg=<?php echo $row['reg']; ?>">View Fees</a></div>
-                </td>
+                                <tr class="alert " role="alert">
+                                    <td>
+                                        <div><?php echo $row['reg']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['name']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['dept']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['cls']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['hname']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['room']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><a href="payv.php?act=view&reg=<?php echo $row['reg']; ?>">View Fees</a></div>
+                                    </td>
 
-            </tr>
-            <!-- Remove extra "p" in colspa attribute -->
-            <tr>
-                <td height="22" colspan="7">&nbsp;</td>
-            </tr>
-        <?php
-            $i++;
-        }
+                                </tr>
+                            <?php
+                                $i++;
+                            }
 
-        ?>
-    </table>
+                            ?>
+                        </table>
                     </div>
 
 

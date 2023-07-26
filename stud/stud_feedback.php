@@ -286,7 +286,7 @@
           <div class="page-header">
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                <i class="mdi mdi-home"></i>
+              <i class="mdi mdi-chart-bar menu-icon"></i>
               </span> Feedback
             </h3>
           </div>
@@ -326,7 +326,7 @@
 
               <form class="grid-margin" action="#" method="POST">
                 <div class="formbold-form-title">
-                  <h2 class="">Register now</h2>
+                  <h2 class="">Feedback now</h2>
                   <p>
                     Leave Your Feed Back About Hostel And Mess
                   </p>

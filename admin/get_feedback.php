@@ -12,7 +12,7 @@ session_start();
   <!-- Required meta tags -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Purple Admin</title>
+  <title>get_feed</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
   <link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">

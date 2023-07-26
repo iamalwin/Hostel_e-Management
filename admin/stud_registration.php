@@ -26,7 +26,7 @@ if (isset($_POST['btn'])) {
 	<!-- Required meta tags -->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Purple Admin</title>
+	<title>registration</title>
 	<!-- plugins:css -->
 	<link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
 	<link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">
@@ -122,12 +122,12 @@ if (isset($_POST['btn'])) {
 
 		<!-- Preloader - style you can find in spinners.css -->
 
-		<!-- <div class="preloader">
+		<div class="preloader">
 			<div class="lds-ripple">
 				<div class="lds-pos"></div>
 				<div class="lds-pos"></div>
 			</div>
-		</div> -->
+		</div>
 
 		<!-- partial:partials/_navbar.html -->
 		<header class="topbar" data-navbarbg="skin6">

@@ -7,7 +7,7 @@
   <!-- Required meta tags -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Purple Admin</title>
+  <title>Hostel_Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
   <link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">
@@ -151,10 +151,34 @@
               <div class="card bg-gradient-info card-img-holder text-white">
                 <div class="card-body">
                   <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
-                  <h4 class="font-weight-normal mb-1">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                  </h4>
-                  <h2 class="mb-1">$ 15,0000</h2>
-                  <h6 class="card-text">sed by 60%</h6>
+                  <h2 class="font-weight-normal mb-1">
+
+                    <?php
+                    include("../dbconnect.php"); // Include the file that contains the database connection
+
+                    // Query to count the number of students
+                    $query = "SELECT COUNT(*) AS total_students FROM stud";
+
+                    // Execute the query
+                    $result = mysqli_query($connect, $query);
+
+                    // Check if the query was successful
+                    if ($result) {
+                      // Fetch the result as an associative array
+                      $row = mysqli_fetch_assoc($result);
+
+                      // Get the total count of students from the result
+                      $totalStudents = $row['total_students'];
+                    } else {
+                      // If the query failed, handle the error (you can echo or log the error)
+                      $totalStudents = 0; // Set the count to 0 or any default value if the query failed
+                    }
+
+                    // Now you have the total number of students in the $totalStudents variable
+                    echo "Total Students: " . $totalStudents;
+                    ?>
+                    <i class="mdi mdi-account mdi-24px  float-right"></i>
+                  </h2>
                 </div>
               </div>
             </div>
@@ -551,24 +575,19 @@
     setInterval(updateDateTime, 1000);
   </script>
 
-  
-<!-- Bootstrap tether Core JavaScript -->
-<script src="../assets/libs/jquery/dist/jquery.min.js "></script>
-<script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
-<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
+  <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 
-<!-- This page plugin js -->
+  <!-- This page plugin js -->
 
-<script>
-  $(".preloader ").fadeOut();
-</script>
+  <script>
+    $(".preloader ").fadeOut();
+  </script>
 
 </body>
 
 </html>
-
-
-
-
-

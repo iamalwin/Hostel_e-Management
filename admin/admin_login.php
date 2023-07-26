@@ -31,7 +31,7 @@ if (isset($_POST['btn'])) {
     <meta name="author" content="">
 
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Hostel admin login</title>
+    <title>admin_login</title>
 
     <!-- bootstrap link -->
 
