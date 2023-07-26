@@ -1,3 +1,8 @@
+<?php
+include("../dbconnect.php");
+extract($_POST);
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -139,31 +144,19 @@
 
                     <!-- Dash data section -->
 
-                    <div class="col-md-12 card-body grid-margin stretch-card m-0">
-
-                        <table width="100%" border="0" align="center">
-                            <tr>
-                                <td width="21%">
-                                    <div align="center" class="style6"><strong>Reg No</strong></div>
-                                </td>
-                                <td width="25%">
-                                    <div align="center" class="style6"><strong>Hostel Name</strong></div>
-                                </td>
-                                <td width="20%">
-                                    <div align="center" class="style6"><strong>Month</strong></div>
-                                </td>
-                                <td width="19%">
-                                    <div align="center" class="style6"><strong>Amount</strong></div>
-                                </td>
-                                <td width="15%">
-                                    <div align="center" class="style6"><strong>Status</strong></div>
-                                </td>
-                            </tr>
-
+                    <div class="grid-margin card p-5 stretch-card">
+                        <table class="table table-responsive-xl">
+                            <thead>
+                                <tr>
+                                    <th>Reg No</th>
+                                    <th>Hostel Name</th>
+                                    <th>Month</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
                             <!-- Remove extra "p" in colspan attribute -->
-                            <tr>
-                                <td colspan="5">&nbsp;</td>
-                            </tr>
+
                             <?php
                             if ($_REQUEST["act"] == ('update')); {
                                 $reg = $_REQUEST['reg'];
@@ -173,9 +166,9 @@
                                     $reg = $row['reg'];
                             ?>
 
-                                    <tr>
+                                    <tr class="alert " role="alert">
                                         <td>
-                                            <div align="center"><?php echo $reg; ?></div>
+                                            <div><?php echo $reg; ?></div>
                                         </td>
 
                                         <?php
@@ -184,22 +177,18 @@
                                         ?>
 
                                         <td>
-                                            <div align="center"><?php echo $rw['hname']; ?></div>
+                                            <div><?php echo $rw['hname']; ?></div>
                                         </td>
                                         <td>
-                                            <div align="center"><?php echo $row['month']; ?></div>
+                                            <div><?php echo $row['month']; ?></div>
                                         </td>
                                         <td>
-                                            <div align="center"><?php echo $row['total']; ?></div>
+                                            <div><?php echo $row['total']; ?></div>
                                         </td>
                                         <td>
-                                            <div align="center"><?php echo "paid"; ?></div>
+                                            <div><?php echo "paid"; ?></div>
                                         </td>
 
-                                    </tr>
-                                    <!-- Remove extra "p" in colspan attribute -->
-                                    <tr>
-                                        <td height="22" colspan="5">&nbsp;</td>
                                     </tr>
                             <?php
                                     $i++;
@@ -245,39 +234,40 @@
     <!-- End custom js for this page -->
 
 
-    <!-- Date & time -->
-    <script>
-        function updateDateTime() {
-            var dateElement = document.getElementById('liveDate');
-            var timeElement = document.getElementById('liveTime');
-            var now = new Date();
-
-            var formattedDate = now.getFullYear() + '-' +
-                padNumber(now.getMonth() + 1) + '-' +
-                padNumber(now.getDate());
-
-            var formattedTime = padNumber(now.getHours()) + ':' +
-                padNumber(now.getMinutes()) + ':' +
-                padNumber(now.getSeconds());
-
-            dateElement.textContent = formattedDate;
-            timeElement.textContent = formattedTime;
-        }
-
-        function padNumber(number) {
-            return (number < 10 ? '0' : '') + number;
-        }
-
-        // Update the date and time every second (1000ms)
-        setInterval(updateDateTime, 1000);
-    </script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
+    <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
 
-    <!-- This page plugin js -->
+
+    
+<script>
+  // Function to toggle the collapse on click
+  function toggleCollapse(event) {
+    event.preventDefault();
+    var target = event.target;
+    var parent = target.closest('.nav-item');
+    var collapse = parent.querySelector('.collapse');
+    var icon = parent.querySelector('.menu-icon');
+    
+    if (collapse.style.display === 'none') {
+      collapse.style.display = 'block';
+      icon.classList.add('rotate');
+    } else {
+      collapse.style.display = 'none';
+      icon.classList.remove('rotate');
+    }
+  }
+
+  // Add click event listeners to all the collapsed menu items
+  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+  for (var i = 0; i < collapsedLinks.length; i++) {
+    collapsedLinks[i].addEventListener('click', toggleCollapse);
+  }
+</script>
+
 
     <script>
         $(".preloader ").fadeOut();

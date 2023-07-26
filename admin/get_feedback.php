@@ -24,10 +24,8 @@ session_start();
 
   <link rel="stylesheet" href="../dist/css/style.min.css">
 
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
+
+
   <!-- endinject -->
   <!-- Layout styles -->
   <link rel="stylesheet" href="./Purple Admin_files/style.css">
@@ -135,65 +133,55 @@ session_start();
 
           <div class="page-header">
             <h3 class="page-title">
-            <span class="page-title-icon bg-gradient-primary text-white mr-2">
-            <i class="mdi mdi-chart-bar menu-icon"></i>
+              <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                <i class="mdi mdi-chart-bar menu-icon"></i>
               </span> Feedback
             </h3>
           </div>
 
           <!-- Dash data section -->
 
-<div class="col-md-12 card p-5 grid-margin stretch-card m-0">
-          <table width="67%" border="0" align="center">
-            <tr>
-              <td width="16%">
-                <div align="center" class="style6"><strong><strong>Reg No</strong> </div>
-              </td>
-              <td width="25%">
-                <div align="center" class="style6"><strong>Student Name</strong> </div>
-              </td>
-              <td width="22%">
-                <div align="center" class="style6"><strong>Subject </strong></div>
-              </td>
-              <td width="37%">
-                <div align="center" class="style6"><strong>Complaints/suggestion </strong></div>
-              </td>
-            </tr>
+          <div class="grid-margin card p-5 stretch-card">
+            <table class="table table-responsive-xl">
 
-            <tr>
-              <td colspa="8">&nbsp;</td>
-            </tr>
-            <?php
-            $qry = mysqli_query($connect, "select * from suggest");
-            $i = 1;
-            while ($row = mysqli_fetch_array($qry)) {
-              $reg = $row['reg'];
-            ?>
+              <thead class="grid-margin bg-light fs-1 fw-bolder">
+                <tr>
+                  <th>Reg No</th>
+                  <th>Name</th>
+                  <th>Subject</th>
+                  <th>Complaints/suggestion</th>
+                </tr>
+              </thead>
 
-              <tr>
-                <td height="20">
-                  <div align="center"><?php echo $row['reg']; ?></div>
-                </td>
-                <td>
-                  <div align="center"><?php echo $row['name']; ?></div>
-                </td>
-                <td>
-                  <div align="center"><?php echo $row['sub']; ?></div>
-                </td>
-                <td>
-                  <div align="center"><?php echo $row['cmpl']; ?></div>
-                </td>
-              </tr>
-              <tr>
-                <td height="22" colspa="8">&nbsp;</td>
-              </tr>
-            <?php
-              $i++;
-            }
 
-            ?>
-          </table>
-          </div>  
+              <?php
+              $qry = mysqli_query($connect, "select * from suggest");
+              $i = 1;
+              while ($row = mysqli_fetch_array($qry)) {
+                $reg = $row['reg'];
+              ?>
+
+                <tr class="alert " role="alert">
+                  <td>
+                    <div><?php echo $row['reg']; ?></div>
+                  </td>
+                  <td>
+                    <div><?php echo $row['name']; ?></div>
+                  </td>
+                  <td>
+                    <div><?php echo $row['sub']; ?></div>
+                  </td>
+                  <td>
+                    <div><?php echo $row['cmpl']; ?></div>
+                  </td>
+                </tr>
+              <?php
+                $i++;
+              }
+
+              ?>
+            </table>
+          </div>
         </div>
 
       </div>
@@ -261,8 +249,33 @@ session_start();
   <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
+  <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
 
-  <!-- This page plugin js -->
+
+  <script>
+  // Function to toggle the collapse on click
+  function toggleCollapse(event) {
+    event.preventDefault();
+    var target = event.target;
+    var parent = target.closest('.nav-item');
+    var collapse = parent.querySelector('.collapse');
+    var icon = parent.querySelector('.menu-icon');
+    
+    if (collapse.style.display === 'none') {
+      collapse.style.display = 'block';
+      icon.classList.add('rotate');
+    } else {
+      collapse.style.display = 'none';
+      icon.classList.remove('rotate');
+    }
+  }
+
+  // Add click event listeners to all the collapsed menu items
+  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+  for (var i = 0; i < collapsedLinks.length; i++) {
+    collapsedLinks[i].addEventListener('click', toggleCollapse);
+  }
+</script>
 
   <script>
     $(".preloader ").fadeOut();

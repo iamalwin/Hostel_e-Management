@@ -69,7 +69,6 @@
               <nav class="site-navigation position-relative text-right" role="navigation">
 
                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                  <li><a href="#" class="nav-link">Home</a></li>
                     <li class="has-children">
                       <a href="">Admin</a>
                       <ul class="dropdown">

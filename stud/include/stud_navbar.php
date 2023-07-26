@@ -18,11 +18,10 @@
                 </div>
                 <div class="nav-profile-text">
                   <p class="mb-1 text-black">Student</p>
-                </div>
+                </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../index.php">
+                <a class="dropdown-item" href="https://www.bootstrapdash.com/demo/purple-admin-free/#">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
               </div>
             </li>

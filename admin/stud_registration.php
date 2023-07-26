@@ -153,14 +153,6 @@ if (isset($_POST['btn'])) {
 							<i class="mdi mdi-account-plus menu-icon"></i>
 							</span> Student Registration
 						</h3>
-
-						<nav aria-label="breadcrumb row-5 bg-gradient-primary">
-							<h3 class="page-title">
-								<span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span>
-								<div class="date" id="liveDate"></div>
-								<div class="time" id="liveTime"></div>
-							</h3>
-						</nav>
 					</div>
 
 					<!-- Dash data section -->
@@ -330,42 +322,38 @@ if (isset($_POST['btn'])) {
 	<script src="./Purple Admin_files/todolist.js.download"></script>
 	<!-- End custom js for this page -->
 
-
-	<!-- Date & time -->
-	<script>
-		function updateDateTime() {
-			var dateElement = document.getElementById('liveDate');
-			var timeElement = document.getElementById('liveTime');
-			var now = new Date();
-
-			var formattedDate = now.getFullYear() + '-' +
-				padNumber(now.getMonth() + 1) + '-' +
-				padNumber(now.getDate());
-
-			var formattedTime = padNumber(now.getHours()) + ':' +
-				padNumber(now.getMinutes()) + ':' +
-				padNumber(now.getSeconds());
-
-			dateElement.textContent = formattedDate;
-			timeElement.textContent = formattedTime;
-		}
-
-		function padNumber(number) {
-			return (number < 10 ? '0' : '') + number;
-		}
-
-		// Update the date and time every second (1000ms)
-		setInterval(updateDateTime, 1000);
-	</script>
-
-
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="../assets/libs/jquery/dist/jquery.min.js "></script>
 	<script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
 	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
+	<script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
 
-	<!-- This page plugin js -->
+
+	<script>
+  // Function to toggle the collapse on click
+  function toggleCollapse(event) {
+    event.preventDefault();
+    var target = event.target;
+    var parent = target.closest('.nav-item');
+    var collapse = parent.querySelector('.collapse');
+    var icon = parent.querySelector('.menu-icon');
+    
+    if (collapse.style.display === 'none') {
+      collapse.style.display = 'block';
+      icon.classList.add('rotate');
+    } else {
+      collapse.style.display = 'none';
+      icon.classList.remove('rotate');
+    }
+  }
+
+  // Add click event listeners to all the collapsed menu items
+  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+  for (var i = 0; i < collapsedLinks.length; i++) {
+    collapsedLinks[i].addEventListener('click', toggleCollapse);
+  }
+</script>
 
 	<script>
 		$(".preloader ").fadeOut();

@@ -94,7 +94,19 @@
       border-radius: 10px;
       display: inline-block;
     }
-  </style>
+
+    /* Add this CSS to your style block or external CSS file */
+.menu-icon {
+  transition: transform 0.3s ease;
+}
+
+.menu-icon.rotated {
+  transform: rotate(180deg);
+}
+.dropdown-item:hover{
+  background: red;
+}
+ </style>
 
 </head>
 
@@ -136,11 +148,10 @@
             </h3>
 
             <nav aria-label="breadcrumb row-5 bg-gradient-primary">
-              <h3 class="page-title">
+              <h5 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span>
                 <div class="date" id="liveDate"></div>
-                <div class="time" id="liveTime"></div>
-              </h3>
+              </h5>
             </nav>
           </div>
 
@@ -152,7 +163,7 @@
                 <div class="card-body">
                   <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
                   <h2 class="font-weight-normal mb-1">
-
+                  <i class="mdi mdi-account mdi-24px  float-right"></i>
                     <?php
                     include("../dbconnect.php"); // Include the file that contains the database connection
 
@@ -177,7 +188,6 @@
                     // Now you have the total number of students in the $totalStudents variable
                     echo "Total Students: " . $totalStudents;
                     ?>
-                    <i class="mdi mdi-account mdi-24px  float-right"></i>
                   </h2>
                 </div>
               </div>
@@ -581,8 +591,34 @@
   <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
+  <script src="./Purple Admin_files/vendor.bundle.base.js.download"></script>
 
-  <!-- This page plugin js -->
+
+<script>
+  // Function to toggle the collapse on click
+  function toggleCollapse(event) {
+    event.preventDefault();
+    var target = event.target;
+    var parent = target.closest('.nav-item');
+    var collapse = parent.querySelector('.collapse');
+    var icon = parent.querySelector('.menu-icon');
+    
+    if (collapse.style.display === 'none') {
+      collapse.style.display = 'block';
+      icon.classList.add('rotate');
+    } else {
+      collapse.style.display = 'none';
+      icon.classList.remove('rotate');
+    }
+  }
+
+  // Add click event listeners to all the collapsed menu items
+  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+  for (var i = 0; i < collapsedLinks.length; i++) {
+    collapsedLinks[i].addEventListener('click', toggleCollapse);
+  }
+</script>
+
 
   <script>
     $(".preloader ").fadeOut();

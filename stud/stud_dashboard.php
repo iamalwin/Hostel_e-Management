@@ -213,39 +213,12 @@
     <!-- End custom js for this page -->
 
 
-    <!-- Date & time -->
-    <script>
-      function updateDateTime() {
-        var dateElement = document.getElementById('liveDate');
-        var timeElement = document.getElementById('liveTime');
-        var now = new Date();
-
-        var formattedDate = now.getFullYear() + '-' +
-          padNumber(now.getMonth() + 1) + '-' +
-          padNumber(now.getDate());
-
-        var formattedTime = padNumber(now.getHours()) + ':' +
-          padNumber(now.getMinutes()) + ':' +
-          padNumber(now.getSeconds());
-
-        dateElement.textContent = formattedDate;
-        timeElement.textContent = formattedTime;
-      }
-
-      function padNumber(number) {
-        return (number < 10 ? '0' : '') + number;
-      }
-
-      // Update the date and time every second (1000ms)
-      setInterval(updateDateTime, 1000);
-    </script>
-
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
-
+      <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
     <!-- This page plugin js -->
 
     <script>

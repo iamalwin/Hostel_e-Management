@@ -1,3 +1,27 @@
+<?php
+include("../dbconnect.php");
+extract($_POST);
+session_start();
+	$reg=$_SESSION['reg'];
+	if(isset($_POST['btn']))
+	{
+	$max_qry=mysqli_query($connect,"select max(id) from suggest");
+	$max_row=mysqli_fetch_array($max_qry);
+	$id=$max_row['max(id)']+1;
+	$qry=mysqli_query($connect,"insert into suggest values('$id','$reg','$name','$sub','$cmpl')");
+	if($qry)
+	{
+		echo "<script>alert('We Get your Suggestions if it is posiible we will take action for that')</script>";
+		
+	}
+	else
+	{
+		echo "<script>alert('Enter the fields Correctly')</script>";
+	
+	}
+
+}
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
 <html lang="en">
@@ -7,7 +31,7 @@
   <!-- Required meta tags -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Hotel_Management</title>
+  <title>feedback</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../admin/Purple Admin_files/materialdesignicons.min.css">
   <link rel="stylesheet" href="../admin/Purple Admin_files/vendor.bundle.base.css">
@@ -297,7 +321,7 @@
           <div class="formbold-main-wrapper card">
             <div class="formbold-form-wrapper">
 
-              <svg class="formbold-img" width="490" height="202" viewBox="0 0 490 202" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="formbold-img float-right" width="250" height="70" viewBox="0 0 490 202" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M382.76 2.47283H262.606C262.606 1.10712 261.499 0 260.133 0H210.597C209.231 0 208.124 1.10712 208.124 2.47283H87.4749C85.3191 2.47283 83.2517 3.32799 81.7274 4.85017C80.203 6.37235 79.3467 8.43686 79.3467 10.5896V174.884C79.3467 177.037 80.203 179.101 81.7274 180.623C83.2517 182.146 85.3191 183.001 87.4749 183.001H382.76C384.916 183.001 386.983 182.146 388.508 180.623C390.032 179.101 390.888 177.037 390.888 174.884V10.5886C390.888 8.43611 390.032 6.37183 388.507 4.84985C386.983 3.32787 384.916 2.47283 382.76 2.47283Z" fill="#3F3D56"></path>
                 <path d="M379.991 16.8164H90.2441V180.033H379.991V16.8164Z" fill="#E6E6E6"></path>
                 <path d="M368.27 25.3164H103V166.396H368.27V25.3164Z" fill="white"></path>
@@ -337,21 +361,21 @@
                     <label for="firstname" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="firstname" id="firstname" class="formbold-form-input" />
+                    <input type="text" name="name" id="firstname" class="formbold-form-input" />
                   </div>
                 </div>
 
 
                 <div>
                   <label for="area" class="formbold-form-label"> Subject </label>
-                  <input type="text" name="area" id="area" class="formbold-form-input" />
+                  <input type="text" name="sub" id="area" class="formbold-form-input" />
                 </div>
 
                 <div>
                   <label for="area" class="formbold-form-label"> Complaints or Suggestions </label>
                   <textarea name="cmpl" id="" cols="60" rows="10" class="formbold-form-input"></textarea>
                 </div>
-                <button class="formbold-btn">Register Now</button>
+                <button class="formbold-btn" name="btn">Register Now</button>
               </form>
             </div>
           </div>
@@ -415,7 +439,32 @@
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 
-    <!-- This page plugin js -->
+    <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
+
+<script>
+  // Function to toggle the collapse on click
+  function toggleCollapse(event) {
+    event.preventDefault();
+    var target = event.target;
+    var parent = target.closest('.nav-item');
+    var collapse = parent.querySelector('.collapse');
+    var icon = parent.querySelector('.menu-icon');
+    
+    if (collapse.style.display === 'none') {
+      collapse.style.display = 'block';
+      icon.classList.add('rotate');
+    } else {
+      collapse.style.display = 'none';
+      icon.classList.remove('rotate');
+    }
+  }
+
+  // Add click event listeners to all the collapsed menu items
+  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+  for (var i = 0; i < collapsedLinks.length; i++) {
+    collapsedLinks[i].addEventListener('click', toggleCollapse);
+  }
+</script>
 
     <script>
       $(".preloader ").fadeOut();

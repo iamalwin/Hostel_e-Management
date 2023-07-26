@@ -286,7 +286,7 @@
                     <div class="page-header">
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                            <i class="mdi mdi-cash-multiple menu-icon"></i>
                             </span> Fees pay
                         </h3>
                     </div>
@@ -413,7 +413,33 @@
         <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 
-        <!-- This page plugin js -->
+        <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
+
+
+<script>
+  // Function to toggle the collapse on click
+  function toggleCollapse(event) {
+    event.preventDefault();
+    var target = event.target;
+    var parent = target.closest('.nav-item');
+    var collapse = parent.querySelector('.collapse');
+    var icon = parent.querySelector('.menu-icon');
+    
+    if (collapse.style.display === 'none') {
+      collapse.style.display = 'block';
+      icon.classList.add('rotate');
+    } else {
+      collapse.style.display = 'none';
+      icon.classList.remove('rotate');
+    }
+  }
+
+  // Add click event listeners to all the collapsed menu items
+  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+  for (var i = 0; i < collapsedLinks.length; i++) {
+    collapsedLinks[i].addEventListener('click', toggleCollapse);
+  }
+</script>
 
         <script>
             $(".preloader ").fadeOut();

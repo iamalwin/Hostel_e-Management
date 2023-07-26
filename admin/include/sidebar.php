@@ -16,13 +16,13 @@
         </li>
 
 
+
         <li class="nav-item">
             <a class="nav-link" href="admin_dashboard.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
-
 
 
         <li class="nav-item">
@@ -39,12 +39,21 @@
             </a>
         </li>
 
+
         <li class="nav-item">
-            <a class="nav-link" href="fees_details.php">
-                <span class="menu-title">Fees Details</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Fees</span>
+                <i class="mdi mdi-menu-down mdi-24px text-primary"></i>
+                <i class="mdi mdi-credit-card menu-icon"></i>
             </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav menu-title flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="#">Mothly Payment <i class="mdi mdi-cash-multiple menu-icon"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="fees_details.php">Fees Details <i class="mdi mdi-format-list-bulleted menu-icon"></i></a></li>
+                </ul>
+            </div>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="get_feedback.php">
                 <span class="menu-title">Feedback</span>
