@@ -3,7 +3,7 @@
         <li class="nav-item nav-profile">
             <a href="#home" class="nav-link">
                 <div class="nav-profile-image">
-                <img src="../admin/Purple Admin_files/face1.jpg" alt="profile">
+                <img src="../admin/include/face1.jpg" alt="profile">
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>

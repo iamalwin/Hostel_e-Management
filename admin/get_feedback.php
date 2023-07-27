@@ -14,11 +14,11 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>get_feed</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
-  <link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">
+  <link rel="stylesheet" href="./include/materialdesignicons.min.css">
+  <link rel="stylesheet" href="./include/vendor.bundle.base.css">
 
   <!-- Layout styles -->
-  <link rel="stylesheet" href="./Purple Admin_files/style.css">
+  <link rel="stylesheet" href="./include/style.css">
   <!-- Add this link to your HTML head section -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
@@ -28,9 +28,9 @@ session_start();
 
   <!-- endinject -->
   <!-- Layout styles -->
-  <link rel="stylesheet" href="./Purple Admin_files/style.css">
+  <link rel="stylesheet" href="./include/style.css">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="./include/images/hs-logo.png  ">
+  <link rel="shortcut icon" href="images/hs-logo.png  ">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
   <style type="text/css">
@@ -115,7 +115,7 @@ session_start();
 
     <!-- partial:partials/_navbar.html -->
     <header class="topbar" data-navbarbg="skin6">
-      <?php include './include/navbar.php' ?>
+      <?php include 'navbar.php' ?>
     </header>
 
 
@@ -123,7 +123,7 @@ session_start();
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
       <!-- partial:partials/_sidebar.html -->
       <div class="navcantainer d-fixed">
-        <?php include './include/sidebar.php' ?>
+        <?php include 'sidebar.php' ?>
       </div>
       <!-- partial -->
       <div class="main-panel">
@@ -201,20 +201,20 @@ session_start();
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="./Purple Admin_files/vendor.bundle.base.js.download"></script>
+  <script src="./include/vendor.bundle.base.js.download"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="./Purple Admin_files/Chart.min.js.download"></script>
-  <script src="./Purple Admin_files/jquery.cookie.js.download" type="text/javascript"></script>
+  <script src="./include/Chart.min.js.download"></script>
+  <script src="./include/jquery.cookie.js.download" type="text/javascript"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="./Purple Admin_files/off-canvas.js.download"></script>
-  <script src="./Purple Admin_files/hoverable-collapse.js.download"></script>
-  <script src="./Purple Admin_files/misc.js.download"></script>
+  <script src="./include/off-canvas.js.download"></script>
+  <script src="./include/hoverable-collapse.js.download"></script>
+  <script src="./include/misc.js.download"></script>
   <!-- endinject -->
   <!-- Custom js for this page -->
-  <script src="./Purple Admin_files/dashboard.js.download"></script>
-  <script src="./Purple Admin_files/todolist.js.download"></script>
+  <script src="./include/dashboard.js.download"></script>
+  <script src="./include/todolist.js.download"></script>
   <!-- End custom js for this page -->
 
 
@@ -249,7 +249,7 @@ session_start();
   <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
-  <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
+  <script src="../admin/include/vendor.bundle.base.js.download"></script>
 
 
   <script>

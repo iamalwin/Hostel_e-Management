@@ -2,7 +2,6 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-	$reg=$_SESSION['reg'];
 	if(isset($_POST['btn']))
 	{
 	$max_qry=mysqli_query($connect,"select max(id) from suggest");
@@ -22,6 +21,25 @@ session_start();
 
 }
 ?>
+<?php
+// Include the database connection file "../dbconnection.php"
+
+// Function to fetch the registration number for the logged-in user
+function getRegistrationNumber($userId) {
+    global $connect;
+    $query = "SELECT reg FROM stud WHERE id = '$userId'";
+    $result = mysqli_query($connect, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['reg'];
+    } else {
+        return ""; // If the registration number is not found or there is an error, return an empty string
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,8 +48,8 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>feedback</title>
 
-  <link rel="stylesheet" href="../admin/Purple Admin_files/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../admin/Purple Admin_files/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../admin/include/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../admin/include/vendor.bundle.base.css">
 
 
 
@@ -41,7 +59,7 @@ session_start();
   <link rel="stylesheet" href="../dist/css/style.min.css">
 
   <!-- Layout styles -->
-  <link rel="stylesheet" href="../admin/Purple Admin_files/style.css">
+  <link rel="stylesheet" href="../admin/include/style.css">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
 
@@ -64,14 +82,14 @@ session_start();
 
     <!-- partial:partials/_navbar.html -->
     <header class="topbar" data-navbarbg="skin6">
-      <?php include './include/stud_navbar.php' ?>
+      <?php include './stud_navbar.php' ?>
     </header>
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
       <!-- partial:partials/_sidebar.html -->
       <div class="navcantainer d-fixed">
-        <?php include './include/stud_sidebar.php' ?>
+        <?php include './stud_sidebar.php' ?>
       </div>
       <!-- partial -->
       <div class="main-panel">
@@ -121,6 +139,14 @@ session_start();
               </svg>
 
               <form class="grid-margin" action="#" method="POST">
+
+              <!-- <?php
+        $userId = $_SESSION['reg']; // Assuming you have stored the user ID in the session variable 'user_id'
+        include("display_reg_number.php");
+        $registrationNumber = getRegistrationNumber($userId);
+        ?> -->
+              
+
                 <div class="formbold-form-title">
                   <h2 class="">Feedback now</h2>
                   <p>
@@ -130,7 +156,7 @@ session_start();
 
                 <div class="formbold-input-flex">
                 <div>
-                    <label for="reg" class="formbold-form-label">
+                    <label for="reg" class="formbold-form-label" value=" " readonly>
                       Registration Number
                     </label>
                     <input type="text" name="reg" id="reg" class="formbold-form-input"/>
@@ -167,49 +193,22 @@ session_start();
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
+    <script src="../admin/include/vendor.bundle.base.js.download"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../admin/Purple Admin_files/Chart.min.js.download"></script>
-    <script src="../admin/Purple Admin_files/jquery.cookie.js.download" type="text/javascript"></script>
+    <script src="../admin/include/Chart.min.js.download"></script>
+    <script src="../admin/include/jquery.cookie.js.download" type="text/javascript"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../admin/Purple Admin_files/off-canvas.js.download"></script>
-    <script src="../admin/Purple Admin_files/hoverable-collapse.js.download"></script>
-    <script src="../admin/Purple Admin_files/misc.js.download"></script>
+    <script src="../admin/include/off-canvas.js.download"></script>
+    <script src="../admin/include/hoverable-collapse.js.download"></script>
+    <script src="../admin/include/misc.js.download"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="../admin/Purple Admin_files/dashboard.js.download"></script>
-    <script src="../admin/Purple Admin_files/todolist.js.download"></script>
+    <script src="../admin/include/dashboard.js.download"></script>
+    <script src="../admin/include/todolist.js.download"></script>
     <!-- End custom js for this page -->
 
-
-    <!-- Date & time -->
-    <script>
-      function updateDateTime() {
-        var dateElement = document.getElementById('liveDate');
-        var timeElement = document.getElementById('liveTime');
-        var now = new Date();
-
-        var formattedDate = now.getFullYear() + '-' +
-          padNumber(now.getMonth() + 1) + '-' +
-          padNumber(now.getDate());
-
-        var formattedTime = padNumber(now.getHours()) + ':' +
-          padNumber(now.getMinutes()) + ':' +
-          padNumber(now.getSeconds());
-
-        dateElement.textContent = formattedDate;
-        timeElement.textContent = formattedTime;
-      }
-
-      function padNumber(number) {
-        return (number < 10 ? '0' : '') + number;
-      }
-
-      // Update the date and time every second (1000ms)
-      setInterval(updateDateTime, 1000);
-    </script>
 
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
@@ -217,7 +216,7 @@ session_start();
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 
-    <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
+    <script src="../admin/include/vendor.bundle.base.js.download"></script>
 
 <script>
   // Function to toggle the collapse on click

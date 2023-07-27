@@ -1,3 +1,22 @@
+<?php
+include('../dbconnect.php');
+session_start();
+?>
+
+<!-- stud count php -->
+<?php
+include("../dbconnect.php");
+$query = "SELECT COUNT(*) AS total_students FROM stud";
+$result = mysqli_query($connect, $query);
+if ($result) {
+  $row = mysqli_fetch_assoc($result);
+  $totalStudents = $row['total_students'];
+} else {
+  $totalStudents = 0;
+}
+?>
+
+
 <!DOCTYPE html>
 <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
 <html lang="en">
@@ -9,11 +28,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Hostel_Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="./Purple Admin_files/materialdesignicons.min.css">
-  <link rel="stylesheet" href="./Purple Admin_files/vendor.bundle.base.css">
+  <link rel="stylesheet" href="./include/materialdesignicons.min.css">
+  <link rel="stylesheet" href="./include/vendor.bundle.base.css">
 
   <!-- Layout styles -->
-  <link rel="stylesheet" href="./Purple Admin_files/style.css">
+  <link rel="stylesheet" href="./include/style.css">
   <!-- Add this link to your HTML head section -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
@@ -25,89 +44,14 @@
   <!-- inject:css -->
   <!-- endinject -->
   <!-- Layout styles -->
-  <link rel="stylesheet" href="./Purple Admin_files/style.css">
+  <link rel="stylesheet" href="./include/style.css">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="./include/images/hs-logo.png  ">
+  <link rel="shortcut icon" href="images/hs-logo.png  ">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
-  <style type="text/css">
-    /* Chart.js */
-    @keyframes chartjs-render-animation {
-      from {
-        opacity: .99
-      }
 
-      to {
-        opacity: 1
-      }
-    }
-
-    .chartjs-render-monitor {
-      animation: chartjs-render-animation 1ms
-    }
-
-    .chartjs-size-monitor,
-    .chartjs-size-monitor-expand,
-    .chartjs-size-monitor-shrink {
-      position: absolute;
-      direction: ltr;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      pointer-events: none;
-      visibility: hidden;
-      z-index: -1
-    }
-
-    .chartjs-size-monitor-expand>div {
-      position: absolute;
-      width: 1000000px;
-      height: 1000000px;
-      left: 0;
-      top: 0
-    }
-
-    .chartjs-size-monitor-shrink>div {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      left: 0;
-      top: 0
-    }
-  </style>
-  <style>
-    #liveDate,
-    #liveTime {
-      display: contents;
-      font-size: 20px;
-      width: 100%;
-    }
-
-    .page-title,
-    .date,
-    .time {
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-    }
-
-    /* Add this CSS to your style block or external CSS file */
-.menu-icon {
-  transition: transform 0.3s ease;
-}
-
-.menu-icon.rotated {
-  transform: rotate(180deg);
-}
-.dropdown-item:hover{
-  background: red;
-}
- </style>
-
+  <!-- external styles -->
+  <link rel="stylesheet" href="./include/exstyle.css">
 </head>
 
 <body class="">
@@ -124,7 +68,7 @@
 
     <!-- partial:partials/_navbar.html -->
     <header class="topbar" data-navbarbg="skin6">
-      <?php include './include/navbar.php' ?>
+      <?php include './navbar.php' ?>
     </header>
 
 
@@ -132,13 +76,16 @@
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
       <!-- partial:partials/_sidebar.html -->
       <div class="navcantainer d-fixed">
-        <?php include './include/sidebar.php' ?>
+        <?php include './sidebar.php' ?>
       </div>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
 
           <!-- dash section -->
+
+
+
 
           <div class="page-header">
             <h3 class="page-title">
@@ -150,52 +97,36 @@
             <nav aria-label="breadcrumb row-5 bg-gradient-primary">
               <h5 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span>
-                <div class="date" id="liveDate"></div>
+                <?php $currentDate = date('d-m-Y');
+          echo $currentDate;?>
               </h5>
             </nav>
           </div>
 
           <!-- Dash data section -->
 
+
+        <!-- <?php include './Calendar.php'; ?> -->
+
           <div class="row">
             <div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-info card-img-holder text-white">
                 <div class="card-body">
-                  <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
+                  <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                   <h2 class="font-weight-normal mb-1">
-                  <i class="mdi mdi-account mdi-24px  float-right"></i>
-                    <?php
-                    include("../dbconnect.php"); // Include the file that contains the database connection
+                    <i class="mdi mdi-account mdi-24px  float-right"></i>
 
-                    // Query to count the number of students
-                    $query = "SELECT COUNT(*) AS total_students FROM stud";
+                    <!-- studends count -->
+                  <?php echo "Total Students: " . $totalStudents;?>
 
-                    // Execute the query
-                    $result = mysqli_query($connect, $query);
-
-                    // Check if the query was successful
-                    if ($result) {
-                      // Fetch the result as an associative array
-                      $row = mysqli_fetch_assoc($result);
-
-                      // Get the total count of students from the result
-                      $totalStudents = $row['total_students'];
-                    } else {
-                      // If the query failed, handle the error (you can echo or log the error)
-                      $totalStudents = 0; // Set the count to 0 or any default value if the query failed
-                    }
-
-                    // Now you have the total number of students in the $totalStudents variable
-                    echo "Total Students: " . $totalStudents;
-                    ?>
-                  </h2>
+                </h2>
                 </div>
               </div>
             </div>
             <div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-danger card-img-holder text-white">
                 <div class="card-body">
-                  <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
+                  <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                   <h4 class="font-weight-normal mb-1">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                   </h4>
                   <h2 class="mb-1">$ 15,0000</h2>
@@ -206,7 +137,7 @@
             <div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-warning card-img-holder text-white">
                 <div class="card-body">
-                  <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
+                  <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                   <h4 class="font-weight-normal mb-1">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                   </h4>
                   <h2 class="mb-1">45,6334</h2>
@@ -217,7 +148,7 @@
             <div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-success card-img-holder text-white">
                 <div class="card-body">
-                  <img src="./Purple Admin_files/circle.svg" class="card-img-absolute" alt="circle-image">
+                  <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                   <h4 class="font-weight-normal mb-1">Visitors Online <i class="mdi mdi-diamond mdi-24px float-right"></i>
                   </h4>
                   <h2 class="mb-1">95,5741</h2>
@@ -296,7 +227,7 @@
                       <tbody>
                         <tr>
                           <td>
-                            <img src="./Purple Admin_files/face1.jpg" class="mr-2" alt="image"> David Grey
+                            <img src="./include/face1.jpg" class="mr-2" alt="image"> David Grey
                           </td>
                           <td> Fund is not recieved </td>
                           <td>
@@ -307,7 +238,7 @@
                         </tr>
                         <tr>
                           <td>
-                            <img src="./Purple Admin_files/face2.jpg" class="mr-2" alt="image"> Stella Johnson
+                            <img src="./include/face2.jpg" class="mr-2" alt="image"> Stella Johnson
                           </td>
                           <td> High loading time </td>
                           <td>
@@ -318,7 +249,7 @@
                         </tr>
                         <tr>
                           <td>
-                            <img src="./Purple Admin_files/face3.jpg" class="mr-2" alt="image"> Marina Michel
+                            <img src="./include/face3.jpg" class="mr-2" alt="image"> Marina Michel
                           </td>
                           <td> Website down for one week </td>
                           <td>
@@ -329,7 +260,7 @@
                         </tr>
                         <tr>
                           <td>
-                            <img src="./Purple Admin_files/face4.jpg" class="mr-2" alt="image"> John Doe
+                            <img src="./include/face4.jpg" class="mr-2" alt="image"> John Doe
                           </td>
                           <td> Loosing control on server </td>
                           <td>
@@ -362,16 +293,16 @@
                   </div>
                   <div class="row mt-3">
                     <div class="col-6 pr-1">
-                      <img src="./Purple Admin_files/img_1.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
-                      <img src="./Purple Admin_files/img_4.jpg" class="mw-100 w-100 rounded" alt="image">
+                      <img src="./include/img_1.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
+                      <img src="./include/img_4.jpg" class="mw-100 w-100 rounded" alt="image">
                     </div>
                     <div class="col-6 pl-1">
-                      <img src="./Purple Admin_files/img_2.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
-                      <img src="./Purple Admin_files/img_3.jpg" class="mw-100 w-100 rounded" alt="image">
+                      <img src="./include/img_2.jpg" class="mb-2 mw-100 w-100 rounded" alt="image">
+                      <img src="./include/img_3.jpg" class="mw-100 w-100 rounded" alt="image">
                     </div>
                   </div>
                   <div class="d-flex mt-5 align-items-top">
-                    <img src="./Purple Admin_files/face3.jpg" class="img-sm rounded-circle mr-3" alt="image">
+                    <img src="./include/face3.jpg" class="img-sm rounded-circle mr-3" alt="image">
                     <div class="mb-0 flex-grow">
                       <h5 class="mr-2 mb-2">School Website - Authentication Module.</h5>
                       <p class="mb-0 font-weight-light">It is a long established fact that a reader will be distracted by the readable content of a page.</p>
@@ -541,83 +472,56 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="./Purple Admin_files/vendor.bundle.base.js.download"></script>
+  <script src="./include/vendor.bundle.base.js.download"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="./Purple Admin_files/Chart.min.js.download"></script>
-  <script src="./Purple Admin_files/jquery.cookie.js.download" type="text/javascript"></script>
+  <script src="./include/Chart.min.js.download"></script>
+  <script src="./include/jquery.cookie.js.download" type="text/javascript"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="./Purple Admin_files/off-canvas.js.download"></script>
-  <script src="./Purple Admin_files/hoverable-collapse.js.download"></script>
-  <script src="./Purple Admin_files/misc.js.download"></script>
+  <script src="./include/off-canvas.js.download"></script>
+  <script src="./include/hoverable-collapse.js.download"></script>
+  <script src="./include/misc.js.download"></script>
   <!-- endinject -->
   <!-- Custom js for this page -->
-  <script src="./Purple Admin_files/dashboard.js.download"></script>
-  <script src="./Purple Admin_files/todolist.js.download"></script>
+  <script src="./include/dashboard.js.download"></script>
+  <script src="./include/todolist.js.download"></script>
   <!-- End custom js for this page -->
-
-
-  <!-- Date & time -->
-  <script>
-    function updateDateTime() {
-      var dateElement = document.getElementById('liveDate');
-      var timeElement = document.getElementById('liveTime');
-      var now = new Date();
-
-      var formattedDate = now.getFullYear() + '-' +
-        padNumber(now.getMonth() + 1) + '-' +
-        padNumber(now.getDate());
-
-      var formattedTime = padNumber(now.getHours()) + ':' +
-        padNumber(now.getMinutes()) + ':' +
-        padNumber(now.getSeconds());
-
-      dateElement.textContent = formattedDate;
-      timeElement.textContent = formattedTime;
-    }
-
-    function padNumber(number) {
-      return (number < 10 ? '0' : '') + number;
-    }
-
-    // Update the date and time every second (1000ms)
-    setInterval(updateDateTime, 1000);
-  </script>
 
 
   <!-- Bootstrap tether Core JavaScript -->
   <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
   <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+  <script src="../assets/home_img/popper.js.download"></script>
 
-  <script src="./Purple Admin_files/vendor.bundle.base.js.download"></script>
+  <script src="../assets/libs/jquery/dist/jquery.min.js.download"></script>
 
+  <script src="./include/vendor.bundle.base.js.download"></script>
+  <script>
+    // Function to toggle the collapse on click
+    function toggleCollapse(event) {
+      event.preventDefault();
+      var target = event.target;
+      var parent = target.closest('.nav-item');
+      var collapse = parent.querySelector('.collapse');
+      var icon = parent.querySelector('.menu-icon');
 
-<script>
-  // Function to toggle the collapse on click
-  function toggleCollapse(event) {
-    event.preventDefault();
-    var target = event.target;
-    var parent = target.closest('.nav-item');
-    var collapse = parent.querySelector('.collapse');
-    var icon = parent.querySelector('.menu-icon');
-    
-    if (collapse.style.display === 'none') {
-      collapse.style.display = 'block';
-      icon.classList.add('rotate');
-    } else {
-      collapse.style.display = 'none';
-      icon.classList.remove('rotate');
+      if (collapse.style.display === 'none') {
+        collapse.style.display = 'block';
+        icon.classList.add('rotate');
+      } else {
+        collapse.style.display = 'none';
+        icon.classList.remove('rotate');
+      }
     }
-  }
 
-  // Add click event listeners to all the collapsed menu items
-  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
-  for (var i = 0; i < collapsedLinks.length; i++) {
-    collapsedLinks[i].addEventListener('click', toggleCollapse);
-  }
-</script>
+    // Add click event listeners to all the collapsed menu items
+    var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+    for (var i = 0; i < collapsedLinks.length; i++) {
+      collapsedLinks[i].addEventListener('click', toggleCollapse);
+    }
+  </script>
 
 
   <script>

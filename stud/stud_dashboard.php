@@ -1,10 +1,8 @@
-  <?php
-  include("../dbconnect.php");
-  extract($_POST);
-  session_start();
-  ?>
-
-
+<?php
+include("../dbconnect.php");
+extract($_POST);
+session_start();
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
 <html lang="en">
@@ -50,14 +48,14 @@
 
     <!-- partial:partials/_navbar.html -->
     <header class="topbar" data-navbarbg="skin6">
-      <?php include './include/stud_navbar.php' ?>
+      <?php include './stud_navbar.php' ?>
     </header>
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
       <!-- partial:partials/_sidebar.html -->
       <div class="navcantainer d-fixed">
-        <?php include './include/stud_sidebar.php' ?>
+        <?php include './stud_sidebar.php' ?>
       </div>
       <!-- partial -->
       <div class="main-panel">
@@ -73,14 +71,8 @@
             </h3>
           </div>
 
-          <?php 
-
-   /* $sel = "SELECT * FROM admin_login"; 
-    $query = mysqli_query($conn,$sel);
-    $resul = mysqli_fetch_assoc($query);*/
-?>
           <!-- Dash data section -->
-          <h3><?php echo $_SESSION['UNSER_NAME']; ?> </h3>
+
 
           <!-- partial -->
         </div>
