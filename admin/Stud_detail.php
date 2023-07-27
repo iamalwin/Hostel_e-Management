@@ -39,85 +39,8 @@ session_start();
     <link rel="shortcut icon" href="images/hs-logo.png  ">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
-    <style type="text/css">
-        /* Chart.js */
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: .99
-            }
+    <link rel="stylesheet" href="./include/exstyle.css">
 
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            animation: chartjs-render-animation 1ms
-        }
-
-        .chartjs-size-monitor,
-        .chartjs-size-monitor-expand,
-        .chartjs-size-monitor-shrink {
-            position: absolute;
-            direction: ltr;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            pointer-events: none;
-            visibility: hidden;
-            z-index: -1
-        }
-
-        .chartjs-size-monitor-expand>div {
-            position: absolute;
-            width: 1000000px;
-            height: 1000000px;
-            left: 0;
-            top: 0
-        }
-
-        .chartjs-size-monitor-shrink>div {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            left: 0;
-            top: 0
-        }
-    </style>
-    <style>
-        #liveDate,
-        #liveTime {
-            display: contents;
-            font-size: 20px;
-            width: 100%;
-        }
-
-        .page-title,
-        .date,
-        .time {
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-    </style>
-    <!-- <style>
-        /* Custom CSS to make table borders visible */
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-
-        table td,
-        table th {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: center;
-        }
-    </style> -->
 </head>
 
 <body class="">
@@ -166,15 +89,15 @@ session_start();
 
                     <div class="grid-margin card p-5 stretch-card">
                         <table class="table table-responsive-xl">
-                            <thead class="bg-light">
+                            <thead class=" table-light">
                                 <tr>
-                                    <th>Reg No</th>
-                                    <th>Name</th>
-                                    <th>Dept</th>
-                                    <th>Class</th>
-                                    <th>Hostel Name</th>
-                                    <th>Room No</th>
-                                    <th>Fees Details</th>
+                                    <th scope="col">Reg No</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Dept</th>
+                                    <th scope="col">Class</th>
+                                    <th scope="col">Hostel Name</th>
+                                    <th scope="col">Room No</th>
+                                    <th scope="col">Fees Details</th>
                                 </tr>
                             </thead>
 
@@ -205,7 +128,7 @@ session_start();
                                         <div><?php echo $row['room']; ?></div>
                                     </td>
                                     <td>
-                                        <div><a href="./fees_details.php?php echo $row['reg']; ?>">View Fees</a></div>
+                                        <div><a href="./fees_details.php?reg=<?php echo $row['reg']; ?>">View Fees</a></div>
                                     </td>
 
                                 </tr>

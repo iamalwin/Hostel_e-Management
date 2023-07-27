@@ -1,6 +1,6 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="#"><img src="../admin/include/logo.svg" alt="logo"></a>
+          <a class="navbar-brand brand-logo" href="#"><img src="../admin/include/HO_LOGO.png" alt="logo"></a>
           <a class="navbar-brand brand-logo-mini" href="#"><img src="../admin/include/logo-mini.svg" alt="logo"></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -17,7 +17,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Welcome !</p>
+                  <p class="mb-1 text-black">Welcome<?php ?> !</p>
                 </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">

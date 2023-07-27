@@ -12,7 +12,7 @@ if (isset($_POST['btn'])) {
             alert('welcome to stud home page');
         </script>
 <?php
-
+        $_SESSION=
         header("location:./stud/stud_dashboard.php");
     } else {
         echo "<script>alert('User Name Password Wrong.....')</script>";
@@ -75,12 +75,12 @@ if (isset($_POST['btn'])) {
 
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
             <div class="auth-box row bg-info">
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(assets/images/hostel-img.jpg);">
+                <div class="col-lg-7 col-md-5 modal-bg-img img-fluid img-thumbnail" style="background-image: url(./admin/include/sjc_ch.png)">
                 </div>
                 <div class="col-lg-5 col-md-7 bg-light">
                     <div class="p-3">
                         <div class="text-center">
-                            <img src="assets/images/big/icon.png" alt="wrapkit">
+                            <img src="./admin/include/ho_login.png" class="w-35 h-35" alt=" ">
                         </div>
                         <h2 class="mt-3 text-center">Student Login</h2>
 

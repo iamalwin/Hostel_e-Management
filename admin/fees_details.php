@@ -23,85 +23,7 @@ session_start();
 
     <link rel="shortcut icon" href="images/hs-logo.png">
     <!-- End layout styles -->
-    <style>
-        /* Chart.js */
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: .99
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            animation: chartjs-render-animation 1ms
-        }
-
-        .chartjs-size-monitor,
-        .chartjs-size-monitor-expand,
-        .chartjs-size-monitor-shrink {
-            position: absolute;
-            direction: ltr;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            pointer-events: none;
-            visibility: hidden;
-            z-index: -1
-        }
-
-        .chartjs-size-monitor-expand>div {
-            position: absolute;
-            width: 1000000px;
-            height: 1000000px;
-            left: 0;
-            top: 0
-        }
-
-        .chartjs-size-monitor-shrink>div {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            left: 0;
-            top: 0
-        }
-    </style>
-    <style>
-        #liveDate,
-        #liveTime {
-            display: contents;
-            font-size: 20px;
-            width: 100%;
-        }
-
-        .page-title,
-        .date,
-        .time {
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-    </style>
-    <style>
-        /* Custom CSS to make table borders visible */
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-
-        table td,
-        table th {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="./include/exstyle.css">
 </head>
 
 <body class="">
@@ -158,8 +80,7 @@ session_start();
                             <!-- Remove extra "p" in colspan attribute -->
 
                             <?php
-                            if ($_REQUEST["act"] == ('update')); {
-                                $reg = $_REQUEST['reg'];
+                                $reg=$_GET['reg'];
                                 $qry = mysqli_query($connect, "select * from paid where reg='$reg'");
                                 $i = 1;
                                 while ($row = mysqli_fetch_array($qry)) {
@@ -193,7 +114,7 @@ session_start();
                             <?php
                                     $i++;
                                 }
-                            }
+                            
                             ?>
                         </table>
 
