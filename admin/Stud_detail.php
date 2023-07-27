@@ -166,7 +166,7 @@ session_start();
 
                     <div class="grid-margin card p-5 stretch-card">
                         <table class="table table-responsive-xl">
-                            <thead>
+                            <thead class="bg-light">
                                 <tr>
                                     <th>Reg No</th>
                                     <th>Name</th>
@@ -205,7 +205,7 @@ session_start();
                                         <div><?php echo $row['room']; ?></div>
                                     </td>
                                     <td>
-                                        <div><a href="payv.php?act=view&reg=<?php echo $row['reg']; ?>">View Fees</a></div>
+                                        <div><a href="./fees_details.php?php echo $row['reg']; ?>">View Fees</a></div>
                                     </td>
 
                                 </tr>

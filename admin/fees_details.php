@@ -203,12 +203,12 @@ session_start();
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
-            <footer class="footer">
+            <!-- <footer class="footer">
                 <div class="container-fluid clearfix">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                 </div>
-            </footer>
+            </footer> -->
             <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -242,31 +242,31 @@ session_start();
     <script src="../admin/Purple Admin_files/vendor.bundle.base.js.download"></script>
 
 
-    
-<script>
-  // Function to toggle the collapse on click
-  function toggleCollapse(event) {
-    event.preventDefault();
-    var target = event.target;
-    var parent = target.closest('.nav-item');
-    var collapse = parent.querySelector('.collapse');
-    var icon = parent.querySelector('.menu-icon');
-    
-    if (collapse.style.display === 'none') {
-      collapse.style.display = 'block';
-      icon.classList.add('rotate');
-    } else {
-      collapse.style.display = 'none';
-      icon.classList.remove('rotate');
-    }
-  }
 
-  // Add click event listeners to all the collapsed menu items
-  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
-  for (var i = 0; i < collapsedLinks.length; i++) {
-    collapsedLinks[i].addEventListener('click', toggleCollapse);
-  }
-</script>
+    <script>
+        // Function to toggle the collapse on click
+        function toggleCollapse(event) {
+            event.preventDefault();
+            var target = event.target;
+            var parent = target.closest('.nav-item');
+            var collapse = parent.querySelector('.collapse');
+            var icon = parent.querySelector('.menu-icon');
+
+            if (collapse.style.display === 'none') {
+                collapse.style.display = 'block';
+                icon.classList.add('rotate');
+            } else {
+                collapse.style.display = 'none';
+                icon.classList.remove('rotate');
+            }
+        }
+
+        // Add click event listeners to all the collapsed menu items
+        var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+        for (var i = 0; i < collapsedLinks.length; i++) {
+            collapsedLinks[i].addEventListener('click', toggleCollapse);
+        }
+    </script>
 
 
     <script>
