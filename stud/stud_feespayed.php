@@ -2,18 +2,8 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-$reg = $_SESSION['reg'];
-if (isset($_POST['btn'])) {
-    $max_qry = mysqli_query($connect, "select max(id) from suggest");
-    $max_row = mysqli_fetch_array($max_qry);
-    $id = $max_row['max(id)'] + 1;
-    $qry = mysqli_query($connect, "insert into suggest values('$id','$reg','$name','$sub','$cmpl')");
-    if ($qry) {
-        echo "<script>alert('We Get your Suggestions if it is posiible we will take action for that')</script>";
-    } else {
-        echo "<script>alert('Enter the fields Correctly')</script>";
-    }
-}
+$reg=$_SESSION['reg'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

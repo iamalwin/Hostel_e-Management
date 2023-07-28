@@ -2,22 +2,22 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
+// After successful login, set the user's name in the session
+$_SESSION['stud_id'] = "stud_id";
+
 if (isset($_POST['btn'])) {
 
-	$max_qry = mysqli_query($connect, "select max(id) from stud");
-	$max_row = mysqli_fetch_array($max_qry);
-	$id = $max_row['max(id)'] + 1;
-	$qry = mysqli_query($connect, "insert into stud values('$id','$name','$reg','$gender','$age','$email','$phone','$dept','$cls','$hn','$room')");
-	if ($qry) {
+    $qry = mysqli_query($connect, "INSERT INTO stud (stud_id, name, reg, gender, age, email, phone, dept, cls, hname, room) VALUES (NULL, '$name','$reg','$gender','$age','$email','$phone','$dept','$cls','$hn','$room')");
 
-		echo "<script>alert('Hostel Assigned to Students')</script>";
-	} else {
-		echo "<script>alert('Enter the correct fields')</script>";
-	}
+    if ($qry) {
+        $lastInsertedId = mysqli_insert_id($connect);
+        $stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+        mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
+        echo "<script>alert('Hostel Assigned to Students')</script>";
+    } else {
+        echo "<script>alert('Enter the correct fields')</script>";
+    }
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -94,6 +94,9 @@ if (isset($_POST['btn'])) {
 					</div>
 
 					<!-- Dash data section -->
+
+
+					<?php echo $_SESSION['stud_id']; ?>
 
 					<div class="formbold-main-wrapper card">
 						<div class="card-body formbold-form-wrapper">

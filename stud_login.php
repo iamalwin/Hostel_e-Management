@@ -80,7 +80,9 @@ if (isset($_POST['btn'])) {
                 <div class="col-lg-5 col-md-7 bg-light">
                     <div class="p-3">
                         <div class="text-center">
+                            <a href="./index.php" title="click to home">
                             <img src="./admin/include/ho_login.png" class="w-35 h-35" alt=" ">
+                            </a>
                         </div>
                         <h2 class="mt-3 text-center">Student Login</h2>
 

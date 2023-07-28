@@ -68,7 +68,23 @@ session_start();
 
                     <div class="grid-margin card p-5 stretch-card">
                         <table class="table table-responsive-xl">
-                            <thead>
+
+                        <div class="studname">
+        <?php
+        // Fetch student's name and other details using the registration number ($reg)
+        $reg = $_GET['reg'] ?? null;
+if ($reg === null) {
+    // Handle the case when $reg is not set or empty, e.g., redirect the user or display an error message.
+}
+
+        $qry_stud = mysqli_query($connect, "SELECT * FROM stud WHERE reg='$reg'");
+        $stud_row = mysqli_fetch_assoc($qry_stud);
+        ?>
+        <h3>Student Name: <?php echo $stud_row['name']; ?></h3>
+        <p>Department: <?php echo $stud_row['dept']; ?></p>
+        <p>Class: <?php echo $stud_row['cls']; ?></p>
+        <!-- You can add more student details here as needed -->
+    </div>                            <thead>
                                 <tr>
                                     <th>Reg No</th>
                                     <th>Hostel Name</th>

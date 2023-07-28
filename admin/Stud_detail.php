@@ -2,7 +2,12 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
+
+
+
 ?>
+
+
 <!DOCTYPE html>
 <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
 <html lang="en">

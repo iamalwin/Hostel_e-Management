@@ -1,4 +1,4 @@
-<nav class="sidebar sidebar-offcanvas m-0" id="sidebar">
+<nav class="sidebar sidebar-offcanvas m-0 fixed-left d-flex" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
             <a href="#home" class="nav-link">

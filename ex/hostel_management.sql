@@ -143,7 +143,8 @@ INSERT INTO `paid` (`id`, `reg`, `total`, `date`, `month`) VALUES
 --
 
 CREATE TABLE `stud` (
-  `id` varchar(20) NOT NULL,
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `stud_id` VARCHAR(20) UNIQUE,
   `name` varchar(50) NOT NULL,
   `reg` varchar(50) NOT NULL,
   `gender` varchar(50) NOT NULL,
@@ -156,15 +157,10 @@ CREATE TABLE `stud` (
   `room` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `stud`
---
+INSERT INTO `stud` (`id`, `stud_id`, `name`, `reg`, `gender`, `age`, `email`, `phone`, `dept`, `cls`, `hname`, `room`) VALUES
+('1', 'stud001', 'admin', 'UG1901', 'male', '24', 'test@gmail.com', '9976322005', 'cs', '3bca a', 'Boys Hostel', '12'),
+('2', 'stud002', 'susmitha', 'UG1902', 'female', '20', 'test@gmail.com', '9976322005', 'cs', '3bca a', 'Rose', '13');
 
-INSERT INTO `stud` (`id`, `name`, `reg`, `gender`, `age`, `email`, `phone`, `dept`, `cls`, `hname`, `room`) VALUES
-('1', 'admin', 'UG1901', 'male', '24', 'test@gmail.com', '9976322005', 'cs', '3bca a', 'Boys Hostel	', '12'),
-('2', 'susmitha', 'UG1902', 'female', '20', 'test@gmail.com', '9976322005', 'cs', '3bca a', 'Rose', '13');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `suggest`
