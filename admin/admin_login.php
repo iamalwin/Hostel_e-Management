@@ -33,21 +33,14 @@ if (isset($_POST['btn'])) {
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>admin_login</title>
 
-    <!-- bootstrap link -->
+    <link href="../assets/login/css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/login/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/login/style.css">
 
-    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="./include/ho_login.png">
 
-
+<!-- loading -->
     <link rel="stylesheet" href="../dist/css/style.min.css">
-
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
 
 
     <script type="text/javascript">
@@ -64,64 +57,62 @@ if (isset($_POST['btn'])) {
 </head>
 
 <body>
-    <div class="main-wrapper">
 
-        <!-- Preloader - style you can find in spinners.css -->
+<section class="ftco-section">
 
-        <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
-        </div>
 
-        <!-- Preloader - style you can find in spinners.css -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<div class="main-wrapper">
 
-        <!-- Login box.scss -->
+    <div class="container">
 
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
-            <div class="auth-box row bg-info">
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(../admin/include/sjc_ch.png);">
-                </div>
-                <div class="col-lg-5 col-md-7 bg-light">
-                    <div class="p-3">
-                        <div class="text-center">
-                            <a href="../index.php" title="click to home">
-                            <img src="../admin/include/ho_login.png" class="w-35 h-35" alt=" ">
-                            </a>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="img" style="background-image: url(./include/sjc_ch.png);">
+                    </div>
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Admin Login</h3>
+                            </div>
+                            <!-- <div class="w-100">
+                                <p class="social-media d-flex justify-content-end">
+                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                </p>
+                            </div> -->
+                            <div class="text-center">
+                                <a href="../index.php" title="click to home">
+                                    <img src="./include/ho_login.png" class="w-35 h-55" alt=" ">
+                                </a>
+                            </div>
                         </div>
-                        <h2 class="mt-3 text-center">Admin Login</h2>
-
-                        <form class="mt-4" method="POST">
-                            <div class="row">
-                                <div class="col-lg-12 p-2">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="uname">Username</label>
-                                        <input class="form-control" name="uname" id="uname" type="text" placeholder="Username" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 p-2">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="pwd">Password</label>
-                                        <input class="form-control" name="password" id="password" type="password" placeholder="Enter your password" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                    <button type="submit" name="btn" id="btn" class="btn btn-block btn-danger">LOGIN</button>
-                                </div>
-                                <div class="col-lg-12 text-center mt-5">
-                                    <a href="../stud_login.php" class="text-danger">Go Back</a>
-                                </div>
+                        <form method="POST" class="signin-form">
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Username</label>
+                                <input type="text" class="form-control" name="uname" id="uname" placeholder="Username" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="password" for="pwd">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary rounded submit px-3" id="btn" name="btn">Login</button>
                             </div>
                         </form>
+                        <p class="text-center"><a href="../stud_login.php">Go Back</a></p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Login box.scss -->
-
     </div>
+</section>
 
     <!-- All Required js -->
 
@@ -132,6 +123,12 @@ if (isset($_POST['btn'])) {
 
     <!-- This page plugin js -->
 
+    <script src="../assets/login/main.js.download"></script>
+    <script defer="" src="./assets/login/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon="{&quot;rayId&quot;:&quot;7ee415a2fcb2444f&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2023.7.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
     <script>
         $(".preloader ").fadeOut();
     </script>
