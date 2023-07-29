@@ -1,229 +1,134 @@
 <!DOCTYPE html>
-<!-- saved from url=(0050)# -->
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
   <title>Hostel Management</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
 
-  <link href="./assets/home_img/css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/home_img/style.css">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="./assets/home_img/bootstrap.min.css">
-  <link rel="stylesheet" href="./assets/home_img/jquery-ui.css">
-  <link rel="stylesheet" href="./assets/home_img/owl.carousel.min.css">
-  <link rel="stylesheet" href="./assets/home_img/owl.theme.default.min.css">
-  <link rel="stylesheet" href="./assets/home_img/owl.theme.default.min.css">
-
-  <link rel="stylesheet" href="./assets/home_img/jquery.fancybox.min.css">
-
-  <link rel="stylesheet" href="./assets/home_img/bootstrap-datepicker.css">
-
-  <link rel="stylesheet" href="./assets/home_img/flaticon.css">
-
-  <link rel="stylesheet" href="./assets/home_img/aos.css">
-
-  <link rel="stylesheet" href="./assets/home_img/style(1).css">
-
-    <!-- Add this link to your HTML head section -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-  <!-- bootstrap link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <!-- Template Main CSS File -->
+<link rel="stylesheet" href="./dist/css/home.css">
+  
+<link rel="shortcut icon" href="./admin/include/ho_login.png">
 
 </head>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" data-aos-easing="slide"
-  data-aos-duration="800" data-aos-delay="0" class="">
+<body>
 
 
-  <div class="site-wrap">
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
 
-    <div class="site-mobile-menu site-navbar-target">
-
-
-<!-- mobile nav -->
-      <div class="site-mobile-menu-body">
+      <div id="logo">
+        <h1><a href="index.html">Hostel<span>Management</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
 
-      
-    </div>
-
-
-    <div id="sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 68.8px;">
-      <header class="site-navbar py-4 js-sticky-header site-navbar-target shrink" role="banner"
-        style="width: 1519.2px; position: fixed; top: 0px; z-index: inherit;">
-
-        <div class="container">
-          <div class="row align-items-center">
-
-            <div class="col-6 col-xl-2">
-              <h5 class="mb-0 site-logo"><a href="#home"
-                  class="h2 mb-0">Hostel management<span class="text-primary">.</span> </a></h5>
-            </div>
-
-            <div class="col-12 col-md-10 d-none d-xl-block">
-              <nav class="site-navigation position-relative text-right" role="navigation">
-
-                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                    <li class="has-children">
-                      <a href="">Admin</a>
-                      <ul class="dropdown">
-                        <li><a href="./admin/admin_login.php">Login</a></li>
-                        <!-- <li><a href="">Menu Two</a></li>
-                        <li><a href="">Menu Three</a></li> -->
-                      </ul>
-                    </li>
-                    <li class="has-children">
-                      <a href="">Student</a>
-                      <ul class="dropdown">
-                        <li><a href="./Stud_login.php">Login</a></li>
-                        <!-- <li><a href="">Menu Two</a></li>
-                        <li><a href="">Menu Three</a></li> -->
-                      </ul>
-                    </li>
-                  <li><a href="contact-section" class="nav-link">Contact</a></li>
-                  <li class="has-children"><a href="#" class="nav-link">About Us</a>
-                    <ul class="dropdown">
-                      <li><a href="#team-section" class="nav-link active">Team</a></li>
-                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                      <li class="has-children">
-                        <a href="#">More Links</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-
-                  
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
-                
-              </nav>
-            </div>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
+    </div>
+  </header><!-- End Header -->
 
-            <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href=""
-                class="site-menu-toggle js-menu-toggle float-right active"><span class="icon-menu h3"></span></a></div>
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
 
-          </div>
-        </div>
-
-      </header>
+    <div class="hero-content" data-aos="fade-up">
+      <h2>Making <span>your ideas</span><br>happen!</h2>
+      <div>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="#portfolio" class="btn-projects scrollto">Our Projects</a>
+      </div>
     </div>
 
-
-
-    <div class="site-blocks-cover overlay aos-init aos-animate"
-      data-aos="fade" id="home-section">
-
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-
-
-          <div class="col-md-8 mt-lg-5 text-center">
-            <h1 class="text-uppercase aos-init aos-animate" data-aos="fade-up">Welcome</h1>
-            <p class="mb-5 desc aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Optio soluta eius error.</p>
-            <div data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
-              <a href="#" class="btn smoothscroll btn-primary mr-2 mb-2">Get In Touch</a>
-            </div>
-          </div>
-
-        </div>
+    <div class="hero-slider swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/1.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/2.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/3.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/4.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/5.jpg');"></div>
       </div>
-
-      <a href="#" class="mouse smoothscroll">
-        <span class="mouse-icon">
-          <span class="mouse-wheel"></span>
-        </span>
-      </a>
     </div>
 
+  </section><!-- End Hero Section -->
 
 
-    <!--footer  -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="row">
-              <div class="col-md-5">
-                <h2 class="footer-heading mb-4">About Us</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
-                  autem. Amet aliquid nesciunt veritatis aliquam.</p>
-              </div>
-              <div class="col-md-3 ml-auto">
-                <h2 class="footer-heading mb-4">Quick Links</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="smoothscroll">About Us</a></li>
-                  <li><a href="services-section" class="smoothscroll">Services</a></li>
-                  <li><a href="testimonials-section" class="smoothscroll">Testimonials</a></li>
-                  <li><a href="contact-section" class="smoothscroll">Contact Us</a></li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Follow Us</h2>
-                <a href="" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                <a href="" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                <a href="" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                <a href="" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-            <form action="" method="post" class="footer-subscribe">
-              <div class="input-group mb-3">
-                <input type="text" class="form-control border-secondary text-white bg-transparent"
-                  placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary text-black" type="button" id="button-addon2">Send</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright ©
-                <script>document.write(new Date().getFullYear());</script>2023 All rights reserved |
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
-
-            </div>
-          </div>
-
-        </div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Reveal</strong>. All Rights Reserved
       </div>
-    </footer>
+      <div class="credits">
+        <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Reveal
+      -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
 
-  </div> <!-- .site-wrap -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <script src="./assets/home_img/jquery-3.3.1.min.js.download"></script>
-  <script src="./assets/home_img/jquery-ui.js.download"></script>
-  <script src="./assets/home_img/popper.min.js.download"></script>
-  <script src="./assets/home_img/bootstrap.min.js.download"></script>
-  <script src="./assets/home_img/owl.carousel.min.js.download"></script>
-  <script src="./assets/home_img/jquery.countdown.min.js.download"></script>
-  <script src="./assets/home_img/jquery.easing.1.3.js.download"></script>
-  <script src="./assets/home_img/aos.js.download"></script>
-  <script src="./assets/home_img/jquery.fancybox.min.js.download"></script>
-  <script src="./assets/home_img/jquery.sticky.js.download"></script>
-  <script src="./assets/home_img/isotope.pkgd.min.js.download"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-
-  <script src="./assets/home_img/main.js.download"></script>
-
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 

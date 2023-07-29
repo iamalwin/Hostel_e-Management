@@ -4,32 +4,45 @@ extract($_POST);
 session_start();
 
 
-// Check if the user is logged in and the user's name is set in the session
-if (isset($_SESSION['stud_id'])) {
-  $user_name = $_SESSION['stud_id'];
-} else {
-  // If the user is not logged in, redirect them to the login page or perform any other action
-  header("Location: ../stud_login.php");
-  exit();
+
+// Assuming you have a table named "stud" with columns "stud_id", "username", "password", and "name"
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+
+  // Perform the login validation, e.g., querying the database to check if the username and password match
+  $query = "SELECT stud_id FROM stud WHERE username = '$username' AND password = '$password'";
+  $result = mysqli_query($connect, $query);
+
+  if (mysqli_num_rows($result) == 1) {
+      // Login successful, store the stud_id in the session
+      $row = mysqli_fetch_assoc($result);
+      $_SESSION["current_user_id"] = $row["stud_id"];
+
+      // Redirect to the page where you want to display the user's name
+      header("Location: profile.php");
+      exit();
+  } else {
+      // Login failed, handle the error or display an error message
+      echo "Invalid username or password.";
+  }
+
 }
-// // Fetch the logged-in user's name from the database
-// $loggedInUsername = $_SESSION['stud_id'];
 
-// // Prepare and execute the SQL query to fetch the user's name from the "stud" table
-// $query = "SELECT name FROM stud WHERE stud_id = '$loggedInUsername'";
-// $result = mysqli_query($connect, $query);
 
-// // Check if the query was successful and if the user was found
-// if ($result && mysqli_num_rows($result) === 1) {
-//     $row = mysqli_fetch_assoc($result);
-//     $userName = $row['name'];
-// } else {
-//     // Handle the case when the user is not found in the "stud" table or any other error
-//     $userName = "User Not Found";
+
+
+
+
+
+
+
+
+// if (isset($_GET['logout'])) {
+//     session_destroy();
+//     unset($_SESSION['stud_id']);
+//     header("location:../stud_login.php");
 // }
-
-// // Close the database connection
-// mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +71,7 @@ if (isset($_SESSION['stud_id'])) {
   <!-- Layout styles -->
   <link rel="stylesheet" href="../admin/include/style.css">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
+  <link rel="shortcut icon" href="../admin/include/ho_login.png">
 
 </head>
 
@@ -67,18 +80,18 @@ if (isset($_SESSION['stud_id'])) {
 
     <!-- Preloader - style you can find in spinners.css -->
 
-    <!-- <div class="preloader">
+    <div class="preloader">
       <div class="lds-ripple">
         <div class="lds-pos"></div>
         <div class="lds-pos"></div>
       </div>
-    </div> -->
+    </div>
 
     <!-- partial:partials/_navbar.html -->
 
     <!-- partial:partials/_navbar.html -->
     <header class="topbar" data-navbarbg="skin6">
-      <!-- <?php include './stud_navbar.php' ?> -->
+      <?php include './stud_navbar.php' ?>
     </header>
 
     <!-- partial -->
@@ -101,16 +114,22 @@ if (isset($_SESSION['stud_id'])) {
             </h3>
           </div>
 
-<?= $_SESSION['re'];
-?>
 
-          <?php 
 
+<?php 
 /*$user = $_SESSION['UNSER_NAME'];
  $query = mysqli_query($conn,"select * from admin_login where username = '$user'");
  $row =mysqli_fetch_array($query);
  $id = $row['id'];
 
+ ********************************************
+ <!-- <?php $sel = "SELECT * FROM stud";
+$query = mysqli_query($connect, $sel);
+
+while ($row = mysqli_fetch_assoc($query)) {
+    $name = $row['name'];
+}?> -->
+ *******************************************
 
    /* $sel = "SELECT * FROM admin_login"; 
     $query = mysqli_query($conn,$sel);
@@ -118,19 +137,26 @@ if (isset($_SESSION['stud_id'])) {
 ?>
           <!-- Dash data section -->
 
-          <!-- <?php
-// Assuming you have already established a database connection and assigned it to $connect
 
-$sel = "SELECT * FROM stud";
+<?php
+// Assuming you have a way to identify the currently logged-in user, let's say you have a session variable named $_SESSION['current_user_id']
+$stud_id = $_SESSION['stud_id'];
+
+// Assuming the 'stud' table has a column 'stud_id' that uniquely identifies each student and a column 'name' that stores the student's name
+$sel = "SELECT name FROM stud WHERE stud_id = $stud_id";
 $query = mysqli_query($connect, $sel);
 
-// Loop through the result set and display the "name" column for each row
-while ($row = mysqli_fetch_assoc($query)) {
+if ($row = mysqli_fetch_assoc($query)) {
     $name = $row['name'];
-    echo $name . "<br>";
+    echo "Welcome, " . $name;
+} else {
+    echo "User not found or not logged in.";
 }
-?> -->
- <?php echo $user_name; ?>
+?>
+
+
+
+ <?php echo $name; ?>
           <!-- <h1>Welcome to the Dashboard, <?php echo $user_name; ?>!</h1> -->
           <!-- partial -->
         </div>

@@ -46,10 +46,8 @@ if ($result) {
   <!-- Layout styles -->
   <link rel="stylesheet" href="./include/style.css">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="images/hs-logo.png  ">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
-
+  <link rel="shortcut icon" href="./include/ho_login.png">
   <!-- external styles -->
   <link rel="stylesheet" href="./include/exstyle.css">
 </head>

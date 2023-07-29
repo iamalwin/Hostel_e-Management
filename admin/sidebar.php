@@ -49,7 +49,7 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav menu-title flex-column sub-menu">
                     <li class="nav-item"><a class="nav-link" href="#">Mothly Payment <i class="mdi mdi-cash-multiple menu-icon"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="fees_details.php">Fees Details <i class="mdi mdi-format-list-bulleted menu-icon"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="view_fees.php">Fees Details <i class="mdi mdi-format-list-bulleted menu-icon"></i></a></li>
                 </ul>
             </div>
         </li>

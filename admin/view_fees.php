@@ -21,9 +21,18 @@ session_start();
     <!-- Add this link to your HTML head section -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
+
+
     <link rel="shortcut icon" href="./include/ho_login.png">
     <!-- End layout styles -->
     <link rel="stylesheet" href="./include/exstyle.css">
+
+    <style>
+    table .fw-bolder{
+  font-weight:bolder ;
+  font-size: 1rem;
+}
+</style>
 </head>
 
 <body class="">
@@ -72,11 +81,11 @@ session_start();
 
                             <thead class="bg-light"><h1>
                                 <tr>
-                                    <th>Reg No</th>
-                                    <th>Hostel Name</th>
-                                    <th>Month</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
+                                    <th class="fw-bolder">Reg No</th>
+                                    <th class="fw-bolder">Hostel Name</th>
+                                    <th class="fw-bolder">Month</th>
+                                    <th class="fw-bolder">Amount</th>
+                                    <th class="fw-bolder">Status</th>
                                 </tr></h1>
                             </thead>
                             <!-- Remove extra "p" in colspan attribute -->

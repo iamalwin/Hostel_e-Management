@@ -2,7 +2,6 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-$reg=$_SESSION['reg'];
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +22,7 @@ $reg=$_SESSION['reg'];
     <!-- Layout styles -->
     <link rel="stylesheet" href="../admin/include/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../admin/include/ho_login.png">
 
 </head>
 
@@ -43,7 +42,7 @@ $reg=$_SESSION['reg'];
 
         <!-- partial:partials/_navbar.html -->
         <header class="topbar" data-navbarbg="skin6">
-            <?php include './stud_navbar.php' ?>
+            <!-- <?php include './stud_navbar.php' ?> -->
         </header>
 
         <!-- partial -->
@@ -85,10 +84,10 @@ $reg=$_SESSION['reg'];
                         </thead>
 
                         <?php
+                        $reg=$_SESSION['reg'];
                         $qry = mysqli_query($connect, "select * from paid where reg='$reg'");
                         $i = 1;
                         while ($row = mysqli_fetch_array($qry)) {
-                            $reg = $row['reg'];
                             $qt = mysqli_query($connect, "select * from stud where reg='$reg'");
                             $rw = mysqli_fetch_assoc($qt);
 

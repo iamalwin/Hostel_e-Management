@@ -6,120 +6,103 @@ session_start();
 if (isset($_POST['btn'])) {
     $qry = mysqli_query($connect, "select * from stud where name='$sname' && reg='$psw'");
     $num = mysqli_num_rows($qry);
-    if ($num == 1) {
+    if ($num >= 1) {
 ?>
         <script>
             alert('welcome to stud home page');
         </script>
 <?php
-        $_SESSION=
-        header("location:./stud/stud_dashboard.php");
+        $_SESSION =
+            header("location:./stud/stud_dashboard.php");
     } else {
         echo "<script>alert('User Name Password Wrong.....')</script>";
     }
 }
 ?>
-<!-- By CodeAstro - codeastro.com -->
+
 <!DOCTYPE html>
-<html dir="ltr">
-
-
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-<!-- MDB -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
-
+<!-- saved from url=(0059) -->
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login 04</title>
 
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Hostel stud</title>
-    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="./assets/login/css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/login/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/login/style.css">
 
+    <link rel="shortcut icon" href="./admin/include/ho_login.png">
+    <!-- loading -->
     <link rel="stylesheet" href="./dist/css/style.min.css">
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css
-">
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js
-"></script>
 
 </head>
 
-<!-- By CodeAstro - codeastro.com -->
+<body>
 
-<body class="d-flex justify-content-center align-items-center h-100 bg-light">
-    <!-- Preloader - style you can find in spinners.css -->
+    <section class="ftco-section">
 
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
+
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
         </div>
-    </div>
-    <div class="main-wrapper bg-light">
+        <div class="main-wrapper">
 
+            <div class="container">
 
-
-        <!-- Preloader - style you can find in spinners.css -->
-
-        <!-- Login box.scss -->
-
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative" style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
-            <div class="auth-box row bg-info">
-                <div class="col-lg-7 col-md-5 modal-bg-img img-fluid img-thumbnail" style="background-image: url(./admin/include/sjc_ch.png)">
-                </div>
-                <div class="col-lg-5 col-md-7 bg-light">
-                    <div class="p-3">
-                        <div class="text-center">
-                            <a href="./index.php" title="click to home">
-                            <img src="./admin/include/ho_login.png" class="w-35 h-35" alt=" ">
-                            </a>
-                        </div>
-                        <h2 class="mt-3 text-center">Student Login</h2>
-
-                        <form class="mt-4" method="POST">
-                            <div class="row">
-                                <div class="col-lg-12 p-2">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="uname">User Name</label>
-                                        <input class="form-control" name="sname" type="text" placeholder="Enter UserName" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 p-2">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="pwd">Password</label>
-                                        <input class="form-control" name="psw" type="password" placeholder="Enter password" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                    <button type="submit" id="btn" name="btn" class="btn btn-block btn-dark">LOGIN</button>
-                                </div>
-                                <div class="col-lg-12 text-center mt-5">
-                                    <a href="./admin/admin_login.php" class="text-danger">Go to Admin Panel</a>
-                                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="wrap d-md-flex">
+                            <div class="img" style="background-image: url(./admin/include/sjc_ch.png);">
                             </div>
-                        </form>
+                            <div class="login-wrap p-4 p-md-5">
+                                <div class="d-flex">
+                                    <div class="w-100">
+                                        <h3 class="mb-4">Students Login</h3>
+                                    </div>
+                                    <!-- <div class="w-100">
+                                        <p class="social-media d-flex justify-content-end">
+                                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                        </p>
+                                    </div> -->
+                                    <div class="text-center">
+                                        <a href="./index.php" title="click to home">
+                                            <img src="./admin/include/ho_login.png" class="w-35 h-55" alt=" ">
+                                        </a>
+                                    </div>
+                                </div>
+                                <form method="POST" class="signin-form">
+                                    <div class="form-group mb-3">
+                                        <label class="label" for="name">Username</label>
+                                        <input type="text" class="form-control" name="sname" placeholder="Username" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="label" for="password">Password</label>
+                                        <input type="password" class="form-control" name="psw" placeholder="Password" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" id="btn" name="btn">Login</button>
+                                    </div>
+                                </form>
+                                <p class="text-center"><a href="./admin/admin_login.php">Go to Admin login</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- By CodeAstro - codeastro.com -->
+    </section>
+    <script src="./assets/login/jquery.min.js.download"></script>
+    <script src="./assets/login/popper.js.download"></script>
+    <script src="./assets/login/bootstrap.min.js.download"></script>
+    <script src="./assets/login/main.js.download"></script>
+    <script defer="" src="./assets/login/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon="{&quot;rayId&quot;:&quot;7ee415a2fcb2444f&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2023.7.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
 
-        <!-- Login box.scss -->
-
-    </div>
-
-
-    <!-- Bootstrap tether Core JavaScript -->
     <script src="./assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
@@ -129,6 +112,7 @@ if (isset($_POST['btn'])) {
     <script>
         $(".preloader ").fadeOut();
     </script>
+
 </body>
 
 </html>

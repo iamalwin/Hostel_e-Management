@@ -34,18 +34,19 @@ session_start();
     <link rel="stylesheet" href="Table 05_files/font-awesome.min.css">
     <link rel="stylesheet" href="Table 05_files/style.css">
     <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+
+
     <link rel="stylesheet" href="./include/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="images/hs-logo.png  ">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
+
+    <link rel="shortcut icon" href="./include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
 
+    <style>
+    table .fw-bolder{
+  font-weight:bolder ;
+  font-size: 1rem;
+}
+</style>
 </head>
 
 <body class="">
@@ -91,18 +92,17 @@ session_start();
                     <!-- Dash data section -->
 
 
-
                     <div class="grid-margin card p-5 stretch-card">
                         <table class="table table-responsive-xl">
-                            <thead class=" table-light">
+                            <thead class="bg-light">
                                 <tr>
-                                    <th scope="col">Reg No</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Dept</th>
-                                    <th scope="col">Class</th>
-                                    <th scope="col">Hostel Name</th>
-                                    <th scope="col">Room No</th>
-                                    <th scope="col">Fees Details</th>
+                                    <th class="fw-bolder" scope="col">Reg No</th>
+                                    <th class="fw-bolder" scope="col">Name</th>
+                                    <th class="fw-bolder" scope="col">Dept</th>
+                                    <th class="fw-bolder" scope="col">Phone</th>
+                                    <th class="fw-bolder" scope="col">Hostel Name</th>
+                                    <th class="fw-bolder" scope="col">Room No</th>
+                                    <th class="fw-bolder" scope="col">Fees Details</th>
                                 </tr>
                             </thead>
 
@@ -124,7 +124,7 @@ session_start();
                                         <div><?php echo $row['dept']; ?></div>
                                     </td>
                                     <td>
-                                        <div><?php echo $row['cls']; ?></div>
+                                        <div><?php echo $row['phone']; ?></div>
                                     </td>
                                     <td>
                                         <div><?php echo $row['hname']; ?></div>

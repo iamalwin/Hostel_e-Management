@@ -73,3 +73,12 @@ transform: rotate(180deg);
 background: red;
 }
 
+.lef_arrow a{
+  display: flex;
+  z-index: 100;
+  border-radius: 50px;
+  height: 2000px;
+  width: 2000px;
+  background-color: blue;
+  color: black;
+}

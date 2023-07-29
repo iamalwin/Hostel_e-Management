@@ -2,42 +2,28 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-	if(isset($_POST['btn']))
-	{
-	$max_qry=mysqli_query($connect,"select max(id) from suggest");
-	$max_row=mysqli_fetch_array($max_qry);
-	$id=$max_row['max(id)']+1;
-	$qry=mysqli_query($connect,"insert into suggest values('$id','$reg','$name','$sub','$cmpl')");
-	if($qry)
-	{
-		echo "<script>alert('We Get your Suggestions if it is posiible we will take action for that')</script>";
-		
-	}
-	else
-	{
-		echo "<script>alert('Enter the fields Correctly')</script>";
-	
-	}
 
-}
-?>
-<?php
-// Include the database connection file "../dbconnection.php"
+if (isset($_POST['btn'])) {
+    // Fetch the user's name from the database based on the provided 'reg' value
+    $qry = mysqli_query($connect, "SELECT name FROM stud WHERE reg = '$reg'");
+    $user_row = mysqli_fetch_assoc($qry);
+    $name = $user_row['reg'];
 
-// Function to fetch the registration number for the logged-in user
-function getRegistrationNumber($userId) {
-    global $connect;
-    $query = "SELECT reg FROM stud WHERE id = '$userId'";
-    $result = mysqli_query($connect, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        return $row['reg'];
+    // Rest of your existing code
+    $max_qry = mysqli_query($connect, "SELECT max(id) FROM suggest");
+    $max_row = mysqli_fetch_array($max_qry);
+    $id = $max_row['max(id)'] + 1;
+    $qry = mysqli_query($connect, "INSERT INTO suggest VALUES ('$id', '$reg', '$name', '$sub', '$cmpl')");
+    
+    if ($qry) {
+        echo "<script>alert('We Get your Suggestions if it is possible we will take action for that')</script>";
     } else {
-        return ""; // If the registration number is not found or there is an error, return an empty string
+        echo "<script>alert('Enter the fields Correctly')</script>";
     }
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -61,7 +47,7 @@ function getRegistrationNumber($userId) {
   <!-- Layout styles -->
   <link rel="stylesheet" href="../admin/include/style.css">
   <!-- End layout styles -->
-  <link rel="shortcut icon" href="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/favicon.ico">
+  <link rel="shortcut icon" href="../admin/include/ho_login.png">
 
     <link rel="stylesheet" href="./include/style.css">
 </head>
@@ -140,13 +126,8 @@ function getRegistrationNumber($userId) {
 
               <form class="grid-margin" action="#" method="POST">
 
-              <!-- <?php
-        $userId = $_SESSION['reg']; // Assuming you have stored the user ID in the session variable 'user_id'
-        include("display_reg_number.php");
-        $registrationNumber = getRegistrationNumber($userId);
-        ?> -->
-              
 
+          
                 <div class="formbold-form-title">
                   <h2 class="">Feedback now</h2>
                   <p>
@@ -154,18 +135,18 @@ function getRegistrationNumber($userId) {
                   </p>
                 </div>
 
-                <div class="formbold-input-flex">
+                <div class="col-wrap formbold-input-flex">
                 <div>
-                    <label for="reg" class="formbold-form-label" value=" " readonly>
-                      Registration Number
+                    <label for="reg" class="formbold-form-label">
+                      Reg No
                     </label>
-                    <input type="text" name="reg" id="reg" class="formbold-form-input"/>
+                    <input type="text" name="reg" value="<?php ?> " readonly id="reg" class="formbold-form-input"/>
                   </div>
                   <div>
-                    <label for="firstname" class="formbold-form-label">
+                    <label for="name" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="name" id="firstname" class="formbold-form-input" />
+                    <input type="text" name="name" value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>" readonly id="name" class="formbold-form-input" />
                   </div>
                 </div>
 
