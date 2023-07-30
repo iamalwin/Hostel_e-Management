@@ -21,7 +21,6 @@ if (isset($_POST['btn'])) {
 ?>
 
 <!DOCTYPE html>
-<!-- saved from url=(0059) -->
 <html lang="en">
 
 <head>
@@ -65,12 +64,7 @@ if (isset($_POST['btn'])) {
                                     <div class="w-100">
                                         <h3 class="mb-4">Students Login</h3>
                                     </div>
-                                    <!-- <div class="w-100">
-                                        <p class="social-media d-flex justify-content-end">
-                                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-                                        </p>
-                                    </div> -->
+                        
                                     <div class="text-center">
                                         <a href="./index.php" title="click to home">
                                             <img src="./admin/include/ho_login.png" class="w-35 h-55" alt=" ">
@@ -107,7 +101,6 @@ if (isset($_POST['btn'])) {
     <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
-    <!-- This page plugin js -->
 
     <script>
         $(".preloader ").fadeOut();

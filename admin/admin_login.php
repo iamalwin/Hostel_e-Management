@@ -114,18 +114,11 @@ if (isset($_POST['btn'])) {
     </div>
 </section>
 
-    <!-- All Required js -->
-
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
-    <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
-
-    <!-- This page plugin js -->
-
     <script src="../assets/login/main.js.download"></script>
     <script defer="" src="./assets/login/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon="{&quot;rayId&quot;:&quot;7ee415a2fcb2444f&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2023.7.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
-
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>

@@ -4,12 +4,9 @@ extract($_POST);
 session_start();
 
 if (isset($_POST['btn'])) {
-    // Fetch the user's name from the database based on the provided 'reg' value
     $qry = mysqli_query($connect, "SELECT name FROM stud WHERE reg = '$reg'");
     $user_row = mysqli_fetch_assoc($qry);
     $name = $user_row['reg'];
-
-    // Rest of your existing code
     $max_qry = mysqli_query($connect, "SELECT max(id) FROM suggest");
     $max_row = mysqli_fetch_array($max_qry);
     $id = $max_row['max(id)'] + 1;
@@ -23,9 +20,6 @@ if (isset($_POST['btn'])) {
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,52 +30,32 @@ if (isset($_POST['btn'])) {
 
   <link rel="stylesheet" href="../admin/include/materialdesignicons.min.css">
   <link rel="stylesheet" href="../admin/include/vendor.bundle.base.css">
-
-
-
-  <!-- Add this link to your HTML head section -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
   <link rel="stylesheet" href="../dist/css/style.min.css">
-
-  <!-- Layout styles -->
   <link rel="stylesheet" href="../admin/include/style.css">
-  <!-- End layout styles -->
   <link rel="shortcut icon" href="../admin/include/ho_login.png">
-
-    <link rel="stylesheet" href="./include/style.css">
+  <link rel="stylesheet" href="./include/style.css">
 </head>
 
 <body class="">
   <div class="container-scroller">
-
-    <!-- Preloader - style you can find in spinners.css -->
-
+    <!-- Preloader  -->
     <div class="preloader">
       <div class="lds-ripple">
         <div class="lds-pos"></div>
         <div class="lds-pos"></div>
       </div>
     </div>
-
-    <!-- partial:partials/_navbar.html -->
-
-    <!-- partial:partials/_navbar.html -->
     <header class="topbar" data-navbarbg="skin6">
       <?php include './stud_navbar.php' ?>
     </header>
 
-    <!-- partial -->
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
-      <!-- partial:partials/_sidebar.html -->
       <div class="navcantainer d-fixed">
         <?php include './stud_sidebar.php' ?>
       </div>
-      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-
-          <!-- dash section -->
 
           <div class="page-header">
             <h3 class="page-title">
@@ -92,7 +66,6 @@ if (isset($_POST['btn'])) {
           </div>
 
           <!-- Dash data section -->
-
 
           <div class="formbold-main-wrapper card">
             <div class="formbold-form-wrapper">
@@ -126,8 +99,6 @@ if (isset($_POST['btn'])) {
 
               <form class="grid-margin" action="#" method="POST">
 
-
-          
                 <div class="formbold-form-title">
                   <h2 class="">Feedback now</h2>
                   <p>
@@ -166,32 +137,17 @@ if (isset($_POST['btn'])) {
           </div>
 
 
-          <!-- partial -->
         </div>
-        <!-- main-panel ends -->
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
     <script src="../admin/include/vendor.bundle.base.js.download"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="../admin/include/Chart.min.js.download"></script>
     <script src="../admin/include/jquery.cookie.js.download" type="text/javascript"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
     <script src="../admin/include/off-canvas.js.download"></script>
     <script src="../admin/include/hoverable-collapse.js.download"></script>
     <script src="../admin/include/misc.js.download"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
     <script src="../admin/include/dashboard.js.download"></script>
     <script src="../admin/include/todolist.js.download"></script>
-    <!-- End custom js for this page -->
-
-
-    <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
@@ -200,7 +156,6 @@ if (isset($_POST['btn'])) {
     <script src="../admin/include/vendor.bundle.base.js.download"></script>
 
 <script>
-  // Function to toggle the collapse on click
   function toggleCollapse(event) {
     event.preventDefault();
     var target = event.target;
@@ -217,7 +172,6 @@ if (isset($_POST['btn'])) {
     }
   }
 
-  // Add click event listeners to all the collapsed menu items
   var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
   for (var i = 0; i < collapsedLinks.length; i++) {
     collapsedLinks[i].addEventListener('click', toggleCollapse);

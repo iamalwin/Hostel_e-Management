@@ -5,7 +5,7 @@
                 <div class="nav-profile-image">
                     <img src="./include/face1.jpg" alt="profile">
                     <span class="login-status online"></span>
-                    <!--change to offline or busy as needed-->
+
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                     <span class="font-weight-bold mb-2">Hostel</span>
@@ -15,15 +15,12 @@
             </a>
         </li>
 
-
-
         <li class="nav-item">
             <a class="nav-link" href="admin_dashboard.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
-
 
         <li class="nav-item">
             <a class="nav-link" href="Stud_detail.php">
@@ -38,8 +35,6 @@
                 <i class="mdi mdi-account-plus menu-icon"></i>
             </a>
         </li>
-
-
         <li class="nav-item">
             <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Fees</span>
@@ -60,8 +55,5 @@
                 <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
         </li>
-
-
-
     </ul>
 </nav>
