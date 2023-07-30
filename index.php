@@ -1,135 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- saved from url=(0082) -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="./dist/home/css" rel="stylesheet">
 
-  <title>Hostel Management</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>Hostel Management</title>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-<link rel="stylesheet" href="./dist/css/home.css">
-  
-<link rel="shortcut icon" href="./admin/include/ho_login.png">
-
-</head>
-
-<body>
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/home/bootstrap.min.css" rel="stylesheet">
 
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-between">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="./dist/home/fontawesome.css">
+    <link rel="stylesheet" href="./dist/home/style.css">
+    <link rel="stylesheet" href="./dist/home/owl.css">
+  </head>
 
-      <div id="logo">
-        <h1><a href="index.html">Hostel<span>Management</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
-      </div>
+  <body>
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href=""><em><img src="./admin/include/ho_login.png" style="width: 40px; height:40px" alt=""></em><h2>Hostel Management</h2></a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>          </button>
+          <div class="navbar-collapse collapse" id="navbarResponsive" style="">
+            <ul class="navbar-nav ml-auto">
+              <!-- <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>  -->
+              <li class="nav-item">
+                <a class="nav-link" href="./admin/admin_login.php">Admin login</a>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="./stud_login.php">Students login</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+                  
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="about.html">About Us</a>
+                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                    <a class="dropdown-item" href="terms.html">Terms</a>
+                  </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
             </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    </div>
-  </header><!-- End Header -->
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text">
+      <div class="container-fluid">
+        <div class="owl-banner owl-carousel owl-loaded owl-drag">
+          
+          
+        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1509px, 0px, 0px); transition: all 0s ease 0s; width: 6037px;"><div class="owl-item cloned" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-4-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
 
-  <!-- ======= hero Section ======= -->
-  <section id="hero">
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
 
-    <div class="hero-content" data-aos="fade-up">
-      <h2>Making <span>your ideas</span><br>happen!</h2>
-      <div>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        <a href="#portfolio" class="btn-projects scrollto">Our Projects</a>
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-5-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-6-720x480.jpg" alt="">
+            <div class="item-content">
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            </div>
+          </div></div><div class="owl-item active" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-1-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item active" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-2-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item active" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-3-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-4-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-5-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-6-720x480.jpg" alt="">
+            <div class="item-content">
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-1-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-2-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div><div class="owl-item cloned" style="width: 493.067px; margin-right: 10px;"><div class="item">
+            <img src="./dist/home/product-3-720x480.jpg" alt="">
+            <div class="item-content">
+              
+              <div class="main-content">
+                <div class="meta-category">
+                  <span> $300.00 - $400.00 </span>
+                </div>
+
+                <a href="car-details.html"><h4>Lorem ipsum dolor sit amet.</h4></a>
+
+                <ul class="post-info">
+                  <li><i class="fa fa-calendar"></i> Spring &nbsp;</li>
+                  <li><i class="fa fa-cube"></i> 20 nights &nbsp;</li>
+                  <li><i class="fa fa-plane"></i> Flight included</li>
+                </ul>
+              </div>
+            
+            </div>
+          </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
       </div>
     </div>
+    <!-- Banner Ends Here -->
 
-    <div class="hero-slider swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/1.jpg');"></div>
-        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/2.jpg');"></div>
-        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/3.jpg');"></div>
-        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/4.jpg');"></div>
-        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/5.jpg');"></div>
+
+    <!-- <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="social-icons">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Behance</a></li>
+              <li><a href="#">Linkedin</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-12">
+            <div class="copyright-text">
+              <p><a href="#"></a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </footer> -->
 
-  </section><!-- End Hero Section -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="./dist/home/jquery.min.js.download"></script>
+    <script src="./dist/home/bootstrap.bundle.min.js.download"></script>
 
+    <!-- Additional Scripts -->
+    <!-- <script src="./dist/home/custom.js.download"></script>
+    <script src="./dist/home/owl.js.download"></script>
+    <script src="./dist/home/slick.js.download"></script>
+    <script src="./dist/home/isotope.js.download"></script>
+    <script src="./dist/home/accordions.js.download"></script> -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>Reveal</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!--
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Reveal
-      -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
+  
+</body></html>
