@@ -477,3 +477,12 @@ body {
     padding-bottom: 20px;
   }
 }
+
+
+/*  */
+
+.card-img-holder a{
+  text-decoration: none;
+  color: white;
+
+}

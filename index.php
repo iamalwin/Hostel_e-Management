@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="./dist/home/fontawesome.css">
   <link rel="stylesheet" href="./dist/home/style.css">
   <link rel="stylesheet" href="./dist/home/owl.css">
+  <link rel="shortcut icon" href="./admin./include/ho_login.png">
+
 </head>
 
 <body>
@@ -49,7 +51,7 @@
               <a class="nav-link" href="./stud_login.php">Students login</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
 
               <div class="dropdown-menu">
@@ -60,7 +62,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>

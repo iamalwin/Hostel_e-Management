@@ -4,23 +4,23 @@ extract($_POST);
 session_start();
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   $username = $_POST["username"];
+//   $password = $_POST["password"];
 
-  $query = "SELECT stud_id FROM stud WHERE username = '$username' AND password = '$password'";
-  $result = mysqli_query($connect, $query);
+//   $query = "SELECT stud_id FROM stud WHERE username = '$username' AND password = '$password'";
+//   $result = mysqli_query($connect, $query);
 
-  if (mysqli_num_rows($result) == 1) {
-      $row = mysqli_fetch_assoc($result);
-      $_SESSION["current_user_id"] = $row["stud_id"];
-      header("Location: profile.php");
-      exit();
-  } else {
-      echo "Invalid username or password.";
-  }
+//   if (mysqli_num_rows($result) == 1) {
+//       $row = mysqli_fetch_assoc($result);
+//       $_SESSION["current_user_id"] = $row["stud_id"];
+//       header("Location: profile.php");
+//       exit();
+//   } else {
+//       echo "Invalid username or password.";
+//   }
 
-}
+// }
 
 
 // if (isset($_GET['logout'])) {
@@ -46,6 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="../admin/include/style.css">
   <link rel="shortcut icon" href="../admin/include/ho_login.png">
 
+  <style>
+    .card-img-holder a {
+      text-decoration: none;
+      color: white;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+  </style>
 </head>
 
 <body class="">
@@ -79,7 +86,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </h3>
           </div>
 
+          <div class="col-md-3 stretch-card grid-margin">
+              <div class="card bg-gradient-danger card-img-holder text-white">
 
+                <a href="./stud_feespay.php">
+                  <div class="card-body">
+                    <img src="../admin/include/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h2 class="font-weight-normal mb-1">Fees Pay
+                      <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h2>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+
+          <div class="col-md-7 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+
+                <h1 class="card-title" style="font-size: 1.5rem; color: skyblue; font-weight:bolder;">Time table</h1>
+
+                <table class="table table-responsive-xl">
+                  <tr style="color: skyblue; font-weight:bolder;">
+                    <th>schedule</th>
+                    <th>Time</th>
+                  </tr>
+
+                  <tr>
+                    <td>Mass</td>
+                    <td>6:30 - 7:30</td>
+                  </tr>
+
+                  <tr>
+                    <td>Break Fast</td>
+                    <td>7:30 - 8:30</td>
+                  </tr>
+
+                  <tr>
+                    <td>Launch</td>
+                    <td>12:30 - 1:30</td>
+                  </tr>
+                  <tr>
+                    <td>Eveing Prayer</td>
+                    <td>6:30 - 7:00 </td>
+                  </tr>
+                  <tr>
+                    <td>Dennar</td>
+                    <td>7:00 - 8:30</td>
+                  </tr>
+                  <tr>
+                    <td>Study Hour</td>
+                    <td>8:30 - 10:00</td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+            </div>
+          </div>
 
 <?php 
 /*$user = $_SESSION['UNSER_NAME'];
@@ -102,7 +167,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 ?>
           <!-- Dash data section -->
 
-
+<!-- 
 <?php
 $stud_id = $_SESSION['stud_id'];
 
@@ -115,7 +180,7 @@ if ($row = mysqli_fetch_assoc($query)) {
 } else {
     echo "User not found or not logged in.";
 }
-?>
+?> -->
 
 
 

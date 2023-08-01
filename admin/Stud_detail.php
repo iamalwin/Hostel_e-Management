@@ -147,48 +147,29 @@ session_start();
 
 
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
                 </footer>
-                <!-- partial -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
     <script src="./include/vendor.bundle.base.js.download"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="./include/Chart.min.js.download"></script>
     <script src="./include/jquery.cookie.js.download" type="text/javascript"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
     <script src="./include/off-canvas.js.download"></script>
     <script src="./include/hoverable-collapse.js.download"></script>
     <script src="./include/misc.js.download"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
     <script src="./include/dashboard.js.download"></script>
     <script src="./include/todolist.js.download"></script>
-    <!-- End custom js for this page -->
-
-    <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
     <script src="../admin/include/vendor.bundle.base.js.download"></script>
-
-
     <script>
-  // Function to toggle the collapse on click
   function toggleCollapse(event) {
     event.preventDefault();
     var target = event.target;
@@ -205,7 +186,6 @@ session_start();
     }
   }
 
-  // Add click event listeners to all the collapsed menu items
   var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
   for (var i = 0; i < collapsedLinks.length; i++) {
     collapsedLinks[i].addEventListener('click', toggleCollapse);

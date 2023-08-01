@@ -16,8 +16,6 @@
 		else
 		{
 			echo "<script>alert('Enter Again')</script>"; 
-			
-		
 		}
 		}
 	?>

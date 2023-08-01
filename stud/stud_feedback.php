@@ -6,7 +6,6 @@ session_start();
 if (isset($_POST['btn'])) {
     $qry = mysqli_query($connect, "SELECT name FROM stud WHERE reg = '$reg'");
     $user_row = mysqli_fetch_assoc($qry);
-    $name = $user_row['reg'];
     $max_qry = mysqli_query($connect, "SELECT max(id) FROM suggest");
     $max_row = mysqli_fetch_array($max_qry);
     $id = $max_row['max(id)'] + 1;
@@ -33,7 +32,7 @@ if (isset($_POST['btn'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../dist/css/style.min.css">
   <link rel="stylesheet" href="../admin/include/style.css">
-  <link rel="shortcut icon" href="../admin/include/ho_login.png">
+  <link rel="stylesheet" href="../admin/include/ho_login.png">
   <link rel="stylesheet" href="./include/style.css">
 </head>
 
@@ -111,13 +110,13 @@ if (isset($_POST['btn'])) {
                     <label for="reg" class="formbold-form-label">
                       Reg No
                     </label>
-                    <input type="text" name="reg" value="<?php ?> " readonly id="reg" class="formbold-form-input"/>
+                    <input type="text" name="reg" value="<?php ?> " id="reg" class="formbold-form-input"/>
                   </div>
                   <div>
                     <label for="name" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="name" value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>" readonly id="name" class="formbold-form-input" />
+                    <input type="text" name="name" value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>" id="name" class="formbold-form-input" />
                   </div>
                 </div>
 

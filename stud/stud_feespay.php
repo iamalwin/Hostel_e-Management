@@ -2,19 +2,14 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-if (isset($_POST['btn'])) {
-    $reg = $_SESSION['reg'];
-    $max_qry = mysqli_query($connect, "select max(id) from suggest");
-    $max_row = mysqli_fetch_array($max_qry);
-    $id = $max_row['max(id)'] + 1;
-    $qry = mysqli_query($connect, "insert into suggest values('$id','$reg','$name','$sub','$cmpl')");
-    if ($qry) {
-        echo "<script>alert('We Get your Suggestions if it is posiible we will take action for that')</script>";
-    } else {
-        echo "<script>alert('Enter the fields Correctly')</script>";
-    }
-}
+//  $reg = $_SESSION['reg'];
+$month = NULL;
+$total = NULL;
+$hostel = NULL;
+$mess = NULL;
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +29,14 @@ if (isset($_POST['btn'])) {
     <link rel="stylesheet" href="../admin/include/style.css">
     <link rel="shortcut icon" href="../admin/include/ho_login.png">
 
+    <style>
+        .feepay {
+            padding: 100px;
+        }
+        .card-body1{
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body class="">
@@ -66,67 +69,67 @@ if (isset($_POST['btn'])) {
                     </div>
 
                     <!-- Dash data section -->
-                    <form action="#" method="post">
-                        <div> <select name="month">
-                                <option value="">select</option>
-                                <option value="january">january</option>
-                                <option value="Februry">Februry</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="Agust">Agust</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
-                            </select>
-                            <input type="submit" name="btn1">
-                        </div>
-                    </form>
+                    <div class="feepay card p-10">
+                        <form class="card-body" action="#" method="post">
+                            <table width="38%">
+                                <tr>
+                                    <td width="39%" height="44">Month</td>
+                                    <td action="#" method="post"> <select name="month">
+                                            <option value="">Select</option>
+                                            <option value="january">january</option>
+                                            <option value="Februry">Februry</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="Agust">Agust</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+                                        </select>
+                                        <input class="bt-" type="submit" name="btn1">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
 
-                    <?php
-                    if (isset($_POST['btn1'])) {
-                        $qry = mysqli_query($connect, "select * from amnt where month='$month'");
-                        $row = mysqli_fetch_assoc($qry);
-                        $month = $row['month'];
-                        $total = $row['total'];
-                        $hostel = $row['hf'];
-                        $mess = $row['mf'];
-                    }
-                    ?>
-                    <form name="form1" method="post" action="payment.php?month=<?php echo $month; ?>&total=<?php echo $total; ?>">
-                        <table>
-
-                            <tr>
+                        <?php
+                        if (isset($_POST['btn1'])) {
+                            $qry = mysqli_query($connect, "select * from amnt where month='$month'");
+                            $row = mysqli_fetch_assoc($qry);
+                            $month = $row['month'];
+                            $total = $row['total'];
+                            $hostel = $row['hf'];
+                            $mess = $row['mf'];
+                        }
+                        ?>
+                        <form class="card-body" name="form1" method="post" action="bank_pay.php?month=<?php echo $month; ?>&total=<?php echo $total; ?>">
+                            <table>
+                                <!-- <tr>
                                 <td width="39%" height="44">Register No</td>
                                 <td width="61%"><?php echo $reg; ?></td>
-                            </tr>
-
-
-                            <tr>
-                                <td width="39%" height="33"> Hostel Fees </td>
-                                <td><?php echo $hostel; ?></td>
-                            </tr>
-
-
-                            <tr>
-                                <td width="39%" height="42">Mess Fees </td>
-                                <td> <?php echo $mess; ?></td>
-                            </tr>
-
-
-                            <tr>
-                                <td width="39%" height="37">Total amount </td>
-                                <td><?php echo $total; ?></td>
-                            </tr>
-                            <tr>
-                                <td height="31">&nbsp;</td>
-                                <td><input name="btn" type="submit" id="btn" /></td>
-                            </tr>
-                        </table>
-                    </form>
+                            </tr> -->
+                                <tr>
+                                    <td width="39%" height="33"> Hostel Fees </td>
+                                    <td><?php if($hostel!=NULL){ echo $hostel; } else echo "p";?></td>
+                                </tr>
+                                <tr>
+                                    <td width="39%" height="42">Mess Fees </td>
+                                    <td> <?php if($mess){ echo $mess; } ?></td>
+                                </tr>
+                                <tr>
+                                    <td width="39%" height="37">Total amount </td>
+                                    <td><?php if($total){ echo $total; }?></td>
+                                </tr>
+                                <tr>
+                                    <td height="31">&nbsp;</td>
+                                    <td><input class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" /></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

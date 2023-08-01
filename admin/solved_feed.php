@@ -2,7 +2,6 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +44,7 @@ session_start();
     </div>
 
     <header class="topbar" data-navbarbg="skin6">
-     <?php include 'navbar.php' ?>
+      <?php include 'navbar.php' ?>
     </header>
 
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
@@ -62,7 +61,7 @@ session_start();
               </span> Feedback
             </h3>
           </div>
-              <form method="POST">
+
           <div class="grid-margin card p-5 stretch-card">
             <table class="table table-responsive-xl">
 
@@ -72,7 +71,7 @@ session_start();
                   <th>Name</th>
                   <th>Subject</th>
                   <th>Complaints / suggestion</th>
-                  <!-- <th>Action</th> -->
+                  <th>Action</th>
                 </tr>
               </thead>
 
@@ -82,8 +81,6 @@ session_start();
               while ($row = mysqli_fetch_array($qry)) {
                 $reg = $row['reg'];
               ?>
-
-
 
                 <tr class="alert " role="alert">
                   <td>
@@ -98,9 +95,9 @@ session_start();
                   <td>
                     <div><?php echo $row['cmpl']; ?></div>
                   </td>
-                  <!-- <td class="rbtn">
-                    <button class="btn btn--radius-50 btn--blue  btn-primary" id="btn1" type="submit" name="btn1">Solved</button>
-                  </td> -->
+                  <td class="rbtn">
+                    <button class="btn btn--radius-50 btn--blue  btn-primary">Solve</button>
+                  </td>
                 </tr>
               <?php
                 $i++;
@@ -109,7 +106,6 @@ session_start();
               ?>
             </table>
           </div>
-		  </form>
         </div>
 
       </div>

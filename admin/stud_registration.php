@@ -70,6 +70,7 @@ if (isset($_POST['btn'])) {
 			</div>
 		</div>
 
+		<!-- navbar -->
 		<?php include 'navbar.php' ?>
 
 
@@ -91,6 +92,7 @@ if (isset($_POST['btn'])) {
 
 					<!-- Dash data section -->
 					<div class="container">
+					<form id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 						<div class="row">
 							<div class="col-md-5 m-3">
 								<input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
@@ -121,7 +123,7 @@ if (isset($_POST['btn'])) {
 							</div>
 
 							<div class="col-md-5 m-3">
-								<input type="text" class="form-control" name="name" placeholder="Age" name="age" id="age" required>
+								<input type="text" class="form-control"placeholder="Age" name="age" id="age" required>
 							</div>
 						</div>
 
@@ -159,13 +161,15 @@ if (isset($_POST['btn'])) {
 								</select>
 							</div>
 							<div class="col-md-5 m-3">
-								<input type="text" class="form-control" name="year" id="year" placeholder="Room No" required>
+								<input type="text" class="form-control" name="room" id="room" placeholder="Room No" required>
 							</div>
 						</div>
 						<div class="p-t-15">
 							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
 							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
 						</div>
+						</form>
+
 					</div>
 
 

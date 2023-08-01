@@ -1,6 +1,8 @@
 <?php
 include("../dbconnect.php");
+$reg = $_GET['reg'];
 extract($_POST);
+
 session_start();
 ?>
 <!DOCTYPE html>
@@ -91,7 +93,6 @@ session_start();
                             <!-- Remove extra "p" in colspan attribute -->
 
                             <?php
-                            $reg = $_GET['reg'];
                             $qry = mysqli_query($connect, "select * from paid where reg='$reg'");
                             $i = 1;
                             while ($row = mysqli_fetch_array($qry)) {
