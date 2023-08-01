@@ -121,30 +121,6 @@ $total=$_REQUEST['total'];
 
 
 
-	  
-<?php
-	
-	 if(isset($_POST['btn1']))
-		  {
-	$max_qry = mysqli_query($connect,"select max(id) from paid");
-		$max_row = mysqli_fetch_array($max_qry); 
-		$id=$max_row['max(id)']+1;
-		$date=date('y-m-d');
-		$qt=mysqli_query($connect,"insert into paid values('$id','$reg','$total','$date','$month')");
-		if($qt)
-		{
-		
-		echo "<script>alert('payment Suceess')</script>";
-	}
-	
-	else
-	{
-	echo "<script>alert('payment failure')</script>";
-	
-	}
-	}
-	?>
-	
 	
 	
 	
