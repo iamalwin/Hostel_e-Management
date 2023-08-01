@@ -3,10 +3,6 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 //  $reg = $_SESSION['reg'];
-$month = NULL;
-$total = NULL;
-$hostel = NULL;
-$mess = NULL;
 
 ?>
 
@@ -113,7 +109,7 @@ $mess = NULL;
                             </tr> -->
                                 <tr>
                                     <td width="39%" height="33"> Hostel Fees </td>
-                                    <td><?php if($hostel!=NULL){ echo $hostel; } else echo "p";?></td>
+                                    <td><?php if($hostel){ echo $hostel; }?></td>
                                 </tr>
                                 <tr>
                                     <td width="39%" height="42">Mess Fees </td>
