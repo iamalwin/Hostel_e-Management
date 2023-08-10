@@ -144,7 +144,7 @@ if ($result) {
                       <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 
                       <!-- studends feed -->
-                      <?php echo "Feedback: " . $totalreq; ?>
+                      <?php echo "Feedback: " . $totalfeed; ?>
                     </h2>
                   </div>
                 </a>

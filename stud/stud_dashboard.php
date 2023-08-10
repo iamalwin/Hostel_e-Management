@@ -52,6 +52,13 @@ session_start();
       color: white;
       font-family: Georgia, 'Times New Roman', Times, serif;
     }
+
+    .bg-gradient {
+    background: linear-gradient(45deg, #94a2b3,#cbddf2);
+    /* Other styling properties */
+    color: white;
+    padding: 20px;
+}
   </style>
 </head>
 
@@ -86,6 +93,20 @@ session_start();
             </h3>
           </div>
 
+
+          <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient card-img-holder text-white">
+              <a href="./stud_feespay.php">
+                  <div class="card-body">
+                    <img src="../admin/include/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h2 class="font-weight-normal mb-1">
+                      Fees Pay
+                      <i class="mdi mdi-message mdi-24px float-right"></i>
+                    </h2>
+                  </div>
+                </a>
+              </div>
+            </div>
 
           <div class="col-md-7 grid-margin stretch-card">
             <div class="card">
