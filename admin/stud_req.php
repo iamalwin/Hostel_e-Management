@@ -79,7 +79,7 @@ session_start();
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-contacts menu-icon"></i>
-                            </span>Register Students
+                            </span>Apply Students
                         </h3>
                     </div>
 
