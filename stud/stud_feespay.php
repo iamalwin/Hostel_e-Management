@@ -71,7 +71,7 @@ session_start();
                                 <tr>
                                     <td width="39%" height="44">Month</td>
                                     <td action="#" method="post"> <select name="month">
-                                            <option value="">Select</option>
+                                            <!-- <option value="">Select</option> -->
                                             <option value="january">january</option>
                                             <option value="Februry">Februry</option>
                                             <option value="March">March</option>

@@ -120,7 +120,7 @@ if (isset($_POST['btn'])) {
 							</div>
 
 							<div class="col-md-5 m-3">
-								<input type="number" class="form-control"placeholder="Age" name="age" id="age" required>
+								<input class="form-control"placeholder="Age" name="age" id="age" required>
 							</div>
 						</div>
 
@@ -130,7 +130,7 @@ if (isset($_POST['btn'])) {
 								<input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
 							</div>
 							<div class="col-md-5 m-3">
-								<input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+								<input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone" onInput="validatePhoneNumber(this)" required>
 							</div>
 						</div>
 
@@ -139,7 +139,7 @@ if (isset($_POST['btn'])) {
 								<input type="text" class="form-control" name="dept" id="dept" placeholder="Department" required>
 							</div>
 							<div class="col-md-5 m-3">
-								<input type="number" class="form-control" name="year" id="year" placeholder="Year of passing" required>
+								<input  class="form-control" name="year" id="year" placeholder="Year of passing" onInput="validateYear(this)" required>
 							</div>
 						</div>
 
@@ -158,7 +158,7 @@ if (isset($_POST['btn'])) {
 								</select>
 							</div>
 							<div class="col-md-5 m-3">
-								<input type="number" class="form-control" name="room" id="room" placeholder="Room No" required>
+								<input class="form-control" name="room" id="room" placeholder="Room No" required>
 							</div>
 						</div>
 						<div class="p-t-15">
@@ -187,8 +187,28 @@ if (isset($_POST['btn'])) {
 	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 	<script src="../admin/include/vendor.bundle.base.js.download"></script>
+<!-- phone -->
+<script>
+function validatePhoneNumber(input) {
+            const phoneNumber = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+            const maxLength = 10;
 
+            if (phoneNumber.length > maxLength) {
+                input.value = phoneNumber.slice(0, maxLength); // Truncate input to 10 digits
+            }
+        }
+    </script>
+	<!-- year -->
+	<script>
+        function validateYear(input) {
+            const yearno = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+            const maxLength = 4;
 
+            if (yearno.length > maxLength) {
+                input.value = yearno.slice(0, maxLength); // Truncate input to 10 digits
+            }
+        }
+    </script>
 	<script>
 		function toggleCollapse(event) {
 			event.preventDefault();
