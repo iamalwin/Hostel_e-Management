@@ -24,9 +24,22 @@ if ($result) {
   $row = mysqli_fetch_assoc($result);
   $totalfeed = $row['total_feed'];
 } else {
-  $totalSfeed = 0;
+  $totalSreq = 0;
 }
 ?>
+
+<?php
+include("../dbconnect.php");
+$query = "SELECT COUNT(*) AS reg FROM studreq";
+$result = mysqli_query($connect, $query);
+if ($result) {
+  $row = mysqli_fetch_assoc($result);
+  $totalreq = $row['reg'];
+} else {
+  $totalreq = 0;
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +66,12 @@ if ($result) {
       color: white;
       font-family: Georgia, 'Times New Roman', Times, serif;
     }
+    .bg-gradient {
+    background: linear-gradient(45deg, #94a2b3,#cbddf2);
+    /* Other styling properties */
+    color: white;
+    padding: 20px;
+}
   </style>
 </head>
 
@@ -68,7 +87,9 @@ if ($result) {
       </div>
     </div>
 
+    <header class="topbar" data-navbarbg="skin6">
     <?php include './navbar.php' ?>
+    </header>
 
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
       <?php include 'sidebar.php' ?>
@@ -98,13 +119,13 @@ if ($result) {
 
 
           <div class="row">
-            <div class="col-md-5 stretch-card grid-margin">
-              <div class="card bg-gradient-info card-img-holder text-white">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient card-img-holder text-white">
                 <a href="./Stud_detail.php">
                   <div class="card-body">
                     <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                     <h2 class="font-weight-normal mb-1">
-                      <i class="mdi mdi-account mdi-24px  float-right"></i>
+                      <i class="mdi mdi-account mdi-24px float-right"></i>
 
                       <!-- studends count -->
                       <?php echo "Total Students: " . $totalStudents; ?>
@@ -113,8 +134,8 @@ if ($result) {
                 </a>
               </div>
             </div>
-            <div class="col-md-5 stretch-card grid-margin">
-              <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient card-img-holder text-white">
 
                 <a href="./get_feedback.php">
                   <div class="card-body">
@@ -122,26 +143,29 @@ if ($result) {
                     <h2 class="font-weight-normal mb-1">
                       <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 
-                      <!-- studends count -->
-                      <?php echo "Total Feedback: " . $totalfeed; ?>
+                      <!-- studends feed -->
+                      <?php echo "Feedback: " . $totalreq; ?>
                     </h2>
                   </div>
                 </a>
 
               </div>
             </div>
-            <!--  <div class="col-md-3 stretch-card grid-margin">
-              <div class="card bg-gradient-warning card-img-holder text-white">
-                <div class="card-body">
-                  <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
-                  <h4 class="font-weight-normal mb-1">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                  </h4>
-                  <h2 class="mb-1">45,6334</h2>
-                  <h6 class="card-text">Decreased by 10%</h6>
-                </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient card-img-holder text-white">
+              <a href="./stud_req.php">
+                  <div class="card-body">
+                    <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h2 class="font-weight-normal mb-1">
+                      <i class="mdi mdi-message mdi-24px float-right"></i>
+                      <!-- studends reg -->
+                      <?php echo "Stud request: " . $totalreq; ?>
+                    </h2>
+                  </div>
+                </a>
               </div>
             </div>
-            <div class="col-md-3 stretch-card grid-margin">
+            <!--<div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-success card-img-holder text-white">
                 <div class="card-body">
                   <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
@@ -178,15 +202,15 @@ if ($result) {
                   </tr>
 
                   <tr>
-                    <td>Launch</td>
+                    <td>Lunch</td>
                     <td>12:30 - 1:30</td>
                   </tr>
                   <tr>
-                    <td>Eveing Prayer</td>
+                    <td>Evening Prayer</td>
                     <td>6:30 - 7:00 </td>
                   </tr>
                   <tr>
-                    <td>Dennar</td>
+                    <td>Dinner</td>
                     <td>7:00 - 8:30</td>
                   </tr>
                   <tr>
@@ -197,19 +221,19 @@ if ($result) {
                 </table>
               </div>
             </div>
-            </div>
+          </div>
           </div>
         </div>
 
       </div>
       <!-- content-wrapper ends -->
       <!-- partial:partials/_footer.html -->
-      <footer class="footer">
+      <!-- <footer class="footer">
         <div class="container-fluid clearfix">
           <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
           <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
         </div>
-      </footer>
+      </footer> -->
     </div>
   </div>
   </div>
