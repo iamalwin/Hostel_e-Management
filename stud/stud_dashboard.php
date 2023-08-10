@@ -86,20 +86,6 @@ session_start();
             </h3>
           </div>
 
-          <div class="col-md-3 stretch-card grid-margin">
-              <div class="card bg-gradient-danger card-img-holder text-white">
-
-                <a href="./stud_feespay.php">
-                  <div class="card-body">
-                    <img src="../admin/include/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h2 class="font-weight-normal mb-1">Fees Pay
-                      <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                    </h2>
-                  </div>
-                </a>
-
-              </div>
-            </div>
 
           <div class="col-md-7 grid-margin stretch-card">
             <div class="card">
@@ -124,15 +110,15 @@ session_start();
                   </tr>
 
                   <tr>
-                    <td>Launch</td>
+                    <td>Lunch</td>
                     <td>12:30 - 1:30</td>
                   </tr>
                   <tr>
-                    <td>Eveing Prayer</td>
+                    <td>Evening Prayer</td>
                     <td>6:30 - 7:00 </td>
                   </tr>
                   <tr>
-                    <td>Dennar</td>
+                    <td>Dinner</td>
                     <td>7:00 - 8:30</td>
                   </tr>
                   <tr>
@@ -143,49 +129,10 @@ session_start();
                 </table>
               </div>
             </div>
-            </div>
+          </div>
           </div>
 
-<?php 
-/*$user = $_SESSION['UNSER_NAME'];
- $query = mysqli_query($conn,"select * from admin_login where username = '$user'");
- $row =mysqli_fetch_array($query);
- $id = $row['id'];
 
- ********************************************
- <!-- <?php $sel = "SELECT * FROM stud";
-$query = mysqli_query($connect, $sel);
-
-while ($row = mysqli_fetch_assoc($query)) {
-    $name = $row['name'];
-}?> -->
- *******************************************
-
-   /* $sel = "SELECT * FROM admin_login"; 
-    $query = mysqli_query($conn,$sel);
-    $resul = mysqli_fetch_assoc($query);*/
-?>
-          <!-- Dash data section -->
-
-<!-- 
-<?php
-$stud_id = $_SESSION['stud_id'];
-
-$sel = "SELECT name FROM stud WHERE stud_id = $stud_id";
-$query = mysqli_query($connect, $sel);
-
-if ($row = mysqli_fetch_assoc($query)) {
-    $name = $row['name'];
-    echo "Welcome, " . $name;
-} else {
-    echo "User not found or not logged in.";
-}
-?> -->
-
-
-
- <?php echo $name; ?>
-          <!-- <h1>Welcome to the Dashboard, <?php echo $user_name; ?>!</h1> -->
 
         </div>
       </div>

@@ -25,7 +25,7 @@ if (isset($_POST['btn'])) {
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login 04</title>
+    <title>Stud_login</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="./assets/login/css" rel="stylesheet">
@@ -57,7 +57,7 @@ if (isset($_POST['btn'])) {
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <div class="wrap d-md-flex">
-                            <div class="img" style="background-image: url(./admin/include/sjc_ch.png);">
+                            <div class="img" style="background-image: url(./admin/include/sjc_ch.png);width:40%">
                             </div>
                             <div class="login-wrap p-4 p-md-5">
                                 <div class="d-flex">

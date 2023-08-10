@@ -82,10 +82,9 @@ if (isset($_POST['btn'])) {
 
                     <!-- Dash data section -->
 
-                    <div class=" container">
-                        <form class="d-flex col p-3" style="align-items:center;justify-content:center;" id="f1" name="f1" method="post" action="#">
+                    <div class="card d-flex justify-content-center align-items-center">
+                        <form class="card-body" style="align-items:center;justify-content:center;" id="f1" name="f1" method="post" action="#">
                             <div class="m-1000">
-                                <h2 class="m-3">Fees</h2>
                                 <div class="col">
                                     <div class="grid gap-0 row-gap-3">
                                         <div class="p-2 g-col-6">Hostel Fees</div>

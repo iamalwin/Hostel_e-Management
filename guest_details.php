@@ -1,23 +1,28 @@
-<?php
-include("../dbconnect.php");
-extract($_POST);
-session_start();
-$_SESSION['stud_id'] = "stud_id";
-
-if (isset($_POST['btn'])) {
-
-	$qry = mysqli_query($connect, "INSERT INTO stud (stud_id, name, reg, gender, age, email, phone, dept, hname, room) VALUES (NULL, '$name','$reg','$gender','$age','$email','$phone','$dept','$hn','$room')");
-
-	if ($qry) {
-		$lastInsertedId = mysqli_insert_id($connect);
-		$stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-		mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
-		echo "<script>alert('Hostel Assigned to Students')</script>";
-	} else {
-		echo "<script>alert('Enter the correct fields')</script>";
-	}
-}
-?>
+	<?php
+	include("dbconnect.php");
+	extract($_POST);
+	session_start();
+	if(isset($_POST['btn']))
+	{
+	
+	$max_qry = mysqli_query($connect,"select max(id) from studreq");
+		$max_row = mysqli_fetch_array($max_qry); 
+		$id=$max_row['max(id)']+1;
+	$qry=mysqli_query($connect,"insert into studreq values('$id','$reg','$name','$fathname','$age','$gender','$dob','$email','$phone','$adds')");
+		if($qry)
+		{
+			
+			echo "<script>alert('Registered Successfully')</script>";
+		
+		} 
+		else
+		{
+			echo "<script>alert('Could not Register')</script>"; 
+			
+		
+		}
+		}
+	?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,19 +31,20 @@ if (isset($_POST['btn'])) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>registration</title>
-	<link rel="stylesheet" href="./include/materialdesignicons.min.css">
-	<link rel="stylesheet" href="./include/vendor.bundle.base.css">
+	<title>guest_registration</title>
+	<link rel="stylesheet" href="./admin/include/materialdesignicons.min.css">
+	<link rel="stylesheet" href="./admin/include/vendor.bundle.base.css">
 
-	<link rel="stylesheet" href="./include/style.css">
+	<link rel="stylesheet" href="./admin/include/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
 	<link rel="stylesheet" href="../dist/css/style.min.css">
 
-	<link rel="stylesheet" href="./include/style.css">
+	<link rel="stylesheet" href="./admin/include/style.css">
 
-	<link rel="shortcut icon" href="./include/ho_login.png">
-	<link rel="stylesheet" href="./include/exstyle.css">
+	<link rel="shortcut icon" href="./admin/include/ho_login.png">
+	<link rel="stylesheet" href="./admin/include/exstyle.css">
+
 
 	<style>
 		.container {
@@ -73,23 +79,34 @@ if (isset($_POST['btn'])) {
 			</div>
 		</div>
 
-		<?php include 'navbar.php' ?>
-
+<!-- navbar -->
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+      <a class="navbar-brand brand-logo" href="./index.php"><img src="./admin/include/HO_LOGO.png" alt="logo"></a>
+      <a class="navbar-brand brand-logo-mini" href="./index.php"><img src="./admin/include/ho_login.png" alt="logo"></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+      <ul class="navbar-nav navbar-nav-right">
+<li class="nav-item">
+              <a class="nav-link" style="color: black; font-weight:bold;font-size:1rem;" href="index.php">Home</a>
+            </li>
+      </ul>
+    </div>
+  </nav>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
-			<?php include 'sidebar.php' ?>
-			<div class="main-panel">
-				<div class="content-wrapper">
+		<div class="container-fluid page-body-wrapper">
+			<div class="card-body">
 					<div class="page-header">
 						<h3 class="page-title">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">
 								<i class="mdi mdi-account-plus menu-icon"></i>
-							</span> Student Registration
+							</span> Guest Registration
 						</h3>
 					</div>
 
+
 					<div class="card d-flex justify-content-center align-items-center">
-					<form class="card-body" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+					<form class="card-body col-8" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 						<div class="row">
 							<div class="col-md-5 m-3">
 								<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>
@@ -124,6 +141,14 @@ if (isset($_POST['btn'])) {
 							</div>
 						</div>
 
+						<div class="row">
+							<div class="col-md-5 m-3">
+								<input type="text" class="form-control" name="fathname" id="fathname" placeholder="Father Name" required>
+							</div>
+							<div class="col-md-5 m-3">
+								<input type="date" class="form-control" id="dob" name="dob" placeholder="DOB" required>
+							</div>
+						</div>
 
 						<div class="row">
 							<div class="col-md-5 m-3">
@@ -136,31 +161,10 @@ if (isset($_POST['btn'])) {
 
 						<div class="row">
 							<div class="col-md-5 m-3">
-								<input type="text" class="form-control" name="dept" id="dept" placeholder="Department" required>
-							</div>
-							<div class="col-md-5 m-3">
-								<input type="number" class="form-control" name="year" id="year" placeholder="Year of passing" required>
+								<textarea type="field" rows="8" cols="50" class="form-control" name="adds" id="adds" placeholder="Address" required></textarea>
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-5 m-3 justify-content-center align-items-center d-flex" >
-								<select name="hn" class="col-md-10 p-2">
-									<option value="" class="btnsel">Select Hostel</option>
-									<?php
-									$qry = mysqli_query($connect, "select hname from hostel");
-									while ($rw = mysqli_fetch_assoc($qry)) {
-									?>
-										<option value="<?php echo $rw['hname']; ?>"> <?php echo $rw['hname']; ?></option>
-									<?php
-									}
-									?>
-								</select>
-							</div>
-							<div class="col-md-5 m-3">
-								<input type="number" class="form-control" name="room" id="room" placeholder="Room No" required>
-							</div>
-						</div>
 						<div class="p-t-15">
 							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
 							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
@@ -169,24 +173,22 @@ if (isset($_POST['btn'])) {
 
 					</div>
 
-				</div>
-
 			</div>
 		</div>
 	</div>
-	<script src="./include/vendor.bundle.base.js.download"></script>
-	<script src="./include/Chart.min.js.download"></script>
-	<script src="./include/jquery.cookie.js.download" type="text/javascript"></script>
-	<script src="./include/off-canvas.js.download"></script>
-	<script src="./include/hoverable-collapse.js.download"></script>
-	<script src="./include/misc.js.download"></script>
-	<script src="./include/dashboard.js.download"></script>
-	<script src="./include/todolist.js.download"></script>
-	<script src="../assets/libs/jquery/dist/jquery.min.js "></script>
-	<script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
-	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+	<script src="./admin/include/vendor.bundle.base.js.download"></script>
+	<script src="./admin/include/Chart.min.js.download"></script>
+	<script src="./admin/include/jquery.cookie.js.download" type="text/javascript"></script>
+	<script src="./admin/include/off-canvas.js.download"></script>
+	<script src="./admin/include/hoverable-collapse.js.download"></script>
+	<script src="./admin/include/misc.js.download"></script>
+	<script src="./admin/include/dashboard.js.download"></script>
+	<script src="./admin/include/todolist.js.download"></script>
+	<script src="./assets/libs/jquery/dist/jquery.min.js "></script>
+	<script src="./assets/libs/popper.js/dist/umd/popper.min.js "></script>
+	<script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
-	<script src="../admin/include/vendor.bundle.base.js.download"></script>
+	<script src="./admin/include/vendor.bundle.base.js.download"></script>
 
 
 	<script>

@@ -13,7 +13,7 @@ session_start();
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
     <link rel="stylesheet" href="./include/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-    <link rel="shortcut icon" href="./include/ho_login.png">
+    <link rel="shortcut icon" href="./admin/include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
 </head>
 

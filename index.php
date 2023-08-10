@@ -15,6 +15,29 @@
   <link rel="stylesheet" href="./dist/home/owl.css">
   <link rel="shortcut icon" href="./admin./include/ho_login.png">
 
+
+  <style>
+    .image-container {
+    position: relative;
+    display: inline-block;
+}
+.image-container::before {
+  content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 47, 47, 0.578);
+}
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+  </style>
 </head>
 
 <body>
@@ -51,6 +74,10 @@
               <a class="nav-link" href="./stud_login.php">Students login</a>
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link" href="./guest_details.php">Guest Register</a>
+            </li>
+
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
 
@@ -69,20 +96,21 @@
     </nav>
   </header>
 
-  <div class="main-banner main-panel header-text">
-    <div class="container-fluid card-body">
-      <div class="owl-banner owl-carousel owl-loaded owl-drag">
+  <div class="main-banner">
+    <div class="container-fluid">
+      <div class="owl-banner bg-light p-0">
 
-        <div class="content-wrapper card-body">
-          <img src="./admin/include/sjc_ch.png" alt="">
-        </div>
+      <!-- <div class="bgimg"><img src="./admin/include/HO_LOGO.png" alt=""></div> -->
+        <div class="image-container">
+          <img src="./admin/include/sjc.jpeg" alt="">
+        </div>        
       </div>
     </div>
   </div>
   <!-- Banner Ends Here -->
 
 
-  <footer>
+  <!-- <footer>
       <div class="container">
         <div class="row">
 
@@ -94,7 +122,7 @@
           </div>
         </div>
       </div>
-    </footer>
+    </footer> -->
 
   <script src="./dist/home/jquery.min.js.download"></script>
   <script src="./dist/home/bootstrap.bundle.min.js.download"></script>

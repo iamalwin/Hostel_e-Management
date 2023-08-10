@@ -79,7 +79,7 @@ session_start();
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-contacts menu-icon"></i>
-                            </span> Students Details
+                            </span>Register Students
                         </h3>
                     </div>
 
@@ -92,16 +92,18 @@ session_start();
                                 <tr>
                                     <th class="fw-bolder" scope="col">Reg No</th>
                                     <th class="fw-bolder" scope="col">Name</th>
-                                    <th class="fw-bolder" scope="col">Dept</th>
+                                    <th class="fw-bolder" scope="col">Father Name</th>
+                                    <th class="fw-bolder" scope="col">Age</th>
+                                    <th class="fw-bolder" scope="col">Gender</th>
+                                    <th class="fw-bolder" scope="col">DOB</th>
+                                    <th class="fw-bolder" scope="col">Email</th>
                                     <th class="fw-bolder" scope="col">Phone</th>
-                                    <th class="fw-bolder" scope="col">Hostel Name</th>
-                                    <th class="fw-bolder" scope="col">Room No</th>
-                                    <th class="fw-bolder" scope="col">Fees Details</th>
+                                    <th class="fw-bolder" scope="col">Address</th>
                                 </tr>
                             </thead>
 
                             <?php
-                            $qry = mysqli_query($connect, "select * from stud");
+                            $qry = mysqli_query($connect, "select * from studreq");
                             $i = 1;
                             while ($row = mysqli_fetch_array($qry)) {
                                 $reg = $row['reg'];
@@ -115,19 +117,25 @@ session_start();
                                         <div><?php echo $row['name']; ?></div>
                                     </td>
                                     <td>
-                                        <div><?php echo $row['dept']; ?></div>
+                                        <div><?php echo $row['fathname']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['age']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['gender']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['dob']; ?></div>
+                                    </td>
+                                    <td>
+                                        <div><?php echo $row['email']; ?></div>
                                     </td>
                                     <td>
                                         <div><?php echo $row['phone']; ?></div>
                                     </td>
                                     <td>
-                                        <div><?php echo $row['hname']; ?></div>
-                                    </td>
-                                    <td>
-                                        <div><?php echo $row['room']; ?></div>
-                                    </td>
-                                    <td>
-                                        <div><a href="./fees_details.php?reg=<?php echo $row['reg']; ?>">View Fees</a></div>
+                                        <div><?php echo $row['adds']; ?></div>
                                     </td>
 
                                 </tr>

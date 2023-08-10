@@ -11,7 +11,7 @@
                     <span class="font-weight-bold mb-2">Hostel</span>
                     <span class="text-secondary text-small">Admin</span>
                 </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+                <!-- <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i> -->
             </a>
         </li>
 
@@ -44,7 +44,6 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav menu-title flex-column sub-menu">
                     <li class="nav-item"><a class="nav-link" href="monthly_amount.php">Mothly Payment <i class="mdi mdi-cash-multiple menu-icon"></i></a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="view_fees.php">Fees Details <i class="mdi mdi-format-list-bulleted menu-icon"></i></a></li> -->
                 </ul>
             </div>
         </li>

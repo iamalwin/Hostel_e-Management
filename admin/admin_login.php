@@ -74,7 +74,7 @@ if (isset($_POST['btn'])) {
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 <div class="wrap d-md-flex">
-                    <div class="img" style="background-image: url(./include/sjc_ch.png);">
+                    <div class="img" style="background-image: url(./include/sjc_ch.png);width:40%">
                     </div>
                     <div class="login-wrap p-4 p-md-5">
                         <div class="d-flex">
@@ -93,7 +93,7 @@ if (isset($_POST['btn'])) {
                                 </a>
                             </div>
                         </div>
-                        <form method="POST" class="signin-form">
+                        <form method="POST" class="signin-form ">
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Username</label>
                                 <input type="text" class="form-control" name="uname" id="uname" placeholder="Username" required>
@@ -106,7 +106,7 @@ if (isset($_POST['btn'])) {
                                 <button type="submit" class="form-control btn btn-primary rounded submit px-3" id="btn" name="btn">Login</button>
                             </div>
                         </form>
-                        <p class="text-center"><a href="../stud_login.php">Go Back</a></p>
+                        <p class="text-center"><a href="../stud_login.php">Go to Stud login</a></p>
                     </div>
                 </div>
             </div>

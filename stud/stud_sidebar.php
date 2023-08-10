@@ -11,7 +11,7 @@
                     <span class="font-weight-bold mb-2">Hostel</span>
                     <span class="text-secondary text-small">Student</span>
                 </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+                <!-- <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i> -->
             </a>
         </li>
 
