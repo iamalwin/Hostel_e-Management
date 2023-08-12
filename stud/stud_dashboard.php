@@ -2,32 +2,13 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
+// $reg = $_SESSION['reg'];
 
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   $username = $_POST["username"];
-//   $password = $_POST["password"];
-
-//   $query = "SELECT stud_id FROM stud WHERE username = '$username' AND password = '$password'";
-//   $result = mysqli_query($connect, $query);
-
-//   if (mysqli_num_rows($result) == 1) {
-//       $row = mysqli_fetch_assoc($result);
-//       $_SESSION["current_user_id"] = $row["stud_id"];
-//       header("Location: profile.php");
-//       exit();
-//   } else {
-//       echo "Invalid username or password.";
-//   }
-
-// }
-
-
-// if (isset($_GET['logout'])) {
-//     session_destroy();
-//     unset($_SESSION['stud_id']);
-//     header("location:../stud_login.php");
-// }
+// Check if the user is logged in
+if (!isset($_SESSION["reg"])) {
+    header("Location: ../stud_login.php"); 
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +21,8 @@ session_start();
   <link rel="stylesheet" href="../admin/include/materialdesignicons.min.css">
   <link rel="stylesheet" href="../admin/include/vendor.bundle.base.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
   <link rel="stylesheet" href="../dist/css/style.min.css">
-<link rel="stylesheet" href="./include/style.css">
+  <link rel="stylesheet" href="./include/style.css">
   <link rel="stylesheet" href="../admin/include/style.css">
   <link rel="shortcut icon" href="../admin/include/ho_login.png">
 
@@ -65,12 +45,12 @@ session_start();
 <body class="">
   <div class="container-scroller">
 
-    <div class="preloader">
+    <!-- <div class="preloader">
       <div class="lds-ripple">
         <div class="lds-pos"></div>
         <div class="lds-pos"></div>
       </div>
-    </div>
+    </div> -->
     <header class="topbar" data-navbarbg="skin6">
       <?php include './stud_navbar.php' ?>
     </header>
@@ -92,8 +72,6 @@ session_start();
               </span> Dashboard
             </h3>
           </div>
-
-
           <div class="col-md-4 stretch-card grid-margin">
               <div class="card bg-gradient card-img-holder text-white">
               <a href="./stud_feespay.php">
@@ -107,7 +85,6 @@ session_start();
                 </a>
               </div>
             </div>
-
           <div class="col-md-7 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">

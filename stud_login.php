@@ -5,15 +5,12 @@ session_start();
 
 if (isset($_POST['btn'])) {
     $qry = mysqli_query($connect, "select * from stud where name='$sname' && reg='$psw'");
+    $result = mysqli_fetch_array($qry);
     $num = mysqli_num_rows($qry);
     if ($num >= 1) {
-?>
-        <script>
-            alert('welcome to stud home page');
-        </script>
-<?php
-        $_SESSION =
-            header("location:./stud/stud_dashboard.php");
+        $_SESSION['reg'] = $result['reg'];
+        $_SESSION['name'] = $result['name'];
+        header("location:./stud/stud_dashboard.php");
     } else {
         echo "<script>alert('User Name Password Wrong.....')</script>";
     }
@@ -22,7 +19,6 @@ if (isset($_POST['btn'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Stud_login</title>
@@ -35,15 +31,10 @@ if (isset($_POST['btn'])) {
     <link rel="shortcut icon" href="./admin/include/ho_login.png">
     <!-- loading -->
     <link rel="stylesheet" href="./dist/css/style.min.css">
-
-
 </head>
-
 <body>
-
     <section class="ftco-section">
-
-
+        <!-- preloder -->
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
@@ -51,9 +42,7 @@ if (isset($_POST['btn'])) {
             </div>
         </div>
         <div class="main-wrapper">
-
             <div class="container">
-
                 <div class="row justify-content-center">
                     <div class="col-md-12 col-lg-10">
                         <div class="wrap d-md-flex">
@@ -64,7 +53,7 @@ if (isset($_POST['btn'])) {
                                     <div class="w-100">
                                         <h3 class="mb-4">Students Login</h3>
                                     </div>
-                        
+
                                     <div class="text-center">
                                         <a href="./index.php" title="click to home">
                                             <img src="./admin/include/ho_login.png" class="w-35 h-55" alt=" ">
@@ -101,11 +90,9 @@ if (isset($_POST['btn'])) {
     <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
-
     <script>
         $(".preloader ").fadeOut();
     </script>
-
 </body>
 
 </html>

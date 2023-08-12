@@ -16,7 +16,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Welcome<?php ?> !</p>
+                  <p class="mb-1 text-black">Welcome<?php echo " ".$_SESSION['name'];?></p>
                 </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">

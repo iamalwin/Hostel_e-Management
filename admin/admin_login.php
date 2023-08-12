@@ -5,13 +5,11 @@ session_start();
 
 if (isset($_POST['btn'])) {
     $qry = mysqli_query($connect, "select * from admin where name='$uname' && psw='$password'");
+    $result=mysqli_fetch_array($qry);
     $num = mysqli_num_rows($qry);
-    if ($num == 1) {
-?>
-        <script>
-            alert('welcome to admin home page');
-        </script>
-<?php
+    if ($num >= 1) {
+        $_SESSION['psw']=$result['pws'];
+        $_SESSION['name']=$result['name'];
 
         header("location:admin_dashboard.php");
     } else {

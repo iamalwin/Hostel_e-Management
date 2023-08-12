@@ -1,21 +1,40 @@
 <?php
 include("../dbconnect.php");
-extract($_POST);
 session_start();
-$_SESSION['stud_id'] = "stud_id";
 
 if (isset($_POST['btn'])) {
+    $name = $_POST["name"];
+    $reg = $_POST["reg"];
+    $dept = $_POST["dept"];
+    $year = $_POST["year"];
+    $fathname = $_POST["fathname"];
+    $fathphone = $_POST["fathphone"];
+    $age = $_POST["age"];
+    $dob = $_POST["dob"];
+    $bldgrp = $_POST["bldgrp"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    $image_path = "path_to_image.jpg"; // Set the actual image path
 
-	$qry = mysqli_query($connect, "INSERT INTO stud (stud_id, name, reg, gender, age, email, phone, dept, hname, room) VALUES (NULL, '$name','$reg','$gender','$age','$email','$phone','$dept','$hn','$room')");
+    $insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image_path)
+          VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image_path')";
 
-	if ($qry) {
-		$lastInsertedId = mysqli_insert_id($connect);
-		$stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-		mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
-		echo "<script>alert('Hostel Assigned to Students')</script>";
-	} else {
-		echo "<script>alert('Enter the correct fields')</script>";
-	}
+    if (mysqli_query($connect, $insertQuery)) {
+        $lastInsertedId = mysqli_insert_id($connect);
+        $stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+        mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
+        echo "<script>alert('Hostel Assigned to Students')</script>";
+    } else {
+        echo "<script>alert('Enter the correct fields')</script>";
+    }
+
+    // Close the connection
+    mysqli_close($connect);
+
+	header("Location: ../admin/stud_detail.php?id=" . $row['id']);
+
+    exit();
 }
 ?>
 
@@ -55,7 +74,8 @@ if (isset($_POST['btn'])) {
 				padding: 20px;
 			}
 		}
-		.divcont{
+
+		.divcont {
 			box-shadow: none;
 		}
 	</style>
@@ -89,61 +109,84 @@ if (isset($_POST['btn'])) {
 					</div>
 
 					<div class="card d-flex justify-content-center align-items-center">
-					<form class="card-body" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
-						<div class="row">
-							<div class="col-md-5 m-3">
-								<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>
-							</div>
-							<div class="col-md-5 m-3">
-								<input type="text" class="form-control" name="reg" id="reg" placeholder="Register Number" required>
-							</div>
-						</div>
-						<div class="row">
-
-							<div class="col-md-5 m-3">
-								<div class="col  d-flex flex-row">
-									<div class="form-check m-3">
-										<input class="form-check-input" type="radio" name="gender" id="male" value="male">
-										<label class="form-check-label" for="male">
-											Male
-										</label>
-									</div>
-
-									<div class="form-check m-3">
-										<input class="form-check-input" type="radio" name="gender" id="female" value="female">
-										<label class="form-check-label" for="female">
-											Female
-										</label>
-									</div>
+						<form class="card-body col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+							<div class="row">
+								<div class="col-md-5 m-3">
+									<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>
 								</div>
-
+								<div class="col-md-5 m-3">
+									<input type="text" class="form-control" name="reg" id="reg" placeholder="Register Number" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 m-3">
+									<input type="text" class="form-control" name="dept" id="dept" placeholder="Department" required>
+								</div>
+								<div class="col-md-5 m-3">
+									<input class="form-control" placeholder="Year ex: 1st UG  " name="year" id="year" required>
+								</div>
 							</div>
 
-							<div class="col-md-5 m-3">
-								<input class="form-control"placeholder="Age" name="age" id="age" required>
+
+							<div class="row">
+								<div class="col-md-5 m-3">
+									<input type="text" class="form-control" name="fathname" id="fathname" placeholder="Father Name" required>
+								</div>
+								<div class="col-md-5 m-3">
+									<input type="phone" class="form-control" id="fathphone" name="fathphone" placeholder="Father Phone" onInput="validatePhoneNumber(this)" required>
+								</div>
 							</div>
-						</div>
 
 
-						<div class="row">
-							<div class="col-md-5 m-3">
-								<input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
+							<div class="row">
+								<div class="col-md-5 m-3">
+									<input type="" class="form-control" name="age" id="age" placeholder="Age" required>
+								</div>
+								<div class="col-md-5 m-3">
+									<input type="date" title="date of barth" class="form-control" name="dob" id="dob" placeholder="DOB" required>
+								</div>
 							</div>
-							<div class="col-md-5 m-3">
-								<input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone" onInput="validatePhoneNumber(this)" required>
-							</div>
-						</div>
 
-						<div class="row">
-							<div class="col-md-5 m-3">
-								<input type="text" class="form-control" name="dept" id="dept" placeholder="Department" required>
-							</div>
-							<div class="col-md-5 m-3">
-								<input  class="form-control" name="year" id="year" placeholder="Year of passing" onInput="validateYear(this)" required>
-							</div>
-						</div>
+							<div class="row">
+								<div class="col-md-5 m-3">
 
-						<div class="row">
+									<select class="form-control" id="bldgrp" name="bldgrp" placeholder="Blood Group" required name="blood_group">
+										<option value="" disabled selected>Select Blood Group</option>
+										<option value="A+">A +ve</option>
+										<option value="A-">A -ve</option>
+										<option value="B+">B +ve</option>
+										<option value="B-">B -ve</option>
+										<option value="AB+">AB +ve</option>
+										<option value="AB-">AB -ve</option>
+										<option value="O+">O +ve</option>
+										<option value="O-">O -ve</option>
+									</select>
+								</div>
+								<div class="col-md-5 m-3">
+									<input type="text" class="form-control" name="email" id="email" placeholder="E-Mail" required>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-5 m-3">
+									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+								</div>
+								<div class="col-md-5 m-3">
+									<textarea type="text" class="form-control" name="address" id="address" placeholder="Adrress" required></textarea>
+								</div>
+							</div>
+
+							<div class="row">
+
+								<div class="col-md-5 m-3">
+								<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
+								</div>
+								<div class="col-md-5 m-3">
+								<input type="file" name="image_path" id="image_path" accept="image/*" onchange="previewImage(event)" required>
+								</div>
+							</div>
+
+							<!-- <div class="row">
 							<div class="col-md-5 m-3 justify-content-center align-items-center d-flex" >
 								<select name="hn" class="col-md-10 p-2">
 									<option value="" class="btnsel">Select Hostel</option>
@@ -160,11 +203,11 @@ if (isset($_POST['btn'])) {
 							<div class="col-md-5 m-3">
 								<input class="form-control" name="room" id="room" placeholder="Room No" required>
 							</div>
-						</div>
-						<div class="p-t-15">
-							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
-							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
-						</div>
+						</div> -->
+							<div class="p-t-15">
+								<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
+								<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
+							</div>
 						</form>
 
 					</div>
@@ -186,28 +229,48 @@ if (isset($_POST['btn'])) {
 	<script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 	<script src="../admin/include/vendor.bundle.base.js.download"></script>
-<!-- phone -->
-<script>
-function validatePhoneNumber(input) {
-            const phoneNumber = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-            const maxLength = 10;
-
-            if (phoneNumber.length > maxLength) {
-                input.value = phoneNumber.slice(0, maxLength); // Truncate input to 10 digits
-            }
+	<script>
+		function previewImage(event) {
+			const imagePreview = document.getElementById('image-preview');
+			const input = event.target;
+        
+			if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+				imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            };
+            
+            reader.readAsDataURL(input.files[0]);
+        } else {
+			imagePreview.style.display = 'none';
         }
-    </script>
+    }
+</script>
+
+<!-- phone -->
+	<script>
+		function validatePhoneNumber(input) {
+			const phoneNumber = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+			const maxLength = 10;
+
+			if (phoneNumber.length > maxLength) {
+				input.value = phoneNumber.slice(0, maxLength); // Truncate input to 10 digits
+			}
+		}
+	</script>
 	<!-- year -->
 	<script>
-        function validateYear(input) {
-            const yearno = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-            const maxLength = 4;
+		function validateYear(input) {
+			const yearno = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+			const maxLength = 4;
 
-            if (yearno.length > maxLength) {
-                input.value = yearno.slice(0, maxLength); // Truncate input to 10 digits
-            }
-        }
-    </script>
+			if (yearno.length > maxLength) {
+				input.value = yearno.slice(0, maxLength); // Truncate input to 10 digits
+			}
+		}
+	</script>
 	<script>
 		function toggleCollapse(event) {
 			event.preventDefault();
@@ -235,6 +298,7 @@ function validatePhoneNumber(input) {
 	<script>
 		$(".preloader ").fadeOut();
 	</script>
+
 
 </body>
 

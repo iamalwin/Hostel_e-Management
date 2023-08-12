@@ -1,0 +1,23 @@
+CREATE TABLE stud (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    stud_id varchar(20) DEFAULT NULL,
+    name VARCHAR(20) NOT NULL,
+    reg VARCHAR(20) NOT NULL,
+    dept VARCHAR(30) NOT NULL,
+    year VARCHAR(20) NOT NULL,
+    fathname VARCHAR(50) NOT NULL,
+    fathphone VARCHAR(20) NOT NULL,
+    age INT NOT NULL,
+    dob DATE NOT NULL,
+    bldgrp VARCHAR(10) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+    image_path VARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image_path)
+VALUES
+    ('John Doe', '2021001', 'Computer Science', '1st UG', 'John Doe Sr.', '1234567890', 20, '2003-05-15', 'A+', 'john@example.com', '9876543210', '123 Main St, City', 'john_image.jpg'),
+    ('Jane Smith', '2021002', 'Mechanical Engineering', '1st UG', 'Michael Smith', '9876543210', 19, '2002-09-10', 'B-', 'jane@example.com', '8765432109', '456 Park Ave, Town', 'jane_image.jpg');

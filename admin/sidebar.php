@@ -31,8 +31,8 @@
 
         <li class="nav-item">
             <a class="nav-link" href="stud_registration.php">
-                <span class="menu-title">Students Registration</span>
-                <i class="mdi mdi-account-plus menu-icon"></i>
+                <span class="menu-title">Student Register</span>
+                <i class="mdi mdi-account-plus menu-icon pl-2"></i>
             </a>
         </li>
         <li class="nav-item">
@@ -41,7 +41,7 @@
                 <i class="mdi mdi-menu-down mdi-24px text-primary"></i>
                 <i class="mdi mdi-credit-card menu-icon"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse bg-light" style="border-radius: 50px;" id="ui-basic">
                 <ul class="nav menu-title flex-column sub-menu">
                     <li class="nav-item"><a class="nav-link" href="monthly_amount.php">Mothly Payment <i class="mdi mdi-cash-multiple menu-icon" style="margin-left: 15px;"></i></a></li>
                 </ul>

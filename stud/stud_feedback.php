@@ -3,21 +3,19 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 
+
 if (isset($_POST['btn'])) {
-    $qry = mysqli_query($connect, "SELECT name FROM stud WHERE reg = '$reg'");
-    $user_row = mysqli_fetch_assoc($qry);
-    $max_qry = mysqli_query($connect, "SELECT max(id) FROM suggest");
-    $max_row = mysqli_fetch_array($max_qry);
-    $id = $max_row['max(id)'] + 1;
-    $qry = mysqli_query($connect, "INSERT INTO suggest VALUES ('$id', '$reg', '$name', '$sub', '$cmpl')");
-    
-    if ($qry) {
-        echo "<script>alert('We Get your Suggestions if it is possible we will take action for that')</script>";
-    } else {
-        echo "<script>alert('Enter the fields Correctly')</script>";
-    }
+  $qry = mysqli_query($connect, "SELECT name FROM stud WHERE reg = '$reg'");
+  $user_row = mysqli_fetch_assoc($qry);
+  $qry = mysqli_query($connect, "INSERT INTO suggest VALUES ('$reg', '$name', '$sub', '$cmpl')");
+  if ($qry) {
+    echo "<script>alert('We Get your Suggestions if it is possible we will take action for that')</script>";
+  } else {
+    echo "<script>alert('Enter the fields Correctly')</script>";
+  }
 }
 ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +33,17 @@ if (isset($_POST['btn'])) {
   <link rel="stylesheet" href="../admin/include/ho_login.png">
   <link rel="stylesheet" href="./include/style.css">
 </head>
+<style>
+  .request {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+  }
+
+  .solved {
+    color: green;
+  }
+</style>
 
 <body class="">
   <div class="container-scroller">
@@ -46,7 +55,7 @@ if (isset($_POST['btn'])) {
       </div>
     </div>
     <header class="topbar" data-navbarbg="skin6">
-      <?php include './stud_navbar.php' ?>
+      <!-- <?php include './stud_navbar.php' ?> -->
     </header>
 
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
@@ -59,16 +68,24 @@ if (isset($_POST['btn'])) {
           <div class="page-header">
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
-              <i class="mdi mdi-chart-bar menu-icon"></i>
+                <i class="mdi mdi-chart-bar menu-icon"></i>
               </span> Feedback
             </h3>
+
+            <?php
+            $qry = mysqli_query($connect, "select * from stud");
+            $row = mysqli_fetch_array($qry);
+            $_SESSION['id']  = $row['id'];
+            ?>
+              <div class="yrfeed p-4 float-right">
+                <a href='feed_solved.php?id=<?php echo $row['id']; ?>'> <button class="btn formbold-btn">Status</button></a>
+              </div>
           </div>
 
           <!-- Dash data section -->
 
           <div class="formbold-main-wrapper card">
             <div class="formbold-form-wrapper">
-
               <svg class="formbold-img float-right" width="250" height="70" viewBox="0 0 490 202" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M382.76 2.47283H262.606C262.606 1.10712 261.499 0 260.133 0H210.597C209.231 0 208.124 1.10712 208.124 2.47283H87.4749C85.3191 2.47283 83.2517 3.32799 81.7274 4.85017C80.203 6.37235 79.3467 8.43686 79.3467 10.5896V174.884C79.3467 177.037 80.203 179.101 81.7274 180.623C83.2517 182.146 85.3191 183.001 87.4749 183.001H382.76C384.916 183.001 386.983 182.146 388.508 180.623C390.032 179.101 390.888 177.037 390.888 174.884V10.5886C390.888 8.43611 390.032 6.37183 388.507 4.84985C386.983 3.32787 384.916 2.47283 382.76 2.47283Z" fill="#3F3D56"></path>
                 <path d="M379.991 16.8164H90.2441V180.033H379.991V16.8164Z" fill="#E6E6E6"></path>
@@ -95,32 +112,27 @@ if (isset($_POST['btn'])) {
                 <path d="M28.1517 168.175C34.791 175.289 35.1341 185.746 35.1341 185.746C35.1341 185.746 24.7129 184.667 18.0737 177.553C11.4344 170.439 11.0913 159.982 11.0913 159.982C11.0913 159.982 21.5125 161.061 28.1517 168.175Z" fill="#E5E5E5"></path>
                 <path d="M43.1255 200.394H16.9219C16.4191 200.394 15.9264 200.253 15.5002 199.986C15.0739 199.72 14.7313 199.339 14.5116 198.888L8.80661 187.177C8.6074 186.769 8.51542 186.317 8.53936 185.864C8.5633 185.411 8.70236 184.971 8.94344 184.586C9.18453 184.201 9.51971 183.884 9.91743 183.664C10.3152 183.445 10.7623 183.33 11.2169 183.33H48.831C49.2855 183.33 49.7327 183.445 50.1304 183.664C50.5282 183.884 50.8633 184.201 51.1044 184.586C51.3455 184.971 51.4846 185.411 51.5085 185.864C51.5324 186.317 51.4405 186.769 51.2413 187.177L45.5363 198.888C45.3165 199.34 44.974 199.721 44.5477 199.987C44.1215 200.253 43.6288 200.394 43.126 200.394L43.1255 200.394Z" fill="#E5E5E5"></path>
               </svg>
-
               <form class="grid-margin" action="#" method="POST">
-
                 <div class="formbold-form-title">
                   <h2 class="">Feedback now</h2>
                   <p>
                     Leave Your Feed Back About Hostel And Mess
                   </p>
                 </div>
-
                 <div class="col-wrap formbold-input-flex">
-                <div>
+                  <div>
                     <label for="reg" class="formbold-form-label">
                       Reg No
                     </label>
-                    <input type="text" name="reg" value="<?php ?> " id="reg" class="formbold-form-input"/>
+                    <input type="text" name="reg" value="<?php echo " ".$_SESSION['reg'];?>" id="reg" class="formbold-form-input" disabled  />
                   </div>
                   <div>
                     <label for="name" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="name" value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>" id="name" class="formbold-form-input" />
+                    <input type="text" name="name" value="<?php echo " ".$_SESSION['name'];?>" id="name" class="formbold-form-input" disabled  />
                   </div>
                 </div>
-
-
                 <div>
                   <label for="area" class="formbold-form-label"> Subject </label>
                   <input type="text" name="sub" id="area" class="formbold-form-input" />
@@ -134,8 +146,6 @@ if (isset($_POST['btn'])) {
               </form>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -150,32 +160,30 @@ if (isset($_POST['btn'])) {
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
-
-
     <script src="../admin/include/vendor.bundle.base.js.download"></script>
 
-<script>
-  function toggleCollapse(event) {
-    event.preventDefault();
-    var target = event.target;
-    var parent = target.closest('.nav-item');
-    var collapse = parent.querySelector('.collapse');
-    var icon = parent.querySelector('.menu-icon');
-    
-    if (collapse.style.display === 'none') {
-      collapse.style.display = 'block';
-      icon.classList.add('rotate');
-    } else {
-      collapse.style.display = 'none';
-      icon.classList.remove('rotate');
-    }
-  }
+    <script>
+      function toggleCollapse(event) {
+        event.preventDefault();
+        var target = event.target;
+        var parent = target.closest('.nav-item');
+        var collapse = parent.querySelector('.collapse');
+        var icon = parent.querySelector('.menu-icon');
 
-  var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
-  for (var i = 0; i < collapsedLinks.length; i++) {
-    collapsedLinks[i].addEventListener('click', toggleCollapse);
-  }
-</script>
+        if (collapse.style.display === 'none') {
+          collapse.style.display = 'block';
+          icon.classList.add('rotate');
+        } else {
+          collapse.style.display = 'none';
+          icon.classList.remove('rotate');
+        }
+      }
+
+      var collapsedLinks = document.querySelectorAll('.nav-link.collapsed');
+      for (var i = 0; i < collapsedLinks.length; i++) {
+        collapsedLinks[i].addEventListener('click', toggleCollapse);
+      }
+    </script>
 
     <script>
       $(".preloader ").fadeOut();

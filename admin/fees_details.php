@@ -77,13 +77,13 @@ session_start();
                                     $qt = mysqli_query($connect, "select * from stud where reg='$reg'");
                                     $rw = mysqli_fetch_assoc($qt);
                                     ?>
-<!-- 
-                                    <td>
+
+                                   <!-- <td>
                                         <div><?php echo $row['name']; ?></div>
-                                    </td> -->
+                                    </td> 
                                     <td>
                                         <div><?php echo $rw['hname']; ?></div>
-                                    </td>
+                                    </td>-->
                                     <td>
                                         <div><?php echo $row['month']; ?></div>
                                     </td>

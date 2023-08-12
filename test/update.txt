@@ -4,6 +4,42 @@ extract($_POST);
 session_start();
 ?>
 
+<?php
+include("../dbconnect.php"); // Include your database connection
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    $reg = $_POST["reg"];
+    $gender = $_POST["gender"];
+    $age = $_POST["age"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $dept = $_POST["dept"];
+    $hname = $_POST["hname"];
+    $room = $_POST["room"];
+
+    $query = "UPDATE stud SET name = '$name', reg = '$reg', gender = '$gender', 
+              age = '$age', email = '$email', phone = '$phone', dept = '$dept', 
+              hname = '$hname', room = '$room' WHERE id = '$id'";
+
+    if (mysqli_query($connect, $query)) {
+        header("Location: ../admin/stud_detail.php"); // Redirect back to the list page
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($connect);
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
+    $id = $_GET["id"];
+    
+    $query = "SELECT * FROM stud WHERE id = '$id'";
+    $result = mysqli_query($connect, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+?>
 
 <!DOCTYPE html>
 <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
@@ -34,7 +70,6 @@ session_start();
 
 
     <link rel="stylesheet" href="./include/style.css">
-
     <link rel="shortcut icon" href="./include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
 
@@ -79,70 +114,29 @@ session_start();
                     <div class="page-header">
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                                <i class="mdi mdi-contacts menu-icon"></i>
-                            </span> Students Details
+                                <i class="mdi mdi-pencil menu-icon"></i>
+                            </span> Update Details
                         </h3>
                     </div>
 
                     <!-- Dash data section -->
 
-                    <div class="grid-margin card p-5 stretch-card">
-                        <table class="table table-responsive-xl">
-                            <thead class="bg-light">
-                                <tr>
-                                    <th class="fw-bolder" scope="col">Reg No</th>
-                                    <th class="fw-bolder" scope="col">Name</th>
-                                    <th class="fw-bolder" scope="col">Dept / Year</th>
-                                    <th class="fw-bolder" scope="col">Phone</th>
-                                    <th class="fw-bolder" scope="col">Fees Details</th>
-                                    <th class="fw-bolder" scope="col">Profile</th>
-                                </tr>
-                            </thead>
 
-                            <?php
-                            $qry = mysqli_query($connect, "select * from stud");
-                            $i = 1;
-                            while ($row = mysqli_fetch_array($qry)) {
-                                $reg = $row['reg'];
-                            ?>
-
-                                <tr class="alert " role="alert">
-                                    <td>
-                                        <div><?php echo $row['reg']; ?></div>
-                                    </td>
-                                    <td>
-                                        <div><?php echo $row['name']; ?></div>
-                                    </td>
-                                    <td>
-                                        <div><?php echo $row['dept']; ?> / <?php echo $row['year']; ?></div>
-                                    </td>
-                                    <td>
-                                        <div><?php echo $row['phone']; ?></div>
-                                    </td>
-                                    <td>
-                                        <div><a href="./fees_details.php?reg=<?php echo $row['reg']; ?>">View Fees</a></div>
-                                    </td>
-                                    <td>
-                                        <a href='stud_update.php?id=<?php echo $row['id']; ?>'>
-                                            <button class="rounded-pill btn--blue btn pt-2 pb-2 pr-2 pl-2 btn-primary" value="Submit"><i class="mdi mdi-account menu-icon pr-1"></i>Profile</button></a>
-                                    </td>
-                                </tr>
-                            <?php
-                                $i++;
-                            }
-
-                            ?>
-                        </table>
-                    </div>
-
+                    <form method="post" action="stud_update.php">
+        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+        <label>Name: <input type="text" name="name" value="<?php echo $row['name']; ?>"></label><br>
+        <label>Registration: <input type="text" name="reg" value="<?php echo $row['reg']; ?>"></label><br>
+        <label>Gender: <input type="text" name="gender" value="<?php echo $row['gender']; ?>"></label><br>
+        <label>Age: <input type="text" name="age" value="<?php echo $row['age']; ?>"></label><br>
+        <label>Email: <input type="text" name="email" value="<?php echo $row['email']; ?>"></label><br>
+        <label>Phone: <input type="text" name="phone" value="<?php echo $row['phone']; ?>"></label><br>
+        <label>Department: <input type="text" name="dept" value="<?php echo $row['dept']; ?>"></label><br>
+        <label>Hostel Name: <input type="text" name="hname" value="<?php echo $row['hname']; ?>"></label><br>
+        <label>Room: <input type="text" name="room" value="<?php echo $row['room']; ?>"></label><br>
+        <input type="submit" value="Update">
+    </form>
 
                 </div>
-                <footer class="footer">
-                    <div class="container-fluid clearfix">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
-                    </div>
-                </footer>
             </div>
         </div>
     </div>
@@ -159,7 +153,6 @@ session_start();
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
     <script src="../admin/include/vendor.bundle.base.js.download"></script>
-
     <script>
         function toggleCollapse(event) {
             event.preventDefault();
@@ -190,3 +183,11 @@ session_start();
 </body>
 
 </html>
+<?php
+    } else {
+        echo "Student request not found.";
+    }
+}
+?>
+
+
