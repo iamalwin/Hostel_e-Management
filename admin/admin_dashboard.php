@@ -1,6 +1,12 @@
 <?php
 include('../dbconnect.php');
 session_start();
+
+if (!isset($_SESSION["reg"])) {
+  header("Location: ../stud_login.php");
+  exit();
+}
+
 ?>
 
 <!-- stud count php -->
@@ -15,7 +21,7 @@ if ($result) {
   $totalStudents = 0;
 }
 ?>
-
+<!-- feed -->
 <?php
 include("../dbconnect.php");
 $query = "SELECT COUNT(*) AS total_feed FROM suggest";
@@ -28,6 +34,7 @@ if ($result) {
 }
 ?>
 
+<!-- req -->
 <?php
 include("../dbconnect.php");
 $query = "SELECT COUNT(*) AS reg FROM studreq";
@@ -134,6 +141,22 @@ if ($result) {
                 </a>
               </div>
             </div>
+
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient card-img-holder text-white">
+              <a href="./stud_req.php">
+                  <div class="card-body">
+                    <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h2 class="font-weight-normal mb-1">
+                      <i class="mdi mdi-message mdi-24px float-right"></i>
+                      <!-- studends reg -->
+                      <?php echo "Stud request: " . $totalreq; ?>
+                    </h2>
+                  </div>
+                </a>
+              </div>
+            </div>
+
             <div class="col-md-4 stretch-card grid-margin">
               <div class="card bg-gradient card-img-holder text-white">
 
@@ -151,20 +174,7 @@ if ($result) {
 
               </div>
             </div>
-            <div class="col-md-4 stretch-card grid-margin">
-              <div class="card bg-gradient card-img-holder text-white">
-              <a href="./stud_req.php">
-                  <div class="card-body">
-                    <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h2 class="font-weight-normal mb-1">
-                      <i class="mdi mdi-message mdi-24px float-right"></i>
-                      <!-- studends reg -->
-                      <?php echo "Stud request: " . $totalreq; ?>
-                    </h2>
-                  </div>
-                </a>
-              </div>
-            </div>
+            
             <!--<div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-success card-img-holder text-white">
                 <div class="card-body">

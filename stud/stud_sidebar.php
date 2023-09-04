@@ -1,9 +1,24 @@
+<?php
+$user_id = $_SESSION["reg"]; // Assuming 'reg' is the correct column name
+$query = "SELECT * FROM stud WHERE reg = '$user_id'";
+
+// Execute the query
+$result = mysqli_query($connect, $query);
+
+// Check if the query was successful
+if ($result) {
+  $row = mysqli_fetch_assoc($result);
+} else {
+  // Handle the error if the query fails
+  die("Error: " . mysqli_error($connect));
+}
+?>
 <nav class="sidebar sidebar-offcanvas m-0 fixed-left d-flex" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
             <a href="#home" class="nav-link">
                 <div class="nav-profile-image">
-                <img src="../admin/include/face1.jpg" alt="profile">
+                <img src="./include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="...">
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>

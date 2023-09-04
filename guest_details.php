@@ -106,7 +106,7 @@
 
 
 					<div class="card d-flex justify-content-center align-items-center">
-					<form class="card-body col-8" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+					<form class="card-body bg-light rounded col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 						<div class="row">
 							<div class="col-md-5 m-3">
 								<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>
@@ -172,7 +172,6 @@
 						</form>
 
 					</div>
-
 			</div>
 		</div>
 	</div>

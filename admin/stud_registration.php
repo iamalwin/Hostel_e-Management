@@ -15,10 +15,10 @@ if (isset($_POST['btn'])) {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
-    $image_path = "path_to_image.jpg"; // Set the actual image path
+    $image = "./include/images.jpg"; // Set the actual image path
 
-    $insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image_path)
-          VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image_path')";
+    $insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
+          VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image')";
 
     if (mysqli_query($connect, $insertQuery)) {
         $lastInsertedId = mysqli_insert_id($connect);
@@ -182,7 +182,8 @@ if (isset($_POST['btn'])) {
 								<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
 								</div>
 								<div class="col-md-5 m-3">
-								<input type="file" name="image_path" id="image_path" accept="image/*" onchange="previewImage(event)" required>
+									<label for="image">Profile Photo</label>
+								<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
 								</div>
 							</div>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,44 +13,26 @@
   <link rel="stylesheet" href="./dist/css/style.min.css">
   <link rel="stylesheet" href="./dist/home/fontawesome.css">
   <link rel="stylesheet" href="./dist/home/style.css">
-  <link rel="stylesheet" href="./dist/home/owl.css">
+  <!-- <link rel="stylesheet" href="./dist/home/owl.css"> -->
+  <link rel="stylesheet" href="./dist/home/home.css">
   <link rel="shortcut icon" href="./admin./include/ho_login.png">
 
 
   <style>
-    .image-container {
-    position: relative;
-    display: inline-block;
-}
-.image-container::before {
-  content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(48, 47, 47, 0.578);
-}
-.image-container img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
 
   </style>
 </head>
 
 <body>
 
-  <header class="fixed-top">
-    <div class="preloader">
-      <div class="lds-ripple">
-        <div class="lds-pos"></div>
-        <div class="lds-pos"></div>
-      </div>
+  <div class="preloader">
+    <div class="lds-ripple">
+      <div class="lds-pos"></div>
+      <div class="lds-pos"></div>
     </div>
+  </div>
 
+  <header class="fixed-top height:15vh">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href=""><em><img src="./admin/include/ho_login.png" style="width: 40px; height:40px" alt=""></em>
@@ -59,13 +42,13 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
           </svg> </button>
-        <div class="navbar-collapse collapse" id="navbarResponsive" style="">
+        <div class="navbar-collapse collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-item active">
+            <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home
                   <span class="sr-only">(current)</span>
                 </a>
-              </li>  -->
+              </li> 
             <li class="nav-item">
               <a class="nav-link" href="./admin/admin_login.php">Admin login</a>
             </li>
@@ -96,33 +79,43 @@
     </nav>
   </header>
 
-  <div class="main-banner">
-    <div class="container-fluid">
-      <div class="owl-banner bg-light p-0">
-
-      <!-- <div class="bgimg"><img src="./admin/include/HO_LOGO.png" alt=""></div> -->
+  <div class="main-banner" style="position: absolute; height:85vh; bottom:0%">
+    <div class="">
+      <div class="owl-banner p-0">
+        <!-- <div class="bgimg"><img src="./admin/include/HO_LOGO.png" alt=""></div> -->
         <div class="image-container">
-          <img src="./admin/include/sjc.jpeg" alt="">
-        </div>        
+          <img src="./admin/include/sjcchr.jpg" alt="">
+          <div class="info">
+            <h3>News</h3>
+            <hr>
+            <div class="inf_news" id="scrollingContainer">
+              <div class="news_cont">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque maxime praesentium facilis soluta cupiditate atque repellendus minus excepturi placeat hic perspiciatis repellat deserunt nobis reiciendis, et voluptatem dolorum quos eveniet.</p>
+              </div>
+              <div class="news_cont">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque maxime praesentium facilis soluta cupiditate atque repellendus minus excepturi placeat hic perspiciatis repellat deserunt nobis reiciendis, et voluptatem dolorum quos eveniet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <!-- Banner Ends Here -->
 
-
   <!-- <footer>
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-12">
-            <div class="copyright-text">
-              <p><a href="#"></a>
-              </p>
-            </div>
+    <div class="container1 bg-dark">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="copyright-text">
+            <p><a href="#"></a>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia possimus repudiandae iure reprehenderit quis, ducimus esse qui odio eius obcaecati, culpa aperiam suscipit cumque neque sint aspernatur! Expedita, vero voluptas?
+            </p>
           </div>
         </div>
       </div>
-    </footer> -->
+    </div>
+
+  </footer> -->
 
   <script src="./dist/home/jquery.min.js.download"></script>
   <script src="./dist/home/bootstrap.bundle.min.js.download"></script>
@@ -132,6 +125,24 @@
 
   <script>
     $(".preloader ").fadeOut();
+  </script>
+
+  <script>
+    const scrollingContainer = document.getElementById('scrollingContainer');
+
+    scrollingContainer.addEventListener('mouseenter', function(event) {
+      scrollingContainer.style.cursor = 'pinter';
+      scrollingContainer.querySelectorAll('.news_cont').forEach(function(el) {
+        el.style.animationPlayState = 'paused';
+      });
+    });
+
+    scrollingContainer.addEventListener('mouseleave', function(event) {
+      scrollingContainer.style.cursor = 'auto';
+      scrollingContainer.querySelectorAll('.news_cont').forEach(function(el) {
+        el.style.animationPlayState = 'running';
+      });
+    });
   </script>
 
 </body>

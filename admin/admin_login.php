@@ -104,7 +104,7 @@ if (isset($_POST['btn'])) {
                                 <button type="submit" class="form-control btn btn-primary rounded submit px-3" id="btn" name="btn">Login</button>
                             </div>
                         </form>
-                        <p class="text-center"><a href="../stud_login.php">Go to Stud login</a></p>
+                        <p class="text-center"><a href="../index.php">Home</a></p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Content Switch Animation</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.content {
+    display: none;
+    font-size: 24px;
+}
+
+.active {
+    display: block;
+    animation: fade 1s ease-in-out forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="content active">Content 1</h1>
+        <h2 class="content">Content 2</h2>
+    </div>
+    <script >
+        document.addEventListener("DOMContentLoaded", function () {
+    const contents = document.querySelectorAll(".content");
+    let currentIndex = 0;
+
+    function switchContent() {
+        contents[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % contents.length;
+        contents[currentIndex].classList.add("active");
+    }
+
+    setInterval(switchContent, 1000); // 10 seconds
+});
+
+    </script>
+</body>
+</html>

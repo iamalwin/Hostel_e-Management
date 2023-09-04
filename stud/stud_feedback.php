@@ -14,6 +14,7 @@ if (isset($_POST['btn'])) {
     echo "<script>alert('Enter the fields Correctly')</script>";
   }
 }
+
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -55,7 +56,7 @@ if (isset($_POST['btn'])) {
       </div>
     </div>
     <header class="topbar" data-navbarbg="skin6">
-      <!-- <?php include './stud_navbar.php' ?> -->
+      <?php include './stud_navbar.php' ?>
     </header>
 
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">

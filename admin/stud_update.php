@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
-    $image_path = "path_to_image.jpg";
+    $image = "path_to_image.jpg";
 
     $query = "UPDATE stud 
               SET name = '$name', 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   email = '$email', 
                   phone = '$phone', 
                   address = '$address', 
-                  image_path = '$image_path' 
+                  image = '$image' 
               WHERE reg = '$reg'";
 
     if (mysqli_query($connect, $query)) {
@@ -135,81 +135,84 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                 </h3>
                             </div>
                             <!-- Dash data section -->
+
+
                             <form method="post">
-                                <img src="<?php echo $row['image_path']; ?>" class="rounded-circle float-right" alt="...">
+                                <img src="../stud/include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="...">
 
                                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                 <table>
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="name">Name</label><br>
                                             <input type="text" name="name" disabled value="<?php echo $row['name']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
-                                        <td>
+                                        <td class="m-3">
                                             <label for="reg">Registration</label><br>
                                             <input type="text" name="reg" disabled value="<?php echo $row['reg']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="dept">Dept</label><br>
                                             <input type="text" name="dept" disabled value="<?php echo $row['dept']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
-                                        <td>
+                                        <td class="m-3">
                                             <label for="year">Year</label><br>
                                             <input type="text" name="year" disabled value="<?php echo $row['year']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="email">Email</label><br>
                                             <input type="text" name="email" disabled value="<?php echo $row['email']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
-                                        <td>
+                                        <td class="m-3">
                                             <label for="fathname">Father Name</label><br>
                                             <input type="text" name="fathname" disabled value="<?php echo $row['fathname']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="fathphone">Father Phone</label><br>
                                             <input type="text" name="fathphone" disabled value="<?php echo $row['fathphone']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
-                                        <td>
+                                        <td class="m-3">
                                             <label for="age">Age:</label><br>
                                             <input type="text" name="age" disabled value="<?php echo $row['age']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="dob">Dob</label><br>
                                             <input type="text" name="dob" disabled value="<?php echo $row['dob']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
-                                        <td>
+                                        <td class="m-3">
                                             <label for="bldgrp">Blood Group</label><br>
                                             <input type="text" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="email">Email</label><br>
                                             <input type="text" name="email" disabled value="<?php echo $row['email']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
-                                        <td>
+                                        <td class="m-3">
                                             <label for="phone">Phone</label><br>
                                             <input type="text" name="phone" disabled value="<?php echo $row['phone']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>
+                                    <tr class="m-3">
+                                        <td class="m-3">
                                             <label for="address">Address</label><br>
-                                            <input type="text" name="address" cols="20" rows="10" disabled value="<?php echo $row['address']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <textarea name="address" cols="20" rows="10" disabled style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
                                         </td>
+
                                     </tr>
 
                                 </table>
@@ -257,12 +260,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
             </script>
             <script>
                 function toggleEditable() {
-                    var fields = document.querySelectorAll('input[type="text"]');
+                    var fields = document.querySelectorAll('input[type="text"], textarea');
                     fields.forEach(function(field) {
                         field.disabled = !field.disabled;
                     });
                 }
             </script>
+
             <script>
                 $(".preloader ").fadeOut();
             </script>

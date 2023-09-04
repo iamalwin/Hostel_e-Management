@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    .nav-item {
+        position: relative;
+        display: inline-block;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        min-width: 150px;
+    }
+
+    .nav-item:hover .sub-menu {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" href="#" id="nav-link">About Us</a>
+            <ul class="sub-menu">
+                <li>
+                    <a class="dropdown-item" href="#">Action</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+</body>
+</html>
