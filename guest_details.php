@@ -47,6 +47,10 @@
 
 
 	<style>
+		.container-fluid{
+			background-color: rgb(185, 185, 185);
+		}
+
 		.container {
 			margin-top: 20px;
 			width: 700px;
@@ -55,7 +59,12 @@
 			border-radius: 5px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 		}
-
+		form{	
+			background-color: darkgrey;
+		}
+		.form-control{
+			background-color: darkgray;
+		}
 		@media (max-width: 768px) {
 			.container {
 				padding: 20px;
@@ -105,8 +114,8 @@
 					</div>
 
 
-					<div class="card d-flex justify-content-center align-items-center">
-					<form class="card-body bg-light rounded col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+					<div class="card d-flex bg-transparent justify-content-center align-items-center">
+					<form class="card-body rounded col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 						<div class="row">
 							<div class="col-md-5 m-3">
 								<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>

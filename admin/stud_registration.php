@@ -15,7 +15,7 @@ if (isset($_POST['btn'])) {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
-    $image = "./include/images.jpg"; // Set the actual image path
+    $image = "./include/images"; // Set the actual image path
 
     $insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
           VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image')";
@@ -28,12 +28,9 @@ if (isset($_POST['btn'])) {
     } else {
         echo "<script>alert('Enter the correct fields')</script>";
     }
-
     // Close the connection
     mysqli_close($connect);
-
 	header("Location: ../admin/stud_detail.php?id=" . $row['id']);
-
     exit();
 }
 ?>
@@ -84,7 +81,6 @@ if (isset($_POST['btn'])) {
 
 <body class="">
 	<div class="container-scroller">
-
 
 		<div class="preloader">
 			<div class="lds-ripple">
@@ -177,7 +173,6 @@ if (isset($_POST['btn'])) {
 							</div>
 
 							<div class="row">
-
 								<div class="col-md-5 m-3">
 								<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
 								</div>
