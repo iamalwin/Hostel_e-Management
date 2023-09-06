@@ -3,23 +3,19 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 
-// Check if the user is logged in
 if (!isset($_SESSION["reg"])) {
   header("Location: ../stud_login.php");
   exit();
 }
 
-$user_id = $_SESSION["reg"]; // Assuming 'reg' is the correct column name
+$user_id = $_SESSION["reg"];
 $query = "SELECT * FROM stud WHERE reg = '$user_id'";
 
-// Execute the query
 $result = mysqli_query($connect, $query);
 
-// Check if the query was successful
 if ($result) {
   $row = mysqli_fetch_assoc($result);
 } else {
-  // Handle the error if the query fails
   die("Error: " . mysqli_error($connect));
 }
 ?>
@@ -48,7 +44,6 @@ if ($result) {
 
     .bg-gradient {
       background: linear-gradient(45deg, #94a2b3, #cbddf2);
-      /* Other styling properties */
       color: white;
       padding: 20px;
     }
@@ -165,9 +160,7 @@ if ($result) {
                   </div>
 
                 </div>
-                <!-- <input type="submit" class="btn--blue btn pt-2 pb-2 pr-4 pl-3 btn-primary" value="Update" style="margin-top: 10px;"> -->
               </form>
-
           </div>
         </div>
       </div>
