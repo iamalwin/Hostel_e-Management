@@ -11,15 +11,15 @@
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
             <div class="nav-profile-img">
-              <img src="../admin/include/face1.jpg" alt="image">
+              <img src="../admin/include/admin_logo.png" alt="image">
               <span class="availability-status online"></span>
             </div>
             <div class="nav-profile-text">
               <p class="mb-1 text-black">Welcome <?php echo " " . $_SESSION['name']; ?></p>
             </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
           </a>
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="./admin_login.php">
+          <div class="dropdown-menu navbar-dropdown" style="overflow: hidden;" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" style="color: black;" href="./admin_login.php">
               <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
           </div>
         </li>

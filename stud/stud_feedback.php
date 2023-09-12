@@ -125,13 +125,13 @@ if (isset($_POST['btn'])) {
                     <label for="reg" class="formbold-form-label">
                       Reg No
                     </label>
-                    <input type="text" name="reg" value="<?php echo " ".$_SESSION['reg'];?>" id="reg" class="formbold-form-input" disabled  />
+                    <input type="text" name="reg" id="reg" class="formbold-form-input" disabled  />
                   </div>
                   <div>
                     <label for="name" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="name" value="<?php echo " ".$_SESSION['name'];?>" id="name" class="formbold-form-input" disabled  />
+                    <input type="text" name="name"  id="name" class="formbold-form-input" disabled  />
                   </div>
                 </div>
                 <div>

@@ -24,20 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $address = $_POST["address"];
     $image = "path_to_image.jpg";
 
-    $query = "UPDATE stud 
-              SET name = '$name', 
-                  dept = '$dept', 
-                  year = '$year', 
-                  fathname = '$fathname', 
-                  fathphone = '$fathphone', 
-                  age = $age, 
-                  dob = '$dob', 
-                  bldgrp = '$bldgrp', 
-                  email = '$email', 
-                  phone = '$phone', 
-                  address = '$address', 
-                  image = '$image' 
-              WHERE reg = '$reg'";
+    $query = "UPDATE stud SET name = '$name', dept = '$dept', year = '$year', fathname = '$fathname', fathphone = '$fathphone', age = $age, dob = '$dob', bldgrp = '$bldgrp', email = '$email', phone = '$phone', address = '$address', image = '$image' WHERE reg = '$reg'";
 
     if (mysqli_query($connect, $query)) {
         header("Location: ../admin/stud_update.php?id=$id");
@@ -60,9 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
 
         <!DOCTYPE html>
-        <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
         <html lang="en">
-
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <!-- Required meta tags -->
@@ -217,9 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                             <label for="address">Address</label><br>
                                             <textarea name="address" cols="30" rows="6" disabled style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
                                         </div>
-
                                     </div>
-
                                 </div>
                                 <input type="submit" class="btn--blue btn btn-primary" value="Update" style="margin-top: 10px;">
                             </form>                            

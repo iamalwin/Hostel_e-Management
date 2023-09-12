@@ -84,6 +84,14 @@ session_start();
                         </h3>
                     </div>
 
+                                    <!-- Search Form -->
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="studentName">Search by Student Name:</label>
+                        <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter student's name">
+                    </div>
+                </form>
+
                     <!-- Dash data section -->
 
                     <div class="grid-margin card p-5 stretch-card">
@@ -100,8 +108,12 @@ session_start();
                             </thead>
 
                             <?php
-                            $qry = mysqli_query($connect, "select * from stud");
-                            $i = 1;
+                        if (isset($_POST['studentName'])) {
+                            $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
+                            $qry = mysqli_query($connect, "SELECT * FROM stud WHERE name LIKE '%$searchName%'");
+                        } else {
+                            $qry = mysqli_query($connect, "SELECT * FROM stud");
+                        }                            $i = 1;
                             while ($row = mysqli_fetch_array($qry)) {
                                 $reg = $row['reg'];
                             ?>
@@ -187,6 +199,27 @@ session_start();
         $(".preloader ").fadeOut();
     </script>
 
+<script>
+        // Add JavaScript for live search as you type
+        const studentNameInput = document.getElementById("studentName");
+
+        studentNameInput.addEventListener("input", function() {
+            const searchName = studentNameInput.value.trim();
+            const tableRows = document.querySelectorAll(".alert");
+
+            tableRows.forEach(function(row) {
+                const nameCell = row.querySelector("td:nth-child(2) div");
+                const studentName = nameCell.textContent.toLowerCase();
+
+                if (studentName.includes(searchName.toLowerCase())) {
+                    row.style.display = "table-row";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

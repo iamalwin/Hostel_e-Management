@@ -35,9 +35,9 @@ if ($result) {
                 </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="./stud_profile.php">
-              <i class="mdi mdi-logout mr-2 text-primary"></i> Profile </a>
-                <a class="dropdown-item" href="../stud_login.php">
+              <a class="dropdown-item" style="color: black;" href="./stud_profile.php">
+              <i class="mdi mdi-account mr-2 text-primary"></i> Profile </a>
+                <a class="dropdown-item" style="color: black;" href="../stud_login.php">
                   <i class="mdi mdi-logout mr-2 text-primary"></i>Signout </a>
               </div>
             </li>

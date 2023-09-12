@@ -51,7 +51,7 @@ if (isset($_POST['btn'])) {
                             <div class="login-wrap p-4 p-md-5">
                                 <div class="d-flex">
                                     <div class="w-100">
-                                        <h3 class="mb-4">Students Login</h3>
+                                        <h3 class="mb-4 ">Students Login</h3>
                                     </div>
 
                                     <div class="text-center">

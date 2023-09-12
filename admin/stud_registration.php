@@ -136,7 +136,7 @@ if (isset($_POST['btn'])) {
 
 							<div class="row">
 								<div class="col-md-5 m-3">
-									<input type="" class="form-control" name="age" id="age" placeholder="Age" required>
+									<input type="" class="form-control" name="age" id="age" placeholder="Age" maxLength="2" required>
 								</div>
 								<div class="col-md-5 m-3">
 									<input type="date" title="date of barth" class="form-control" name="dob" id="dob" placeholder="DOB" required>
@@ -165,7 +165,7 @@ if (isset($_POST['btn'])) {
 
 							<div class="row">
 								<div class="col-md-5 m-3">
-									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" maxLength="10" required>
 								</div>
 								<div class="col-md-5 m-3">
 									<textarea type="text" class="form-control" name="address" id="address" placeholder="Adrress" required></textarea>
@@ -248,12 +248,14 @@ if (isset($_POST['btn'])) {
 <!-- phone -->
 	<script>
 		function validatePhoneNumber(input) {
-			const phoneNumber = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-			const maxLength = 10;
+			var phoneNumber = document.getElementById(fathphone) // Remove non-numeric characters
+			// const maxLength = 10;
 
-			if (phoneNumber.length > maxLength) {
-				input.value = phoneNumber.slice(0, maxLength); // Truncate input to 10 digits
+			if (!/^[0-9]{10}$/.test(fathphone))
+			 {
+				alert('Invalid phone number ')
 			}
+			return true;
 		}
 	</script>
 	<!-- year -->
@@ -267,6 +269,7 @@ if (isset($_POST['btn'])) {
 			}
 		}
 	</script>
+
 	<script>
 		function toggleCollapse(event) {
 			event.preventDefault();

@@ -60,11 +60,9 @@
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 		}
 		form{	
-			background-color: darkgrey;
+			background-color: white;
 		}
-		.form-control{
-			background-color: darkgray;
-		}
+		
 		@media (max-width: 768px) {
 			.container {
 				padding: 20px;
