@@ -5,11 +5,9 @@ session_start();
 ?>
 
 <?php
-include("../dbconnect.php"); // Include your database connection
+include("../dbconnect.php"); 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Assuming you have a database connection established earlier
 
-    // Extract data from POST request
     $name = $_POST["name"];
     $reg = $_POST["reg"];
     $dept = $_POST["dept"];
@@ -50,26 +48,19 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
         <html lang="en">
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <!-- Required meta tags -->
-
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <title>stud_details</title>
-            <!-- plugins:css -->
             <link rel="stylesheet" href="./include/materialdesignicons.min.css">
             <link rel="stylesheet" href="./include/vendor.bundle.base.css">
 
-            <!-- Layout styles -->
             <link rel="stylesheet" href="./include/style.css">
-            <!-- Add this link to your HTML head section -->
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 
             <link rel="stylesheet" href="../dist/css/style.min.css">
 
-            <!-- external -->
             <link href="Table 05_files/css" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="Table 05_files/font-awesome.min.css">
             <link rel="stylesheet" href="Table 05_files/style.css">
-            <!-- endinject -->
 
 
             <link rel="stylesheet" href="./include/style.css">
@@ -92,8 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
         <body class="">
             <div class="container-scroller">
 
-                <!-- Preloader - style you can find in spinners.css -->
-
                 <div class="preloader">
                     <div class="lds-ripple">
                         <div class="lds-pos"></div>
@@ -101,22 +90,17 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                     </div>
                 </div>
 
-                <!-- partial:partials/_navbar.html -->
                 <header class="topbar" data-navbarbg="skin6">
                     <?php include 'navbar.php' ?>
                 </header>
 
-                <!-- partial -->
                 <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
-                    <!-- partial:partials/_sidebar.html -->
                     <div class="navcantainer d-fixed">
                         <?php include 'sidebar.php' ?>
                     </div>
-                    <!-- partial -->
                     <div class="main-panel">
                         <div class="content-wrapper">
 
-                            <!-- dash section -->
                             <div class="page-header">
                                 <h3 class="page-title">
                                     <span class="page-title-icon bg-gradient-primary text-white mr-2">
@@ -124,7 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                     </span> Update Details
                                 </h3>
                             </div>
-                            <!-- Dash data section -->
 
                             <div class="formbold-main-wrapper card d-flex justify-content-center align-items-center">
 

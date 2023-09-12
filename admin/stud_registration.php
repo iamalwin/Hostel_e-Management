@@ -255,7 +255,7 @@ if (isset($_POST['btn'])) {
 			 {
 				alert('Invalid phone number ')
 			}
-			return true;
+			return
 		}
 	</script>
 	<!-- year -->
