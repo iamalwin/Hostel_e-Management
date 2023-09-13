@@ -72,7 +72,7 @@ session_start();
             </div>
             <!-- partial -->
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper p-4">
 
                     <!-- dash section -->
 
@@ -84,13 +84,16 @@ session_start();
                         </h3>
                     </div>
 
-                                    <!-- Search Form -->
-                <form method="POST" action="">
-                    <div class="form-group">
-                        <label for="studentName">Search by Student Name:</label>
-                        <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter student's name">
-                    </div>
-                </form>
+                    <!-- Search Form -->
+                    <form method="POST" action="">
+                        <div class="input-group" style="bottom:10px ;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="background-color: white;width: 50px; padding:0%"><i class="mdi mdi-magnify" style="font-size:2rem; left:10px;top:5px;position:absolute;"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Search by student's name">
+                        </div>
+                    </form>
+
 
                     <!-- Dash data section -->
 
@@ -108,12 +111,13 @@ session_start();
                             </thead>
 
                             <?php
-                        if (isset($_POST['studentName'])) {
-                            $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
-                            $qry = mysqli_query($connect, "SELECT * FROM stud WHERE name LIKE '%$searchName%'");
-                        } else {
-                            $qry = mysqli_query($connect, "SELECT * FROM stud");
-                        }                            $i = 1;
+                            if (isset($_POST['studentName'])) {
+                                $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
+                                $qry = mysqli_query($connect, "SELECT * FROM stud WHERE name LIKE '%$searchName%'");
+                            } else {
+                                $qry = mysqli_query($connect, "SELECT * FROM stud");
+                            }
+                            $i = 1;
                             while ($row = mysqli_fetch_array($qry)) {
                                 $reg = $row['reg'];
                             ?>
@@ -199,7 +203,7 @@ session_start();
         $(".preloader ").fadeOut();
     </script>
 
-<script>
+    <script>
         // Add JavaScript for live search as you type
         const studentNameInput = document.getElementById("studentName");
 
@@ -219,7 +223,7 @@ session_start();
             });
         });
     </script>
-    
+
 </body>
 
 </html>

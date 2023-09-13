@@ -71,7 +71,7 @@ session_start();
             </div>
             <!-- partial -->
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper p-4">
 
                     <!-- dash section -->
 

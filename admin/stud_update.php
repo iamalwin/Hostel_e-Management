@@ -7,7 +7,6 @@ session_start();
 <?php
 include("../dbconnect.php"); 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
     $name = $_POST["name"];
     $reg = $_POST["reg"];
     $dept = $_POST["dept"];
@@ -72,11 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                     font-weight: bolder;
                     font-size: 1rem;
                 }
-                .upbtn{
-                    position: absolute;
-                    bottom: 0;
-                    left: 250px;
-                }
             </style>
         </head>
 
@@ -99,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                         <?php include 'sidebar.php' ?>
                     </div>
                     <div class="main-panel">
-                        <div class="content-wrapper">
+                        <div class="content-wrapper p-4">
 
                             <div class="page-header">
                                 <h3 class="page-title">
@@ -109,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                 </h3>
                             </div>
 
-                            <div class="formbold-main-wrapper card d-flex justify-content-center align-items-center">
+                            <div class="formbold-main-wrapper card d-flex justify-content-center align-items-center p-3">
 
                             <form method="post" class="col-10">
                                 <img src="../stud/include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="...">
@@ -187,9 +181,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn--blue btn btn-primary" value="Update" style="margin-top: 10px;">
-                            </form>                            
-                            <button class="upbtn btn--blue btn  btn-primary" onclick="toggleEditable()">Edit</button>
+                                <input type="submit" class="btn--blue btn btn-primary" value="Update" style="bottom: 0px;left:20%;position:relative">
+                            </form>                          
+                            <button class="upbtn btn--blue btn  btn-primary mb-3" style="position:absolute;bottom:0%; left:13.5%" onclick="toggleEditable()">Edit</button>
                         </div>
                         </div>
                     </div>

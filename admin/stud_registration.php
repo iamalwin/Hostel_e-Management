@@ -95,7 +95,7 @@ if (isset($_POST['btn'])) {
 		<div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
 			<?php include 'sidebar.php' ?>
 			<div class="main-panel">
-				<div class="content-wrapper">
+				<div class="content-wrapper p-4">
 					<div class="page-header">
 						<h3 class="page-title">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">

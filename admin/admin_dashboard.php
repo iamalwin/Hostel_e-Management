@@ -6,7 +6,6 @@ if (!isset($_SESSION["reg"])) {
   header("Location: ../stud_login.php");
   exit();
 }
-
 ?>
 
 <!-- stud count php -->
@@ -102,7 +101,7 @@ if ($result) {
       <?php include 'sidebar.php' ?>
 
       <div class="main-panel">
-        <div class="content-wrapper">
+      <div class="content-wrapper p-4">
 
           <!-- dash section -->
 
@@ -189,7 +188,7 @@ if ($result) {
           </div>
 
 
-          <div class="col-md-7 grid-margin stretch-card">
+          <div class="col-md-7 grid-margin stretch-card p-0">
             <div class="card">
               <div class="card-body">
 

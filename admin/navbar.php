@@ -19,8 +19,10 @@
             </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
           </a>
           <div class="dropdown-menu navbar-dropdown" style="overflow: hidden;" aria-labelledby="profileDropdown">
+          <a class="dropdown-item" style="color: black;" href="./newsupdate.php">
+            <i class="mdi mdi-newspaper mr-2 text-primary"></i> News</a>
             <a class="dropdown-item" style="color: black;" href="./admin_login.php">
-              <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+            <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
           </div>
         </li>
       </ul>

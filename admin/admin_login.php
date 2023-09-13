@@ -8,8 +8,8 @@ if (isset($_POST['btn'])) {
     $result=mysqli_fetch_array($qry);
     $num = mysqli_num_rows($qry);
     if ($num >= 1) {
-        $_SESSION['psw']=$result['pws'];
         $_SESSION['name']=$result['name'];
+        $_SESSION['psw']=$result['pwd'];
 
         header("location:admin_dashboard.php");
     } else {
@@ -39,18 +39,6 @@ if (isset($_POST['btn'])) {
 
 <!-- loading -->
     <link rel="stylesheet" href="../dist/css/style.min.css">
-
-
-    <script type="text/javascript">
-        function valid() {
-            if (document.registration.password.value != document.registration.cpassword.value) {
-                alert("Password and Re-Type Password Field do not match  !!");
-                document.registration.cpassword.focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
 
 </head>
 

@@ -14,7 +14,6 @@ if ($connect->query($sql) === TRUE) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +42,7 @@ if ($connect->query($sql) === TRUE) {
       border-radius: 50px;
       justify-content: center;
       align-items: center;
+      
     }
   </style>
 </head>
@@ -66,7 +66,7 @@ if ($connect->query($sql) === TRUE) {
         <?php include 'sidebar.php' ?>
       </div>
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper p-4">
 
           <div class="page-header">
             <h3 class="page-title">
@@ -76,7 +76,7 @@ if ($connect->query($sql) === TRUE) {
             </h3>
           </div>
               <form method="POST">
-          <div class="grid-margin card p-5 stretch-card">
+          <div class="grid-margin card p-2 stretch-card">
             <table class="table table-responsive-xl">
 
               <thead class="grid-margin bg-light fs-1 fw-bolder">
@@ -107,7 +107,7 @@ if ($connect->query($sql) === TRUE) {
                     <div><?php echo $row['sub']; ?></div>
                   </td>
                   <td>
-                    <textarea name="" id="" style="background: white;border-color:white;" cols="70" rows="3" disabled><?php echo $row['cmpl']; ?></textarea>
+                    <textarea name="" id="" style="background-color:white;border-color:white; width:100%;" cols="70" rows="3" disabled><?php echo $row['cmpl']; ?></textarea>
                   </td>
                   <!-- <td class="rbtn">
                     <button class="btn btn--radius-50 btn--blue  btn-primary" id="btn1" type="submit" name="btn1">Solved</button>
@@ -148,7 +148,7 @@ if ($connect->query($sql) === TRUE) {
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
   <script src="../admin/include/vendor.bundle.base.js.download"></script>
 
-  <script>
+<script>
 $(document).ready(function() {
     $("#solveButton").on("click", function() {
         $.ajax({

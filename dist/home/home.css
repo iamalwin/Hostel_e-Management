@@ -45,13 +45,11 @@
     position: relative;
     overflow: hidden;
     font-size: 1rem;
-    padding: 10px;
     height: 90%;
     min-height: max-content;
     margin-top: 10px;
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    /* background-color: rgba(53, 53, 53, 0.322); */
   }
   .news_cont {
     border-radius: 10px;
@@ -61,7 +59,7 @@
     animation-play-state: running;
     padding: 10px;
     color: white;
-    background-color: rgba(255, 255, 255, 0.349);
+    /* background-color: rgba(255, 255, 255, 0.349); */
 }
 .news_cont p{
     padding: 10px;
@@ -73,12 +71,25 @@
     margin-left: 15px;
     position: absolute;
 }
+.news-item{
+  background-color: rgba(53, 53, 53, 0.322);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.news-title{
+  text-decoration: underline;
+}
+.news-date{
+  border-top: 0.5px solid #333;
+  
+}
   @keyframes scroll {
     0% {
       transform: translateY(100%);
     }
     100% {
-      transform: translateY(-210%);
+      transform: translateY(-100%);
     }
   }
   /* footer{

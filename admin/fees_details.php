@@ -33,7 +33,7 @@ session_start();
                 <?php include 'sidebar.php' ?>
             </div>
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper p-4">
                     <!-- dash section -->
 
                     <div class="page-header">

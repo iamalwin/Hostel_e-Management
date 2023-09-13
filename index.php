@@ -1,6 +1,13 @@
+<?php
+include("./dbconnect.php");
+
+// Query to retrieve news items from the database
+$query = "SELECT * FROM news ORDER BY date_published DESC"; // You can adjust the query as needed
+
+$result = mysqli_query($connect, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,11 +23,6 @@
   <!-- <link rel="stylesheet" href="./dist/home/owl.css"> -->
   <link rel="stylesheet" href="./dist/home/home.css">
   <link rel="shortcut icon" href="./admin./include/ho_login.png">
-
-
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -91,10 +93,23 @@
             <hr>
             <div class="inf_news" id="scrollingContainer">
               <div class="news_cont">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque maxime praesentium facilis soluta cupiditate atque repellendus minus excepturi placeat hic perspiciatis repellat deserunt nobis reiciendis, et voluptatem dolorum quos eveniet.</p>
-              </div>
-              <div class="news_cont">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque maxime praesentium facilis soluta cupiditate atque repellendus minus excepturi placeat hic perspiciatis repellat deserunt nobis reiciendis, et voluptatem dolorum quos eveniet.</p>
+
+              <section class="news">
+                <?php
+                if (mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                      echo "<div class='news-item'>";
+                      echo "<h3 class='news-title'>" . $row['title'] . "</h3>";
+                      echo "<p class='news-content'>" . $row['content'] . "</p>";
+                      echo "<p class='news-date'>Published on: " . $row['date_published'] . "</p>";
+                      echo "</div>";
+                  }
+              } else {
+                  echo "<div class='no-news'>No news available.</div>";
+              }              
+                ?>
+        </section>
+
               </div>
             </div>
           </div>

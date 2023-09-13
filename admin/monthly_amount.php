@@ -68,7 +68,7 @@ if (isset($_POST['btn'])) {
                 <?php include 'sidebar.php' ?>
             </div>
             <div class="main-panel">
-                <div class="content-wrapper">
+                <div class="content-wrapper p-4">
 
                     <!-- dash section -->
 

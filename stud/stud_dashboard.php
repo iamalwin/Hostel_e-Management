@@ -61,7 +61,7 @@ if (!isset($_SESSION["reg"])) {
       </div>
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper p-4">
 
           <!-- dash section -->
 

@@ -52,7 +52,7 @@ session_start();
         <?php include 'sidebar.php' ?>
       </div>
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper p-4">
 
           <div class="page-header">
             <h3 class="page-title">

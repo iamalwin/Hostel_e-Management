@@ -53,7 +53,7 @@ session_start();
         <?php include 'stud_sidebar.php' ?>
       </div>
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper p-4">
           <div class="page-header">
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
