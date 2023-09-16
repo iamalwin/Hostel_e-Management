@@ -3,12 +3,7 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-
-    echo '<a href="newsupdate.php">Edit</a>';
-} elseif (!isset($_SESSION["name"])) {
+if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
     exit();
 }
@@ -19,22 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>registration</title>
     <link rel="stylesheet" href="./include/materialdesignicons.min.css">
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
-
     <link rel="stylesheet" href="./include/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
     <link rel="stylesheet" href="../dist/css/style.min.css">
-
     <link rel="stylesheet" href="./include/style.css">
-
     <link rel="shortcut icon" href="./include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
-
     <style>
         .container {
             margin-top: 20px;
@@ -44,24 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
         }
-
         .divcont {
             box-shadow: none;
         }
-
         #content,
         #title {
             font-size: 1.2rem;
             line-height: 20px;
             letter-spacing: 1px;
         }
-
         .card {
             height: 80%;
         }
@@ -103,11 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="col">
                                 <div class="col-md-12 m-3">
                                     <label for="title" style="font-size: 1rem;">Title:</label>
-                                    <input class="form-control" type="text" id="title" placeholder="News Title" name="title" value="<?echo $Title?>">
+                                    <input class="form-control" type="text" id="title" placeholder="News Title" name="title" value="">
                                 </div>
                                 <div class="col-md-12 m-3">
                                     <label for="content" style="font-size: 1rem;">Content:</label>
-                                    <textarea class="form-control" id="content" name="content" placeholder="Content" rows="8" cols="20" value="<?echo $Content?>" required></textarea>
+                                    <textarea class="form-control" id="content" name="content" placeholder="Content" rows="8" cols="20" required></textarea>
 
                                     <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 btn--blue btn-primary mt-3 float-right"><i class="fas fa-paper-plane menu-icon"></i>
                                         <a href="./news_preview.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Post News</button></a>
