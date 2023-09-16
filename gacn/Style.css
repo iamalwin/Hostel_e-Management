@@ -1,0 +1,172 @@
+/* Google Font Import - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  /* ===== Colors ===== */
+  --body-color: red;
+  --sidebar-color: #ececec;
+  --primary-color: #550000;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #393838;
+  --navbar-color: #ececec;
+  --card-color: #550000c5;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  color: var(--primary-color-light);
+}
+
+body {
+  flex: 10;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+.header {
+  flex: 2;
+  flex-direction: row;
+  /*background: rgb(182, 223, 243);*/
+  color: #ccffcc;
+}
+#nav-link{
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+#nav-link-active{
+  color:#FFC54D;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: #1c6283;
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-width: 150px;
+}
+#dropdown-item:hover{
+  background-color: white;
+}
+
+.sub-menu li {
+  margin: 5px 0;
+  padding: 5px;
+  border-bottom: 1px solid rgba(133, 146, 166, 0.19);
+}
+.sub-menu{
+  list-style: none;
+}
+
+#nav-item{
+position: relative;
+z-index: 10;
+}
+
+#nav-item:hover .sub-menu {
+display: block;
+}
+#nav-link:hover{
+color:#FFC54D;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  /* background-color: white; */
+  color: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  color: white;
+  background-color: white;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:hover:before {
+  margin-left: 20px;
+  width: 30%;
+}
+
+
+
+@media (min-width: 577px) and (max-width: 768px) {
+.navbar {
+  background-color: #ffcccc;
+}
+}
+
+footer{
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #550000;
+  height: 10vh;
+}
+.copy_right p{
+  color: white;
+}
+
+.events{
+  background-color: #ffffffe2;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.col-event img{
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+}
+.col-event p{
+  line-height: 20px;
+}
+.col-event{
+  display: block;
+  padding: 5px;
+  color: black;
+  text-align: center;
+  margin: 10px;
+    height: 150px;
+    align-items: center;
+  width: 150px;
+  border-radius: 20px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;  background-color: #ffffff;
+}
+.col-event:hover{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+}

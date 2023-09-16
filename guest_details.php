@@ -93,10 +93,10 @@
 				</div>
 			</nav>
 			<!-- partial -->
-			<div class="container-fluid page-body-wrapper">
+			<div class="container-fluid page-body-wrapper bg-light">
 				<div class="card-body">
-					<div class="page-header">
-						<h3 class="page-title">
+					<div class="page-header" style="position: relative	;">
+						<h3 class="page-title"style="position:relative;left:8%;">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">
 								<i class="mdi mdi-account-plus menu-icon"></i>
 							</span> Guest Registration
@@ -104,7 +104,7 @@
 					</div>
 
 					<div class="card d-flex bg-transparent justify-content-center align-items-center">
-						<form class="card-body rounded col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+						<form class="card-body rounded col-10" id="f1" name="f1" method="post" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;position:relative" action="#" onSubmit="return vali()">
 							<div class="row">
 								<div class="col-md-5 m-3">
 									<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>

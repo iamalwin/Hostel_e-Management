@@ -107,77 +107,76 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
                             <form method="post" class="col-10">
                                 <img src="../stud/include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="...">
-                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                 <div class="row">
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="name">Name</label><br>
-                                            <input type="text" class="form-control" name="name" disabled value="<?php echo $row['name']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="name" disabled value="<?php echo $row['name']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="reg">Registration</label><br>
-                                            <input type="text" class="form-control" name="reg" disabled value="<?php echo $row['reg']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="reg" disabled value="<?php echo $row['reg']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="dept">Dept</label><br>
-                                            <input type="text" class="form-control" name="dept" disabled value="<?php echo $row['dept']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="dept" disabled value="<?php echo $row['dept']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="year">Year</label><br>
-                                            <input type="text" class="form-control" name="year" disabled value="<?php echo $row['year']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="year" disabled value="<?php echo $row['year']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
 
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="email">Email</label><br>
-                                            <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="fathname">Father Name</label><br>
-                                            <input type="text" class="form-control" name="fathname" disabled value="<?php echo $row['fathname']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="fathname" disabled value="<?php echo $row['fathname']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
 
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="fathphone">Father Phone</label><br>
-                                            <input type="text" class="form-control" name="fathphone" disabled value="<?php echo $row['fathphone']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="fathphone" disabled value="<?php echo $row['fathphone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="age">Age:</label><br>
-                                            <input type="text" class="form-control" name="age" disabled value="<?php echo $row['age']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="age" disabled value="<?php echo $row['age']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
 
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="dob">Dob</label><br>
-                                            <input type="text" class="form-control" name="dob" disabled value="<?php echo $row['dob']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="dob" disabled value="<?php echo $row['dob']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="bldgrp">Blood Group</label><br>
-                                            <input type="text" class="form-control" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
 
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="email">Email</label><br>
-                                            <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="phone">Phone</label><br>
-                                            <input type="text" class="form-control" name="phone" disabled value="<?php echo $row['phone']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                                            <input type="text" class="form-control" name="phone" disabled value="<?php echo $row['phone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
 
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="address">Address</label><br>
-                                            <textarea name="address" cols="30" rows="6" disabled style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
+                                            <textarea name="address" cols="30" rows="6" disabled style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
                                         </div>
                                     </div>
                                 </div>

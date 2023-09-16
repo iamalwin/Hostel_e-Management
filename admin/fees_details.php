@@ -1,7 +1,11 @@
 <?php
-include("../dbconnect.php");
-extract($_POST);
+include('../dbconnect.php');
 session_start();
+
+if (!isset($_SESSION["name"])) {
+  header("Location: ./admin_login.php");
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +57,7 @@ session_start();
                             <thead class="bg-light"><h1>
                                 <tr>
                                     <th>Reg No</th>
-                                    <th>Hostel Name</th>
+                                    <!-- <th>Hostel Name</th> -->
                                     <th>Month</th>
                                     <th>Amount</th>
                                     <th>Status</th>

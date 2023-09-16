@@ -2,8 +2,8 @@
 include('../dbconnect.php');
 session_start();
 
-if (!isset($_SESSION["reg"])) {
-  header("Location: ../stud_login.php");
+if (!isset($_SESSION["name"])) {
+  header("Location: ./admin_login.php");
   exit();
 }
 ?>

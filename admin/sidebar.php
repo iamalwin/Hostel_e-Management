@@ -3,7 +3,7 @@
         <li class="nav-item nav-profile">
             <a href="#home" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="./include/admin_logo.png" alt="profile">
+                    <img src="./include/admin_logo.png" alt="profile" style="height: 40px;">
                     <span class="login-status online"></span>
 
                 </div>

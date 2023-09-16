@@ -1,22 +1,17 @@
 <?php
-include("../dbconnect.php");
+include('../dbconnect.php');
 extract($_POST);
 session_start();
 
-
-// Update the database to mark the task as solved
-$sql = "UPDATE suggest SET status = 'solved' WHERE id = id"; // Assuming task ID is 1
-
-if ($connect->query($sql) === TRUE) {
-    echo "Task marked as solved successfully!";
-} else {
-    echo "Error updating record: " . $connect->error;
+if (!isset($_SESSION["name"])) {
+  header("Location: ./admin_login.php");
+  exit();
 }
-?>
 
+$sql = "UPDATE suggest SET status = 'solved' WHERE id = id";
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,7 +37,6 @@ if ($connect->query($sql) === TRUE) {
       border-radius: 50px;
       justify-content: center;
       align-items: center;
-      
     }
   </style>
 </head>
@@ -50,12 +44,12 @@ if ($connect->query($sql) === TRUE) {
 <body class="">
   <div class="container-scroller">
 
-    <!-- <div class="preloader">
+    <div class="preloader">
       <div class="lds-ripple">
         <div class="lds-pos"></div>
         <div class="lds-pos"></div>
       </div>
-    </div> -->
+    </div>
 
     <header class="topbar" data-navbarbg="skin6">
      <?php include 'navbar.php' ?>
@@ -76,7 +70,7 @@ if ($connect->query($sql) === TRUE) {
             </h3>
           </div>
               <form method="POST">
-          <div class="grid-margin card p-2 stretch-card">
+          <div class="grid-margin card p-4 stretch-card">
             <table class="table table-responsive-xl">
 
               <thead class="grid-margin bg-light fs-1 fw-bolder">

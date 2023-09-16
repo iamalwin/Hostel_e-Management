@@ -3,6 +3,22 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
+    $id = $_GET["id"]; // Get the ID of the post to preview
+    $sql = "SELECT * FROM hostel_management.news WHERE id=$id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+} elseif (!isset($_SESSION["name"])) {
+    header("Location: ./admin_login.php");
+    exit();
+}
+?>
+
+<?php
+include("../dbconnect.php");
+extract($_POST);
+session_start();
+
 if (isset($_POST['submit'])) {
     $title = $_POST["title"];
     $content = $_POST["content"];
@@ -89,26 +105,21 @@ mysqli_close($connect);
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-newspaper menu-icon"></i>
-                            </span> Add a News
+                            </span> Post News
                         </h3>
                     </div>
 
                     <div class="card d-flex justify-content-center align-items-center">
-                            <form class="card-body col-12" action="" method="post">
-                                <div class="col">
-                                    <div class="col-md-12 m-3">
-                                        <label for="title" style="font-size: 1rem;">Title:</label>
-                                        <input class="form-control" type="text" id="title" placeholder="News Title" name="title" required>
-                                    </div>
-                                    <div class="col-md-12 m-3">
-                                        <label for="content" style="font-size: 1rem;">Content:</label>
-                                        <textarea class="form-control" id="content" name="content" placeholder="Content" rows="8" cols="20" required></textarea>
-                                        <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 btn--blue btn-primary mt-3 float-right"><i class="fas fa-paper-plane"></i>
-                                            <button class="btn p-0 m-2 text-light " type="submit" name="submit">Post</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                    <h1>News Post Preview</h1>
+    
+    <h2><?php echo $row['title']; ?></h2>
+    <p>Published by <?php echo $row['author']; ?> on <?php echo $row['publication_date']; ?></p>
+    
+    <div>
+        <?php echo nl2br($row['content']); ?>
+    </div>
+    
+    <a href="index.php">Back to News</a>
                     </div>
 
                 </div>

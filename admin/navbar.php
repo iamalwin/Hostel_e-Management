@@ -11,7 +11,7 @@
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
             <div class="nav-profile-img">
-              <img src="../admin/include/admin_logo.png" alt="image">
+              <img src="../admin/include/admin_logo.png" alt="image"style="height: 30px;">
               <span class="availability-status online"></span>
             </div>
             <div class="nav-profile-text">
@@ -19,9 +19,9 @@
             </div><i class="mdi mdi-menu-down mdi-24px text-primary"></i>
           </a>
           <div class="dropdown-menu navbar-dropdown" style="overflow: hidden;" aria-labelledby="profileDropdown">
-          <a class="dropdown-item" style="color: black;" href="./newsupdate.php">
+          <a class="dropdown-item" style="color: black;" href="./news_post.php">
             <i class="mdi mdi-newspaper mr-2 text-primary"></i> News</a>
-            <a class="dropdown-item" style="color: black;" href="./admin_login.php">
+            <a class="dropdown-item" style="color: black;" href="../logout.php">
             <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
           </div>
         </li>

@@ -2,13 +2,18 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
+
+if (!isset($_SESSION["name"])) {
+    header("Location: ./admin_login.php");
+    exit();
+  }
 if (isset($_POST['btn'])) {
     $max_qry = mysqli_query($connect, "select max(id) from amnt");
     $max_row = mysqli_fetch_array($max_qry);
     $id = $max_row['max(id)'] + 1;
     $qry = mysqli_query($connect, "insert into amnt values('$id','$hf','$mf','$hf'+'$mf','$month','$date')");
     if ($qry) {
-        echo "<script>alert('Fees Details entered Sucessfully')</script>";
+        $gees= "<script>alert('Fees Details entered Sucessfully')</script>";
     } else {
         echo "<script>alert('Enter Again')</script>";
     }
@@ -79,7 +84,6 @@ if (isset($_POST['btn'])) {
                             </span> Fees pay
                         </h3>
                     </div>
-
                     <!-- Dash data section -->
 
                     <div class="card d-flex justify-content-center align-items-center">
