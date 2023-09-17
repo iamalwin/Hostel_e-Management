@@ -88,18 +88,18 @@ if (!isset($_SESSION["name"])) {
                             <div class="col">
                                 <div class="col-md-12 m-3">
                                     <label for="title" style="font-size: 1rem;">Title:</label>
-                                    <input class="form-control" type="text" id="title" placeholder="News Title" name="title" value="">
+                                    <input class="form-control" type="text" id="title" placeholder="News Title" name="title">
                                 </div>
                                 <div class="col-md-12 m-3">
                                     <label for="content" style="font-size: 1rem;">Content:</label>
-                                    <textarea class="form-control" id="content" name="content" placeholder="Content" rows="8" cols="20" required></textarea>
+                                    <textarea class="form-control" id="content" name="content"  placeholder="Content" rows="8" cols="20" required></textarea>
 
                                     <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 btn--blue btn-primary mt-3 float-right"><i class="fas fa-paper-plane menu-icon"></i>
-                                        <a href="./news_preview.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Post News</button></a>
+                                    <button class="btn p-0 m-2 text-light " type="submit" value="Preview">Preview News</button>
                                     </div>
-                                    <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 mr-3 btn--blue btn-primary mt-3 float-right"><i class="mdi mdi-pencil menu-icon"></i>
+                                    <!-- <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 mr-3 btn--blue btn-primary mt-3 float-right"><i class="mdi mdi-pencil menu-icon"></i>
                                         <a href="./news_preview.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Edit News</button></a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </form>
