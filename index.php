@@ -1,9 +1,6 @@
 <?php
 include("./dbconnect.php");
-
-// Query to retrieve news items from the database
-$query = "SELECT * FROM news ORDER BY date_published DESC"; // You can adjust the query as needed
-
+$query = "SELECT * FROM news ORDER BY date_published DESC";
 $result = mysqli_query($connect, $query);
 ?>
 <!DOCTYPE html>
@@ -19,7 +16,7 @@ $result = mysqli_query($connect, $query);
   <link href="./dist/home/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./dist/css/style.min.css">
   <link rel="stylesheet" href="./dist/home/fontawesome.css">
-  <link rel="stylesheet" href="./dist/home/style.css">
+  <link rel="stylesheet" href="dist/home/style.css">
   <!-- <link rel="stylesheet" href="./dist/home/owl.css"> -->
   <link rel="stylesheet" href="./dist/home/home.css">
   <link rel="shortcut icon" href="./admin./include/ho_login.png">
@@ -47,11 +44,11 @@ $result = mysqli_query($connect, $query);
         <div class="navbar-collapse collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="./admin/admin_login.php">Admin login</a>
             </li>
@@ -94,21 +91,26 @@ $result = mysqli_query($connect, $query);
             <div class="inf_news" id="scrollingContainer">
               <div class="news_cont">
 
-              <section class="news">
-                <?php
-                if (mysqli_num_rows($result) > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                      echo "<div class='news-item'>";
-                      echo "<h3 class='news-title'>" . $row['title'] . "</h3>";
-                      echo "<p class='news-content'>" . $row['content'] . "</p>";
-                      echo "<p class='news-date'>Published on: " . $row['date_published'] . "</p>";
-                      echo "</div>";
+                <section class="news">
+                  <?php
+                  if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      $title = $row['title'];
+                      $content = $row['content'];
+                      $time = $row['date_published'];
+                  ?>
+                      <div class='news-item'>
+                        <h3 class='news-title'><?php echo $title; ?></h3>
+                        <p class='news-content'><?php echo $content; ?></p>
+                        <h6 class='news-date'><?php echo $time; ?></h6 >
+                      </div>
+                  <?php
+                    }
+                  } else {
+                    echo "<div class='no-news'>No news available.</div>";
                   }
-              } else {
-                  echo "<div class='no-news'>No news available.</div>";
-              }              
-                ?>
-        </section>
+                  ?>
+                </section>
 
               </div>
             </div>

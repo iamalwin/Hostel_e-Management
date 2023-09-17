@@ -3,33 +3,14 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
-    $id = $_GET["id"]; // Get the ID of the post to preview
-    $sql = "SELECT * FROM hostel_management.news WHERE id=$id";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-} elseif (!isset($_SESSION["name"])) {
+if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
     exit();
 }
 ?>
-
 <?php
-include("../dbconnect.php");
-extract($_POST);
-session_start();
-
-if (isset($_POST['submit'])) {
-    $title = $_POST["title"];
-    $content = $_POST["content"];
-    $query = "INSERT INTO news (title, content) VALUES ('$title', '$content')";
-    if (mysqli_query($connect, $query)) {
-        echo "News item added successfully.<br>";
-    } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($connect);
-    }
-}
-mysqli_close($connect);
+$query = "SELECT * FROM news ORDER BY date_published DESC"; // You can adjust the query as needed
+$result = mysqli_query($connect, $query);
 ?>
 
 <!DOCTYPE html>
@@ -37,19 +18,14 @@ mysqli_close($connect);
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>registration</title>
     <link rel="stylesheet" href="./include/materialdesignicons.min.css">
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
-
     <link rel="stylesheet" href="./include/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
     <link rel="stylesheet" href="../dist/css/style.min.css">
-
     <link rel="stylesheet" href="./include/style.css">
-
     <link rel="shortcut icon" href="./include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
 
@@ -72,12 +48,15 @@ mysqli_close($connect);
         .divcont {
             box-shadow: none;
         }
-        #content, #title{
+
+        #content,
+        #title {
             font-size: 1.2rem;
             line-height: 20px;
             letter-spacing: 1px;
         }
-        .card{
+
+        .card {
             height: 80%;
         }
     </style>
@@ -108,20 +87,28 @@ mysqli_close($connect);
                             </span> Post News
                         </h3>
                     </div>
-
-                    <div class="card d-flex justify-content-center align-items-center">
-                    <h1>News Post Preview</h1>
-    
-    <h2><?php echo $row['title']; ?></h2>
-    <p>Published by <?php echo $row['author']; ?> on <?php echo $row['publication_date']; ?></p>
-    
-    <div>
-        <?php echo nl2br($row['content']); ?>
-    </div>
-    
-    <a href="index.php">Back to News</a>
+                    <div class="news_cont">
+                        <section class="news">
+                            <?php
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $title = $row['title'];
+                                    $content = $row['content'];
+                                    $time = $row['date_published'];
+                            ?>
+                                    <div class='news-item'>
+                                        <h3 class='news-title'><?php echo $title; ?></h3>
+                                        <p class='news-content'><?php echo $content; ?></p>
+                                        <h6 class='news-date'><?php echo $time; ?></h6>
+                                    </div>
+                            <?php
+                                }
+                            } else {
+                                echo "<div class='no-news'>No news available.</div>";
+                            }
+                            ?>
+                        </section>
                     </div>
-
                 </div>
             </div>
         </div>
