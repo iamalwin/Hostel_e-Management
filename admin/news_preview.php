@@ -9,8 +9,6 @@ if (!isset($_SESSION["name"])) {
 }
 ?>
 <?php
-include("../dbconnect.php");
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_news'])) {
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -111,6 +109,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_news'])) {
                                 <i class="mdi mdi-newspaper menu-icon"></i>
                             </span> Post News
                         </h3>
+                        <a href="./news_displayed.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="fas fa-paper-plane menu-icon"></i>
+                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">News Post</button>
+                        </a>
                     </div>
 
                     <div class="card d-flex justify-content-center align-items-center">

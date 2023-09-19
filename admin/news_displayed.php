@@ -63,20 +63,24 @@ if (isset($_POST['delete_news'])) {
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
         }
+
         .divcont {
             box-shadow: none;
         }
+
         #content,
         #title {
             font-size: 1.2rem;
             line-height: 20px;
             letter-spacing: 1px;
         }
+
         .card {
             height: 80%;
         }
@@ -107,42 +111,44 @@ if (isset($_POST['delete_news'])) {
                                 <i class="mdi mdi-newspaper menu-icon"></i>
                             </span> Post News
                         </h3>
+                        <a href="./news_post.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="mdi mdi-arrow-left menu-icon"></i>
+                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">Back to News Post</button>
+                        </a>
                     </div>
                     <div class="card d-flex justify-content-center align-items-center">
                         <div class="card-body col-12">
                             <div class="col p-0">
-                                    <section class="cont">
+                                <section class="cont">
                                     <?php
                                     if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $news_id = $row['news_id'];
-        $title = $row['title'];
-        $content = $row['content'];
-        $date_published = $row['date_published'];
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $news_id = $row['news_id'];
+                                            $title = $row['title'];
+                                            $content = $row['content'];
+                                            $date_published = $row['date_published'];
 
-        echo "<div class='news-item'>";
-        echo "<h3 class='news-title'>$title</h3>";
-        echo "<p class='news-content'>$content</p>";
-        echo "<h6 class='news-date'>$date_published</h6>";
-        echo "<form method='post' action='news_displayed.php'>";
-        echo "<input type='hidden' name='news_id' value='$news_id'>";
-        echo "<button type='submit' name='delete_news'>Delete</button>";
-        echo "</form>";
-        echo "</div>";
+                                            echo "<div class='news-item'>";
+                                            echo "<h3 class='news-title'>$title</h3>";
+                                            echo "<p class='news-content'>$content</p>";
+                                            echo "<h6 class='news-date'>$date_published</h6>";
+                                            echo "<form method='post' action='news_displayed.php'>";
+                                            echo "<input type='hidden' name='news_id' value='$news_id'>";
+                                            echo "<button type='submit' class='btn' name='delete_news'>Delete</button>";
+                                            echo "</form>";
+                                            echo "</div>";
+                                        }
+                                    } else {
+                                        echo "<div class='no-news'><img src='./include/no_news.png' alt='No news available'></div>";
+                                    }
+                                    ?>
+                                </section>
 
-    }
-} else {
-    echo "<div class='no-news'>No news available.</div>";
-}
-?>
-                                    </section>
-                                    
                             </div>
                         </div>
-                        
+
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>

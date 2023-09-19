@@ -15,21 +15,24 @@ if (isset($_POST['btn'])) {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
-    $image = "./include/images"; // Set the actual image path
+    $image = "./include/images";
 
+	// insert
     $insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
           VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image')";
 
     if (mysqli_query($connect, $insertQuery)) {
         $lastInsertedId = mysqli_insert_id($connect);
         $stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+		// update
         mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
-        echo "<script>alert('Hostel Assigned to Students')</script>";
+        $postMessage = "Hostel Assigned to Students";
     } else {
-        echo "<script>alert('Enter the correct fields')</script>";
+        $postMessage = "Enter the correct fields";
     }
     // Close the connection
     mysqli_close($connect);
+
 	header("Location: ../admin/stud_detail.php?id=" . $row['id']);
     exit();
 }

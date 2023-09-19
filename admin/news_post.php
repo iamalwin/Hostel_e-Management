@@ -78,9 +78,10 @@ if (!isset($_SESSION["name"])) {
                             </span> Post News
                         </h3>
 
-                        <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 btn--blue btn-primary mt-2 float-right"><i class="mdi mdi-pin menu-icon"></i>
-                            <a href="./news_displayed.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Posted News</button></a>
-                        </div>
+                        <a href="./news_displayed.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="mdi mdi-pin menu-icon"></i>
+
+                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">News Post</button>
+                        </a>
                     </div>
 
                     <div class="card d-flex justify-content-center align-items-center">
@@ -97,9 +98,6 @@ if (!isset($_SESSION["name"])) {
                                     <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 btn--blue btn-primary mt-3 float-right"><i class="fas fa-paper-plane menu-icon"></i>
                                     <button class="btn p-0 m-2 text-light " type="submit" value="Preview">Preview News</button>
                                     </div>
-                                    <!-- <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 mr-3 btn--blue btn-primary mt-3 float-right"><i class="mdi mdi-pencil menu-icon"></i>
-                                        <a href="./news_preview.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Edit News</button></a>
-                                    </div> -->
                                 </div>
                             </div>
                         </form>
