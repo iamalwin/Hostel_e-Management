@@ -1,61 +1,111 @@
 <?php
 include("../dbconnect.php");
-extract($_POST);
 session_start();
+
+// Check if the user is not logged in and redirect to the login page
 if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
     exit();
 }
+
 ?>
 <?php
-include("../dbconnect.php");
-
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 if (isset($_POST['approve'])) {
     $reg = $_POST['reg'];
-    // Fetch student details from studreq
-    $sql = "SELECT * FROM studreq WHERE reg = $reg";
-    $result = mysqli_query($connect, $sql);
-    $row = mysqli_fetch_assoc($result);
+
     // Insert student details into studs table
-    $insert_sql = "INSERT INTO studs (name,reg,dept,year,fathname,fathphone,age,dob,bldgrp,email,phone,address) VALUES ('{$row['name']}', '{$row['reg']}', '{$row['dept']}', '{$row['year']}', '{$row['fathname']}', '{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}')";
+    $insert_sql = "INSERT INTO studs (name,reg,dept,year,fathname,fathphone,age,dob,bldgrp,email,phone,address) VALUES ('name', 'reg', 'dept', 'year', 'fathname', 'fathphone', 'age', 'dob', 'bldgrp', 'email', 'phone', 'address')";
     mysqli_query($connect, $insert_sql);
 
-    // Send approval email
-    $to = $row['email'];
-    $subject = "Admission Approved";
-    $message = "Congratulations! Your admission request has been approved.";
-    $headers = "From:  johnrajae321peeter@gmail.com"; // Change this to your email
-    mail($to, $subject, $message, $headers);
 
-    if (mail($to, $subject, $message, $headers)) {
-        echo "Email sent successfully.";
-    } else {
-        echo "Email sending failed.";
+    // Send approval email
+    require 'PHPMailer-master/src/Exception.php';
+    require 'PHPMailer-master/src/PHPMailer.php';
+    require 'PHPMailer-master/src/SMTP.php';
+
+
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'johnrajae321peeter@gmail.com';
+        $mail->Password   = 'tzgi iagj vzpe rpxx';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
+
+        // Recipients
+        $mail->setFrom('22pca136@mail.sjctni.edu', 'Mailer');
+        $mail->addAddress('22pca136@mail.sjctni.edu', 'Joe User');     // Add a recipient
+        $mail->addAddress('22pca136@mail.sjctni.edu');               // Name is optional
+        $mail->addReplyTo('info@example.com', 'Information');
+
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Here is the subject';
+        $mail->Body    = 'Congratulations! Your admission request has been approved.';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        echo 'Message has been sent';
+
+        $delete_sql = "DELETE FROM studreq WHERE reg = '$reg'";
+        mysqli_query($connect, $delete_sql);
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
+    header("Location: ./stud_req.php"); // Replace 'your_page.php' with the actual page URL
     // Delete the request from studreq
-    $delete_sql = "DELETE FROM studreq WHERE reg = $reg";
-    mysqli_query($connect, $delete_sql);
-} elseif (isset($_POST['reject'])) {
+exit();
+
+}
+elseif (isset($_POST['reject'])) {
     $reg = $_POST['reg'];
 
-    // Fetch student details from studreq
-    $sql = "SELECT * FROM studreq WHERE reg = $reg";
-    $result = mysqli_query($connect, $sql);
-    $row = mysqli_fetch_assoc($result);
+    try {
+        // Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'johnrajae321peeter@gmail.com';
+        $mail->Password   = 'tzgi iagj vzpe rpxx';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
 
-    // Send rejection email
-    $to = $row['email'];
-    $subject = "Admission Rejected";
-    $message = "We regret to inform you that your admission request has been rejected.";
-    $headers = "From: johnrajae321peeter@gmail.com"; // Change this to your email
-    mail($to, $subject, $message, $headers);
+        // Recipients
+        $mail->setFrom('22pca136@mail.sjctni.edu', 'Mailer');
+        $mail->addAddress('22pca136@mail.sjctni.edu', 'Joe User');     // Add a recipient
+        $mail->addAddress('22pca136@mail.sjctni.edu');               // Name is optional
+        $mail->addReplyTo('info@example.com', 'Information');
 
-    // Delete the request from studreq
-    $delete_sql = "DELETE FROM studreq WHERE reg = $reg";
-    mysqli_query($connect, $delete_sql);
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Here is the subject';
+        $mail->Body    = 'your application reject <b>in bold!</b>';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        echo 'Message has been sent';
+
+        $delete_sql = "DELETE FROM studreq WHERE reg = '$reg'";
+        mysqli_query($connect, $delete_sql);
+
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+
+    header("Location: ./stud_req.php");
+    exit();
+
 }
-
 ?>
 
 
@@ -188,9 +238,14 @@ if (isset($_POST['approve'])) {
                                     </td>
                                     <td>
 
-                                    <button type="submit" name="approve" value="' . $row['reg'] . '">Approve</button>
-                                    <button type="submit" name="reject" value="' . $row['reg'] . '">Reject</button>
-
+                                    <form method="post" action="./stud_req.php">
+                    <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                    <button type="submit" name="approve" class="btn btn-success">Approve</button>
+                </form>
+                <form method="post" action="./stud_req.php">
+                    <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                    <button type="submit" name="reject" class="btn btn-danger">Reject</button>
+                </form>
 
                                         <!-- <div><a href="stud_view.php?reg=<?php echo $row['reg']; ?>">
                                                 <button class="btn btn--radius-2 btn--blue btn btn-primary p-2 m-1" type="reset" name="Submit2" value="Reset">View</button></a></div> -->

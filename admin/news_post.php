@@ -80,7 +80,7 @@ if (!isset($_SESSION["name"])) {
 
                         <a href="./news_displayed.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="mdi mdi-pin menu-icon"></i>
 
-                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">News Post</button>
+                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">Posted News</button>
                         </a>
                     </div>
 

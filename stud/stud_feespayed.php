@@ -2,6 +2,11 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
+
+if (!isset($_SESSION["reg"])) {
+    header("Location: ../stud_login.php"); 
+    exit();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

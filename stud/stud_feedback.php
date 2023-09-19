@@ -3,18 +3,24 @@ include("../dbconnect.php");
 extract($_POST);
 session_start();
 
-
-if (isset($_POST['btn'])) {
-  $qry = mysqli_query($connect, "SELECT name FROM stud WHERE reg = '$reg'");
-  $user_row = mysqli_fetch_assoc($qry);
-  $qry = mysqli_query($connect, "INSERT INTO suggest VALUES ('$reg', '$name', '$sub', '$cmpl')");
-  if ($qry) {
-    echo "<script>alert('We Get your Suggestions if it is possible we will take action for that')</script>";
-  } else {
-    echo "<script>alert('Enter the fields Correctly')</script>";
-  }
+if (!isset($_SESSION["reg"])) {
+  header("Location: ../stud_login.php"); 
+  exit();
 }
 
+if (isset($_POST['btn'])) {
+  $reg = mysqli_real_escape_string($connect, $_POST['reg']);
+  $name = mysqli_real_escape_string($connect, $_POST['name']);
+  $sub = mysqli_real_escape_string($connect, $_POST['sub']);
+  $cmpl = mysqli_real_escape_string($connect, $_POST['cmpl']);
+
+  $qry = mysqli_query($connect, "INSERT INTO suggest (reg, name, sub, cmpl) VALUES ('$reg', '$name', '$sub', '$cmpl')");
+  if ($qry) {
+    echo "<script>alert('We received your suggestion. If possible, we will take action for that.')</script>";
+  } else {
+    echo "<script>alert('Error: Enter the fields correctly')</script>";
+  }
+}
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -31,7 +37,8 @@ if (isset($_POST['btn'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../dist/css/style.min.css">
   <link rel="stylesheet" href="../admin/include/style.css">
-  <link rel="stylesheet" href="../admin/include/ho_login.png">
+  <link rel="shortcut icon" href="../admin/include/ho_login.png">
+
   <link rel="stylesheet" href="./include/style.css">
 </head>
 <style>
@@ -78,9 +85,9 @@ if (isset($_POST['btn'])) {
             $row = mysqli_fetch_array($qry);
             $_SESSION['id']  = $row['id'];
             ?>
-              <div class="yrfeed p-4 float-right">
+              <!-- <div class="yrfeed p-4 float-right">
                 <a href='feed_solved.php?id=<?php echo $row['id']; ?>'> <button class="btn formbold-btn">Status</button></a>
-              </div>
+              </div> -->
           </div>
 
           <!-- Dash data section -->
@@ -125,13 +132,13 @@ if (isset($_POST['btn'])) {
                     <label for="reg" class="formbold-form-label">
                       Reg No
                     </label>
-                    <input type="text" name="reg" id="reg" class="formbold-form-input" disabled  />
+                    <input type="text" name="reg" id="reg" class="formbold-form-input"/>
                   </div>
                   <div>
                     <label for="name" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="name"  id="name" class="formbold-form-input" disabled  />
+                    <input type="text" name="name"  id="name" class="formbold-form-input"/>
                   </div>
                 </div>
                 <div>

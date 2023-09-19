@@ -88,24 +88,25 @@ if (isset($_POST['btn'])) {
 
                     <div class="card d-flex justify-content-center align-items-center">
                         <form class="card-body" style="align-items:center;justify-content:center;" id="f1" name="f1" method="post" action="#">
-                            <div class="m-1000">
+                            <div class="m-10 bg-light p-4" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+">
                                 <div class="col">
                                     <div class="grid gap-0 row-gap-3">
                                         <div class="p-2 g-col-6">Hostel Fees</div>
-                                        <div class="p-2 g-col-6"><input name="hf" type="text" id="hf" /></div>
+                                        <div class="p-2 g-col-6"><input name="hf" type="text" class="form-control" placeholder="Enter Hostel fees" id="hf" /></div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="grid gap-0 row-gap-3">
                                         <div class="p-2 g-col-6">Mess Fees </div>
-                                        <div class="p-2 g-col-6"><input name="mf" type="text" id="mf" /></div>
+                                        <div class="p-2 g-col-6"><input name="mf" type="text" class="form-control" placeholder="Enter Mess fees" id="mf" /></div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="grid gap-0 row-gap-3">
                                         <div class="p-2 g-col-6">Month</div>
                                         <div class="p-2 g-col-6">
-                                            <select name="month">
+                                            <select name="month" class="form-control" placeholder="Month">
                                                 <option value="">select</option>
                                                 <option value="january">january</option>
                                                 <option value="Februry">Februry</option>
@@ -120,21 +121,21 @@ if (isset($_POST['btn'])) {
                                                 <option value="November">November</option>
                                                 <option value="December">December</option>
                                             </select>
-                                            <input type="submit" name="btn1">
+                                            <!-- <input type="submit" name="btn1"> -->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="grid gap-0 row-gap-3">
                                         <div class="p-2 g-col-6">Laste Date </div>
-                                        <div class="p-2 g-col-6"><input name="date" type="date" id="date" /></div>
+                                        <div class="p-2 g-col-6"><input name="date" type="date" class="form-control" placeholder="Last Date" id="date" /></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="grid gap-0 row-gap-3">
                                         <td height="31">&nbsp;</td>
-                                        <td><button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
-                                            <button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
+                                        <td><button class="btn btn--radius-2 btn--blue btn btn-primary m-5" name="btn" type="submit" id="btn" value="Submit">Submit</button>
+                                            <button class="btn btn--radius-2 btn--blue btn btn-primary m-5" type="reset" name="Submit2" value="Reset">Reset</button>
                                         </td>
                                     </div>
                                 </div>

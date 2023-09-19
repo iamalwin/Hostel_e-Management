@@ -72,7 +72,7 @@ if (!isset($_SESSION["reg"])) {
               </span> Dashboard
             </h3>
           </div>
-          <div class="col-md-4 stretch-card grid-margin">
+          <div class="col-md-4 stretch-card grid-margin p-0">
               <div class="card bg-gradient card-img-holder text-white">
               <a href="./stud_feespay.php">
                   <div class="card-body">
@@ -85,18 +85,16 @@ if (!isset($_SESSION["reg"])) {
                 </a>
               </div>
             </div>
-          <div class="col-md-7 grid-margin stretch-card">
+          <div class="col-md-7 grid-margin stretch-card p-0">
             <div class="card">
               <div class="card-body">
-
                 <h1 class="card-title" style="font-size: 1.5rem; color: skyblue; font-weight:bolder;">Time table</h1>
-
                 <table class="table table-responsive-xl">
                   <tr style="color: skyblue; font-weight:bolder;">
                     <th>schedule</th>
                     <th>Time</th>
                   </tr>
-
+                  
                   <tr>
                     <td>Mass</td>
                     <td>6:30 - 7:30</td>
@@ -129,9 +127,6 @@ if (!isset($_SESSION["reg"])) {
             </div>
           </div>
           </div>
-
-
-
         </div>
       </div>
     </div>

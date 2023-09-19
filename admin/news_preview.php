@@ -109,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_news'])) {
                                 <i class="mdi mdi-newspaper menu-icon"></i>
                             </span> Post News
                         </h3>
-                        <a href="./news_displayed.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="fas fa-paper-plane menu-icon"></i>
-                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">News Post</button>
+                        <a href="./news_displayed.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="mdi mdi-pin menu-icon"></i>
+                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">Posted News</button>
                         </a>
                     </div>
 

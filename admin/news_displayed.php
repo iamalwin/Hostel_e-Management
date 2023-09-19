@@ -112,7 +112,7 @@ if (isset($_POST['delete_news'])) {
                             </span> Post News
                         </h3>
                         <a href="./news_post.php" class="btn btn--radius-2 btn--blue btn-primary p-1 float-right"><i class="mdi mdi-arrow-left menu-icon"></i>
-                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">Back to News Post</button>
+                            <button class="btn text-light m-2 p-0" type="submit" value="Preview">Post New News</button>
                         </a>
                     </div>
                     <div class="card d-flex justify-content-center align-items-center">
@@ -126,14 +126,13 @@ if (isset($_POST['delete_news'])) {
                                             $title = $row['title'];
                                             $content = $row['content'];
                                             $date_published = $row['date_published'];
-
                                             echo "<div class='news-item'>";
                                             echo "<h3 class='news-title'>$title</h3>";
-                                            echo "<p class='news-content'>$content</p>";
+                                            echo "<p class='news-cont'>$content</p>";
                                             echo "<h6 class='news-date'>$date_published</h6>";
-                                            echo "<form method='post' action='news_displayed.php'>";
+                                            echo "<form method='post' action='news_displayed.php' class='del_btn'>";
                                             echo "<input type='hidden' name='news_id' value='$news_id'>";
-                                            echo "<button type='submit' class='btn' name='delete_news'>Delete</button>";
+                                            echo "<button type='submit' class='del' name='delete_news'><i class='fas fa-trash'></i></button>";
                                             echo "</form>";
                                             echo "</div>";
                                         }
