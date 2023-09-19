@@ -129,14 +129,26 @@ INSERT INTO `hostel` (`id`, `hname`, `nor`, `rm`, `phone`, `hfor`, `hc`) VALUES
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
+  `news_id` INT PRIMARY KEY,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `date_published` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
 --
+DELIMITER //
+CREATE TRIGGER tr_news_insert
+BEFORE INSERT ON news
+FOR EACH ROW
+BEGIN
+    DECLARE max_news_id INT;
+    SET max_news_id = (SELECT MAX(CAST(SUBSTRING(news_id, 5) AS UNSIGNED)) FROM news);
+    SET NEW.news_id = CONCAT('news', COALESCE(max_news_id + 1, 1));
+END;
+//
+DELIMITER ;
+
 -- Table structure for table `paid`
 --
 

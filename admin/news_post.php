@@ -15,7 +15,7 @@ if (!isset($_SESSION["name"])) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>registration</title>
+    <title>preview_news</title>
     <link rel="stylesheet" href="./include/materialdesignicons.min.css">
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
     <link rel="stylesheet" href="./include/style.css">
@@ -79,7 +79,7 @@ if (!isset($_SESSION["name"])) {
                         </h3>
 
                         <div class="btn btn--radius-2 pl-3 pr-3 pt-1 pb-1 btn--blue btn-primary mt-2 float-right"><i class="mdi mdi-pin menu-icon"></i>
-                            <a href="./news_preview.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Posted News</button></a>
+                            <a href="./news_displayed.php"><button class="btn p-0 m-2 text-light " type="submit" value="Preview">Posted News</button></a>
                         </div>
                     </div>
 

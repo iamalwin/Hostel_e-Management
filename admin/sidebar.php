@@ -1,14 +1,15 @@
 <nav class="sidebar sidebar-offcanvas m-0 fixed-left d-flex" id="sidebar">
     <ul class="nav">
-        <li class="nav-item nav-profile">
+        <li class="nav-item nav-profile bg-dark" style="  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;">
             <a href="#home" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="./include/admin_logo.png" alt="profile" style="height: 40px;">
+                    <img src="./include/admin_logo1.png" alt="profile" style="height: 40px;">
                     <span class="login-status online"></span>
 
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                    <span class="font-weight-bold mb-2">Admin</span>
+                    <span class="font-weight-bold mb-2 text-light">Admin</span>
                     <span class="text-secondary text-small"><?php echo " " .$_SESSION['name']; ?></span>
                 </div>
                 <!-- <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i> -->

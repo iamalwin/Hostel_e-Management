@@ -1,17 +1,42 @@
 <?php
 include("../dbconnect.php");
-extract($_POST);
 session_start();
-
 if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
     exit();
 }
-?>
-<?php
-$query = "SELECT * FROM news ORDER BY date_published DESC"; // You can adjust the query as needed
+
+$query = "SELECT * FROM news ORDER BY date_published DESC";
 $result = mysqli_query($connect, $query);
 ?>
+
+<?php
+if (isset($_POST['delete_news'])) {
+    $news_id = $_POST['news_id'];
+
+    $sql = "DELETE FROM news WHERE news_id = ?";
+    $stmt = $connect->prepare($sql);
+
+    if (!$stmt) {
+        die("Database query failed: " . $connect->error);
+    }
+
+    $stmt->bind_param("s", $news_id); // Assuming 'news_id' is a string
+
+    if ($stmt->execute()) {
+        // News item deleted successfully
+        header("Location: news_displayed.php"); // Redirect back to the news display page
+        exit();
+    } else {
+        echo "Error deleting news item: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +47,11 @@ $result = mysqli_query($connect, $query);
     <title>registration</title>
     <link rel="stylesheet" href="./include/materialdesignicons.min.css">
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
-    <link rel="stylesheet" href="./include/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../dist/css/style.min.css">
     <link rel="stylesheet" href="./include/style.css">
     <link rel="shortcut icon" href="./include/ho_login.png">
+    <link rel="stylesheet" href="./include/news.css">
     <link rel="stylesheet" href="./include/exstyle.css">
 
     <style>
@@ -38,24 +63,20 @@ $result = mysqli_query($connect, $query);
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
         }
-
         .divcont {
             box-shadow: none;
         }
-
         #content,
         #title {
             font-size: 1.2rem;
             line-height: 20px;
             letter-spacing: 1px;
         }
-
         .card {
             height: 80%;
         }
@@ -87,28 +108,41 @@ $result = mysqli_query($connect, $query);
                             </span> Post News
                         </h3>
                     </div>
-                    <div class="news_cont">
-                        <section class="news">
-                            <?php
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $title = $row['title'];
-                                    $content = $row['content'];
-                                    $time = $row['date_published'];
-                            ?>
-                                    <div class='news-item'>
-                                        <h3 class='news-title'><?php echo $title; ?></h3>
-                                        <p class='news-content'><?php echo $content; ?></p>
-                                        <h6 class='news-date'><?php echo $time; ?></h6>
-                                    </div>
-                            <?php
-                                }
-                            } else {
-                                echo "<div class='no-news'>No news available.</div>";
-                            }
-                            ?>
-                        </section>
+                    <div class="card d-flex justify-content-center align-items-center">
+                        <div class="card-body col-12">
+                            <div class="col p-0">
+                                    <section class="cont">
+                                    <?php
+                                    if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $news_id = $row['news_id'];
+        $title = $row['title'];
+        $content = $row['content'];
+        $date_published = $row['date_published'];
+
+        echo "<div class='news-item'>";
+        echo "<h3 class='news-title'>$title</h3>";
+        echo "<p class='news-content'>$content</p>";
+        echo "<h6 class='news-date'>$date_published</h6>";
+        echo "<form method='post' action='news_displayed.php'>";
+        echo "<input type='hidden' name='news_id' value='$news_id'>";
+        echo "<button type='submit' name='delete_news'>Delete</button>";
+        echo "</form>";
+        echo "</div>";
+
+    }
+} else {
+    echo "<div class='no-news'>No news available.</div>";
+}
+?>
+                                    </section>
+                                    
+                            </div>
+                        </div>
+                        
                     </div>
+
+                    
                 </div>
             </div>
         </div>

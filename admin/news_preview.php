@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_news'])) {
     if ($stmt = $connect->prepare($sql)) {
         $stmt->bind_param("ss", $title, $content);
         if ($stmt->execute()) {
-            $postMessage = "News successfully stored in the database.";
+            $postMessage = "News successfully Posted.";
         } else {
             $postMessage = "Error storing news in the database: " . $stmt->error;
         }
