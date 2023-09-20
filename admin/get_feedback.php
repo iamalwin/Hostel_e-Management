@@ -8,7 +8,7 @@ if (!isset($_SESSION["name"])) {
   exit();
 }
 
-$sql = "UPDATE suggest SET status = 'solved' WHERE id = id";
+$sql = "DELETE FROM suggest WHERE id = id";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,60 +63,75 @@ $sql = "UPDATE suggest SET status = 'solved' WHERE id = id";
         <div class="content-wrapper p-4">
 
           <div class="page-header">
-            <h3 class="page-title">
+            <h3 class="page-title"style="font-family: 'Montserrat Alternates', sans-serif;
+">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-chart-bar menu-icon"></i>
               </span> Feedback
             </h3>
           </div>
-              <form method="POST">
-          <div class="grid-margin card p-4 stretch-card">
-            <table class="table table-responsive-xl">
+          <form method="POST">
+                        <div class="grid-margin card p-4 stretch-card">
+                            <?php
+                            $qry = mysqli_query($connect, "select * from suggest");
+                            $i = 1;
+                            $hasData = false;
+                            while ($row = mysqli_fetch_array($qry)) {
+                                $reg = $row['reg'];
+                                $hasData = true;
+                            }
 
-              <thead class="grid-margin bg-light fs-1 fw-bolder">
-                <tr>
-                  <th>Reg No</th>
-                  <th>Name</th>
-                  <th>Subject</th>
-                  <th>Complaints / suggestion</th>
-                  <!-- <th>Action</th> -->
-                  <th>Action</th>
-                </tr>
-              </thead>
+                            if ($hasData) {
+                            ?>
+                                <table class="table table-responsive-xl">
+                                    <thead class="grid-margin bg-light fs-1 fw-bolder">
+                                        <tr>
+                                            <th>Reg No</th>
+                                            <th>Name</th>
+                                            <th>Subject</th>
+                                            <th>Complaints / suggestion</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    mysqli_data_seek($qry, 0);
 
-              <?php
-              $qry = mysqli_query($connect, "select * from suggest");
-              $i = 1;
-              while ($row = mysqli_fetch_array($qry)) {
-                $reg = $row['reg'];
-              ?>
-                <tr>
-                  <td>
-                    <div><?php echo $row['reg']; ?></div>
-                  </td>
-                  <td>
-                    <div><?php echo $row['name']; ?></div>
-                  </td>
-                  <td>
-                    <div><?php echo $row['sub']; ?></div>
-                  </td>
-                  <td>
-                    <textarea name="" id="" style="background-color:white;border-color:white; width:100%;" cols="70" rows="3" disabled><?php echo $row['cmpl']; ?></textarea>
-                  </td>
-                  <!-- <td class="rbtn">
-                    <button class="btn btn--radius-50 btn--blue  btn-primary" id="btn1" type="submit" name="btn1">Solved</button>
-                  </td> -->
-                  <td>
-                  <button class="rounded-pill btn--blue btn pt-2 pb-2 pr-2 pl-2 btn-primary" id="solveButton">Solve</button>                </td>
-                </tr>
-              <?php
-                $i++;
-              }
-
-              ?>
-            </table>
-          </div>
-		  </form>
+                                    while ($row = mysqli_fetch_array($qry)) {
+                                        $reg = $row['reg'];
+                                    ?>
+                                        <tr>
+                                            <td>
+                                                <div><?php echo $row['reg']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div><?php echo $row['name']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div><?php echo $row['sub']; ?></div>
+                                            </td>
+                                            <td>
+                                                <textarea name="" id="" style="background-color:white;border-color:white; width:100%;" cols="70" rows="3" disabled><?php echo $row['cmpl']; ?></textarea>
+                                            </td>
+                                            <td>
+                                                <button class="rounded-pill btn--blue btn pt-2 pb-2 pr-2 pl-2 btn-primary" id="solveButton">Solve</button>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        $i++;
+                                    }
+                                    ?>
+                                </table>
+                            <?php
+                            } else {
+                            ?>
+                                <div style="display:block; text-align:center">
+                                    <img style="height: 300px; width:300px;" src="./include/no_feed.png" alt="">
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </form>
         </div>
 
       </div>

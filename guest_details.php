@@ -96,7 +96,7 @@
 			<div class="container-fluid page-body-wrapper bg-light">
 				<div class="card-body">
 					<div class="page-header" style="position: relative	;">
-						<h3 class="page-title"style="position:relative;left:8%;">
+						<h3 class="page-title" style="position:relative;left:8%;">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">
 								<i class="mdi mdi-account-plus menu-icon"></i>
 							</span> Guest Registration
@@ -118,14 +118,14 @@
 								<div class="col-md-5 m-3">
 									<div class="col  d-flex flex-row">
 										<div class="form-check m-3">
-											<input class="form-check-input" type="radio" name="gender" id="male" value="male">
+											<input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
 											<label class="form-check-label" for="male">
 												Male
 											</label>
 										</div>
 
 										<div class="form-check m-3">
-											<input class="form-check-input" type="radio" name="gender" id="female" value="female">
+											<input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
 											<label class="form-check-label" for="female">
 												Female
 											</label>
@@ -135,7 +135,7 @@
 								</div>
 
 								<div class="col-md-5 m-3">
-									<input type="number" class="form-control" placeholder="Age" name="age" id="age" required>
+									<input type="" class="form-control" placeholder="Age" name="age" id="age" required>
 								</div>
 							</div>
 
@@ -186,7 +186,6 @@
 		<script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 		<script src="./admin/include/vendor.bundle.base.js.download"></script>
-
 
 		<script>
 			function toggleCollapse(event) {

@@ -2,11 +2,10 @@
     <ul class="nav">
         <li class="nav-item nav-profile bg-dark" style="  border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;">
-            <a href="#home" class="nav-link">
+            <a href="" class="nav-link">
                 <div class="nav-profile-image">
                     <img src="./include/admin_logo1.png" alt="profile" style="height: 40px;">
                     <span class="login-status online"></span>
-
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                     <span class="font-weight-bold mb-2 text-light">Admin</span>
@@ -37,7 +36,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link collapsed p-1" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Fees</span>
                 <i class="mdi mdi-menu-down mdi-24px text-primary"></i>
                 <i class="mdi mdi-credit-card menu-icon"></i>
@@ -57,3 +56,10 @@
         </li>
     </ul>
 </nav>
+
+<style>
+  .nav-link span{
+            font-weight: bolder;
+        font-family: 'Montserrat Alternates', sans-serif;
+}
+</style>

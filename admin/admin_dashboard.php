@@ -59,12 +59,15 @@ if ($result) {
   <link rel="stylesheet" href="./include/vendor.bundle.base.css">
   <link rel="stylesheet" href="./include/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap');
+</style>
   <link rel="stylesheet" href="../dist/css/style.min.css">
 
   <link rel="stylesheet" href="./include/style.css">
   <link rel="shortcut icon" href="./include/ho_login.png">
   <link rel="stylesheet" href="./include/exstyle.css">
+  <link rel="stylesheet" href="./include/news.css">
 
   <style>
     .card-img-holder a {
@@ -72,12 +75,17 @@ if ($result) {
       color: white;
       font-family: Georgia, 'Times New Roman', Times, serif;
     }
+
     .bg-gradient {
-    background: linear-gradient(45deg, #94a2b3,#cbddf2);
-    /* Other styling properties */
-    color: white;
-    padding: 20px;
-}
+      background: linear-gradient(45deg, #94a2b3, #cbddf2);
+      /* Other styling properties */
+      color: white;
+      padding: 20px;
+    }
+    .card-body h2, .page-title{
+      font-family: 'Montserrat Alternates', sans-serif;
+    }
+    
   </style>
 </head>
 
@@ -94,17 +102,15 @@ if ($result) {
     </div>
 
     <header class="topbar" data-navbarbg="skin6">
-    <?php include './navbar.php' ?>
+      <?php include './navbar.php' ?>
     </header>
 
     <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
       <?php include 'sidebar.php' ?>
-
       <div class="main-panel">
-      <div class="content-wrapper p-4">
 
+        <div class="content-wrapper p-4">
           <!-- dash section -->
-
           <div class="page-header">
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
@@ -112,17 +118,16 @@ if ($result) {
               </span> Dashboard
             </h3>
 
-            <nav aria-label="breadcrumb row-5 bg-gradient-primary">
+            <div aria-label="breadcrumb row-5 bg-gradient-primary">
               <h5 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-calendar align-middle"></i></span>
                 <?php $currentDate = date('d-m-Y');
                 echo $currentDate; ?>
               </h5>
-            </nav>
+            </div>
           </div>
 
           <!-- Dash data section -->
-
 
           <div class="row">
             <div class="col-md-4 stretch-card grid-margin">
@@ -132,7 +137,6 @@ if ($result) {
                     <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                     <h2 class="font-weight-normal mb-1">
                       <i class="mdi mdi-account mdi-24px float-right"></i>
-
                       <!-- studends count -->
                       <?php echo "Total Students: " . $totalStudents; ?>
                     </h2>
@@ -143,7 +147,7 @@ if ($result) {
 
             <div class="col-md-4 stretch-card grid-margin">
               <div class="card bg-gradient card-img-holder text-white">
-              <a href="./stud_req.php">
+                <a href="./stud_req.php">
                   <div class="card-body">
                     <img src="./include/circle.svg" class="card-img-absolute" alt="circle-image">
                     <h2 class="font-weight-normal mb-1">
@@ -173,7 +177,7 @@ if ($result) {
 
               </div>
             </div>
-            
+
             <!--<div class="col-md-3 stretch-card grid-margin">
               <div class="card bg-gradient-success card-img-holder text-white">
                 <div class="card-body">
@@ -231,19 +235,19 @@ if ($result) {
               </div>
             </div>
           </div>
-          </div>
         </div>
-
       </div>
-      <!-- content-wrapper ends -->
-      <!-- partial:partials/_footer.html -->
-      <!-- <footer class="footer">
+
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <!-- <footer class="footer">
         <div class="container-fluid clearfix">
           <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
           <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
         </div>
       </footer> -->
-    </div>
+  </div>
   </div>
   </div>
   <script src="./include/vendor.bundle.base.js.download"></script>

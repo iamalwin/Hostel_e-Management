@@ -78,7 +78,8 @@ if (isset($_POST['btn'])) {
                     <!-- dash section -->
 
                     <div class="page-header">
-                        <h3 class="page-title">
+                        <h3 class="page-title"style="font-family: 'Montserrat Alternates', sans-serif;
+">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-cash-multiple menu-icon"></i>
                             </span> Fees pay

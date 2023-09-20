@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                             <div class="formbold-main-wrapper card d-flex justify-content-center align-items-center p-3">
 
                             <form method="post" class="col-10">
-                                <img src="../stud/include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="...">
+                                <img src="../stud/include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="">
                                 <div class="row">
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">

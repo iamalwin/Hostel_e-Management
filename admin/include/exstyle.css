@@ -485,3 +485,7 @@ body {
   color: white;
 
 }
+
+.card-body h2{
+  font-family: 'Montserrat Alternates', sans-serif;
+}

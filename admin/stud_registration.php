@@ -100,7 +100,8 @@ if (isset($_POST['btn'])) {
 			<div class="main-panel">
 				<div class="content-wrapper p-4">
 					<div class="page-header">
-						<h3 class="page-title">
+						<h3 class="page-title"style="font-family: 'Montserrat Alternates', sans-serif;
+">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">
 								<i class="mdi mdi-account-plus menu-icon"></i>
 							</span> Student Registration

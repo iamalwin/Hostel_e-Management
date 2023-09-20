@@ -77,7 +77,8 @@ session_start();
                     <!-- dash section -->
 
                     <div class="page-header">
-                        <h3 class="page-title">
+                        <h3 class="page-title" style="font-family: 'Montserrat Alternates', sans-serif;
+">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span> Students Details
@@ -150,15 +151,13 @@ session_start();
                             ?>
                         </table>
                     </div>
-
-
                 </div>
-                <footer class="footer">
+                <!-- <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
-                </footer>
+                </footer> -->
             </div>
         </div>
     </div>
@@ -204,13 +203,10 @@ session_start();
     </script>
 
     <script>
-        // Add JavaScript for live search as you type
         const studentNameInput = document.getElementById("studentName");
-
         studentNameInput.addEventListener("input", function() {
             const searchName = studentNameInput.value.trim();
             const tableRows = document.querySelectorAll(".alert");
-
             tableRows.forEach(function(row) {
                 const nameCell = row.querySelector("td:nth-child(2) div");
                 const studentName = nameCell.textContent.toLowerCase();
@@ -223,7 +219,5 @@ session_start();
             });
         });
     </script>
-
 </body>
-
 </html>

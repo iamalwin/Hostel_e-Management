@@ -25,6 +25,9 @@ if (!isset($_SESSION["reg"])) {
   <link rel="stylesheet" href="./include/style.css">
   <link rel="stylesheet" href="../admin/include/style.css">
   <link rel="shortcut icon" href="../admin/include/ho_login.png">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap');
+</style>
 
   <style>
     .card-img-holder a {
@@ -38,6 +41,9 @@ if (!isset($_SESSION["reg"])) {
     /* Other styling properties */
     color: white;
     padding: 20px;
+}
+.card-body h2{
+  font-family: 'Montserrat Alternates', sans-serif;
 }
   </style>
 </head>
@@ -66,7 +72,8 @@ if (!isset($_SESSION["reg"])) {
           <!-- dash section -->
 
           <div class="page-header">
-            <h3 class="page-title">
+            <h3 class="page-title"style="font-family: 'Montserrat Alternates', sans-serif;
+">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-home"></i>
               </span> Dashboard

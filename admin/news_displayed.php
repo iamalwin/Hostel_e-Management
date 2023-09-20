@@ -106,7 +106,8 @@ if (isset($_POST['delete_news'])) {
             <div class="main-panel">
                 <div class="content-wrapper p-3">
                     <div class="page-header">
-                        <h3 class="page-title">
+                        <h3 class="page-title"style="font-family: 'Montserrat Alternates', sans-serif;
+">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-newspaper menu-icon"></i>
                             </span> Post News
