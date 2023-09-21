@@ -1,19 +1,41 @@
-	<?php
-	include("dbconnect.php");
-	extract($_POST);
-	session_start();
-	if (isset($_POST['btn'])) {
+<?php
+include("dbconnect.php");
+session_start();
 
-		$max_qry = mysqli_query($connect, "select max(id) from studreq");
-		$max_row = mysqli_fetch_array($max_qry);
-		$id = $max_row['max(id)'] + 1;
-		$qry = mysqli_query($connect, "insert into studreq values('$id','$reg','$name','$fathname','$age','$gender','$dob','$email','$phone','$adds')");
-		if ($qry) {
-			echo "<script>alert('Registered Successfully')</script>";
-		} else {
-			echo "<script>alert('Could not Register')</script>";
-		}
-	}
+if (isset($_POST['btn'])) {
+    $name = $_POST["name"];
+    $reg = $_POST["reg"];
+    $dept = $_POST["dept"];
+    $year = $_POST["year"];
+    $fathname = $_POST["fathname"];
+    $fathphone = $_POST["fathphone"];
+    $age = $_POST["age"];
+    $dob = $_POST["dob"];
+    $bldgrp = $_POST["bldgrp"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    $image = "./include/images";
+
+	// insert
+    $insertQuery = "INSERT INTO studreq (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
+          VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image')";
+
+    if (mysqli_query($connect, $insertQuery)) {
+        $lastInsertedId = mysqli_insert_id($connect);
+        $stud_id = 'studreq' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+		// update
+        mysqli_query($connect, "UPDATE studreq SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
+        $postMessage = "Hostel Assigned to Students";
+    } else {
+        $postMessage = "Enter the correct fields";
+    }
+    // Close the connection
+    mysqli_close($connect);
+
+	header("Location: guest_details.php");
+    exit();
+}
 	?>
 
 	<!DOCTYPE html>
@@ -41,7 +63,6 @@
 			.container-fluid {
 				background-color: rgb(185, 185, 185);
 			}
-
 			.container {
 				margin-top: 20px;
 				width: 700px;
@@ -50,7 +71,6 @@
 				border-radius: 5px;
 				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 			}
-
 			form {
 				background-color: white;
 			}
@@ -60,9 +80,12 @@
 					padding: 20px;
 				}
 			}
-
 			.divcont {
 				box-shadow: none;
+			}
+			.row{
+				justify-content:center;
+				align-items:center;
 			}
 		</style>
 
@@ -104,69 +127,112 @@
 					</div>
 
 					<div class="card d-flex bg-transparent justify-content-center align-items-center">
-						<form class="card-body rounded col-10" id="f1" name="f1" method="post" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;position:relative" action="#" onSubmit="return vali()">
+						<form class="card-body rounded col-10" id="f1" name="f1" method="post" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;position:relative;" action="#" onSubmit="return vali()">
+						<!-- <form class="card-body col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()"> -->
 							<div class="row">
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Name</label>
 									<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>
 								</div>
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Reg No</label>
 									<input type="text" class="form-control" name="reg" id="reg" placeholder="Register Number" required>
 								</div>
 							</div>
 							<div class="row">
-
-								<div class="col-md-5 m-3">
-									<div class="col  d-flex flex-row">
-										<div class="form-check m-3">
-											<input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
-											<label class="form-check-label" for="male">
-												Male
-											</label>
-										</div>
-
-										<div class="form-check m-3">
-											<input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-											<label class="form-check-label" for="female">
-												Female
-											</label>
-										</div>
-									</div>
-
+								<div class="col-md-5 m-2">
+									<label for="">Department</label>
+									<input type="text" class="form-control" name="dept" id="dept" placeholder="Department" required>
 								</div>
-
-								<div class="col-md-5 m-3">
-									<input type="" class="form-control" placeholder="Age" name="age" id="age" required>
+								<div class="col-md-5 m-2">
+									<label for="">Year</label>
+									<input class="form-control" placeholder="Year ex: 1st UG  " name="year" id="year" required>
 								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-md-5 m-3">
+							<div class="col-md-5 m-2">
+									<label for="">Phone</label>
+									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" maxLength="10" required>
+								</div>
+								<div class="col-md-5 m-2">
+									<label for="">e-mail</label>
+									<input type="text" class="form-control" name="email" id="email" placeholder="E-Mail" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 m-2">
+									<label for="">Age</label>
+									<input type="" class="form-control" name="age" id="age" placeholder="Age" maxLength="2" required>
+								</div>
+								<div class="col-md-5 m-2">
+									<label for="">DOB</label>
+									<input type="date" title="date of barth" class="form-control" name="dob" id="dob" placeholder="DOB" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 m-2">
+									<label for="">Bload Group</label>
+									<select class="form-control" id="bldgrp" name="bldgrp" placeholder="Blood Group" required name="blood_group">
+										<option value="" disabled selected>Select Blood Group</option>
+										<option value="A+">A +ve</option>
+										<option value="A-">A -ve</option>
+										<option value="B+">B +ve</option>
+										<option value="B-">B -ve</option>
+										<option value="AB+">AB +ve</option>
+										<option value="AB-">AB -ve</option>
+										<option value="O+">O +ve</option>
+										<option value="O-">O -ve</option>
+									</select>
+								</div>
+								<div class="col-md-5 m-2">
+									<label for="">Father Name</label>
 									<input type="text" class="form-control" name="fathname" id="fathname" placeholder="Father Name" required>
 								</div>
-								<div class="col-md-5 m-3">
-									<input type="date" class="form-control" id="dob" name="dob" placeholder="DOB" required>
-								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-md-5 m-3">
-									<input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
+								<div class="col-md-5 m-2">
+									<label for="">Father Phone</label>
+									<input type="phone" class="form-control" id="fathphone" name="fathphone" placeholder="Father Phone" onInput="validatePhoneNumber(this)" required>
 								</div>
-								<div class="col-md-5 m-3">
-									<input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone" required>
+								<div class="col-md-5 m-2">
+									<label for="">Address</label>
+									<textarea type="text" class="form-control" name="address" id="address" placeholder="Adrress" required></textarea>
 								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-md-5 m-3">
-									<textarea type="field" rows="8" cols="50" class="form-control" name="adds" id="adds" placeholder="Address" required></textarea>
+								<div class="col-md-5 m-2">
+									<label for=""></label>
+								<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
+								</div>
+								<div class="col-md-5 m-2">
+									<label for="image">Profile Photo</label>
+								<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
 								</div>
 							</div>
 
-							<div class="p-t-15">
+							<!-- <div class="row">
+							<div class="col-md-5 m-2 justify-content-center align-items-center d-flex" >
+								<select name="hn" class="col-md-10 p-2">
+									<option value="" class="btnsel">Select Hostel</option>
+									<?php
+									$qry = mysqli_query($connect, "select hname from hostel");
+									while ($rw = mysqli_fetch_assoc($qry)) {
+									?>
+										<option value="<?php echo $rw['hname']; ?>"> <?php echo $rw['hname']; ?></option>
+									<?php
+									}
+									?>
+								</select>
+							</div>
+							<div class="col-md-5 m-2">
+								<input class="form-control" name="room" id="room" placeholder="Room No" required>
+							</div>
+						</div> -->
+							<div class="p-t-15" style="margin-left: 80px;">
 								<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
 								<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
 							</div>
+						<!-- </form> -->
 						</form>
 
 					</div>
@@ -186,7 +252,25 @@
 		<script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
 
 		<script src="./admin/include/vendor.bundle.base.js.download"></script>
-
+		<script>
+		function previewImage(event) {
+			const imagePreview = document.getElementById('image-preview');
+			const input = event.target;
+        
+			if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+				imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            };
+            
+            reader.readAsDataURL(input.files[0]);
+        } else {
+			imagePreview.style.display = 'none';
+        }
+    }
+</script>
 		<script>
 			function toggleCollapse(event) {
 				event.preventDefault();

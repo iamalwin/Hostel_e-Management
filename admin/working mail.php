@@ -7,6 +7,73 @@ if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
     exit();
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $mail = new PHPMailer(true);
+    try {
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'johnrajae321peeter@gmail.com';
+        $mail->Password = 'tzgi iagj vzpe rpxx';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+
+        // Recipients
+        $mail->setFrom('johnrajae321peeter@gmail.com', 'Mailer');
+        $mail->addReplyTo('info@example.com', 'Information');
+
+        $mail->isHTML(true);
+
+        // Check which button was clicked
+        if (isset($_POST['approve'])) {
+            $reg = $_POST['reg'];
+
+            $insert_sql = "INSERT INTO stud (name, reg, fathname, age, dob, email, phone, address) VALUES (
+                '{$row['name']}', '{$row['reg']}', '{$row['age']}', '{$row['dob']}',  '{$row['email']}', '{$row['phone']}', '{$row['address']}')";
+
+            mysqli_query($connect, $delete_sql);
+
+            $mail->addAddress($row['email']);
+            $mail->Subject = 'Approval Notification';
+            $mail->Body = 'Congratulations, ' . $row['name'] . '! Your admission request has been approved.<br>
+            Your Login Credential is your Name and Register Number.';
+
+            $delete_sql = "DELETE FROM studreq WHERE reg = '$reg'";
+            mysqli_query($connect, $delete_sql);
+        } elseif (isset($_POST['reject'])) {
+            $reg = $_POST['reg'];
+
+            $sql = "SELECT * FROM studreq WHERE reg = '$reg'";
+            $result = mysqli_query($connect, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            // Reject button was clicked
+            $mail->addAddress($row['email']);
+            $mail->Subject = 'Rejection Notification';
+            $mail->Body = 'Sorry for Your request has been rejected.';
+
+            $delete_sql = "DELETE FROM studreq WHERE reg = '$reg'";
+            mysqli_query($connect, $delete_sql);
+        }
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+    header("Location: ./stud_req.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +130,7 @@ if (!isset($_SESSION["name"])) {
 <body class="">
     <div class="container-scroller">
 
-
+        
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
@@ -78,7 +145,7 @@ if (!isset($_SESSION["name"])) {
 
         <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
 
-            <div class="navcantainer d-fixed">
+        <div class="navcantainer d-fixed">
                 <?php include 'sidebar.php' ?>
             </div>
 
@@ -98,60 +165,64 @@ if (!isset($_SESSION["name"])) {
 
 
                     <div class="grid-margin card p-3 stretch-card" style="overflow: hidden;">
-                        <?php
-                        $query = "SELECT * FROM studreq";
-                        $result = mysqli_query($connect, $query);
-                        ?>
+                    <?php
+$query = "SELECT * FROM studreq";
+$result = mysqli_query($connect, $query);
+?>
 
-                        <?php if (mysqli_num_rows($result) > 0) : ?>
+<?php if (mysqli_num_rows($result) > 0) : ?>
 
-                            <form method="post" action="./stud_req.php">
-                                <table class="table table-responsive-xl">
-                                    <thead class="bg-light asd">
-                                        <tr>
-                                            <th class="fw-bolder" scope="col">Reg No</th>
-                                            <th class="fw-bolder" scope="col">Name</th>
-                                            <th class="fw-bolder" scope="col">Father Name</th>
-                                            <th class="fw-bolder" scope="col">Email</th>
-                                            <th class="fw-bolder" scope="col">Phone</th>
-                                            <th class="fw-bolder" scope="col">profile</th>
-                                        </tr>
-                                    </thead>
+    <form method="post" action="./stud_req.php">
+        <table class="table table-responsive-xl">
+            <thead class="bg-light asd">
+                <tr>
+                    <th class="fw-bolder" scope="col">Reg No</th>
+                    <th class="fw-bolder" scope="col">Name</th>
+                    <th class="fw-bolder" scope="col">Father Name</th>
+                    <th class="fw-bolder" scope="col">Email</th>
+                    <th class="fw-bolder" scope="col">Phone</th>
+                    <th class="fw-bolder" scope="col">profile</th>
+                </tr>
+            </thead>
 
-                                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                                        <tr class="alert asd" role="alert">
-                                            <td>
-                                                <div class="as"><?php echo $row['reg']; ?></div>
-                                                <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
-                                            </td>
-                                            <td>
-                                                <div class="as"><?php echo $row['name']; ?></div>
-                                            </td>
-                                            <td>
-                                                <div class="as"><?php echo $row['fathname']; ?></div>
-                                            </td>
-                                            <td>
-                                                <div class="as"><?php echo $row['email']; ?></div>
-                                            </td>
-                                            <td>
-                                                <div class="as"><?php echo $row['phone']; ?></div>
-                                            </td>
-                                            <td>
-                                                <a href="req_profile.php?reg=<?php echo $row['reg']; ?>">
-                                                    <button type="button" class="btn btn-primary">View</button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </table>
-                            </form>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr class="alert asd" role="alert">
+                    <td>
+                        <div class="as"><?php echo $row['reg']; ?></div>
+                        <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                    </td>
+                    <td>
+                        <div class="as"><?php echo $row['name']; ?></div>
+                    </td>
+                    <td>
+                        <div class="as"><?php echo $row['fathname']; ?></div>
+                    </td>
+                    <!-- <td>
+                        <div class="as"><?php echo $row['gender']; ?></div>
+                    </td> -->
+                    <td>
+                        <div class="as"><?php echo $row['email']; ?></div>
+                    </td>
+                    <td>
+                        <div class="as"><?php echo $row['phone']; ?></div>
+                    </td>
+                    <td>
+                        <button type="submit" name="approve" value="approve">Approve</button>
+                        <button type="submit" name="reject" value="reject">Reject</button>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
+    </form>
 
-                        <?php else : ?>
-                            <div style="display:block; text-align:center">
-                                <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
-                            </div>
-                        <?php endif; ?>
+<?php else : ?>
+    <div style="display:block; text-align:center">
+        <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
+    </div>
+<?php endif; ?>
+
                     </div>
+
 
                 </div>
                 <footer class="footer">

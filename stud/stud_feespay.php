@@ -6,8 +6,23 @@ session_start();
 if (!isset($_SESSION["reg"])) {
     header("Location: ../stud_login.php"); 
     exit();
-  }
+}
+
+$month = ""; // Initialize $month with a default value
+$mess ="";
+ $hostel="";
+ $total="";
+if (isset($_POST['btn1'])) {
+    $month = $_POST['month']; // Assign the selected month to $month
+
+    $qry = mysqli_query($connect, "select * from amnt where month='$month'");
+    $row = mysqli_fetch_assoc($qry);
+    $total = $row['total'];
+    $hostel = $row['hf'];
+    $mess = $row['mf'];
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -94,8 +109,8 @@ if (!isset($_SESSION["reg"])) {
                             </table>
                         </form>
 
-                        <?php
-                        if (isset($_POST['btn1'])) {
+                     <!--   <?php
+                      /*  if (isset($_POST['btn1'])) {
                             $qry = mysqli_query($connect, "select * from amnt where month='$month'");
                             $row = mysqli_fetch_assoc($qry);
                             $month = $row['month'];
@@ -103,7 +118,11 @@ if (!isset($_SESSION["reg"])) {
                             $hostel = $row['hf'];
                             $mess = $row['mf'];
                         }
-                        ?>
+						else {
+							echo"-";
+						}
+						*/
+                        ?>-->
                         <form class="card-body" name="form1" method="post" action="bank_pay.php?month=<?php echo $month; ?>&total=<?php echo $total; ?>">
                             <table>
                                 <!-- <tr>

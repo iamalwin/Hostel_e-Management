@@ -114,13 +114,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                             <input type="text" class="form-control" name="name" disabled value="<?php echo $row['name']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
-                                            <label for="reg">Registration</label><br>
+                                            <label for="reg">Reg No</label><br>
                                             <input type="text" class="form-control" name="reg" disabled value="<?php echo $row['reg']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
-                                            <label for="dept">Dept</label><br>
+                                            <label for="dept">Department</label><br>
                                             <input type="text" class="form-control" name="dept" disabled value="<?php echo $row['dept']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
@@ -131,8 +131,29 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
+                                            <label for="phone">Phone</label><br>
+                                            <input type="text" class="form-control" name="phone" disabled value="<?php echo $row['phone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        </div>
+                                        <div style="margin-top:10px;">
                                             <label for="email">Email</label><br>
                                             <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        </div>
+                                    </div>
+
+                                    <div class="m-1 col-md-5">
+                                    <div style="margin-top:10px;">
+                                            <label for="age">Age:</label><br>
+                                            <input type="text" class="form-control" name="age" disabled value="<?php echo $row['age']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        </div>
+                                        <div style="margin-top:10px;">
+                                            <label for="dob">Dob</label><br>
+                                            <input type="text" class="form-control" name="dob" disabled value="<?php echo $row['dob']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        </div>
+                                    </div>
+                                    <div class="m-1 col-md-5">
+                                    <div style="margin-top:10px;">
+                                            <label for="bldgrp">Blood Group</label><br>
+                                            <input type="text" class="form-control" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                         <div style="margin-top:10px;">
                                             <label for="fathname">Father Name</label><br>
@@ -141,35 +162,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                     </div>
 
                                     <div class="m-1 col-md-5">
+                                    <div style="margin-top:10px;">
+                                            <label for="fathname">Father Name</label><br>
+                                            <input type="text" class="form-control" name="fathname" disabled value="<?php echo $row['fathname']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        </div>
                                         <div style="margin-top:10px;">
                                             <label for="fathphone">Father Phone</label><br>
                                             <input type="text" class="form-control" name="fathphone" disabled value="<?php echo $row['fathphone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        </div>
-                                        <div style="margin-top:10px;">
-                                            <label for="age">Age:</label><br>
-                                            <input type="text" class="form-control" name="age" disabled value="<?php echo $row['age']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        </div>
-                                    </div>
-
-                                    <div class="m-1 col-md-5">
-                                        <div style="margin-top:10px;">
-                                            <label for="dob">Dob</label><br>
-                                            <input type="text" class="form-control" name="dob" disabled value="<?php echo $row['dob']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        </div>
-                                        <div style="margin-top:10px;">
-                                            <label for="bldgrp">Blood Group</label><br>
-                                            <input type="text" class="form-control" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        </div>
-                                    </div>
-
-                                    <div class="m-1 col-md-5">
-                                        <div style="margin-top:10px;">
-                                            <label for="email">Email</label><br>
-                                            <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        </div>
-                                        <div style="margin-top:10px;">
-                                            <label for="phone">Phone</label><br>
-                                            <input type="text" class="form-control" name="phone" disabled value="<?php echo $row['phone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                         </div>
                                     </div>
 
@@ -180,9 +179,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn--blue btn btn-primary" value="Update" style="bottom: 0px;left:20%;position:relative">
+                                <input type="submit" class="btn--blue btn btn-primary ml-3" value="Update" style="bottom: 0px;left:20%;position:relative">
                             </form>                          
-                            <button class="upbtn btn--blue btn  btn-primary mb-3" style="position:absolute;bottom:0%; left:13.5%" onclick="toggleEditable()">Edit</button>
+                            <button class="upbtn btn--blue btn  btn-primary mb-3 ml-0" style="position:absolute;bottom:0%; left:13.5%" onclick="toggleEditable()">Edit</button>
                         </div>
                         </div>
                     </div>

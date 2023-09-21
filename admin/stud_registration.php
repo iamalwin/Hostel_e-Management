@@ -74,10 +74,13 @@ if (isset($_POST['btn'])) {
 				padding: 20px;
 			}
 		}
-
 		.divcont {
 			box-shadow: none;
 		}
+		.row{
+				justify-content:center;
+				align-items:center;
+			}
 	</style>
 
 </head>
@@ -100,7 +103,7 @@ if (isset($_POST['btn'])) {
 			<div class="main-panel">
 				<div class="content-wrapper p-4">
 					<div class="page-header">
-						<h3 class="page-title"style="font-family: 'Montserrat Alternates', sans-serif;
+						<h3 class="page-title" style="font-family: 'Montserrat Alternates', sans-serif;
 ">
 							<span class="page-title-icon bg-gradient-primary text-white mr-2">
 								<i class="mdi mdi-account-plus menu-icon"></i>
@@ -109,47 +112,50 @@ if (isset($_POST['btn'])) {
 					</div>
 
 					<div class="card d-flex justify-content-center align-items-center">
-						<form class="card-body col-10" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+						<form class="card-body col-12" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
 							<div class="row">
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Name</label>
 									<input type="text" class="form-control" name="name" id="name" onChange="return name ()" placeholder="Name" required>
 								</div>
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Reg No</label>
 									<input type="text" class="form-control" name="reg" id="reg" placeholder="Register Number" required>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Department</label>
 									<input type="text" class="form-control" name="dept" id="dept" placeholder="Department" required>
 								</div>
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Year</label>
 									<input class="form-control" placeholder="Year ex: 1st UG  " name="year" id="year" required>
 								</div>
 							</div>
-
-
 							<div class="row">
-								<div class="col-md-5 m-3">
-									<input type="text" class="form-control" name="fathname" id="fathname" placeholder="Father Name" required>
+							<div class="col-md-5 m-2">
+									<label for="">Phone</label>
+									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" maxLength="10" required>
 								</div>
-								<div class="col-md-5 m-3">
-									<input type="phone" class="form-control" id="fathphone" name="fathphone" placeholder="Father Phone" onInput="validatePhoneNumber(this)" required>
+								<div class="col-md-5 m-2">
+									<label for="">e-mail</label>
+									<input type="text" class="form-control" name="email" id="email" placeholder="E-Mail" required>
 								</div>
 							</div>
-
-
 							<div class="row">
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Age</label>
 									<input type="" class="form-control" name="age" id="age" placeholder="Age" maxLength="2" required>
 								</div>
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">DOB</label>
 									<input type="date" title="date of barth" class="form-control" name="dob" id="dob" placeholder="DOB" required>
 								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-md-5 m-3">
-
+								<div class="col-md-5 m-2">
+									<label for="">Bload Group</label>
 									<select class="form-control" id="bldgrp" name="bldgrp" placeholder="Blood Group" required name="blood_group">
 										<option value="" disabled selected>Select Blood Group</option>
 										<option value="A+">A +ve</option>
@@ -162,32 +168,34 @@ if (isset($_POST['btn'])) {
 										<option value="O-">O -ve</option>
 									</select>
 								</div>
-								<div class="col-md-5 m-3">
-									<input type="text" class="form-control" name="email" id="email" placeholder="E-Mail" required>
+								<div class="col-md-5 m-2">
+									<label for="">Father Name</label>
+									<input type="text" class="form-control" name="fathname" id="fathname" placeholder="Father Name" required>
 								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-md-5 m-3">
-									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" maxLength="10" required>
+								<div class="col-md-5 m-2">
+									<label for="">Father Phone</label>
+									<input type="phone" class="form-control" id="fathphone" name="fathphone" placeholder="Father Phone" onInput="validatePhoneNumber(this)" required>
 								</div>
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for="">Address</label>
 									<textarea type="text" class="form-control" name="address" id="address" placeholder="Adrress" required></textarea>
 								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
+									<label for=""></label>
 								<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
 								</div>
-								<div class="col-md-5 m-3">
+								<div class="col-md-5 m-2">
 									<label for="image">Profile Photo</label>
 								<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
 								</div>
 							</div>
 
 							<!-- <div class="row">
-							<div class="col-md-5 m-3 justify-content-center align-items-center d-flex" >
+							<div class="col-md-5 m-2 justify-content-center align-items-center d-flex" >
 								<select name="hn" class="col-md-10 p-2">
 									<option value="" class="btnsel">Select Hostel</option>
 									<?php
@@ -200,11 +208,11 @@ if (isset($_POST['btn'])) {
 									?>
 								</select>
 							</div>
-							<div class="col-md-5 m-3">
+							<div class="col-md-5 m-2">
 								<input class="form-control" name="room" id="room" placeholder="Room No" required>
 							</div>
 						</div> -->
-							<div class="p-t-15">
+							<div class="p-t-15" style="margin-left: 80px;">
 								<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
 								<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
 							</div>

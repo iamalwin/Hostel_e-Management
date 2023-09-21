@@ -1,6 +1,5 @@
 <?php
 include("../dbconnect.php");
-extract($_POST);
 session_start();
 
 if (!isset($_SESSION["reg"])) {
@@ -8,38 +7,64 @@ if (!isset($_SESSION["reg"])) {
   exit();
 }
 
+$id = '';
+$reg = '';
+$name = '';
+$sub = '';
+$cmpl = '';
+
 if (isset($_POST['btn'])) {
+  $id = mysqli_real_escape_string($connect, $_POST['id']);
   $reg = mysqli_real_escape_string($connect, $_POST['reg']);
   $name = mysqli_real_escape_string($connect, $_POST['name']);
   $sub = mysqli_real_escape_string($connect, $_POST['sub']);
   $cmpl = mysqli_real_escape_string($connect, $_POST['cmpl']);
 
-  $qry = mysqli_query($connect, "INSERT INTO suggest (reg, name, sub, cmpl) VALUES ('$reg', '$name', '$sub', '$cmpl')");
+  $qry = mysqli_query($connect, "INSERT INTO suggest (id, reg, name, sub, cmpl) VALUES ('$id', '$reg', '$name', '$sub', '$cmpl')");
   if ($qry) {
     echo "<script>alert('We received your suggestion. If possible, we will take action for that.')</script>";
   } else {
     echo "<script>alert('Error: Enter the fields correctly')</script>";
   }
 }
+
+// Fetch data from the database based on the 'reg' value
+$result = mysqli_query($connect, "SELECT * FROM suggest WHERE reg = '$reg'");
+if ($result) {
+  $row = mysqli_fetch_assoc($result);
+  if ($row) {
+    // Populate the variables with the retrieved values
+    $id = $row['id'];
+    $reg = $row['reg'];
+    $name = $row['name'];
+    $sub = $row['sub'];
+    $cmpl = $row['cmpl'];
+  }
+}
 ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <?php
+            $qry = mysqli_query($connect, "select * from stud");
+            $row = mysqli_fetch_array($qry);
+            $_SESSION["reg"] = $row['reg'];
+            ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>feedback</title>
-
-  <link rel="stylesheet" href="../admin/include/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../admin/include/vendor.bundle.base.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../dist/css/style.min.css">
-  <link rel="stylesheet" href="../admin/include/style.css">
-  <link rel="shortcut icon" href="../admin/include/ho_login.png">
-
-  <link rel="stylesheet" href="./include/style.css">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>feedback</title>
+    
+    <link rel="stylesheet" href="../admin/include/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../admin/include/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../dist/css/style.min.css">
+    <link rel="stylesheet" href="../admin/include/style.css">
+    
+    <link rel="shortcut icon" href="../admin/include/ho_login.png">
+    <link rel="stylesheet" href="./include/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
   .request {
@@ -80,14 +105,10 @@ if (isset($_POST['btn'])) {
               </span> Feedback
             </h3>
 
-            <?php
-            $qry = mysqli_query($connect, "select * from stud");
-            $row = mysqli_fetch_array($qry);
-            $_SESSION['id']  = $row['id'];
-            ?>
-              <!-- <div class="yrfeed p-4 float-right">
-                <a href='feed_solved.php?id=<?php echo $row['id']; ?>'> <button class="btn formbold-btn">Status</button></a>
-              </div> -->
+
+              <div class="yrfeed p-4 float-right">
+                <a href='feed_solved.php?id=<?php echo $row['reg']; ?>'> <button class="btn formbold-btn">Status</button></a>
+              </div>
           </div>
 
           <!-- Dash data section -->
@@ -132,13 +153,13 @@ if (isset($_POST['btn'])) {
                     <label for="reg" class="formbold-form-label">
                       Reg No
                     </label>
-                    <input type="text" name="reg" id="reg" class="formbold-form-input"/>
+                    <input type="text" name="reg" id="reg" value="<?php echo $reg; ?>" class="formbold-form-input"/>
                   </div>
                   <div>
                     <label for="name" class="formbold-form-label">
                       Student Name
                     </label>
-                    <input type="text" name="name"  id="name" class="formbold-form-input"/>
+                    <input type="text" name="name"  id="name" value="<?php echo $name; ?>" class="formbold-form-input"/>
                   </div>
                 </div>
                 <div>
