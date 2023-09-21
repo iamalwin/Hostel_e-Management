@@ -2,8 +2,12 @@
 include("../dbconnect.php");
 extract($_POST);
 session_start();
-?>
 
+if (!isset($_SESSION["name"])) {
+    header("Location: ./admin_login.php");
+    exit();
+  }
+?>
 
 <!DOCTYPE html>
 <!-- saved from url=(0054)https://www.bootstrapdash.com/demo/purple-admin-free/# -->
@@ -83,6 +87,9 @@ session_start();
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span> Students Details
                         </h3>
+                        <div id="successMessage" class="sucees p-2" style="display: none;">
+							<?php echo $success_reg; ?>
+							<?php echo $no_reg; ?></div>
                     </div>
 
                     <!-- Search Form -->
@@ -147,7 +154,6 @@ session_start();
                             <?php
                                 $i++;
                             }
-
                             ?>
                         </table>
                     </div>

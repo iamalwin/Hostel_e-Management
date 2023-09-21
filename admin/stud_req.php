@@ -2,6 +2,19 @@
 include("../dbconnect.php");
 session_start();
 
+$successmail = "";
+$errormail = "";
+
+
+// Check if the session variables are set
+if (isset($_SESSION['successmail'])) {
+    $successmail = $_SESSION['successmail'];
+}
+
+if (isset($_SESSION['errormail'])) {
+    $errormail = $_SESSION['errormail'];
+}
+
 // Check if the user is not logged in and redirect to the login page
 if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
@@ -47,13 +60,11 @@ if (!isset($_SESSION["name"])) {
             font-size: 1rem;
             /* font-size: 10px; */
         }
-
         .asd {
             /* flex-wrap: wrap; */
             /* width: fit-content; */
             width: 12000px;
         }
-
         .as {
             font-size: 15px;
         }
@@ -62,7 +73,6 @@ if (!isset($_SESSION["name"])) {
 
 <body class="">
     <div class="container-scroller">
-
 
         <div class="preloader">
             <div class="lds-ripple">
@@ -75,9 +85,7 @@ if (!isset($_SESSION["name"])) {
             <?php include 'navbar.php' ?>
         </header>
 
-
         <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
-
             <div class="navcantainer d-fixed">
                 <?php include 'sidebar.php' ?>
             </div>
@@ -92,10 +100,11 @@ if (!isset($_SESSION["name"])) {
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span>Apply Students
                         </h3>
+                        <div id="successMessage" class="sucees p-2" style="display: none;">
+                            <?php echo $successmail; ?>
+                            <?php echo $errormail; ?></div>
                     </div>
-
                     <!-- Dash data section -->
-
 
                     <div class="grid-margin card p-3 stretch-card" style="overflow: hidden;">
                         <?php
@@ -198,6 +207,18 @@ if (!isset($_SESSION["name"])) {
             collapsedLinks[i].addEventListener('click', toggleCollapse);
         }
     </script>
+
+<script>
+  $(document).ready(function() {
+    // Show the success message
+    $("#successMessage").fadeIn();
+
+    // Hide the success message after 10 seconds
+    setTimeout(function() {
+      $("#successMessage").fadeOut();
+    }, 20000); // 10 seconds (10,000 milliseconds)
+  });
+</script>
 
     <script>
         $(".preloader ").fadeOut();

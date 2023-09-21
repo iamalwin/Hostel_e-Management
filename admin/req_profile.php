@@ -2,6 +2,12 @@
 include("../dbconnect.php");
 session_start();
 
+$successmail = "";
+$errormail = "";
+
+$_SESSION['successmail'] = $successmail;
+$_SESSION['errormail'] = $errormail;
+
 // Check if the user is not logged in and redirect to the login page
 if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
@@ -29,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port = 465;
 
         // Recipients
-        $mail->setFrom('johnrajae321peeter@gmail.com', 'Mailer');
-        $mail->addReplyTo('info@example.com', 'Information');
+        $mail->setFrom('johnrajae321peeter@gmail.com', 'Hostel Admin');
+        $mail->addReplyTo('info@gmail.com', 'Information');
 
         $mail->isHTML(true);
 
@@ -44,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $insert_rq = "INSERT INTO stud (name, reg, dept,year,fathname,fathphone, age, dob, bldgrp, email, phone, address) VALUES (
                 '{$row['name']}', '{$row['reg']}','{$row['dept']}','{$row['year']}','{$row['fathname']}','{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}')";
-                    
+
             mysqli_query($connect, $insert_rq);
 
             $mail->addAddress($row['email']);
@@ -54,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $delete_rq = "DELETE FROM studreq WHERE reg = '$reg'";
             mysqli_query($connect, $delete_rq);
-
         } elseif (isset($_POST['reject'])) {
             $reg = $_POST['reg'];
             $sql = "SELECT * FROM studreq WHERE reg = '$reg'";
@@ -66,20 +71,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_query($connect, $reject_sql);
 
             // Reject button was clicked
+            $mail->setFrom('johnrajae321peeter@gmail.com', 'Hostel Admin');
             $mail->addAddress($row['email']);
             $mail->Subject = 'Rejection Notification';
-            $mail->Body = 'Sorry'. $row['name'] .' for Your request has been rejected.';
+            $mail->Body = 'Sorry' . $row['name'] . ' for Your request has been rejected.';
 
             $delete_rj = "DELETE FROM studreq WHERE reg = '$reg'";
             mysqli_query($connect, $delete_rj);
         }
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->send();
-        echo 'Message has been sent';
+        $_SESSION['successmail'] = "Suggestion has been solved.";
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $_SESSION['errormail'] = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-    header("Location: ./stud_req.php");
+    header("Location: ./req_profile.php");
     exit();
 }
 ?>
@@ -157,6 +163,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span>Apply Students
                         </h3>
+                        <div id="successMessage" class="sucees p-2" style="display: none;">
+                            <?php echo $successmail; ?>
+                            <?php echo $errormail; ?></div>
                     </div>
 
                     <!-- Dash data section -->
@@ -198,9 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             </div>
                                     <?php
                                             echo "</div>";
-                                        } else {
-                                            header("Location: ./stud_req.php");
-                                        }
+                                        } 
                                     } else {
                                         echo "Invalid request.";
                                     }
@@ -262,6 +269,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             collapsedLinks[i].addEventListener('click', toggleCollapse);
         }
     </script>
+
+<script>
+  $(document).ready(function() {
+    // Show the success message
+    $("#successMessage").fadeIn();
+
+    // Hide the success message after 10 seconds
+    setTimeout(function() {
+      $("#successMessage").fadeOut();
+    }, 20000); // 10 seconds (10,000 milliseconds)
+  });
+</script>
 
     <script>
         $(".preloader ").fadeOut();

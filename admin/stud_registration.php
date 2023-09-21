@@ -2,39 +2,47 @@
 include("../dbconnect.php");
 session_start();
 
+if (!isset($_SESSION["name"])) {
+	header("Location: ./admin_login.php");
+	exit();
+}
+
+$success_reg = "";
+$no_reg = "";
+
 if (isset($_POST['btn'])) {
-    $name = $_POST["name"];
-    $reg = $_POST["reg"];
-    $dept = $_POST["dept"];
-    $year = $_POST["year"];
-    $fathname = $_POST["fathname"];
-    $fathphone = $_POST["fathphone"];
-    $age = $_POST["age"];
-    $dob = $_POST["dob"];
-    $bldgrp = $_POST["bldgrp"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $address = $_POST["address"];
-    $image = "./include/images";
+	$name = $_POST["name"];
+	$reg = $_POST["reg"];
+	$dept = $_POST["dept"];
+	$year = $_POST["year"];
+	$fathname = $_POST["fathname"];
+	$fathphone = $_POST["fathphone"];
+	$age = $_POST["age"];
+	$dob = $_POST["dob"];
+	$bldgrp = $_POST["bldgrp"];
+	$email = $_POST["email"];
+	$phone = $_POST["phone"];
+	$address = $_POST["address"];
+	$image = "./include/images";
 
 	// insert
-    $insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
+	$insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
           VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image')";
 
-    if (mysqli_query($connect, $insertQuery)) {
-        $lastInsertedId = mysqli_insert_id($connect);
-        $stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+	if (mysqli_query($connect, $insertQuery)) {
+		$lastInsertedId = mysqli_insert_id($connect);
+		$stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
 		// update
-        mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
-        $postMessage = "Hostel Assigned to Students";
-    } else {
-        $postMessage = "Enter the correct fields";
-    }
-    // Close the connection
-    mysqli_close($connect);
+		mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
+		$success_reg = "Hostel Assigned to Students";
+	} else {
+		$no_reg = "Enter the correct fields";
+	}
+	// Close the connection
+	mysqli_close($connect);
 
 	header("Location: ../admin/stud_detail.php?id=" . $row['id']);
-    exit();
+	exit();
 }
 ?>
 
@@ -68,7 +76,6 @@ if (isset($_POST['btn'])) {
 			border-radius: 5px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 		}
-
 		@media (max-width: 768px) {
 			.container {
 				padding: 20px;
@@ -77,10 +84,18 @@ if (isset($_POST['btn'])) {
 		.divcont {
 			box-shadow: none;
 		}
-		.row{
-				justify-content:center;
-				align-items:center;
-			}
+		.row {
+			justify-content: center;
+			align-items: center;
+		}
+		.sucees {
+			background-color: rgb(195, 255, 225);
+			border-radius: 5px;
+			border: 1px solid white;
+		}
+		.error {
+			background-color: rgb(255, 121, 121);
+		}
 	</style>
 
 </head>
@@ -134,7 +149,7 @@ if (isset($_POST['btn'])) {
 								</div>
 							</div>
 							<div class="row">
-							<div class="col-md-5 m-2">
+								<div class="col-md-5 m-2">
 									<label for="">Phone</label>
 									<input type="" class="form-control" id="phone" name="phone" placeholder="Phone" maxLength="10" required>
 								</div>
@@ -186,11 +201,11 @@ if (isset($_POST['btn'])) {
 							<div class="row">
 								<div class="col-md-5 m-2">
 									<label for=""></label>
-								<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
+									<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
 								</div>
 								<div class="col-md-5 m-2">
 									<label for="image">Profile Photo</label>
-								<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
+									<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
 								</div>
 							</div>
 
@@ -241,30 +256,29 @@ if (isset($_POST['btn'])) {
 		function previewImage(event) {
 			const imagePreview = document.getElementById('image-preview');
 			const input = event.target;
-        
-			if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            
-            reader.onload = function (e) {
-				imagePreview.src = e.target.result;
-                imagePreview.style.display = 'block';
-            };
-            
-            reader.readAsDataURL(input.files[0]);
-        } else {
-			imagePreview.style.display = 'none';
-        }
-    }
-</script>
 
-<!-- phone -->
+			if (input.files && input.files[0]) {
+				const reader = new FileReader();
+
+				reader.onload = function(e) {
+					imagePreview.src = e.target.result;
+					imagePreview.style.display = 'block';
+				};
+
+				reader.readAsDataURL(input.files[0]);
+			} else {
+				imagePreview.style.display = 'none';
+			}
+		}
+	</script>
+
+	<!-- phone -->
 	<script>
 		function validatePhoneNumber(input) {
 			var phoneNumber = document.getElementById(fathphone) // Remove non-numeric characters
 			// const maxLength = 10;
 
-			if (!/^[0-9]{10}$/.test(fathphone))
-			 {
+			if (!/^[0-9]{10}$/.test(fathphone)) {
 				alert('Invalid phone number ')
 			}
 			return

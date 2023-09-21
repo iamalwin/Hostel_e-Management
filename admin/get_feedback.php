@@ -1,6 +1,5 @@
 <?php
 include('../dbconnect.php');
-
 session_start();
 
 if (!isset($_SESSION["name"])) {
@@ -18,19 +17,16 @@ if (isset($_POST['id'])) {
   mysqli_stmt_bind_param($stmt, "i", $id);
 
   if (mysqli_stmt_execute($stmt)) {
-    $successMessage = "Suggestion marked as solved successfully.";
+    $successMessage = "Suggestion has been solved.";
   } else {
     $errorMessage = "Failed to mark suggestion as solved.";
   }
   mysqli_stmt_close($stmt);
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -99,8 +95,6 @@ if (isset($_POST['id'])) {
 
             <div id="successMessage" class="sucees p-2" style="display: none;">
             <?php echo $successMessage; ?>
-            <?php echo $errorMessage; ?></div>
-            <div id="successMessage" class="error p-2" style="display: none;">
             <?php echo $errorMessage; ?></div>
 
           </div>
