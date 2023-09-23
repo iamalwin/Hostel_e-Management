@@ -137,7 +137,7 @@ if (isset($_POST['id'])) {
                       <td>
                         <div><?php echo $row['sub']; ?></div>
                       </td>
-                      <td>
+                      <td class="text-align:center;justify-content:center;align-items:center;display:flex">
                         <textarea name="" id="" style="background-color:white;border-color:white; width:100%;" cols="70" rows="3" disabled><?php echo $row['cmpl']; ?></textarea>
                       </td>
                       <td>

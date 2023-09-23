@@ -1,21 +1,8 @@
 <?php
 include("../dbconnect.php");
+extract($_POST);
 session_start();
 
-$successmail = "";
-$errormail = "";
-
-
-// Check if the session variables are set
-if (isset($_SESSION['successmail'])) {
-    $successmail = $_SESSION['successmail'];
-}
-
-if (isset($_SESSION['errormail'])) {
-    $errormail = $_SESSION['errormail'];
-}
-
-// Check if the user is not logged in and redirect to the login page
 if (!isset($_SESSION["name"])) {
     header("Location: ./admin_login.php");
     exit();
@@ -60,13 +47,11 @@ if (!isset($_SESSION["name"])) {
             font-size: 1rem;
             /* font-size: 10px; */
         }
-
         .asd {
             /* flex-wrap: wrap; */
             /* width: fit-content; */
             width: 12000px;
         }
-
         .as {
             font-size: 15px;
         }
@@ -100,20 +85,11 @@ if (!isset($_SESSION["name"])) {
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-contacts menu-icon"></i>
-                            </span>Apply Students
+                            </span>Rejection list
                         </h3>
-                        <div id="successMessage" class="sucees p-2" style="display: none;">
-                            <?php echo $successmail; ?>
-                            <?php echo $errormail; ?>
-                        </div>
-                        <div class="rej_stud">
-                            <a href="./rej_stud.php">
-                                <button type="button" class="btn btn-primary">Rejection Applicants<i class="mdi mdi-arrow-right menu-icon ml-2"></i></button></a>
-                        </div>
                     </div>
-
-                    <!-- Search Form -->
-                    <form method="POST" action="">
+                     <!-- Search Form -->
+                     <form method="POST" action="">
                         <div class="input-group" style="bottom:10px ;">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" style="background-color: white;width: 50px; padding:0%"><i class="mdi mdi-magnify" style="font-size:2rem; left:10px;top:5px;position:absolute;"></i></span>
@@ -121,83 +97,70 @@ if (!isset($_SESSION["name"])) {
                             <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Search by student's name">
                         </div>
                     </form>
-
                     <!-- Dash data section -->
+
                     <div class="grid-margin card p-3 stretch-card" style="overflow: hidden;">
-                        <?php
-                        $query = "SELECT * FROM studreq";
-                        $result = mysqli_query($connect, $query);
-                        ?>
-
-                        <?php if (mysqli_num_rows($result) > 0) : ?>
-
                             <form method="post" action="./stud_req.php">
                                 <table class="table table-responsive-xl">
                                     <thead class="bg-light asd">
-                                            <tr>
-                                                <th class="fw-bolder" scope="col">Reg No</th>
-                                                <th class="fw-bolder" scope="col">Name</th>
-                                                <th class="fw-bolder" scope="col">Father Name</th>
-                                                <th class="fw-bolder" scope="col">Email</th>
-                                                <th class="fw-bolder" scope="col">Phone</th>
-                                                <th class="fw-bolder" scope="col">profile</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="fw-bolder" scope="col">Reg No</th>
+                                            <th class="fw-bolder" scope="col">Name</th>
+                                            <th class="fw-bolder" scope="col">Father Name</th>
+                                            <th class="fw-bolder" scope="col">Email</th>
+                                            <th class="fw-bolder" scope="col">Phone</th>
+                                            <th class="fw-bolder" scope="col">profile</th>
+                                        </tr>
                                     </thead>
+
                                     <?php
-                                        if (isset($_POST['studentName'])) {
-                                            $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
-                                            $qry = mysqli_query($connect, "SELECT * FROM studreq WHERE name LIKE '%$searchName%'");
-                                        } else {
-                                            $qry = mysqli_query($connect, "SELECT * FROM studreq");
-                                        }
-                                        $i = 1;
-                                        while ($row = mysqli_fetch_array($qry)) {
-                                            $reg = $row['reg'];
-                                        ?>
-                                    <tr class="alert asd" role="alert">
-                                        <td>
-                                            <div class="as"><?php echo $row['reg']; ?></div>
-                                            <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['name']; ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['fathname']; ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['email']; ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['phone']; ?></div>
-                                        </td>
-                                        <td>
-                                            <a href="req_profile.php?reg=<?php echo $row['reg']; ?>">
-                                                <button type="button" class="btn btn-primary">View</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                            $i++;
-                                        }
-                                ?>
+                            if (isset($_POST['studentName'])) {
+                                $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
+                                $qry = mysqli_query($connect, "SELECT * FROM studrej WHERE name LIKE '%$searchName%'");
+                            } else {
+                                $qry = mysqli_query($connect, "SELECT * FROM studrej");
+                            }
+                            $i = 1;
+                            while ($row = mysqli_fetch_array($qry)) {
+                                $reg = $row['reg'];
+                            ?>
+                                        <tr class="alert asd" role="alert">
+                                            <td>
+                                                <div class="as"><?php echo $row['reg']; ?></div>
+                                                <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['name']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['fathname']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['email']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['phone']; ?></div>
+                                            </td>
+                                            <td>
+                                                <a href="rej_profile.php?reg=<?php echo $row['reg']; ?>">
+                                                    <button type="button" class="btn btn-primary">View</button>
+                                                </a>
+                                            </td>
+                                        </tr><?php
+                                $i++;
+                            }
+                            ?>
                                 </table>
                             </form>
-
-                        <?php else : ?>
-                            <div style="display:block; text-align:center">
-                                <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
-                            </div>
-                        <?php endif; ?>
                     </div>
 
                 </div>
-                <footer class="footer">
+                <!-- <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
-                </footer>
+                </footer> -->
             </div>
         </div>
     </div>
@@ -238,22 +201,10 @@ if (!isset($_SESSION["name"])) {
     </script>
 
     <script>
-        $(document).ready(function() {
-            // Show the success message
-            $("#successMessage").fadeIn();
-
-            // Hide the success message after 10 seconds
-            setTimeout(function() {
-                $("#successMessage").fadeOut();
-            }, 20000); // 10 seconds (10,000 milliseconds)
-        });
-    </script>
-
-    <script>
         $(".preloader ").fadeOut();
     </script>
 
-    <script>
+<script>
         const studentNameInput = document.getElementById("studentName");
         studentNameInput.addEventListener("input", function() {
             const searchName = studentNameInput.value.trim();
@@ -270,6 +221,7 @@ if (!isset($_SESSION["name"])) {
             });
         });
     </script>
+
 </body>
 
 </html>

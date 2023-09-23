@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->setFrom('johnrajae321peeter@gmail.com', 'Hostel Admin');
             $mail->addAddress($row['email']);
             $mail->Subject = 'Rejection Notification';
-            $mail->Body = 'Sorry' . $row['name'] . ' for Your request has been rejected.';
+            $mail->Body = 'Sorry ' . $row['name'] . ' for Your request has been rejected.';
 
             $delete_rj = "DELETE FROM studreq WHERE reg = '$reg'";
             mysqli_query($connect, $delete_rj);
@@ -163,9 +163,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span>Apply Students
                         </h3>
-                        <div id="successMessage" class="sucees p-2" style="display: none;">
-                            <?php echo $successmail; ?>
-                            <?php echo $errormail; ?></div>
+                        <a href="stud_req.php ?>">
+                            <button type="button" class="btn btn-primary float-right">View list</button>
+                        </a>
+                        
                     </div>
 
                     <!-- Dash data section -->
@@ -177,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <?php if (mysqli_num_rows($result) > 0) : ?>
 
-                            <form method="post">
+                            <form method="post" >
                                 <table class="table table-responsive-xl">
 
                                     <?php
@@ -202,14 +203,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <p>Email: <?php echo $row['email']; ?></p>
                                                 <p>Phone: <?php echo $row['phone']; ?></p>
                                                 <p>Address: <?php echo $row['address']; ?></p>
-                                                <button type="submit" class="btn btn-primary" name="approve" value="approve">Approve</button>
-                                                <button type="submit" class="btn btn-primary" name="reject" value="reject">Reject</button>
+                                                <button type="submit" class="btn btn-success" name="approve" value="approve">Approve</button>
+                                                <button type="submit" class="btn btn-danger" name="reject" value="reject">Reject</button>
                                             </div>
                                     <?php
                                             echo "</div>";
                                         } 
                                     } else {
-                                        echo "Invalid request.";
+                                        ?>
+                                        <div style="display:block; text-align:center">
+                                <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
+                            </div>
+                                        <?php
+                                        
                                     }
                                     ?>
                                 </table>

@@ -58,7 +58,7 @@ $result = mysqli_query($connect, $query);
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="./guest_details.php">Guest Register</a>
+              <a class="nav-link" href="./guest_details.php">Student Register</a>
             </li>
 
             <!-- <li class="nav-item dropdown">

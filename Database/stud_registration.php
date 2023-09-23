@@ -11,67 +11,38 @@ $success_reg = "";
 $no_reg = "";
 
 if (isset($_POST['btn'])) {
-	$reg = mysqli_real_escape_string($connect, $_POST["reg"]);
-	$ap_id = mysqli_real_escape_string($connect, $_POST["ap_id"]);
-	$name = mysqli_real_escape_string($connect, $_POST["name"]);
-	$stud_id = mysqli_real_escape_string($connect, $_POST["stud_id"]);
-    $dept = mysqli_real_escape_string($connect, $_POST["dept"]);
-    $year = mysqli_real_escape_string($connect, $_POST["year"]);
-    $fathname = mysqli_real_escape_string($connect, $_POST["fathname"]);
-    $fathphone = mysqli_real_escape_string($connect, $_POST["fathphone"]);
-    $age = mysqli_real_escape_string($connect, $_POST["age"]);
-    $dob = mysqli_real_escape_string($connect, $_POST["dob"]);
-    $bldgrp = mysqli_real_escape_string($connect, $_POST["bldgrp"]);
-    $email = mysqli_real_escape_string($connect, $_POST["email"]);
-    $phone = mysqli_real_escape_string($connect, $_POST["phone"]);
-    $address = mysqli_real_escape_string($connect, $_POST["address"]);
-	$imagePath = "path/to/your/image.jpg"; 
-	
-	if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $tempName = $_FILES['image']['tmp_name'];
-        $imageFileName = $_FILES['image']['name'];
-    
-        // Generate a unique filename to avoid overwriting existing images
-        $imagePath .= uniqid() . '_' . $imageFileName;
-    
-        // Move the uploaded image to the desired directory
-        if (move_uploaded_file($tempName, $imagePath)) {
-            // Image upload successful
-        } else {
-            $no_reg = "Failed to upload the image.";
-        }
-    } else {
-        $no_reg = "Image upload error: " . $_FILES['image']['error'];
-    }    $ap_id_prefix = 'APID';
-    $stud_id_prefix = 'STUD';
+	$name = $_POST["name"];
+	$reg = $_POST["reg"];
+	$dept = $_POST["dept"];
+	$year = $_POST["year"];
+	$fathname = $_POST["fathname"];
+	$fathphone = $_POST["fathphone"];
+	$age = $_POST["age"];
+	$dob = $_POST["dob"];
+	$bldgrp = $_POST["bldgrp"];
+	$email = $_POST["email"];
+	$phone = $_POST["phone"];
+	$address = $_POST["address"];
+	$image = "./include/images";
 
-    $query = "SELECT MAX(id) AS max_id FROM stud";
-    $result = mysqli_query($connect, $query);
+	// insert
+	$insertQuery = "INSERT INTO stud (name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image)
+          VALUES ('$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image')";
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $lastInsertedId = $row['max_id'] + 1;
+	if (mysqli_query($connect, $insertQuery)) {
+		$lastInsertedId = mysqli_insert_id($connect);
+		$stud_id = 'stud' . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+		// // update
+		// mysqli_query($connect, "UPDATE stud SET stud_id = '$stud_id' WHERE id = $lastInsertedId");
+		// $success_reg = "Hostel Assigned to Students";
+	} else {
+		$no_reg = "Enter the correct fields";
+	}
+	// Close the connection
+	mysqli_close($connect);
 
-        $ap_id = $ap_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-        $stud_id = $stud_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-    } else {
-        $ap_id = $ap_id_prefix . "001";
-        $stud_id = $stud_id_prefix . "001";
-    }
-	$reg_date = date("Y-m-d H:i:s");
-    // Insert data
-    $insertQuery = "INSERT INTO stud ( ap_id, stud_id, name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image,reg_date) VALUES ('$ap_id', '$stud_id','$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image','$reg_date')";
-
-    if (mysqli_query($connect, $insertQuery)) {
-        $success_reg = "Hostel Assigned to Student";
-    } else {
-        $no_reg = "Failed to insert student data: " . mysqli_error($connect);
-    }
-
-    mysqli_close($connect);
-
-    header("Location: ../admin/stud_detail.php?id=" . $lastInsertedId);
-    exit();
+	header("Location: ../admin/stud_detail.php?id=" . $row['id']);
+	exit();
 }
 ?>
 
@@ -80,14 +51,19 @@ if (isset($_POST['btn'])) {
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>registration</title>
 	<link rel="stylesheet" href="./include/materialdesignicons.min.css">
 	<link rel="stylesheet" href="./include/vendor.bundle.base.css">
+
 	<link rel="stylesheet" href="./include/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+
 	<link rel="stylesheet" href="../dist/css/style.min.css">
+
 	<link rel="stylesheet" href="./include/style.css">
+
 	<link rel="shortcut icon" href="./include/ho_login.png">
 	<link rel="stylesheet" href="./include/exstyle.css">
 
@@ -121,16 +97,19 @@ if (isset($_POST['btn'])) {
 			background-color: rgb(255, 121, 121);
 		}
 	</style>
+
 </head>
 
 <body class="">
 	<div class="container-scroller">
+
 		<div class="preloader">
 			<div class="lds-ripple">
 				<div class="lds-pos"></div>
 				<div class="lds-pos"></div>
 			</div>
 		</div>
+
 		<?php include 'navbar.php' ?>
 
 		<!-- partial -->
@@ -219,7 +198,7 @@ if (isset($_POST['btn'])) {
 									<textarea type="text" class="form-control" name="address" id="address" placeholder="Adrress" required></textarea>
 								</div>
 							</div>
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-md-5 m-2">
 									<label for=""></label>
 									<img id="image-preview" src="#" alt="Preview" style="max-width: 80px; display: none;">
@@ -228,7 +207,7 @@ if (isset($_POST['btn'])) {
 									<label for="image">Profile Photo</label>
 									<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
 								</div>
-							</div>
+							</div> -->
 
 							<!-- <div class="row">
 							<div class="col-md-5 m-2 justify-content-center align-items-center d-flex" >
