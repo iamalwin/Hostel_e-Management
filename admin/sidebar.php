@@ -36,17 +36,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed p-1" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Fees</span>
-                <i class="mdi mdi-menu-down mdi-24px text-primary"></i>
-                <i class="mdi mdi-credit-card menu-icon"></i>
-            </a>
-            <div class="collapse bg-light" style="border-radius: 50px;" id="ui-basic">
-                <ul class="nav menu-title flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="monthly_amount.php">Mothly Payment <i class="mdi mdi-cash-multiple menu-icon" style="margin-left: 15px;"></i></a></li>
-                </ul>
-            </div>
-        </li>
+    <a class="nav-link collapsed p-1" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" id="fees-menu">
+        <span class="menu-title">Fees</span>
+        <i class="mdi mdi-menu-down mdi-24px text-primary"></i>
+        <i class="mdi mdi-credit-card menu-icon"></i>
+    </a>
+    <div class="collapse bg-light" style="border-radius: 50px;" id="ui-basic">
+        <ul class="nav menu-title flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" href="monthly_amount.php">Monthly Payment <i class="mdi mdi-cash-multiple menu-icon" style="margin-left: 15px;"></i></a></li>
+        </ul>
+    </div>
+</li>
+
 
         <li class="nav-item">
             <a class="nav-link" href="get_feedback.php">
@@ -63,3 +64,4 @@
         font-family: 'Montserrat Alternates', sans-serif;
 }
 </style>
+

@@ -2,10 +2,10 @@
 include("../dbconnect.php");
 session_start();
 
-$successmail = "";
+$rej_send = "";
 $errormail = "";
 
-$_SESSION['successmail'] = $successmail;
+$_SESSION['rej_send'] = $rej_send;
 $_SESSION['errormail'] = $errormail;
 
 // Check if the user is not logged in and redirect to the login page
@@ -47,10 +47,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "SELECT * FROM studreq WHERE reg = '$reg'";
             $result = mysqli_query($connect, $sql);
             $row = mysqli_fetch_assoc($result);
+        	$stud_id = $_POST['stud_id'];
+        	$stud_id_prefix = 'STUD';
 
-            $insert_rq = "INSERT INTO stud (name, reg, dept,year,fathname,fathphone, age, dob, bldgrp, email, phone, address) VALUES (
-                '{$row['name']}', '{$row['reg']}','{$row['dept']}','{$row['year']}','{$row['fathname']}','{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}')";
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $lastInsertedId = $row['max_id'] + 1;
+        
+                $ap_id = $ap_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+                $stud_id = $stud_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+            } else {
+                $ap_id = $ap_id_prefix . "001";
+                $stud_id = $stud_id_prefix . "001";
+            }
 
+            $reg_date = date("Y-m-d H:i:s");
+            $insert_rq = "INSERT INTO stud ( ap_id, stud_id, name, reg, dept,year,fathname,fathphone, age, dob, bldgrp, email, phone, address,image,reg_date) VALUES (
+                '{$row['ap_id']}', '{$row['stud_id']}','{$row['name']}', '{$row['reg']}','{$row['dept']}','{$row['year']}','{$row['fathname']}','{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}', '{$row['image']}', '{$row['reg_date']}')";
             mysqli_query($connect, $insert_rq);
 
             $mail->addAddress($row['email']);
@@ -66,9 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = mysqli_query($connect, $sql);
             $row = mysqli_fetch_assoc($result);
 
-            $reject_sql = "INSERT INTO studrej (name, reg, dept,year,fathname,fathphone, age, dob, bldgrp, email, phone, address) VALUES ('{$row['name']}', '{$row['reg']}','{$row['dept']}','{$row['year']}','{$row['fathname']}','{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}')";
-
+            $reject_sql = "INSERT INTO studrej (ap_id, stud_id, name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image, reg_date) VALUES (
+                '{$row['ap_id']}', '{$row['stud_id']}', '{$row['name']}', '{$row['reg']}', '{$row['dept']}', '{$row['year']}', '{$row['fathname']}', '{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}', '{$row['image']}', '{$row['reg_date']}')";
             mysqli_query($connect, $reject_sql);
+
 
             // Reject button was clicked
             $mail->setFrom('johnrajae321peeter@gmail.com', 'Hostel Admin');
@@ -81,11 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->send();
-        $_SESSION['successmail'] = "Suggestion has been solved.";
+        $_SESSION['rej_send'] =  $row['name'] . "'s application has been rejected.";
     } catch (Exception $e) {
         $_SESSION['errormail'] = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-    header("Location: ./req_profile.php");
+    header("Location: ./stud_req.php?=id");
     exit();
 }
 ?>
@@ -125,13 +139,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 1rem;
             /* font-size: 10px; */
         }
-
         .asd {
             /* flex-wrap: wrap; */
             /* width: fit-content; */
             width: 12000px;
         }
-
         .as {
             font-size: 15px;
         }
@@ -157,86 +169,131 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="content-wrapper p-4">
 
                     <!-- dash section -->
-                    <div class="page-header">
+                    <div class="page-header m-0">
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span>Apply Students
                         </h3>
-                        <a href="stud_req.php ?>">
-                            <button type="button" class="btn btn-primary float-right">View list</button>
-                        </a>
-                        
-                    </div>
-
-                    <!-- Dash data section -->
-                    <div class="grid-margin card p-3 stretch-card" style="overflow: hidden;">
                         <?php
                         $query = "SELECT * FROM studreq";
                         $result = mysqli_query($connect, $query);
                         ?>
-
                         <?php if (mysqli_num_rows($result) > 0) : ?>
-
-                            <form method="post" >
-                                <table class="table table-responsive-xl">
-
-                                    <?php
-                                    if (isset($_GET['reg'])) {
-                                        $reg = $_GET['reg'];
-                                        $qry = mysqli_query($connect, "SELECT * FROM studreq WHERE reg='$reg'");
-                                        $row = mysqli_fetch_assoc($qry);
-                                        if ($row) { ?>
-                                            <div class="card-body">
-                                                <h2>Student Details</h2>
-                                                <p>Reg No:<?php echo $row['reg']; ?>
-                                                    <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
-                                                </p>
-                                                <p>Name: <?php echo $row['name']; ?></p>
-                                                <p>Dept: <?php echo $row['dept']; ?></p>
-                                                <p>Year: <?php echo $row['year']; ?></p>
-                                                <p>Father Name: <?php echo $row['fathname']; ?></p>
-                                                <p>Father Phone: <?php echo $row['fathphone']; ?></p>
-                                                <p>Age: <?php echo $row['age']; ?></p>
-                                                <p>DOB: <?php echo $row['dob']; ?></p>
-                                                <p>Bload Group: <?php echo $row['bldgrp']; ?></p>
-                                                <p>Email: <?php echo $row['email']; ?></p>
-                                                <p>Phone: <?php echo $row['phone']; ?></p>
-                                                <p>Address: <?php echo $row['address']; ?></p>
-                                                <button type="submit" class="btn btn-success" name="approve" value="approve">Approve</button>
-                                                <button type="submit" class="btn btn-danger" name="reject" value="reject">Reject</button>
-                                            </div>
-                                    <?php
-                                            echo "</div>";
-                                        } 
-                                    } else {
-                                        ?>
-                                        <div style="display:block; text-align:center">
-                                <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
-                            </div>
-                                        <?php
-                                        
-                                    }
-                                    ?>
-                                </table>
-                            </form>
-
-                        <?php else : ?>
-                            <div style="display:block; text-align:center">
-                                <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
-                            </div>
-                        <?php endif; ?>
-
+                            <?php
+                            if (isset($_GET['reg'])) {
+                                $reg = $_GET['reg'];
+                                $qry = mysqli_query($connect, "SELECT * FROM studreq WHERE reg='$reg'");
+                                $row = mysqli_fetch_assoc($qry);
+                                if ($row) { ?>
+                                    <div class="page-header bg-white pl-4 pr-4 rounded" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">
+                                    <h3 type="text" class="p-0" name="ap_id" style="font-size:1rem;">AP_ID: <?php echo $row['ap_id']; ?></h3>
+                                    <h3 type="text" class="p-4" name="stud_id" style="font-size:1rem;">STUD_ID: <?php echo $row['stud_id']; ?></h3>
+                                    <img style="border-radius: 20px;height:60px;" src="include/<?php echo $row['image']; ?>">
+                                </div>
                     </div>
+                                    <!-- Dash data section -->
+                                    <div class="formbold-main-wrapper card  justify-content-center align-items-center" >
+                                        <form method="post">
+                                                <div class="row mt-0 justify-content-center p-3 align-items-center">
+                                                    <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                                                    <div class="m-1 col-md-5">
+                                                        <div style="margin-top:10px;">
+                                                            <label for="name">Name</label><br>
+                                                            <input type="text" class="form-control" name="name" disabled value="<?php echo $row['name']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                        <div style="margin-top:10px;">
+                                                            <label for="reg">Reg No</label><br>
+                                                            <input type="text" class="form-control" name="reg" disabled value="<?php echo $row['reg']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="m-1 col-md-5">
+                                                        <div style="margin-top:10px;">
+                                                            <label for="dept">Department</label><br>
+                                                            <input type="text" class="form-control" name="dept" disabled value="<?php echo $row['dept']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                        <div style="margin-top:10px;">
+                                                            <label for="year">Year</label><br>
+                                                            <input type="text" class="form-control" name="year" disabled value="<?php echo $row['year']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="m-1 col-md-5">
+                                                        <div style="margin-top:10px;">
+                                                            <label for="phone">Phone</label><br>
+                                                            <input type="text" class="form-control" name="phone" disabled value="<?php echo $row['phone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                        <div style="margin-top:10px;">
+                                                            <label for="email">Email</label><br>
+                                                            <input type="text" class="form-control" name="email" disabled value="<?php echo $row['email']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="m-1 col-md-5">
+                                                        <div style="margin-top:10px;">
+                                                            <label for="age">Age:</label><br>
+                                                            <input type="text" class="form-control" name="age" disabled value="<?php echo $row['age']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                        <div style="margin-top:10px;">
+                                                            <label for="dob">Dob</label><br>
+                                                            <input type="text" class="form-control" name="dob" disabled value="<?php echo $row['dob']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="m-1 col-md-5">
+                                                        <div style="margin-top:10px;">
+                                                            <label for="bldgrp">Blood Group</label><br>
+                                                            <input type="text" class="form-control" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+
+                                                        <div style="margin-top:10px;">
+                                                            <label for="fathname">Father Name</label><br>
+                                                            <input type="text" class="form-control" name="fathname" disabled value="<?php echo $row['fathname']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="m-1 col-md-5">
+                                                        <div style="margin-top:10px;">
+                                                            <label for="fathphone">Father Phone</label><br>
+                                                            <input type="text" class="form-control" name="fathphone" disabled value="<?php echo $row['fathphone']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                                        </div>
+                                                        <div style="margin-top:10px;">
+                                                            <label for="address">Address</label><br>
+                                                            <textarea name="address" cols="30" class="form-control" disabled style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-10 p-0">
+                                                    <button type="submit" class="btn btn-success m-3" name="approve" value="approve">Approve</button>
+                                                    <button type="submit" class="btn btn-danger m-3" name="reject" value="reject">Reject</button>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            echo "</div>";
+                                        }
+                                    } else {
+                                            ?>
+                                            <div style="display:block; text-align:center">
+                                                <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
+                                            </div>
+                                        <?php
+                                    }
+                                        ?>
+                                    </div>
+
+                                    </form>
+                                <?php else : ?>
+                                    <div style="display:block; text-align:center">
+                                        <img style="height: 300px; width:400px;" src="./include/no_req.png" alt="">
+                                    </div>
+                                <?php endif; ?>
+                    </div>
                 </div>
-                <footer class="footer">
+                <!-- <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
-                </footer>
+                </footer> -->
             </div>
         </div>
     </div>
@@ -276,17 +333,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </script>
 
-<script>
-  $(document).ready(function() {
-    // Show the success message
-    $("#successMessage").fadeIn();
+    <script>
+        $(document).ready(function() {
+            // Show the success message
+            $("#successMessage").fadeIn();
 
-    // Hide the success message after 10 seconds
-    setTimeout(function() {
-      $("#successMessage").fadeOut();
-    }, 20000); // 10 seconds (10,000 milliseconds)
-  });
-</script>
+            // Hide the success message after 10 seconds
+            setTimeout(function() {
+                $("#successMessage").fadeOut();
+            }, 20000); // 10 seconds (10,000 milliseconds)
+        });
+    </script>
 
     <script>
         $(".preloader ").fadeOut();

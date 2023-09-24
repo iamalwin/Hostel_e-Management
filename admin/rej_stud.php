@@ -8,39 +8,23 @@ if (!isset($_SESSION["name"])) {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Required meta tags -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>stud_details</title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="./include/materialdesignicons.min.css">
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
-
-    <!-- Layout styles -->
     <link rel="stylesheet" href="./include/style.css">
-    <!-- Add this link to your HTML head section -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
-
     <link rel="stylesheet" href="../dist/css/style.min.css">
-
-    <!-- external -->
     <link href="Table 05_files/css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="Table 05_files/font-awesome.min.css">
     <link rel="stylesheet" href="Table 05_files/style.css">
-    <!-- endinject -->
-
-
     <link rel="stylesheet" href="./include/style.css">
-
     <link rel="shortcut icon" href="./include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
-
     <style>
         table .fw-bolder {
             font-weight: bolder;
@@ -60,26 +44,21 @@ if (!isset($_SESSION["name"])) {
 
 <body class="">
     <div class="container-scroller">
-
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
         </div>
-
         <header class="topbar" data-navbarbg="skin6">
             <?php include 'navbar.php' ?>
         </header>
-
         <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
             <div class="navcantainer d-fixed">
                 <?php include 'sidebar.php' ?>
             </div>
-
             <div class="main-panel">
                 <div class="content-wrapper p-4">
-
                     <!-- dash section -->
                     <div class="page-header">
                         <h3 class="page-title">
@@ -94,7 +73,7 @@ if (!isset($_SESSION["name"])) {
                             <div class="input-group-prepend">
                                 <span class="input-group-text" style="background-color: white;width: 50px; padding:0%"><i class="mdi mdi-magnify" style="font-size:2rem; left:10px;top:5px;position:absolute;"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Search by student's name">
+                            <input type="text" class="form-control" style="font-size: 1rem;" id="ap_id" name="ap_id" placeholder="Search by student's Applicaion ID">
                         </div>
                     </form>
                     <!-- Dash data section -->
@@ -104,37 +83,43 @@ if (!isset($_SESSION["name"])) {
                                 <table class="table table-responsive-xl">
                                     <thead class="bg-light asd">
                                         <tr>
-                                            <th class="fw-bolder" scope="col">Reg No</th>
-                                            <th class="fw-bolder" scope="col">Name</th>
-                                            <th class="fw-bolder" scope="col">Father Name</th>
+                                            <th class="fw-bolder" scope="col">AP_ID</th>
+                                            <th class="fw-bolder" scope="col">REG NO</th>
+                                            <th class="fw-bolder" scope="col">NAME</th>
+                                            <!-- <th class="fw-bolder" scope="col">Father Name</th> -->
                                             <th class="fw-bolder" scope="col">Email</th>
-                                            <th class="fw-bolder" scope="col">Phone</th>
-                                            <th class="fw-bolder" scope="col">profile</th>
+                                            <th class="fw-bolder" scope="col">PHONE</th>
+                                            <th class="fw-bolder" scope="col">PROFILE</th>
                                         </tr>
                                     </thead>
 
                                     <?php
-                            if (isset($_POST['studentName'])) {
-                                $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
-                                $qry = mysqli_query($connect, "SELECT * FROM studrej WHERE name LIKE '%$searchName%'");
-                            } else {
-                                $qry = mysqli_query($connect, "SELECT * FROM studrej");
-                            }
-                            $i = 1;
+                        $noResults = true; // Flag to check if there are no search results
+                        if (isset($_POST['apID'])) {
+                            $searchID = mysqli_real_escape_string($connect, $_POST['apID']);
+                            $qry = mysqli_query($connect, "SELECT * FROM studrej WHERE ap_id LIKE '%$searchID%'");
+                        } else {
+                            $qry = mysqli_query($connect, "SELECT * FROM studrej");
+                        }
+                        $i = 1;
+                        
                             while ($row = mysqli_fetch_array($qry)) {
                                 $reg = $row['reg'];
                             ?>
                                         <tr class="alert asd" role="alert">
                                             <td>
-                                                <div class="as"><?php echo $row['reg']; ?></div>
+                                                <div class="as"><?php echo $row['ap_id']; ?></div>
                                                 <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['reg']; ?></div>
                                             </td>
                                             <td>
                                                 <div class="as"><?php echo $row['name']; ?></div>
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <div class="as"><?php echo $row['fathname']; ?></div>
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 <div class="as"><?php echo $row['email']; ?></div>
                                             </td>
@@ -203,24 +188,24 @@ if (!isset($_SESSION["name"])) {
     <script>
         $(".preloader ").fadeOut();
     </script>
-
 <script>
-        const studentNameInput = document.getElementById("studentName");
-        studentNameInput.addEventListener("input", function() {
-            const searchName = studentNameInput.value.trim();
-            const tableRows = document.querySelectorAll(".alert");
-            tableRows.forEach(function(row) {
-                const nameCell = row.querySelector("td:nth-child(2) div");
-                const studentName = nameCell.textContent.toLowerCase();
+    const apIDInput = document.getElementById("ap_id");
+    apIDInput.addEventListener("input", function() {
+        const searchID = apIDInput.value.trim().toLowerCase();
+        const tableRows = document.querySelectorAll(".alert");
+        
+        tableRows.forEach(function(row) {
+            const idCell = row.querySelector("td:nth-child(1) div");
+            const apID = idCell.textContent.trim().toLowerCase();
 
-                if (studentName.includes(searchName.toLowerCase())) {
-                    row.style.display = "table-row";
-                } else {
-                    row.style.display = "none";
-                }
-            });
+            if (apID.includes(searchID)) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
         });
-    </script>
+    });
+</script>
 
 </body>
 

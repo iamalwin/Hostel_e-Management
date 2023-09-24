@@ -18,7 +18,7 @@ if ($result) {
         <li class="nav-item nav-profile">
             <a href="#home" class="nav-link">
                 <div class="nav-profile-image"> 
-                <img src="./include/img/admin_logo1.png" class="rounded-circle float-right" alt="">
+                <img src="include/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="">
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>

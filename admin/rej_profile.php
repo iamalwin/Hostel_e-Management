@@ -18,23 +18,17 @@ if (!isset($_SESSION["name"])) {
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>stud_details</title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="./include/materialdesignicons.min.css">
     <link rel="stylesheet" href="./include/vendor.bundle.base.css">
-    <!-- Layout styles -->
     <link rel="stylesheet" href="./include/style.css">
-    <!-- Add this link to your HTML head section -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <!-- external -->
     <link href="Table 05_files/css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="Table 05_files/font-awesome.min.css">
     <link rel="stylesheet" href="Table 05_files/style.css">
-    <!-- endinject -->
     <link rel="stylesheet" href="./include/style.css">
     <link rel="shortcut icon" href="./include/ho_login.png">
     <link rel="stylesheet" href="./include/exstyle.css">
-
     <style>
         table .fw-bolder {
             font-weight: bolder;
@@ -71,28 +65,30 @@ if (!isset($_SESSION["name"])) {
             </div>
             <div class="main-panel">
                 <div class="content-wrapper p-4">
-
                     <!-- dash section -->
-                    <div class="page-header">
+                    <div class="page-header m-0">
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span>Student Profile
                         </h3>
-                    </div>
-
-                    <!-- Dash data section -->
-                    <div class="formbold-main-wrapper card d-flex justify-content-center align-items-center p-3" style="overflow: hidden;">
-                    <form method="post" class="col-10">
-                    <?php
+                        <?php
                         if (isset($_GET['reg'])) {
                             $reg = $_GET['reg'];
                             $qry = mysqli_query($connect, "SELECT * FROM studrej WHERE reg='$reg'");
                             $row = mysqli_fetch_assoc($qry);
                             if ($row) {
                                 ?>
-                                <!-- <img src="../stud/include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt=""> -->
-                                <div class="row">
+                        <div class="page-header bg-white pl-4 pr-4 rounded" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">
+                                    <h3 type="text" class="p-0" name="ap_id" style="font-size:1rem;">AP_ID: <?php echo $row['ap_id']; ?></h3>
+                                    <h3 type="text" class="p-4" name="stud_id" style="font-size:1rem;">STUD_ID: <?php echo $row['stud_id']; ?></h3>
+                                    <img style="border-radius: 20px;height:60px;" src="include/<?php echo $row['image']; ?>">
+                                </div>
+                    </div>
+                    <!-- Dash data section -->
+                    <div class="formbold-main-wrapper card  justify-content-center align-items-center">
+                    <form method="post" class="col-12" style="box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;">
+                                <div class="row mt-0 justify-content-center align-items-center p-3">
                                     <div class="m-1 col-md-5">
                                         <div style="margin-top:10px;">
                                             <label for="name">Name</label><br>
@@ -158,9 +154,9 @@ if (!isset($_SESSION["name"])) {
                                     </div>
 
                                     <div class="m-1 col-md-5">
-                                        <div style="margin-top:10px;">
+                                    <div style="margin-top:10px;">
                                             <label for="address">Address</label><br>
-                                            <textarea name="address" cols="30" rows="6" disabled style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
+                                            <textarea class="form-control" name="address" cols="30" rows="6" disabled style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $row['address']; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -175,17 +171,14 @@ if (!isset($_SESSION["name"])) {
                         }
                         ?>
                             </form> 
-
                     </div>
-
-
                 </div>
-                <footer class="footer">
+                <!-- <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
-                </footer>
+                </footer> -->
             </div>
         </div>
     </div>
@@ -200,7 +193,6 @@ if (!isset($_SESSION["name"])) {
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
-
     <script src="../admin/include/vendor.bundle.base.js.download"></script>
     <script>
         function toggleCollapse(event) {

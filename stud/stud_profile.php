@@ -4,20 +4,11 @@ extract($_POST);
 session_start();
 
 if (!isset($_SESSION["reg"])) {
-  header("Location: ../stud_login.php"); 
+  header("Location: ../stud_login.php");
   exit();
 }
 
-$user_id = $_SESSION["reg"];
-$query = "SELECT * FROM stud WHERE reg = '$user_id'";
 
-$result = mysqli_query($connect, $query);
-
-if ($result) {
-  $row = mysqli_fetch_assoc($result);
-} else {
-  die("Error: " . mysqli_error($connect));
-}
 ?>
 
 <!DOCTYPE html>
@@ -75,20 +66,30 @@ if ($result) {
         <div class="content-wrapper p-4">
 
           <!-- dash section -->
-
-          <div class="page-header">
+          <div class="page-header m-0">
             <h3 class="page-title">
               <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-home"></i>
               </span> Profile
             </h3>
+            <?php
+            $user_id = $_SESSION["reg"];
+            $query = "SELECT * FROM stud WHERE reg = '$user_id'";
+            $result = mysqli_query($connect, $query);
+            if ($result) {
+              $row = mysqli_fetch_assoc($result);
+            ?>
+              <div class="page-header bg-white pl-4 pr-4 rounded" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">
+                <h3 type="text" class="p-0" name="ap_id" style="font-size:1rem;">AP_ID: <?php echo $row['ap_id']; ?></h3>
+                <h3 type="text" class="p-4" name="stud_id" style="font-size:1rem;">STUD_ID: <?php echo $row['stud_id']; ?></h3>
+                <img style="border-radius: 20px;height:60px;" src="include/<?php echo $row['image']; ?>">
+              </div>
           </div>
 
-          <div class="formbold-main-wrapper card d-flex justify-content-center align-items-center">
-            <form method="post" class="col-10">
-              <img src="./include/img/<?php echo $row['image']; ?>" class="rounded-circle float-right" alt="...">
+          <div class="formbold-main-wrapper card  justify-content-center align-items-center">
+            <form method="post" class="col-12">
               <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-              <div class="row">
+              <div class="row mt-0 justify-content-center align-items-center p-3">
                 <div class="m-1 col-md-5">
                   <div style="margin-top:10px;">
                     <label for="name">Name</label><br>
@@ -124,7 +125,7 @@ if ($result) {
                 <div class="m-1 col-md-5">
 
 
-                <div style="margin-top: 10px;">
+                  <div style="margin-top: 10px;">
                     <label for="bldgrp">B-Group</label><br>
                     <input class="form-control" type="text" name="bldgrp" disabled value="<?php echo $row['bldgrp']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                   </div>
@@ -149,25 +150,23 @@ if ($result) {
                 </div>
                 <div class="m-1 col-md-5">
                   <div style="margin-top:10px;">
-                    <label for="email">Email</label><br>
-                    <input class="form-control" type="text" name="email" disabled value="<?php echo $row['email']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
-                  </div>
-                  <div style="margin-top:10px;">
                     <label for="fathphone">Father Phone</label><br>
                     <input class="form-control" type="text" name="fathphone" disabled value="<?php echo $row['fathphone']; ?>" style="padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
                   </div>
-                </div>
-
-                <div class="m-1 col-md-5">
                   <div style="margin-top:10px;">
                     <label for="address">Address</label><br>
                     <textarea class="form-control" name="address" cols="22" rows="3" disabled style="padding: 5px; border: 1px solid #ccc; border-radius: 4px; display:block"><?php echo $row['address']; ?></textarea>
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
+        <?php
+
+            } else {
+              die("Error: " . mysqli_error($connect));
+            }
+        ?>
         </div>
       </div>
     </div>

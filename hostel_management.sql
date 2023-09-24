@@ -276,16 +276,6 @@ INSERT INTO `suggest` (`id`, `reg`, `name`, `sub`, `cmpl`, `status`) VALUES
 ('2', ' ug1902', 'susmitha', 'About hostel study time.', 'Study time is not convenient for all the students. Please make changes in hostel study time.', 'solved');
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `stud`
 --
 ALTER TABLE `stud`

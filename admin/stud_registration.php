@@ -13,8 +13,8 @@ $no_reg = "";
 if (isset($_POST['btn'])) {
 	$reg = mysqli_real_escape_string($connect, $_POST["reg"]);
 	$ap_id = mysqli_real_escape_string($connect, $_POST["ap_id"]);
-	$name = mysqli_real_escape_string($connect, $_POST["name"]);
 	$stud_id = mysqli_real_escape_string($connect, $_POST["stud_id"]);
+	$name = mysqli_real_escape_string($connect, $_POST["name"]);
     $dept = mysqli_real_escape_string($connect, $_POST["dept"]);
     $year = mysqli_real_escape_string($connect, $_POST["year"]);
     $fathname = mysqli_real_escape_string($connect, $_POST["fathname"]);
@@ -25,24 +25,9 @@ if (isset($_POST['btn'])) {
     $email = mysqli_real_escape_string($connect, $_POST["email"]);
     $phone = mysqli_real_escape_string($connect, $_POST["phone"]);
     $address = mysqli_real_escape_string($connect, $_POST["address"]);
-	$imagePath = "path/to/your/image.jpg"; 
-	
-	if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $tempName = $_FILES['image']['tmp_name'];
-        $imageFileName = $_FILES['image']['name'];
-    
-        // Generate a unique filename to avoid overwriting existing images
-        $imagePath .= uniqid() . '_' . $imageFileName;
-    
-        // Move the uploaded image to the desired directory
-        if (move_uploaded_file($tempName, $imagePath)) {
-            // Image upload successful
-        } else {
-            $no_reg = "Failed to upload the image.";
-        }
-    } else {
-        $no_reg = "Image upload error: " . $_FILES['image']['error'];
-    }    $ap_id_prefix = 'APID';
+	$image = mysqli_real_escape_string($connect, $_POST["image"]);
+
+	$ap_id_prefix = 'APID';
     $stud_id_prefix = 'STUD';
 
     $query = "SELECT MAX(id) AS max_id FROM stud";
@@ -58,15 +43,23 @@ if (isset($_POST['btn'])) {
         $ap_id = $ap_id_prefix . "001";
         $stud_id = $stud_id_prefix . "001";
     }
+	
+	$image = $_FILES["pro_img"]["name"];
+	$tempname = $_FILES["pro_img"]["tmp_name"];
+	
 	$reg_date = date("Y-m-d H:i:s");
-    // Insert data
-    $insertQuery = "INSERT INTO stud ( ap_id, stud_id, name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image,reg_date) VALUES ('$ap_id', '$stud_id','$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image','$reg_date')";
+	
+	$insertQuery = "INSERT INTO stud ( ap_id, stud_id, name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image,reg_date) VALUES ('$ap_id', '$stud_id','$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image','$reg_date')";
+	$folder = "include/" . $image;
 
     if (mysqli_query($connect, $insertQuery)) {
-        $success_reg = "Hostel Assigned to Student";
-    } else {
-        $no_reg = "Failed to insert student data: " . mysqli_error($connect);
-    }
+		if (move_uploaded_file($tempname, $folder)) {
+			$msg = "Image uploaded successfully!";
+		}
+	}
+	else {
+		$no_reg = "Failed to insert student data: " . mysqli_error($connect);
+	}
 
     mysqli_close($connect);
 
@@ -148,7 +141,7 @@ if (isset($_POST['btn'])) {
 					</div>
 
 					<div class="card d-flex justify-content-center align-items-center">
-						<form class="card-body col-12" id="f1" name="f1" method="post" action="#" onSubmit="return vali()">
+						<form class="card-body col-12" id="f1" name="f1" method="post" action="#" onSubmit="return vali()" enctype="multipart/form-data">
 							<div class="row">
 								<div class="col-md-5 m-2">
 									<label for="">Name</label>
@@ -226,7 +219,7 @@ if (isset($_POST['btn'])) {
 								</div>
 								<div class="col-md-5 m-2">
 									<label for="image">Profile Photo</label>
-									<input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)" required>
+									<input type="file" name="pro_img" id="image" accept="image/*" onchange="previewImage(event)" required>
 								</div>
 							</div>
 
