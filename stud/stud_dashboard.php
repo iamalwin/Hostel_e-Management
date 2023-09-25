@@ -79,8 +79,10 @@ if (!isset($_SESSION["reg"])) {
               </span> Dashboard
             </h3>
           </div>
-          <div class="col-md-4 stretch-card grid-margin p-0">
-              <div class="card bg-gradient card-img-holder text-white">
+              
+          <div class="row">
+            <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient card-img-holder text-white">
               <a href="./stud_feespay.php">
                   <div class="card-body">
                     <img src="../admin/include/circle.svg" class="card-img-absolute" alt="circle-image">
@@ -92,6 +94,23 @@ if (!isset($_SESSION["reg"])) {
                 </a>
               </div>
             </div>
+
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient card-img-holder text-white">
+              <a href="./stud_profile.php">
+                  <div class="card-body">
+                    <img src="../admin/include/circle.svg" class="card-img-absolute" alt="circle-image">
+                    <h2 class="font-weight-normal mb-1">
+                      Profile
+                      <i class="mdi mdi-account mdi-24px float-right"></i>
+                    </h2>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
           <div class="col-md-7 grid-margin stretch-card p-0">
             <div class="card">
               <div class="card-body">

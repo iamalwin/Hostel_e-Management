@@ -103,11 +103,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         if ($result && mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
                         ?>
-                            <div class="page-header bg-white pl-4 pr-4 rounded" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">
+                            <div class="page-header bg-white pl-4 pr-4 ml-auto rounded" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">
                                     <h3 type="text" class="p-0" name="ap_id" style="font-size:1rem;">AP_ID: <?php echo $row['ap_id']; ?></h3>
                                     <h3 type="text" class="p-4" name="stud_id" style="font-size:1rem;">STUD_ID: <?php echo $row['stud_id']; ?></h3>
                                     <img style="border-radius: 20px;height:60px;" src="include/<?php echo $row['image']; ?>">
                                 </div>
+                                <div class="d-flex align-items-center mb-4 ml-2">
+                            <a href="./stud_detail.php">
+                                <button type="button" class="btn btn-primary pl-1 pr-1"><i class="mdi mdi-chevron-left menu-icon" style="font-size: 2rem;"></i></button>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="formbold-main-wrapper card  justify-content-center align-items-center">

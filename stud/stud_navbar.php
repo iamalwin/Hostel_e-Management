@@ -1,6 +1,6 @@
 <?php
-$user_id = $_SESSION["reg"]; // Assuming 'reg' is the correct column name
-$query = "SELECT * FROM stud WHERE reg = '$user_id'";
+$id = $_SESSION["reg"]; // Assuming 'reg' is the correct column name
+$query = "SELECT * FROM stud WHERE reg = '$id'";
 
 // Execute the query
 $result = mysqli_query($connect, $query);

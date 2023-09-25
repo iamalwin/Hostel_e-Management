@@ -108,7 +108,8 @@ if (!isset($_SESSION["name"])) {
                         </div>
                         <div class="rej_stud">
                             <a href="./rej_stud.php">
-                                <button type="button" class="btn btn-primary">Rejection Applicants<i class="mdi mdi-arrow-right menu-icon ml-2"></i></button></a>
+                                <button type="button" class="btn bg-white rounded font-weight-bold text-dark pl-3 pr-3" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;">Rejection Applicants<i class="mdi mdi-arrow-right menu-icon ml-2"></i></button>
+                            </a>
                         </div>
                     </div>
 
@@ -134,53 +135,53 @@ if (!isset($_SESSION["name"])) {
                             <form method="post" action="./stud_req.php">
                                 <table class="table table-responsive-xl">
                                     <thead class="bg-light asd">
-                                            <tr>
-                                                <th class="fw-bolder" scope="col">Reg No</th>
-                                                <th class="fw-bolder" scope="col">Name</th>
-                                                <th class="fw-bolder" scope="col">Father Name</th>
-                                                <th class="fw-bolder" scope="col">Email</th>
-                                                <th class="fw-bolder" scope="col">Phone</th>
-                                                <th class="fw-bolder" scope="col">profile</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="fw-bolder" scope="col">Reg No</th>
+                                            <th class="fw-bolder" scope="col">Name</th>
+                                            <th class="fw-bolder" scope="col">Father Name</th>
+                                            <th class="fw-bolder" scope="col">Email</th>
+                                            <th class="fw-bolder" scope="col">Phone</th>
+                                            <th class="fw-bolder" scope="col">profile</th>
+                                        </tr>
                                     </thead>
                                     <?php
-                                        if (isset($_POST['studentName'])) {
-                                            $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
-                                            $qry = mysqli_query($connect, "SELECT * FROM studreq WHERE name LIKE '%$searchName%'");
-                                        } else {
-                                            $qry = mysqli_query($connect, "SELECT * FROM studreq");
-                                        }
-                                        $i = 1;
-                                        while ($row = mysqli_fetch_array($qry)) {
-                                            $reg = $row['reg'];
-                                        ?>
-                                    <tr class="alert asd" role="alert">
-                                        <td>
-                                            <div class="as"><?php echo $row['reg']; ?></div>
-                                            <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['name']; ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['fathname']; ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['email']; ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="as"><?php echo $row['phone']; ?></div>
-                                        </td>
-                                        <td>
-                                            <a href="req_profile.php?reg=<?php echo $row['reg']; ?>">
-                                                <button type="button" class="btn btn-primary">View</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                            $i++;
-                                        }
-                                ?>
+                                    if (isset($_POST['studentName'])) {
+                                        $searchName = mysqli_real_escape_string($connect, $_POST['studentName']);
+                                        $qry = mysqli_query($connect, "SELECT * FROM studreq WHERE name LIKE '%$searchName%'");
+                                    } else {
+                                        $qry = mysqli_query($connect, "SELECT * FROM studreq");
+                                    }
+                                    $i = 1;
+                                    while ($row = mysqli_fetch_array($qry)) {
+                                        $reg = $row['reg'];
+                                    ?>
+                                        <tr class="alert asd" role="alert">
+                                            <td>
+                                                <div class="as"><?php echo $row['reg']; ?></div>
+                                                <input type="hidden" name="reg" value="<?php echo $row['reg']; ?>">
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['name']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['fathname']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['email']; ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="as"><?php echo $row['phone']; ?></div>
+                                            </td>
+                                            <td>
+                                                <a href="req_profile.php?reg=<?php echo $row['reg']; ?>">
+                                                    <button type="button" class="btn btn-primary">View</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        $i++;
+                                    }
+                                    ?>
                                 </table>
                             </form>
 

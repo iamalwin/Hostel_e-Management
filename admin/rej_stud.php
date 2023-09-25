@@ -66,6 +66,11 @@ if (!isset($_SESSION["name"])) {
                                 <i class="mdi mdi-contacts menu-icon"></i>
                             </span>Rejection list
                         </h3>
+                        <div class="stud_req">
+                            <a href="./stud_req.php">
+                                <button type="button" class="btn bg-white rounded font-weight-bold text-dark pl-3 pr-3" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;"><i class="mdi mdi-arrow-left menu-icon m-0 mr-2"></i>View Applicants</button>
+                            </a>
+                        </div>
                     </div>
                      <!-- Search Form -->
                      <form method="POST" action="">

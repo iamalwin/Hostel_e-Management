@@ -1,27 +1,35 @@
 <?php
 include("../dbconnect.php");
-extract($_POST);
 session_start();
 
 if (!isset($_SESSION["reg"])) {
-    header("Location: ../stud_login.php"); 
+    header("Location: ../stud_login.php");
     exit();
 }
 
-$month = ""; // Initialize $month with a default value
-$mess ="";
- $hostel="";
- $total="";
-if (isset($_POST['btn1'])) {
-    $month = $_POST['month']; // Assign the selected month to $month
+$month = "";
+$mess = "";
+$hostel = "";
+$total = "";
 
+if (isset($_POST['btn1'])) {
+    $month = $_POST['month'];
     $qry = mysqli_query($connect, "select * from amnt where month='$month'");
     $row = mysqli_fetch_assoc($qry);
-    $total = $row['total'];
-    $hostel = $row['hf'];
-    $mess = $row['mf'];
+
+    if ($row) {
+        $total = $row['total'];
+        $hostel = $row['hf'];
+        $mess = $row['mf'];
+    } else {
+        $reg = "No data found for the selected month";
+        $total = "";
+        $hostel = "";
+        $mess = "";
+    }
 }
 ?>
+
 
 
 
@@ -47,7 +55,8 @@ if (isset($_POST['btn1'])) {
         .feepay {
             padding: 100px;
         }
-        .card-body1{
+
+        .card-body1 {
             margin: 0;
         }
     </style>
@@ -83,69 +92,67 @@ if (isset($_POST['btn1'])) {
                     </div>
 
                     <!-- Dash data section -->
-                    <div class="feepay card p-10">
-                        <form class="card-body" action="#" method="post">
-                            <table width="38%">
-                                <tr>
-                                    <td width="39%" height="44">Month</td>
-                                    <td action="#" method="post"> <select name="month">
-                                            <!-- <option value="">Select</option> -->
-                                            <option value="january">january</option>
-                                            <option value="Februry">Februry</option>
-                                            <option value="March">March</option>
-                                            <option value="April">April</option>
-                                            <option value="May">May</option>
-                                            <option value="June">June</option>
-                                            <option value="July">July</option>
-                                            <option value="Agust">Agust</option>
-                                            <option value="September">September</option>
-                                            <option value="October">October</option>
-                                            <option value="November">November</option>
-                                            <option value="December">December</option>
-                                        </select>
-                                        <input class="bt-" type="submit" name="btn1">
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                    <div class="formbold-main-wrapper card col-12" style="height: 100vh;">
+                    <div class="col-12 justify-content-center align-items-center p-3">
+                        <form method="post" class="col-10 justify-content-center align-items-center mx-auto m-0">
+                            <div class="m-1 col-md-5 mx-auto">
+                                <div style="margin-top:10px;">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control text-uppercase" disabled value="<?php echo $row['name']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <label for="reg">Register No</label>
+                                    <input type="text" class="form-control text-uppercase" disabled value="<?php echo $row['reg']; ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                </div>
 
-                     <!--   <?php
-                      /*  if (isset($_POST['btn1'])) {
-                            $qry = mysqli_query($connect, "select * from amnt where month='$month'");
-                            $row = mysqli_fetch_assoc($qry);
-                            $month = $row['month'];
-                            $total = $row['total'];
-                            $hostel = $row['hf'];
-                            $mess = $row['mf'];
-                        }
-						else {
-							echo"-";
-						}
-						*/
-                        ?>-->
-                        <form class="card-body" name="form1" method="post" action="bank_pay.php?month=<?php echo $month; ?>&total=<?php echo $total; ?>">
-                            <table>
-                                <!-- <tr>
-                                <td width="39%" height="44">Register No</td>
-                                <td width="61%"><?php echo $reg; ?></td>
-                            </tr> -->
-                                <tr>
-                                    <td width="39%" height="33"> Hostel Fees </td>
-                                    <td><?php if($hostel){ echo $hostel; }?></td>
-                                </tr>
-                                <tr>
-                                    <td width="39%" height="42">Mess Fees </td>
-                                    <td> <?php if($mess){ echo $mess; } ?></td>
-                                </tr>
-                                <tr>
-                                    <td width="39%" height="37">Total amount </td>
-                                    <td><?php if($total){ echo $total; }?></td>
-                                </tr>
-                                <tr>
-                                    <td height="31">&nbsp;</td>
-                                    <td><input class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" /></td>
-                                </tr>
-                            </table>
+                                <div style="margin-top:10px;">
+                                    <label for="reg">Month</label>
+                                    <td action="#" method="post">
+                                    <select name="month" class="form-control font-weight-bold">
+                                                <!-- <option value="">Select</option> -->
+                                                <option value="january">january</option>
+                                                <option value="Februry">Februry</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="Agust">Agust</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
+                                            </select>
+                                        <input class="btn btn--radius-2 btn--blue btn btn-secondary mb-2 mt-3 " type="submit" name="btn1">
+                                    </td>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="col-10 justify-content-center align-items-center mx-auto mt-0" name="form1" method="post" action="bank_pay.php?month=<?php echo $month; ?>&total=<?php echo $total; ?>">
+                            <div class="m-1 col-md-5 mx-auto">
+                                <div style="margin-top:10px;">
+                                    <label for="name">Hostel Fees</label><br>
+                                    <input type="text" class="form-control" class="form-control" name="name" disabled value="<?php if ($hostel) {
+                                                                                                                                    echo $hostel;
+                                                                                                                                } ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <label for="reg">Mess Fees</label><br>
+                                    <input type="text" class="form-control" class="form-control" name="reg" disabled value="<?php if ($mess) {
+                                                                                                                                echo $mess;
+                                                                                                                            } ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                </div>
+
+                                <div style="margin-top:10px;">
+                                    <label for="reg">Total amount</label><br>
+                                    <input type="text" class="form-control" class="form-control" name="reg" disabled value="<?php if ($total) {
+                                                                                                                                echo $total;
+                                                                                                                            } ?>" style="font-size:1rem; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                </div>
+                            </div>
+                            <div class="text-right col-md-5 mx-auto p-0">
+                                <input class="btn btn--radius-2 btn--blue btn btn-success m-3" name="btn" type="submit" id="btn" value="Payment" />
+                            </div>
                         </form>
                     </div>
                 </div>
