@@ -2,8 +2,6 @@
 include("dbconnect.php");
 session_start();
 
-$success_reg = "";
-$no_reg = "";
 if (isset($_POST['btn'])) {
 	$ap_id = $_POST['ap_id'];
 	// $stud_id = $_POST['stud_id'];
@@ -24,7 +22,7 @@ if (isset($_POST['btn'])) {
 	$tempname = $_FILES["pro_img"]["tmp_name"];
 
 	$ap_id_prefix = 'APID';
-	// $stud_id_prefix = 'STUD';
+	$stud_id_prefix = 'STUD';
 
 	$query = "SELECT MAX(id) AS max_id FROM studreq";
 	$result = mysqli_query($connect, $query);
@@ -34,26 +32,31 @@ if (isset($_POST['btn'])) {
 		$lastInsertedId = $row['max_id'] + 1;
 
 		$ap_id = $ap_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-		// $stud_id = $stud_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
+		$stud_id = $stud_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
 	} else {
 		$ap_id = $ap_id_prefix . "001";
-		// $stud_id = $stud_id_prefix . "001";
+		$stud_id = $stud_id_prefix . "001";
 	}
 	$reg_date = date("Y-m-d H:i:s");
 
 	$folder = "admin/include/" . $image;
 	
-	$insertQuery = "INSERT INTO studreq ( ap_id, name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image,reg_date) VALUES ('$ap_id','$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image','$reg_date')";
-	// image upload
-	if (mysqli_query($connect, $insertQuery)) {
-		if (move_uploaded_file($tempname, $folder)) {
-			$msg = "Image uploaded successfully!";
-		}
-	}
-	else {
-		$no_reg = "Failed to insert student data: " . mysqli_error($connect);
-	}
+	$insertQuery = "INSERT INTO studreq ( ap_id,stud_id, name, reg, dept, year, fathname, fathphone, age, dob, bldgrp, email, phone, address, image,reg_date) VALUES ('$ap_id','$stud_id','$name', '$reg', '$dept', '$year', '$fathname', '$fathphone', $age, '$dob', '$bldgrp', '$email', '$phone', '$address', '$image','$reg_date')";
 
+		if (mysqli_query($connect, $insertQuery)) {
+			// Debugging statements
+			echo "Debug: name=$name, email=$email";
+			?>
+			<script>
+				var name = "<?php echo $name; ?>";
+				var email = "<?php echo $email; ?>";
+				alert(name + " - your application has been registered successfully! Verify your details after contacting your registered email-id " + email);
+			</script>
+			<?php
+		} else {
+			$msg = "Error: " . mysqli_error($connect);
+		}
+	
 	mysqli_close($connect);
 
 	header("Location: guest_details.php");
@@ -146,15 +149,16 @@ if (isset($_POST['btn'])) {
 							<i class="mdi mdi-account-plus menu-icon"></i>
 						</span> Guest Registration
 					</h3>
+					
+
+					
 				</div>
 
 				<div class="card d-flex bg-transparent justify-content-center align-items-center">
+				<div id="msg" class="alert alert-success" style="display: none;">
+</div>
 					<form class="card-body rounded col-10" id="f1" name="f1" method="post" enctype="multipart/form-data" style="box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;position:relative;" action="#" onSubmit="return vali()">
 
-						<div class="success-message" id="successMessage" style="display: <?php echo $success_reg ? 'block' : 'none'; ?>"><?php echo $success_reg; ?></div>
-
-						<!-- Display error message -->
-						<div class="error-message"><?php echo $no_reg; ?></div>
 						<div class="row">
 							<div class="col-md-5 m-2">
 								<label for="">Name</label>
@@ -236,29 +240,10 @@ if (isset($_POST['btn'])) {
 							</div>
 						</div>
 
-						<!-- <div class="row">
-							<div class="col-md-5 m-2 justify-content-center align-items-center d-flex" >
-								<select name="hn" class="col-md-10 p-2">
-									<option value="" class="btnsel">Select Hostel</option>
-									<?php
-									$qry = mysqli_query($connect, "select hname from hostel");
-									while ($rw = mysqli_fetch_assoc($qry)) {
-									?>
-										<option value="<?php echo $rw['hname']; ?>"> <?php echo $rw['hname']; ?></option>
-									<?php
-									}
-									?>
-								</select>
-							</div>
-							<div class="col-md-5 m-2">
-								<input class="form-control" name="room" id="room" placeholder="Room No" required>
-							</div>
-						</div> -->
 						<div class="p-t-15" style="margin-left: 80px;">
 							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" name="btn" type="submit" id="btn" value="Submit">Submit</button>
 							<button class="btn btn--radius-2 btn--blue btn btn-primary m-3" type="reset" name="Submit2" value="Reset">Reset</button>
 						</div>
-						<!-- </form> -->
 					</form>
 
 				</div>
@@ -321,16 +306,19 @@ if (isset($_POST['btn'])) {
 		}
 	</script>
 
+<script>
+    // Check if the PHP variable $msg is not empty
+    <?php if (!empty($msg)) : ?>
+        // Display the message div
+        document.getElementById('msg').style.display = 'block';
+    <?php endif; ?>
+</script>
+
+
 	<script>
 		$(".preloader ").fadeOut();
 	</script>
-	<script>
-		// JavaScript to hide the success message after a few seconds
-		setTimeout(function() {
-			document.getElementById("successMessage").style.display = "none";
-		}, 5000); // Adjust the time (in milliseconds) as needed
-	</script>
-
+	
 </body>
 
 </html>

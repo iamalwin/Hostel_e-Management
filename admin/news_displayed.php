@@ -54,38 +54,6 @@ if (isset($_POST['delete_news'])) {
     <link rel="stylesheet" href="./include/news.css">
     <link rel="stylesheet" href="./include/exstyle.css">
 
-    <style>
-        .container {
-            margin-top: 20px;
-            width: 700px;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-        }
-
-        .divcont {
-            box-shadow: none;
-        }
-
-        #content,
-        #title {
-            font-size: 1.2rem;
-            line-height: 20px;
-            letter-spacing: 1px;
-        }
-
-        .card {
-            height: 80%;
-        }
-    </style>
-
 </head>
 
 <body class="">

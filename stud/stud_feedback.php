@@ -104,11 +104,9 @@ if ($result) {
                 <i class="mdi mdi-chart-bar menu-icon"></i>
               </span> Feedback
             </h3>
-
-
-              <div class="yrfeed p-4 float-right">
+              <!-- <div class="yrfeed p-4 float-right">
                 <a href='feed_solved.php?id=<?php echo $row['reg']; ?>'> <button class="btn formbold-btn">Status</button></a>
-              </div>
+              </div> -->
           </div>
 
           <!-- Dash data section -->

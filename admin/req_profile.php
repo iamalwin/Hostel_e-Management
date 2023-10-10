@@ -2,17 +2,20 @@
 include("../dbconnect.php");
 session_start();
 
+if (!isset($_SESSION["name"])) {
+	header("Location: ./admin_login.php");
+	exit();
+}
+
+?>
+<?php
 $rej_send = "";
 $errormail = "";
 
 $_SESSION['rej_send'] = $rej_send;
 $_SESSION['errormail'] = $errormail;
 
-// Check if the user is not logged in and redirect to the login page
-if (!isset($_SESSION["name"])) {
-    header("Location: ./admin_login.php");
-    exit();
-}
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -47,21 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "SELECT * FROM studreq WHERE reg = '$reg'";
             $result = mysqli_query($connect, $sql);
             $row = mysqli_fetch_assoc($result);
-        	$stud_id = $_POST['stud_id'];
-        	$stud_id_prefix = 'STUD';
-
-            if ($result && mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $lastInsertedId = $row['max_id'] + 1;
-        
-                $ap_id = $ap_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-                $stud_id = $stud_id_prefix . str_pad($lastInsertedId, 3, '0', STR_PAD_LEFT);
-            } else {
-                $ap_id = $ap_id_prefix . "001";
-                $stud_id = $stud_id_prefix . "001";
-            }
 
             $reg_date = date("Y-m-d H:i:s");
+            
             $insert_rq = "INSERT INTO stud ( ap_id, stud_id, name, reg, dept,year,fathname,fathphone, age, dob, bldgrp, email, phone, address,image,reg_date) VALUES (
                 '{$row['ap_id']}', '{$row['stud_id']}','{$row['name']}', '{$row['reg']}','{$row['dept']}','{$row['year']}','{$row['fathname']}','{$row['fathphone']}', '{$row['age']}', '{$row['dob']}', '{$row['bldgrp']}', '{$row['email']}', '{$row['phone']}', '{$row['address']}', '{$row['image']}', '{$row['reg_date']}')";
             mysqli_query($connect, $insert_rq);

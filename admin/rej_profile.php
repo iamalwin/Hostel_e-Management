@@ -86,7 +86,7 @@ if (!isset($_SESSION["name"])) {
                                 </div>
                                 <div class="d-flex align-items-center mb-4 ml-2">
                             <a href="./rej_stud.php">
-                                <button type="button" class="btn btn-primary pl-1 pr-1"><i class="mdi mdi-chevron-left menu-icon" style="font-size: 2rem;"></i></button>
+                                <button type="button" class="btn btn-primary pl-1 pr-1 pt-3 pb-3"><i class="mdi mdi-chevron-left menu-icon" style="font-size: 2rem;"></i></button>
                             </a>
                         </div>
                     </div>
