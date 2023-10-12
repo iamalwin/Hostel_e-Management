@@ -27,25 +27,16 @@ if (isset($_POST['btn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>admin_login</title>
-
     <link href="../assets/login/css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/login/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/login/style.css">
-
     <link rel="shortcut icon" href="./include/ho_login.png">
-
-<!-- loading -->
     <link rel="stylesheet" href="../dist/css/style.min.css">
-
 </head>
-
 <body>
-
 <section class="ftco-section">
-
 
 <div class="preloader">
     <div class="lds-ripple">
@@ -67,12 +58,6 @@ if (isset($_POST['btn'])) {
                             <div class="w-100">
                                 <h3 class="mb-4">Admin Login</h3>
                             </div>
-                            <!-- <div class="w-100">
-                                <p class="social-media d-flex justify-content-end">
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-                                </p>
-                            </div> -->
                             <div class="text-center">
                                 <a href="../index.php" title="click to home">
                                     <img src="./include/ho_login.png" class="w-35 h-55" alt=" ">
